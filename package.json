@@ -1,0 +1,15 @@
+{
+  "name": "soybean-admin-doc",
+  "version": "1.0.0",
+  "description": "soybean-admin中后台管理系统的说明文档",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "serve": "vitepress serve"
+  },
+  "author": "Soybean(honghuangdc@gmail.com)",
+  "license": "MIT",
+  "dependencies": {
+    "vitepress": "^0.20.1"
+  }
+}
