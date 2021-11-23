@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+		"allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": "./",
+		"paths": {
+			"@/*": ["./src/*"]
+		},
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"]
+  },
+  "include": ["./**/*.ts", "./.vitepress/**/*.ts", "./.vitepress/**/*.vue"],
+	"exclude": ["**/dist/**", "node_modules"]
+}
