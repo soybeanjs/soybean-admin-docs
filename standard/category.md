@@ -51,7 +51,7 @@ soybean-admin
 │   │   ├── constant           //路由的名称、路径、标题声明
 │   │   ├── modules            //按模块划分的路由页面
 │   │   ├── guard              //路由守卫
-│   │   ├── routes         		 //声明的路由
+│   │   ├── routes             //声明的路由
 │   │   └── setup              //路由挂载函数
 │   ├── service                //网络请求
 │   │   ├── api                //接口api
