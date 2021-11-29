@@ -101,7 +101,7 @@ const config: UserConfig = {
             },
             {
               text: 'vue规范',
-              link: '/standard/ts'
+              link: '/standard/vue'
             }
           ]
         }
