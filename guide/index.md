@@ -131,6 +131,14 @@ pnpm i
 pnpm i -g commitizen
 ```
 
+初始化husky提交校验钩子
+
+```bash
+pnpm prepare
+```
+
+
+
 ## npm script
 
 ```json
@@ -183,16 +191,15 @@ soybean-admin
 │   ├── components             //全局组件
 │   │   ├── business           //业务相关组件
 │   │   ├── common             //公共组件
-│   │   └── custom             //自定义组件
+│   │   ├── custom             //自定义组件
+│   │   └── svg                //svg图片组件
 │   ├── composables            //组合式函数(从外部引入状态+内部状态)
 │   │   ├── business           //业务相关composables
-│   │   └── common             //通用composables
+│   │   ├── common             //通用composables
+│   │   └── events             //监听事件相关composables
 │   ├── config                 //全局常量配置
 │   │   ├── business           //业务相关常量
 │   │   └── common             //通用常量
-│   ├── context                //上下文(通过provide和inject实现，用于组件之间的状态共享)
-│   │   ├── app                //从app.vue注入的上下文
-│   │   └── part               //局部组件注入的上下文
 │   ├── directives             //vue指令
 │   ├── enum                   //TS枚举
 │   │   ├── business           //业务相关枚举
@@ -201,12 +208,13 @@ soybean-admin
 │   │   ├── business           //业务相关hooks
 │   │   └── common             //通用hooks
 │   ├── interface              //TS类型接口
+│   │   ├── api                //请求接口返回的结果数据的类型
 │   │   ├── business           //业务相关类型接口
 │   │   └── common             //通用类型接口
 │   ├── layouts                //布局组件
 │   │   ├── BasicLayout        //基本布局(包含全局头部、多页签、侧边栏、底部等公共部分)
 │   │   ├── BlankLayout        //空白布局组件(单个页面)
-│   │   └── RouterViewLayout   //路由组件(作为多级路由之间的桥接)
+│   │   └── common             //全局头部、多页签、侧边栏、底部等公共部分组件
 │   ├── plugins                //插件
 │   │   └── assets.ts          //各种依赖的静态资源导入(css、scss等)
 │   ├── router                 //vue路由
@@ -227,9 +235,10 @@ soybean-admin
 │   │   ├── css                //css
 │   │   └── scss               //scss
 │   ├── typings                //TS类型声明文件(*.d.ts)
-│   ├── utils                  //全局工具函数
+│   ├── utils                  //全局工具函数(纯函数，不含状态)
 │   │   ├── auth               //用户鉴权
 │   │   ├── common             //通用工具函数
+│   │   ├── form               //表单相关工具函数
 │   │   ├── package            //npm依赖
 │   │   ├── router             //路由
 │   │   ├── service            //请求相关的工具函数
