@@ -2,15 +2,15 @@
 
 ## 简介
 
-[Soybean Admin](https://github.com/honghuangdc/soybean-admin) 是一个基于 Vue3、Vite、Naive UI、TypeScript 的免费中后台模版，它使用了最新的前端技术栈，内置丰富的插件，有着极高的代码规范，开箱即用的中后台前端解决方案，也可用于学习参考。
+[Soybean Admin](https://github.com/honghuangdc/soybean-admin) 是一个基于 Vue3、Vite、TypeScript、Naive UI 的免费中后台模版，它使用了最新的前端技术栈，内置丰富的插件，有着极高的代码规范，基于mock实现的动态权限路由，开箱即用的中后台前端解决方案，也可用于学习参考。
 
 ## 特性
 
 - **最新技术栈**：使用 Vue3/vite2 等前端前沿技术开发, 使用高效率的npm包管理器pnpm
 - **TypeScript**: 应用程序级 JavaScript 的语言
-- **主题**：丰富可配置的主题
+- **主题**：丰富可配置的主题、友好的暗黑模式，结合windicss实现快速的主题颜色class
 - **代码规范**：丰富的规范插件及极高的代码规范
-- **路由配置**：简易的路由配置
+- **权限路由**：简易的路由配置、基于mock的动态路由能快速实现后端动态路由
 
 ## 文档
 
@@ -23,11 +23,11 @@
 - [Vue3 文档](https://v3.vuejs.org/)
 - [Vue-RFCS](https://github.com/vuejs/rfcs)
 - [Vue2 迁移到 3](https://v3.vuejs.org/guide/migration/introduction.html)
+- [Vitejs](https://vitejs.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vue-router](https://next.router.vuejs.org/)
 - [Naive UI](https://www.naiveui.com/zh-CN/os-theme)
 - [ES6](https://es6.ruanyifeng.com/)
-- [Vitejs](https://vitejs.dev/)
 - [WindiCSS](https://windicss.netlify.app/)
 
 ## 浏览器支持

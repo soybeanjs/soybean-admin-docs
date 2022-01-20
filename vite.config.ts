@@ -19,8 +19,11 @@ export default defineConfig({
     windiCSS()
   ],
   server: {
+    fs: {
+      strict: false
+    },
     host: '0.0.0.0',
-    port: 3110,
+    port: 3210,
     open: true
   }
 });

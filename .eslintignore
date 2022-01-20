@@ -13,3 +13,4 @@ lib
 .vscode
 .local
 !.vitepress
+.vitepress/dist

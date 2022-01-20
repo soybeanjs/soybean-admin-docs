@@ -69,6 +69,10 @@ const config: UserConfig = {
               link: '/tutorial/'
             },
             {
+              text: '安装教程',
+              link: '/tutorial/install'
+            },
+            {
               text: 'iconify图标使用方法',
               link: '/tutorial/iconify'
             }

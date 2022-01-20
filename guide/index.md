@@ -8,7 +8,7 @@
 
 ## 工具配置
 
-本项目推荐使用VSCode进行开发，项目里面以内置VSCode配置，包含推荐的插件和设置。
+本项目推荐使用VSCode进行开发，项目里面已内置VSCode配置，包含推荐的插件和设置。
 
 以下为推荐的插件：
 
@@ -36,7 +36,7 @@
 
 ::: warning 注意
 
-注意存放代码的目录及所有父级目录不能存在中文、韩文、日文以及空格，否则安装依赖后启动会出错。
+注意存放代码的目录及所有父级目录不能存在中文、韩文、日文以及空格，否则安装依赖后启动可能会出错。
 
 :::
 
@@ -64,57 +64,11 @@ git clone https://gitee.com/honghuangdc/soybean-admin.git
 
 ### 安装 Node.js
 
-windows平台下安装：
+[链接](/tutorial/install.html#安装-node-js)
 
-1.[官网](http://nodejs.cn/download/)下载安装包(.msi结尾)
+### 安装pnpm
 
-2.选择自定义安装目录，例如 D:\Program Files\Nodejs
-
-3.安装完成后，在安装目录D:\Program Files\Nodejs下新建两个文件夹node_cache和node_global
-
-4.打开cmd命令窗，依次执行两条命令
-
-```bash
-npm config set prefix "D:\Program Files\Nodejs\node_global"
-
-npm config set cache "D:\Program Files\Nodejs\node_cache"
-```
-
-5.设置系统变量：
-
-（1）新增环境变量 **NODE_PATH** ： **D:\Program Files\Nodejs\node_global\node_modules**
-
-（2）在PATH变量添加：**D:\Program Files\Nodejs\node_global**
-
-6.设置国内淘宝镜像：
-
-```bash
- npm config set registry=http://registry.npm.taobao.org
-```
-
-mac平台下安装：
-
-```bash
-brew install node
-#安装指定版本
-brew install node14
-```
-
-安装后，根据提示将环境变量写入.zshrc，然后同上设置国内淘宝镜像
-
-### 安装pnpm 
-
-在 Linux 或 macOS 下：
-
-```bash
-curl -fsSL https://get.pnpm.io/install.sh | sh -
-```
-
-在 Windows 下（使用PowerShell）：
-
-```bash
-Invoke-WebRequest 'https://get.pnpm.io/v6.16.js' -UseBasicParsing -o pnpm.js; node pnpm.js add --global pnpm; Remove-Item pnpm.js
-```
+[链接](/tutorial/install.html#安装pnpm)
 
 ### 安装依赖
 
@@ -131,7 +85,7 @@ pnpm i
 pnpm i -g commitizen
 ```
 
-初始化husky提交校验钩子
+初始化husky
 
 ```bash
 pnpm prepare
@@ -157,8 +111,6 @@ pnpm prepare
     "build:staging": "vue-tsc --noEmit --skipLibCheck && vite build --mode staging",
   	//本地预览构建打包后的代码
     "serve": "vite preview",
-  	//检测代码是否符合eslint规范
-    "lint": "eslint ./src --ext .vue,.js,jsx,.ts,tsx",
   	//检测代码是否符合eslint规范并自动修复
     "lint:fix": "eslint --fix ./src --ext .vue,.js,jsx,.ts,tsx",
   	//初始化husky
