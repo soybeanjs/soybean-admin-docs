@@ -2,75 +2,396 @@
 
 ## 说明
 
-### type RouteKey
+### 1. type RouteKey
+
 
 **解释：**
 
 联合类型RouteKey声明所有的路由key，方便统一管理路由
 
+**位置：**
+
+```bash
+src/typings/common/route.d.ts
+```
 **写法：**
 
 （1）小写加连字符表示一个层级的路由
 
 ```typescript
-// 登录页
 | 'login'
-//404页面
 | 'not-found'
 ```
 
 (2)多层级的路由通过下划线隔开
 
 ```typescript
-// 文档
 | 'document'
-// vue文档
 | 'document_vue'
-// vite文档
 | 'document_vite'
-// naive文档
 | 'document_naive'
-// 多级菜单
 | 'multi-menu'
-// 多级菜单的一级
 | 'multi-menu_first'
-// 多级菜单的一级的下一级
 | 'multi-menu_first_second'
+```
+
+### 2. type RoutePath
+
+**解释：**
+
+路由的路径path，该类型会根据定义好的RouteKey推断出来
+
+### 3. type RouteMeta
+
+```typescript
+  /** 路由描述 */
+  type RouteMeta = {
+    /** 路由标题(可用来作document.title或者菜单的名称) */
+    title: string;
+    /** 路由的动态路径 */
+    dynamicPath?: PathToDynamicPath<'/login'>;
+    /** 作为单级路由的父级路由布局组件 */
+    singleLayout?: Extract<RouteComponent, 'basic' | 'blank'>;
+    /** 需要登录权限 */
+    requiresAuth?: boolean;
+    /** 哪些类型的用户有权限才能访问的路由(空的话则表示不需要权限) */
+    permissions?: Auth.RoleType[];
+    /** 缓存页面(开启缓存只需要对最后一级的路由添加该属性) */
+    keepAlive?: boolean;
+    /** 菜单和面包屑对应的图标 */
+    icon?: string;
+    /** 是否在菜单中隐藏 */
+    hide?: boolean;
+    /** 外链链接 */
+    href?: string;
+    /** 路由顺序，可用于菜单的排序 */
+    order?: number;
+    /** 表示是否是多级路由的中间级路由(用于转换路由数据时筛选多级路由的标识，定义路由时不用填写) */
+    multi?: boolean;
+ };
+```
+
+::: info 提示
+
+icon图标值从这里获取：https://icones.js.org/
+
+:::
+
+## 路由布局
+
+### 1. 布局组件
+
+<br />
+
+#### BasicLayout：
+
+具有公共部分的布局，如全局头部、侧边栏、底部等
+
+#### BlankLayout:
+
+空白布局
+
+### 2. 路由组件
+
+- **basic** - 基础布局，具有公共部分的布局
+
+- **blank** - 空白布局
+
+- **multi** - 多级路由布局(三级路由或三级以上时，除第一级路由和最后一级路由，其余的采用该布局)
+
+- **self** - 作为子路由，使用自身的布局(作为最后一级路由，没有子路由)
+
+
+
+## 路由声明
+
+### 1. 创建页面文件
+
+<br />
+
+#### (1) 单级路由
+
+例如：
+
+```typescript
+views
+├── about
+│   ├── index.vue
+│   └── index.ts
+└── index.ts
+
+```
+
+**views/about/Index.ts :**
+
+```typescript
+const About = () => import('./index.vue');
+
+export { About };
+```
+
+**views/index.ts :**
+
+```typescript
+export * from './about';
 ```
 
 
 
-### router/constant
+#### (2) 二级路由
 
-**解释：**
+例如：
 
-用于声明路由的name，path和title，通过类型RouteKey来智能定义
+```typescript
+views
+├── dashboard
+│   ├── analysis
+│   │   └── index.vue
+│   ├── workbench
+│   │   └── index.vue
+│   └── index.ts
+└── index.ts
 
-**写法：**
+```
 
-（1）路由的name：与RouteKey保持一致
+**views/dashboard/Index.ts :**
 
-（2）路由的path：所有的path以 **/** 开头，多级路由可通过将对应RouteKey的下划线转换成斜杠 **/** 后作为path
+```typescript
+const DashboardAnalysis = () => import('./analysis/index.vue');
+const DashboardWorkbench = () => import('./workbench/index.vue');
 
-（3）路由的title：可作为菜单的文本名称和浏览器标签文本(document.title)
+export { DashboardAnalysis, DashboardWorkbench };
+```
 
-### router/routes和router/modules
+**views/index.ts :**
 
-**解释：**
+```typescript
+export * from './dashboard';
+```
 
-固定的路由声明和按模块划分的路由声明
 
-该路由声明是完整的vue-router的路由声明，区别于**router/constant**
 
-（1）固定的路由声明：通用的路由，无论是哪个系统都会有一些通用的路由
+#### (3) 三级及三级以上路由
 
-例如：登录页，404页面等
+例如：
 
-（2）按模块划分的路由声明：根据业务定义不同的路由
+```typescript
+views
+├── multi-menu
+│   ├── first
+│   │   ├── second
+│   │   │   └── index.vue
+│   │   └── second-new
+│   │       └── third
+│   │           └── index.vue
+│   └── index.ts
+└── index.ts
 
-**路由划分：**
+```
 
-（1）首先以布局为划分依据：有的路由页面需要共享公共部分，有的路由页面单独一个页面
+**views/multi-menu/Index.ts :**
 
-（2）其次以路由层级为划分依据：有的只有自身一层路由，有的有多层子路由
+```typescript
+const MultiMenuFirstSecond = () => import('./first/second/index.vue');
+const MultiMenuFirstSecondNewThird = () => import('./first/second-new/third/index.vue');
+
+export { MultiMenuFirstSecond, MultiMenuFirstSecondNewThird };
+```
+
+**views/index.ts :**
+
+```typescript
+export * from './multi-menu';
+```
+
+###  2. 添加路由key
+
+在**RouteKey**类型中添加新增的页面的路由key（src/typings/common/route.d.ts）
+
+示例：
+
+```typescript
+type RouteKey =
+| 'about' // 一级路由
+| 'dashboard' // 二级路由
+| 'dashboard_analysis'
+| 'dashboard_workbench'
+| 'multi-menu' // 三级及三级以上路由
+| 'multi-menu_first'
+| 'multi-menu_first_second'
+| 'multi-menu_first_second-new'
+| 'multi-menu_first_second-new_third'
+```
+
+### 3. 引入新增的页面组件
+
+#### (1) 在 src/utils/router/component.ts 引入
+
+例如：
+
+```typescript
+import {
+  About,
+  DashboardAnalysis,
+  DashboardWorkbench,
+  MultiMenuFirstSecond,
+  MultiMenuFirstSecondNewThird
+} from '@/views
+```
+
+#### (2)更改ViewComponentKey
+
+将不是最后一级路由的RouteKey排除掉
+
+```typescript
+/** 需要用到自身vue组件的页面 */
+type ViewComponentKey = Exclude<
+  AuthRoute.RouteKey,
+  | 'dashboard'
+  | 'multi-menu'
+  | 'multi-menu_first'
+  | 'multi-menu_first_second-new'
+\>;
+```
+
+#### (3)添加keys
+
+```typescript
+const keys:  ViewComponentKey[] = [
+	'about',
+	'dashboard_analysis',
+	'dashboard_workbench',
+	'multi-menu_first_second',
+	'multi-menu_first_second-new_third',
+]
+```
+
+#### (4) 添加viewComponent
+
+```typescript
+const viewComponent: ViewComponent = {
+  about: About,
+  dashboard_analysis: DashboardAnalysis,
+  dashboard_workbench: DashboardWorkbench,
+  'multi-menu_first_second': MultiMenuFirstSecond,
+  'multi-menu_first_second-new_third': MultiMenuFirstSecondNewThird,
+}
+```
+
+### 4.mock声明路由
+
+::: tip 提示
+
+对接后端的，直接后端添加同样结构的数据
+
+:::
+
+#### (1) 单级路由
+
+```typescript
+{
+  name: 'about',
+  path: '/about',
+  component: 'self',
+  meta: {
+	  title: '关于',
+	  requiresAuth: true,
+	  singleLayout: 'basic',
+	  permissions: ['super', 'admin', 'test'],
+	  icon: 'fluent:book-information-24-regular',
+	  order: 7
+	}
+}
+```
+
+#### (2)二级路由
+
+```typescript
+{
+  name: 'dashboard',
+  path: '/dashboard',
+  component: 'basic',
+  children: [
+    {
+      name: 'dashboard_analysis',
+      path: '/dashboard/analysis',
+      component: 'self',
+      meta: {
+        title: '分析页',
+        requiresAuth: true
+      }
+    },
+    {
+      name: 'dashboard_workbench',
+      path: '/dashboard/workbench',
+      component: 'self',
+      meta: {
+        title: '工作台',
+        requiresAuth: true,
+        permissions: ['super', 'admin']
+      }
+    }
+  ],
+  meta: {
+  	title: '仪表盘',
+  	icon: 'carbon:dashboard',
+    order: 1
+  }
+}
+```
+
+#### (3)三级及三级以上路由
+
+```typescript
+{
+    name: 'multi-menu',
+    path: '/multi-menu',
+    component: 'basic',
+    children: [
+      {
+        name: 'multi-menu_first',
+        path: '/multi-menu/first',
+        component: 'multi',
+        children: [
+          {
+            name: 'multi-menu_first_second',
+            path: '/multi-menu/first/second',
+            component: 'self',
+            meta: {
+              title: '二级菜单',
+              requiresAuth: true
+            }
+          },
+          {
+            name: 'multi-menu_first_second-new',
+            path: '/multi-menu/first/second-new',
+            component: 'multi',
+            children: [
+              {
+                name: 'multi-menu_first_second-new_third',
+                path: '/multi-menu/first/second-new/third',
+                component: 'self',
+                meta: {
+                  title: '三级菜单',
+                  requiresAuth: true
+                }
+              }
+            ],
+            meta: {
+              title: '二级菜单(有子菜单)'
+            }
+          }
+        ],
+        meta: {
+          title: '一级菜单'
+        }
+      }
+    ],
+    meta: {
+      title: '多级菜单',
+      icon: 'carbon:menu',
+      order: 6
+    }
+}
+```
 
