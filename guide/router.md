@@ -116,27 +116,9 @@ icon图标值从这里获取：https://icones.js.org/
 ```typescript
 views
 ├── about
-│   ├── index.vue
-│   └── index.ts
-└── index.ts
+│   └── index.vue
 
 ```
-
-**views/about/Index.ts :**
-
-```typescript
-const About = () => import('./index.vue');
-
-export { About };
-```
-
-**views/index.ts :**
-
-```typescript
-export * from './about';
-```
-
-
 
 #### (2) 二级路由
 
@@ -149,27 +131,9 @@ views
 │   │   └── index.vue
 │   ├── workbench
 │   │   └── index.vue
-│   └── index.ts
-└── index.ts
+
 
 ```
-
-**views/dashboard/Index.ts :**
-
-```typescript
-const DashboardAnalysis = () => import('./analysis/index.vue');
-const DashboardWorkbench = () => import('./workbench/index.vue');
-
-export { DashboardAnalysis, DashboardWorkbench };
-```
-
-**views/index.ts :**
-
-```typescript
-export * from './dashboard';
-```
-
-
 
 #### (3) 三级及三级以上路由
 
@@ -184,29 +148,18 @@ views
 │   │   └── second-new
 │   │       └── third
 │   │           └── index.vue
-│   └── index.ts
-└── index.ts
 
-```
-
-**views/multi-menu/Index.ts :**
-
-```typescript
-const MultiMenuFirstSecond = () => import('./first/second/index.vue');
-const MultiMenuFirstSecondNewThird = () => import('./first/second-new/third/index.vue');
-
-export { MultiMenuFirstSecond, MultiMenuFirstSecondNewThird };
-```
-
-**views/index.ts :**
-
-```typescript
-export * from './multi-menu';
 ```
 
 ###  2. 添加路由key
 
 在**RouteKey**类型中添加新增的页面的路由key（src/typings/common/route.d.ts）
+
+::: warning 注意
+
+RouteKey必须和views下面的文件夹名称一一对应，否则无法加载到对应的vue文件
+
+:::
 
 示例：
 
@@ -223,62 +176,7 @@ type RouteKey =
 | 'multi-menu_first_second-new_third'
 ```
 
-### 3. 引入新增的页面组件
-
-#### (1) 在 src/utils/router/component.ts 引入
-
-例如：
-
-```typescript
-import {
-  About,
-  DashboardAnalysis,
-  DashboardWorkbench,
-  MultiMenuFirstSecond,
-  MultiMenuFirstSecondNewThird
-} from '@/views
-```
-
-#### (2)更改ViewComponentKey
-
-将不是最后一级路由的RouteKey排除掉
-
-```typescript
-/** 需要用到自身vue组件的页面 */
-type ViewComponentKey = Exclude<
-  AuthRoute.RouteKey,
-  | 'dashboard'
-  | 'multi-menu'
-  | 'multi-menu_first'
-  | 'multi-menu_first_second-new'
-\>;
-```
-
-#### (3)添加keys
-
-```typescript
-const keys:  ViewComponentKey[] = [
-	'about',
-	'dashboard_analysis',
-	'dashboard_workbench',
-	'multi-menu_first_second',
-	'multi-menu_first_second-new_third',
-]
-```
-
-#### (4) 添加viewComponent
-
-```typescript
-const viewComponent: ViewComponent = {
-  about: About,
-  dashboard_analysis: DashboardAnalysis,
-  dashboard_workbench: DashboardWorkbench,
-  'multi-menu_first_second': MultiMenuFirstSecond,
-  'multi-menu_first_second-new_third': MultiMenuFirstSecondNewThird,
-}
-```
-
-### 4.mock声明路由
+### 3.mock声明路由
 
 ::: tip 提示
 
