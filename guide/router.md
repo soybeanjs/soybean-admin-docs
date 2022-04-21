@@ -12,7 +12,7 @@
 **位置：**
 
 ```bash
-src/typings/common/route.d.ts
+src/typings/route.d.ts
 ```
 **写法：**
 
@@ -54,7 +54,10 @@ src/typings/common/route.d.ts
     singleLayout?: Extract<RouteComponent, 'basic' | 'blank'>;
     /** 需要登录权限 */
     requiresAuth?: boolean;
-    /** 哪些类型的用户有权限才能访问的路由(空的话则表示不需要权限) */
+    /**
+     * 哪些类型的用户有权限才能访问的路由(空的话则表示不需要权限)
+     * @description 后端动态路由数据不需要该属性，直接由后端根据用户角色返回对应权限的路由数据
+     */
     permissions?: Auth.RoleType[];
     /** 缓存页面(开启缓存只需要对最后一级的路由添加该属性) */
     keepAlive?: boolean;
@@ -153,7 +156,7 @@ views
 
 ###  2. 添加路由key
 
-在**RouteKey**类型中添加新增的页面的路由key（src/typings/common/route.d.ts）
+在**RouteKey**类型中添加新增的页面的路由key（src/typings/route.d.ts）
 
 ::: warning 注意
 
@@ -180,7 +183,7 @@ type RouteKey =
 
 ::: tip 提示
 
-对接后端的，直接后端添加同样结构的数据
+对接后端的，后端直接添加同样结构的数据
 
 :::
 

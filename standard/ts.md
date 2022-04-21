@@ -24,24 +24,3 @@ function fetchDeleteListItem(id：string) {
 	// ***
 }
 ```
-
-### middleware中间件：
-
-统一以 **对应的请求函数名+Middleware** 命名，例如
-
-```typescript
-/**接口返回的用户信息 */
-interface ResponseUserInfo {
-  userId: string;
-  userName: string;
-  userAge: number;
-}
-/**
- * 获取用户信息 中间件
- @param data - 返回的用户信息
- */
-function fetchUserInfoMiddleware(data: ResponseUserInfo): UserInfo {
-  // ***
-}
-```
-
