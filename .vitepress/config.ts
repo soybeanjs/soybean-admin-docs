@@ -1,9 +1,9 @@
-import { UserConfig } from 'vitepress';
+import { defineConfig } from 'vitepress';
 
-const config: UserConfig = {
+export default defineConfig({
   title: 'Soybean Admin',
   lang: 'zh-CN',
-  description: '一个漂亮清新的中后台模版',
+  description: '一个优雅、清新、漂亮的中后台模版',
   head: [
     ['meta', { name: 'author', content: 'Soybean' }],
     [
@@ -24,18 +24,34 @@ const config: UserConfig = {
     ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
   themeConfig: {
-    repo: 'honghuangdc/soybean-admin',
-    logo: '/logo.svg',
-    docsBranch: 'main',
-    editLinks: true,
-    editLinkText: '为此页提供修改建议',
+    logo: './logo.svg',
+    editLink: {
+      text: '为此页提供修改建议',
+      pattern: 'https://github.com/honghuangdc/soybean-admin-docs/tree/main/:path'
+    },
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/honghuangdc/soybean-admin' },
+      { icon: 'discord', link: 'https://discord.com/invite/CgUJzKpj' }
+    ],
+    localeLinks: {
+      text: '简体中文',
+      items: []
+    },
+    footer: {
+      message: '根据 MIT 许可证发布。',
+      copyright: 'Copyright © 2021-present Soybean'
+    },
     nav: [
-      { text: '指引', link: '/guide/' },
-      { text: '规范', link: '/standard/' },
-      { text: '教程', link: '/tutorial/' },
+      { text: '指引', link: '/guide/', activeMatch: '/guide/' },
+      { text: '规范', link: '/standard/', activeMatch: '/standard/' },
+      { text: '教程', link: '/tutorial/', activeMatch: '/tutorial/' },
       {
         text: '相关链接',
         items: [
+          {
+            text: 'Discord Chat',
+            link: 'https://discord.com/invite/CgUJzKpj'
+          },
           {
             text: '预览地址',
             link: 'https://soybean.pro'
@@ -60,21 +76,33 @@ const config: UserConfig = {
       }
     ],
     sidebar: {
-      '/tutorial/': [
+      '/guide/': [
         {
-          text: '教程',
-          children: [
+          text: '指引',
+          items: [
+            {
+              text: '介绍',
+              link: '/guide/introduction'
+            },
             {
               text: '开始',
-              link: '/tutorial/'
+              link: '/guide/'
             },
             {
-              text: '安装教程',
-              link: '/tutorial/install'
+              text: '项目配置',
+              link: '/guide/settings'
             },
             {
-              text: 'iconify图标使用方法',
-              link: '/tutorial/iconify'
+              text: '路由',
+              link: '/guide/router'
+            },
+            {
+              text: '菜单',
+              link: '/guide/menu'
+            },
+            {
+              text: '权限',
+              link: '/guide/auth'
             }
           ]
         }
@@ -82,7 +110,7 @@ const config: UserConfig = {
       '/standard/': [
         {
           text: '规范',
-          children: [
+          items: [
             {
               text: '开始',
               link: '/standard/'
@@ -110,39 +138,25 @@ const config: UserConfig = {
           ]
         }
       ],
-      '/': [
+      '/tutorial/': [
         {
-          text: '指引',
-          children: [
-            {
-              text: '介绍',
-              link: '/guide/introduction'
-            },
+          text: '教程',
+          items: [
             {
               text: '开始',
-              link: '/guide/'
+              link: '/tutorial/'
             },
             {
-              text: '项目配置',
-              link: '/guide/settings'
+              text: '安装教程',
+              link: '/tutorial/install'
             },
             {
-              text: '路由',
-              link: '/guide/router'
-            },
-            {
-              text: '菜单',
-              link: '/guide/menu'
-            },
-            {
-              text: '权限',
-              link: '/guide/auth'
+              text: 'iconify图标使用方法',
+              link: '/tutorial/iconify'
             }
           ]
         }
       ]
     }
   }
-};
-
-export default config;
+});
