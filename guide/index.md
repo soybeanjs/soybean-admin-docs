@@ -103,15 +103,15 @@ pnpm prepare
 	//本地运行(dev环境)
 	"dev": "cross-env VITE_ENV_TYPE=dev vite",
 	//本地运行(test环境)
-	"dev:test": "cross-env VITE_HTTP_ENV=test vite",
+	"dev:test": "cross-env VITE_ENV_TYPE=test vite",
 	//本地运行(prod环境)
-	"dev:prod": "cross-env VITE_HTTP_ENV=prod vite",
+	"dev:prod": "cross-env VITE_ENV_TYPE=prod vite",
 	//构建打包(prod环境)
-	"build": "npm run typecheck && cross-env VITE_HTTP_ENV=prod vite build",
+	"build": "npm run typecheck && cross-env VITE_ENV_TYPE=prod vite build",
 	//构建打包(dev环境)
-	"build:dev": "npm run typecheck && cross-env VITE_HTTP_ENV=dev vite build",
+	"build:dev": "npm run typecheck && cross-env VITE_ENV_TYPE=dev vite build",
 	//构建打包(test环境)
-	"build:test": "npm run typecheck && cross-env VITE_HTTP_ENV=test vite build",
+	"build:test": "npm run typecheck && cross-env VITE_ENV_TYPE=test vite build",
 	//构建打包(部署vercel)
 	"build:vercel": "cross-env VITE_HASH_ROUTE=true vite build",
 	//本地环境预览构建后的dist
