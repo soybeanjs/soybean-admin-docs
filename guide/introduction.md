@@ -2,25 +2,24 @@
 
 ## 简介
 
-[Soybean Admin](https://github.com/honghuangdc/soybean-admin) 是一个基于 Vue3、Vite、TypeScript、Naive UI 的免费中后台模版，它使用了最新的前端技术栈，内置丰富的主题配置，有着极高的代码规范，基于mock实现的动态权限路由，开箱即用的中后台前端解决方案，也可用于学习参考。
+[Soybean Admin](https://github.com/honghuangdc/soybean-admin) 是一个基于 Vue3、Vite3、TypeScript、NaiveUI、Pinia和UnoCSS 的清新优雅的中后台模版，它使用了最新的前端技术栈，内置丰富的主题配置，有着极高的代码规范，基于mock实现的动态权限路由，开箱即用的中后台前端解决方案，也可用于学习参考。
 
 ## 特性
 
 - **最新技术栈**：使用 Vue3/vite2 等前端前沿技术开发, 使用高效率的npm包管理器pnpm
 - **TypeScript**: 应用程序级 JavaScript 的语言
-- **主题**：丰富可配置的主题、暗黑模式，基于windicss的动态主题颜色
+- **主题**：丰富可配置的主题、暗黑模式，基于原子css框架 - UnoCss的动态主题颜色
 - **代码规范**：丰富的规范插件及极高的代码规范
 - **权限路由**：简易的路由配置、基于mock的动态路由能快速实现后端动态路由
-- **请求函数**：基于axios的完善的请求函数封装，提供Promise和hooks两种请求函数
+- **请求函数**：基于axios的完善的请求函数封装，提供Promise和hooks两种请求函数，加入请求结果数据转换的适配器
 
 ## 特性细节
 
-- **技术栈**：Vite2 + Vue3 + TypeScript + NaiveUI + Pinia + WindiCss + Axios + AntV + @vueuse + iconify
+- **技术栈**： Vue3 + Vite3 + TypeScript + NaiveUI + Pinia + UnoCss + Axios + ECharts + AntV G2 + @vueuse + iconify
 
 - **严格的代码规范**：
 
-  1. eslint + prettier + eslint-config-airbnb-base + eslint-plugin-vue + eslint-plugin-import + @typescript-eslint/eslint-plugin等插件提供代码全面的格式规范，eslintrc的 **import/order** 规则规范了导入依赖的顺序
-
+  1. eslint + prettier + eslint-config-airbnb-base + eslint-plugin-vue + eslint-plugin-import + @typescript-eslint/eslint-plugin等插件提供代码全面的格式规范，eslintrc的 import/order 规则规范了导入依赖的顺序
   2. husky + lint-staged + vuetsc + commitlint + commitizen 保证了提交的代码符合eslint规则和TS类型检测，提交的内容规范遵循了angular提交规范
   3. 应用设计模式优化代码：项目里面多次用到策略模式替换if else
   4. 所有页面使用script-setup写法，并遵循特定顺序(用文档规范)
@@ -37,7 +36,7 @@
 - **主题**：
 
   1. 支持各种主题颜色、暗黑模式和各种布局
-  2. WindiCss引入各种主题颜色，直接通过class即可应用对应的颜色
+  2. UnoCss引入各种主题颜色，直接通过class即可应用对应的颜色
   3. 初始化加载适应主题颜色
   4. 支持项目logo自适应主题颜色
 
@@ -48,10 +47,31 @@
   2. 统一请求结果：将错误信息统一处理成特定格式，和请求成功的数据再按特定格式一起返回
 
      ```typescript
-     interface ServiceResult<T> {
-       data: T | null,
-       error: ServiceError | null
-     }
+    	/** 自定义的请求成功结果 */
+  		interface SuccessResult<T = any> {
+    	  /** 请求错误 */
+    	  error: null;
+    	  /** 请求数据 */
+    	  data: T;
+  		}
+			/** 请求错误 */
+  		interface RequestError {
+  		  /** 请求服务的错误类型 */
+  		  type: RequestErrorType;
+  		  /** 错误码 */
+  		  code: string | number;
+  		  /** 错误信息 */
+  		  msg: string;
+  		}
+  		/** 自定义的请求失败结果 */
+  		interface FailedResult {
+    	  /** 请求错误 */
+    	  error: RequestError;
+    	  /** 请求数据 */
+    	  data: null;
+  		}
+  		/** 自定义的请求结果 */
+  		type RequestResult<T = any> = SuccessResult<T> | FailedResult;
      ```
 
   3. 错误提示：智能提示错误，避免同一种错误在同一时间段显示，通过指定错误码不展示响应错误
@@ -60,7 +80,7 @@
 
   5. 请求参数转换：根据不同的Content-Type转换数据，利用qs序列化数据，支持单文件和多文件上传
 
-  6. 封装的请求函数支持promise和hooks两种, hooks的请求函数包含loading状态
+  6. 封装的请求函数支持Promise和hooks两种, hooks的请求函数包含loading状态
 
 - **自定义组件**
 
@@ -83,17 +103,18 @@
 
 ## 需要掌握的基础知识
 
-本项目基于vue3+vite+TS开发，并全部采用了vue3的**script-setup**写法，建议在开发前先学一下以下内容，提前了解和学习这些知识，会对项目理解非常有帮助:
+本项目基于Vue3+Vite3+TS开发，并全部采用了Vue3的**script-setup**写法，建议在开发前先学一下以下内容，提前了解和学习这些知识，会对项目理解非常有帮助:
 
-- [Vue3 文档](https://v3.vuejs.org/)
+- [Vue3 文档](https://vuejs.org/)
 - [Vue-RFCS](https://github.com/vuejs/rfcs)
-- [Vue2 迁移到 3](https://v3.vuejs.org/guide/migration/introduction.html)
 - [Vitejs](https://vitejs.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Vue-router](https://next.router.vuejs.org/)
-- [Naive UI](https://www.naiveui.com/zh-CN/os-theme)
+- [TypeScript](https://jkchao.github.io/typescript-book-chinese/#why)
+- [Vue-router](https://router.vuejs.org/)
+- [NaiveUI](https://www.naiveui.com/zh-CN/os-theme)
+- [Pinia](https://pinia.vuejs.org/)
+- [UnoCss](https://uno.antfu.me/)
+- [VueUse](https://vueuse.org/)
 - [ES6](https://es6.ruanyifeng.com/)
-- [WindiCSS](https://windicss.org/)
 
 ## 浏览器支持
 
@@ -107,5 +128,5 @@
 
 ## 如何加入我们
 
-- [Soybean Admin](https://github.com/honghuangdc/soybean-admin) 还在持续更新中，本项目欢迎您的参与，共同维护，逐步完善，将项目做得更强。同时整个项目本着一切免费的原则，原则上不会收取任何费用及版权，可以放心使用。
+- [Soybean Admin](https://github.com/honghuangdc/soybean-admin) 还在持续更新中，本项目欢迎您的参与，共同维护，逐步完善，将项目做得更强。项目采用MIT开源协议，本着一切免费的原则，原则上不会收取任何费用及版权，可以放心使用。
 - 如果你想加入我们，可以多提供一些好的建议或者提交 pr，我们会根据你的活跃度邀请你加入。

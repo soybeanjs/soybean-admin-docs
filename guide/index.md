@@ -4,7 +4,7 @@
 
 ## 环境准备
 
-本地环境需要安装 [pnpm 7.x+](https://pnpm.io/) 、[Node.js 14.x+](http://nodejs.org/) 和 [Git](https://git-scm.com/)
+本地环境需要安装 [pnpm 7.x+](https://pnpm.io/) 、[Node.js 14.18+](http://nodejs.org/) 和 [Git](https://git-scm.com/)
 
 ## 工具配置
 
