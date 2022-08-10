@@ -8,29 +8,29 @@
 
 ## 工具配置
 
-本项目推荐使用VSCode进行开发，项目里面已内置VSCode配置，包含推荐的插件和设置。
+本项目推荐使用 VSCode 进行开发，项目里面已内置 VSCode 配置，包含推荐的插件和设置。
 
 以下为推荐的插件：
 
-- [Auto Close Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag) - 自动添加HTML/XML结束标签
-- [Auto Complete Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-complete-tag) - 为HTML/XML添加关闭标签和自动重命名成对的标签
+- [Auto Close Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag) - 自动添加 HTML/XML 结束标签
+- [Auto Complete Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-complete-tag) - 为 HTML/XML 添加关闭标签和自动重命名成对的标签
 - [Auto Import](https://marketplace.visualstudio.com/items?itemName=steoates.autoimport) - 自动查找、解析和提供所有可用导入的代码操作和代码完成
-- [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag) - 自动重命名成对的HTML/XML标签
+- [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag) - 自动重命名成对的 HTML/XML 标签
 - [Color Highlight](https://github.com/naumovs/vscode-ext-color-highlight) - 颜色高亮插件
-- [DotENV](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv) - 高亮.env文件
+- [DotENV](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv) - 高亮.env 文件
 - [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) - 统一不同编辑器的一些配置
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - 代码检查
-- [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph) - Git图形化操作工具
-- [GitLens — Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) - 显示具体某行代码的git信息
-- [Icônes](https://marketplace.visualstudio.com/items?itemName=afzalsayed96.icones) - 搜索iconify图标的插件
-- [Iconify IntelliSense](https://marketplace.visualstudio.com/items?itemName=antfu.iconify) - Iconify图标实时显示的插件
-- [javascript console utils](https://marketplace.visualstudio.com/items?itemName=whtouche.vscode-js-console-utils) - 提供快捷键ctrl+l直接输入console.log()
+- [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph) - Git 图形化操作工具
+- [GitLens — Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) - 显示具体某行代码的 git 信息
+- [Icônes](https://marketplace.visualstudio.com/items?itemName=afzalsayed96.icones) - 搜索 iconify 图标的插件
+- [Iconify IntelliSense](https://marketplace.visualstudio.com/items?itemName=antfu.iconify) - Iconify 图标实时显示的插件
+- [javascript console utils](https://marketplace.visualstudio.com/items?itemName=whtouche.vscode-js-console-utils) - 提供快捷键 ctrl+l 直接输入 console.log()
 - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) - 图标主题，显示文件和文件多种图标
 - [Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense) - 智能显示导入的路径
 - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - 代码格式化插件
-- [UnoCSS](https://marketplace.visualstudio.com/items?itemName=antfu.unocss) - unocss写法提示插件
-- [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) - volar插件， Language support for Vue 3
-- [Vue VSCode Snippets](https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-snippets) - vue2、vue3写法提示
+- [UnoCSS](https://marketplace.visualstudio.com/items?itemName=antfu.unocss) - unocss 写法提示插件
+- [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) - volar 插件， Language support for Vue 3
+- [Vue VSCode Snippets](https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-snippets) - vue2、vue3 写法提示
 
 ## 代码获取
 
@@ -50,7 +50,7 @@ git clone https://gitee.com/honghuangdc/soybean-admin.git
 
 ::: warning 注意
 
-最新版本的代码以github为准。
+最新版本的代码以 github 为准。
 
 :::
 
@@ -60,7 +60,7 @@ git clone https://gitee.com/honghuangdc/soybean-admin.git
 
 [链接](/tutorial/install.html#安装-node-js)
 
-### 安装pnpm
+### 安装 pnpm
 
 [链接](/tutorial/install.html#安装pnpm)
 
@@ -79,7 +79,7 @@ pnpm i
 pnpm i -g commitizen
 ```
 
-初始化husky
+初始化 husky
 
 ```bash
 pnpm prepare
@@ -87,43 +87,44 @@ pnpm prepare
 
 ## 插件配置
 
-### 安装Volar，禁用Vetur
-- [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) - volar插件， Language support for Vue 3
+### 安装 Volar，禁用 Vetur
 
-### 开启Volar的takeover mode
+- [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) - volar 插件， Language support for Vue 3
 
-1. 搜索插件 @builin typescript
-2. 鼠标右键 “JavaScript 和 TypeScript 的语言功能”
-3. 点击 “禁用工作区”
+### 开启 Volar 的 takeover mode
 
-## npm script
+- 搜索插件 @builin typescript
+- 鼠标右键 “JavaScript 和 TypeScript 的语言功能”
+- 点击 “禁用工作区”
+
+## npm scripts
 
 ```json
-"scripts": {
-	//本地运行(dev环境)
-	"dev": "cross-env VITE_ENV_TYPE=dev vite",
-	//本地运行(test环境)
-	"dev:test": "cross-env VITE_HTTP_ENV=test vite",
-	//本地运行(prod环境)
-	"dev:prod": "cross-env VITE_HTTP_ENV=prod vite",
-	//构建打包(prod环境)
-	"build": "npm run typecheck && cross-env VITE_HTTP_ENV=prod vite build",
-	//构建打包(dev环境)
-	"build:dev": "npm run typecheck && cross-env VITE_HTTP_ENV=dev vite build",
-	//构建打包(test环境)
-	"build:test": "npm run typecheck && cross-env VITE_HTTP_ENV=test vite build",
-	//构建打包(部署vercel)
-	"build:vercel": "cross-env VITE_HASH_ROUTE=true vite build",
-	//本地环境预览构建后的dist
-	"preview": "vite preview",
-	//vue文件的ts检查
-	"typecheck": "vue-tsc --noEmit --skipLibCheck",
-	//检测代码是否符合eslint规范并自动修复
-	"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
-	//初始化husky
-	"prepare": "husky install",
-	//记录对某个node_modules依赖包的修改
-	"postinstall": "patch-package"
+{
+  // 本地运行(dev环境)
+  "dev": "cross-env VITE_ENV_TYPE=dev vite",
+  // 本地运行(test环境)
+  "dev:test": "cross-env VITE_HTTP_ENV=test vite",
+  // 本地运行(prod环境)
+  "dev:prod": "cross-env VITE_HTTP_ENV=prod vite",
+  // 构建打包(prod环境)
+  "build": "npm run typecheck && cross-env VITE_HTTP_ENV=prod vite build",
+  // 构建打包(dev环境)
+  "build:dev": "npm run typecheck && cross-env VITE_HTTP_ENV=dev vite build",
+  // 构建打包(test环境)
+  "build:test": "npm run typecheck && cross-env VITE_HTTP_ENV=test vite build",
+  // 构建打包(部署vercel)
+  "build:vercel": "cross-env VITE_HASH_ROUTE=true vite build",
+  // 本地环境预览构建后的dist
+  "preview": "vite preview",
+  // vue文件的ts检查
+  "typecheck": "vue-tsc --noEmit --skipLibCheck",
+  // 检测代码是否符合eslint规范并自动修复
+  "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
+  // 初始化husky
+  "prepare": "husky install",
+  // 记录对某个node_modules依赖包的修改
+  "postinstall": "patch-package"
 }
 ```
 

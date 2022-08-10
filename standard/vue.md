@@ -1,4 +1,4 @@
-## script-setup写法
+## script-setup 写法
 
 ### 第一部分
 
@@ -8,15 +8,15 @@
 
 #### script
 
-#### 一、import的顺序, 依次按照下面的顺序。
+#### 一、import 的顺序, 依次按照下面的顺序。
+
 ::: info 提示
 
-已经通过eslint规则规范
+已经通过 eslint 规则规范
 
 :::
 
-
-#### 二、TS类型声明
+#### 二、TS 类型声明
 
 ```typescript
 interface Props {
@@ -35,10 +35,9 @@ interface Emits {
 }
 ```
 
-
 #### 三、defineProps、defineEmits、withDefaults
 
-1. 定义属性，如：
+- 定义属性，如：
 
 ```typescript
 const props = withDefaults(defineProps<Props>(), {
@@ -46,17 +45,17 @@ const props = withDefaults(defineProps<Props>(), {
 });
 ```
 
-其中name是必须的属性，age是可选属性，通过withDefaults添加默认值
+其中 name 是必须的属性，age 是可选属性，通过 withDefaults 添加默认值
 
-2. 定义emit事件
+- 定义 emit 事件
 
 ```typescript
 const emit = defineEmits<Emits>();
 ```
 
-#### 四、响应式use函数
+#### 四、响应式 use 函数
 
-有些use函数需要传入响应式的变量参数时，则书写在声明的变量下面。
+有些 use 函数需要传入响应式的变量参数时，则书写在声明的变量下面。
 
 ```typescript
 const router = useRouter();
@@ -69,13 +68,11 @@ const domRef = ref<HTMLElement | null>(null);
 const { height: domRefHeight } = useElementSize(domRef); //获取domRef的响应式高度
 ```
 
-
-
 #### 五、变量、函数声明
 
 <br />
 
-#### 六、watch、nextTick、vue生命周期函数
+#### 六、watch、nextTick、vue 生命周期函数
 
 <br />
 

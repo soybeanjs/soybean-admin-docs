@@ -2,7 +2,7 @@
 
 ## 用户角色
 
-在src/typings/business.d.ts定义了类型
+在 src/typings/business.d.ts 定义了类型
 
 ```typescript
 /**
@@ -15,4 +15,4 @@
  type RoleType = 'super' | 'admin' | 'test' | 'normal';
 ```
 
-在定义路由时通过给路由meta的permissions属性传入以上的值，就表示该路由对传入的角色类型才有权限访问
+在定义路由时通过给路由 meta 的 permissions 属性传入以上的值，就表示该路由对传入的角色类型才有权限访问

@@ -4,26 +4,26 @@
 
 ### 1. type RouteKey
 
-
 **解释：**
 
-联合类型RouteKey声明所有的路由key，方便统一管理路由
+联合类型 RouteKey 声明所有的路由 key，方便统一管理路由
 
 **位置：**
 
 ```bash
 src/typings/route.d.ts
 ```
+
 **写法：**
 
-（1）小写加连字符表示一个层级的路由
+- 小写加连字符表示一个层级的路由
 
 ```typescript
 | 'login'
 | 'not-found'
 ```
 
-(2)多层级的路由通过下划线隔开
+- 多层级的路由通过下划线隔开
 
 ```typescript
 | 'document'
@@ -39,44 +39,44 @@ src/typings/route.d.ts
 
 **解释：**
 
-路由的路径path，该类型会根据定义好的RouteKey推断出来
+路由的路径 path，该类型会根据定义好的 RouteKey 推断出来
 
 ### 3. type RouteMeta
 
-```typescript
-  /** 路由描述 */
-  type RouteMeta = {
-    /** 路由标题(可用来作document.title或者菜单的名称) */
-    title: string;
-    /** 路由的动态路径 */
-    dynamicPath?: PathToDynamicPath<'/login'>;
-    /** 作为单级路由的父级路由布局组件 */
-    singleLayout?: Extract<RouteComponent, 'basic' | 'blank'>;
-    /** 需要登录权限 */
-    requiresAuth?: boolean;
-    /**
-     * 哪些类型的用户有权限才能访问的路由(空的话则表示不需要权限)
-     * @description 后端动态路由数据不需要该属性，直接由后端根据用户角色返回对应权限的路由数据
-     */
-    permissions?: Auth.RoleType[];
-    /** 缓存页面(开启缓存只需要对最后一级的路由添加该属性) */
-    keepAlive?: boolean;
-    /** 菜单和面包屑对应的图标 */
-    icon?: string;
-    /** 是否在菜单中隐藏 */
-    hide?: boolean;
-    /** 外链链接 */
-    href?: string;
-    /** 路由顺序，可用于菜单的排序 */
-    order?: number;
-    /** 表示是否是多级路由的中间级路由(用于转换路由数据时筛选多级路由的标识，定义路由时不用填写) */
-    multi?: boolean;
- };
-```
+  ```typescript
+		/** 路由描述 */
+  	type RouteMeta = {
+    	/** 路由标题(可用来作document.title或者菜单的名称) */
+    	title: string;
+    	/** 路由的动态路径 */
+    	dynamicPath?: PathToDynamicPath<'/login'>;
+    	/** 作为单级路由的父级路由布局组件 */
+    	singleLayout?: Extract<RouteComponent, 'basic' | 'blank'>;
+    	/** 需要登录权限 */
+    	requiresAuth?: boolean;
+    	/**
+    	 * 哪些类型的用户有权限才能访问的路由(空的话则表示不需要权限)
+    	 * @description 后端动态路由数据不需要该属性，直接由后端根据用户角色返回对应权限的路由数据
+    	 */
+    	permissions?: Auth.RoleType[];
+    	/** 缓存页面(开启缓存只需要对最后一级的路由添加该属性) */
+    	keepAlive?: boolean;
+    	/** 菜单和面包屑对应的图标 */
+    	icon?: string;
+    	/** 是否在菜单中隐藏 */
+    	hide?: boolean;
+    	/** 外链链接 */
+    	href?: string;
+    	/** 路由顺序，可用于菜单的排序 */
+    	order?: number;
+    	/** 表示是否是多级路由的中间级路由(用于转换路由数据时筛选多级路由的标识，定义路由时不用填写) */
+    	multi?: boolean;
+ 		};
+  ```
 
 ::: info 提示
 
-icon图标值从这里获取：https://icones.js.org/
+icon 图标值从这里获取：[https://icones.js.org/](https://icones.js.org/)
 
 :::
 
@@ -90,21 +90,16 @@ icon图标值从这里获取：https://icones.js.org/
 
 具有公共部分的布局，如全局头部、侧边栏、底部等
 
-#### BlankLayout:
+#### BlankLayout：
 
 空白布局
 
 ### 2. 路由组件
 
 - **basic** - 基础布局，具有公共部分的布局
-
 - **blank** - 空白布局
-
 - **multi** - 多级路由布局(三级路由或三级以上时，除第一级路由和最后一级路由，其余的采用该布局)
-
 - **self** - 作为子路由，使用自身的布局(作为最后一级路由，没有子路由)
-
-
 
 ## 路由声明
 
@@ -154,13 +149,13 @@ views
 
 ```
 
-###  2. 添加路由key
+### 2. 添加路由 key
 
-在**RouteKey**类型中添加新增的页面的路由key（src/typings/route.d.ts）
+在**RouteKey**类型中添加新增的页面的路由 key（src/typings/route.d.ts）
 
 ::: warning 注意
 
-RouteKey必须和views下面的文件夹名称一一对应，否则无法加载到对应的vue文件
+RouteKey 必须和 views 下面的文件夹名称一一对应，否则无法加载到对应的 vue 文件
 
 :::
 
@@ -179,7 +174,7 @@ type RouteKey =
 | 'multi-menu_first_second-new_third'
 ```
 
-### 3.mock声明路由
+### 3.mock 声明路由
 
 ::: tip 提示
 
@@ -187,7 +182,7 @@ type RouteKey =
 
 :::
 
-#### (1) 单级路由
+#### (1)单级路由
 
 ```typescript
 {
@@ -295,4 +290,3 @@ type RouteKey =
     }
 }
 ```
-

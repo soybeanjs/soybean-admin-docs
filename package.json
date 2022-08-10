@@ -1,20 +1,41 @@
 {
   "name": "soybean-admin-docs",
   "version": "1.0.0",
+  "description": "soybean-admin中后台管理系统的说明文档",
   "author": {
     "name": "Soybean",
     "email": "honghuangdc@gmail.com",
     "url": "https://github.com/honghuangdc"
   },
-  "description": "soybean-admin中后台管理系统的说明文档",
+  "license": "MIT",
+  "homepage": "https://github.com/honghuangdc/soybean-admin-docs",
+  "repository": {
+    "url": "https://github.com/honghuangdc/soybean-admin-docs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/honghuangdc/soybean-admin-docs/issues"
+  },
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
     "serve": "vitepress serve",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
+    "lint": "eslint . --fix",
     "prepare": "husky install",
     "release": "standard-version",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "@soybeanjs/eslint-config": "^0.2.4",
+    "commitizen": "^4.2.5",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^6.9.1",
+    "eslint": "^8.21.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "vite": "^3.0.5",
+    "vitepress": "^1.0.0-alpha.4"
   },
   "lint-staged": {
     "*.{vue,js,jsx,ts,tsx}": "eslint --fix"
@@ -23,36 +44,5 @@
     "commitizen": {
       "path": "./node_modules/cz-customizable"
     }
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^17.0.3",
-    "@commitlint/config-conventional": "^17.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.31.0",
-    "@typescript-eslint/parser": "^5.31.0",
-    "@vue/eslint-config-prettier": "^7.0.0",
-    "@vue/eslint-config-typescript": "^11.0.0",
-    "commitizen": "^4.2.5",
-    "cz-conventional-changelog": "^3.3.0",
-    "cz-customizable": "^6.9.1",
-    "eslint": "^8.20.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-vue": "9.3.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1",
-    "vite": "^3.0.4",
-    "vitepress": "^1.0.0-alpha.4"
-  },
-  "homepage": "https://github.com/honghuangdc/soybean-admin-docs",
-  "repository": {
-    "url": "https://github.com/honghuangdc/soybean-admin-docs.git"
-  },
-  "bugs": {
-    "url": "https://github.com/honghuangdc/soybean-admin-docs/issues"
-  },
-  "license": "MIT"
+  }
 }
