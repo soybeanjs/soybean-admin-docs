@@ -31,11 +31,16 @@ export default defineConfig({
     },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/honghuangdc/soybean-admin' },
-      { icon: 'discord', link: 'https://discord.com/invite/CgUJzKpj' }
+      { icon: 'discord', link: 'https://qm.qq.com/cgi-bin/qm/qr?k=XTjkqjV1KynFoEAdrqxMd6i71-TtCVGV&jump_from=webapi' }
     ],
     localeLinks: {
       text: '简体中文',
       items: []
+    },
+    algolia: {
+      appId: '98WN1RY04S',
+      apiKey: '13e9f5767b774422a5880723d9c23265',
+      indexName: 'soybean'
     },
     footer: {
       message: '根据 MIT 许可证发布。',

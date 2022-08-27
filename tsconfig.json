@@ -11,11 +11,7 @@
     "resolveJsonModule": true,
     "noUnusedLocals": true,
     "strictNullChecks": true,
-    "forceConsistentCasingInFileNames": true,
-    "paths": {
-      "@/*": ["./src/*"],
-      "~/*": ["./*"]
-    }
+    "forceConsistentCasingInFileNames": true
   },
   "exclude": ["dist", "node_modules"]
 }
