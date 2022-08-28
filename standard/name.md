@@ -38,7 +38,7 @@
 | get  | 获取某个值             | 函数返回一个非布尔值                                 |
 | set  | 设置某个值             | 无返回值、返回是否设置成功或者返回链式对象           |
 
-```javascript
+```ts
 /** 是否可读 */
 function canRead(){
   return true;
@@ -54,7 +54,7 @@ function getName(){
 
 ### 命名方法 : 使用大写字母和下划线来组合命名，下划线用以分割单词。
 
-```javascript
+```ts
 const MAX_COUNT = 10;
 const URL = 'http://www.baidu.com';
 ```
