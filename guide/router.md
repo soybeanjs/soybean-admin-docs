@@ -18,14 +18,14 @@ src/typings/route.d.ts
 
 - 小写加连字符表示一个层级的路由
 
-```typescript
+```text
 | 'login'
 | 'not-found'
 ```
 
 - 多层级的路由通过下划线隔开
 
-```typescript
+```text
 | 'document'
 | 'document_vue'
 | 'document_vite'
@@ -111,7 +111,7 @@ icon 图标值从这里获取：[https://icones.js.org/](https://icones.js.org/)
 
 例如：
 
-```typescript
+```text
 views
 ├── about
 │   └── index.vue
@@ -122,7 +122,7 @@ views
 
 例如：
 
-```typescript
+```text
 views
 ├── dashboard
 │   ├── analysis
@@ -137,7 +137,7 @@ views
 
 例如：
 
-```typescript
+```text
 views
 ├── multi-menu
 │   ├── first
@@ -184,26 +184,26 @@ type RouteKey =
 
 #### (1)单级路由
 
-```typescript
+```json
 {
-  name: 'about',
-  path: '/about',
-  component: 'self',
-  meta: {
-	  title: '关于',
-	  requiresAuth: true,
-	  singleLayout: 'basic',
-	  permissions: ['super', 'admin', 'test'],
-	  icon: 'fluent:book-information-24-regular',
-	  order: 7
-	}
+  "name": "about",
+  "path": "/about",
+  "component": "self",
+  "meta": {
+	  "title": "关于",
+	  "requiresAuth": true,
+	  "singleLayout": "basic",
+	  "permissions": ["super", "admin", "test"],
+	  "icon": "fluent:book-information-24-regular",
+	  "order": 7
+  }
 }
 ```
 
 #### (2)二级路由
 
 ```typescript
-{
+const dashboard = {
   name: 'dashboard',
   path: '/dashboard',
   component: 'basic',
@@ -239,54 +239,54 @@ type RouteKey =
 #### (3)三级及三级以上路由
 
 ```typescript
-{
-    name: 'multi-menu',
-    path: '/multi-menu',
-    component: 'basic',
-    children: [
-      {
-        name: 'multi-menu_first',
-        path: '/multi-menu/first',
-        component: 'multi',
-        children: [
-          {
-            name: 'multi-menu_first_second',
-            path: '/multi-menu/first/second',
-            component: 'self',
-            meta: {
-              title: '二级菜单',
-              requiresAuth: true
-            }
-          },
-          {
-            name: 'multi-menu_first_second-new',
-            path: '/multi-menu/first/second-new',
-            component: 'multi',
-            children: [
-              {
-                name: 'multi-menu_first_second-new_third',
-                path: '/multi-menu/first/second-new/third',
-                component: 'self',
-                meta: {
-                  title: '三级菜单',
-                  requiresAuth: true
-                }
-              }
-            ],
-            meta: {
-              title: '二级菜单(有子菜单)'
-            }
+const multiMenu = {
+  name: 'multi-menu',
+  path: '/multi-menu',
+  component: 'basic',
+  children: [
+    {
+      name: 'multi-menu_first',
+      path: '/multi-menu/first',
+      component: 'multi',
+      children: [
+        {
+          name: 'multi-menu_first_second',
+          path: '/multi-menu/first/second',
+          component: 'self',
+          meta: {
+            title: '二级菜单',
+            requiresAuth: true
           }
-        ],
-        meta: {
-          title: '一级菜单'
+        },
+        {
+          name: 'multi-menu_first_second-new',
+          path: '/multi-menu/first/second-new',
+          component: 'multi',
+          children: [
+            {
+              name: 'multi-menu_first_second-new_third',
+              path: '/multi-menu/first/second-new/third',
+              component: 'self',
+              meta: {
+                title: '三级菜单',
+                requiresAuth: true
+              }
+            }
+          ],
+          meta: {
+            title: '二级菜单(有子菜单)'
+          }
         }
+      ],
+      meta: {
+        title: '一级菜单'
       }
-    ],
-    meta: {
-      title: '多级菜单',
-      icon: 'carbon:menu',
-      order: 6
     }
+  ],
+  meta: {
+    title: '多级菜单',
+    icon: 'carbon:menu',
+    order: 6
+  }
 }
 ```

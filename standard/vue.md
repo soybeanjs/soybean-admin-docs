@@ -20,9 +20,9 @@
 
 ```typescript
 interface Props {
-	/**姓名 */
+	/** 姓名 */
   name: string;
-	/**年龄 */
+	/** 年龄 */
   age?: number;
 }
 
@@ -63,9 +63,9 @@ const route = useRoute();
 ```
 
 ```typescript
-/**dom引用 */
+/** dom引用 */
 const domRef = ref<HTMLElement | null>(null);
-const { height: domRefHeight } = useElementSize(domRef); //获取domRef的响应式高度
+const { height: domRefHeight } = useElementSize(domRef); // 获取domRef的响应式高度
 ```
 
 #### 五、变量、函数声明

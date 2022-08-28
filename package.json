@@ -22,8 +22,9 @@
     "lint": "eslint . --fix"
   },
   "devDependencies": {
-    "@soybeanjs/eslint-config": "^0.2.10",
-    "eslint": "^8.22.0",
+    "eslint": "^8.23.0",
+    "eslint-config-soybeanjs": "^0.0.7",
+    "typescript": "4.7.4",
     "vite": "^3.0.9",
     "vitepress": "^1.0.0-alpha.12"
   }

@@ -8,19 +8,19 @@
 
 统一以 **fetch** 开头，例如：
 
-```typescript
+```ts
 /**
  * 获取用户信息
  * @param id - 用户唯一标识id
  */
-function fetchUserInfo(id：string) {
-	// ***
+function fetchUserInfo(id: string) {
+// ***
 }
 /**
  * 删除列表项
  * @param id - 列表id
  */
-function fetchDeleteListItem(id：string) {
-	// ***
+function fetchDeleteListItem(id: string) {
+  // ***
 }
 ```

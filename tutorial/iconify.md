@@ -27,7 +27,7 @@
 - 引入 Icon 组件：
 
   ```typescript
-  import { Icon } from "@iconify/vue";
+  import { Icon } from '@iconify/vue';
   ```
 
 - 动态渲染
@@ -49,23 +49,23 @@ Icon 组件属性 [https://docs.iconify.design/icon-components/vue/](https://doc
 - 引入 vue 的 h 函数：
 
   ```typescript
-  import { h } from "vue";
+  import { h } from 'vue';
   ```
 
 - 引入 Icon 组件
 
   ```typescript
-  import { Icon } from "@iconify/vue";
+  import { Icon } from '@iconify/vue';
   ```
 
 - 动态渲染
 
   ```typescript
   () =>
-  	h(Icon, {
-  		icon: "mdi:emoticon",
-  		style: { color: "#f00", fontSize: "16px" },
-  	});
+    h(Icon, {
+      icon: 'mdi:emoticon',
+      style: { color: '#f00', fontSize: '16px' }
+    });
   ```
 
 ::: info

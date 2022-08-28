@@ -41,12 +41,12 @@
 ```javascript
 /** 是否可读 */
 function canRead(){
-	return true;
+  return true;
 }
 
 /** 获取姓名 */
 function getName(){
-  return this.name;
+  return 'name';
 }
 ```
 
@@ -65,11 +65,11 @@ const URL = 'http://www.baidu.com';
 
 ```typescript
 interface PersonInfo {
-  /**姓名 */
+  /** 姓名 */
   name: string;
-  /**性别 '0':男; '1': 女; '2': 未知 */
+  /** 性别 '0':男; '1': 女; '2': 未知 */
   gender: '0' | '1' | '2';
-  /**年龄 */
+  /** 年龄 */
   age: 25;
 }
 ```
