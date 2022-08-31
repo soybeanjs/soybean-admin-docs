@@ -23,9 +23,9 @@
   },
   "devDependencies": {
     "eslint": "^8.23.0",
-    "eslint-config-soybeanjs": "^0.0.8",
-    "typescript": "4.7.4",
+    "eslint-config-soybeanjs": "^0.0.10",
+    "typescript": "4.8.2",
     "vite": "^3.0.9",
-    "vitepress": "^1.0.0-alpha.12"
+    "vitepress": "^1.0.0-alpha.13"
   }
 }
