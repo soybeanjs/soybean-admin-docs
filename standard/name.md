@@ -46,7 +46,7 @@ function canRead(){
 
 /** 获取姓名 */
 function getName(){
-  return 'name';
+  return '';
 }
 ```
 

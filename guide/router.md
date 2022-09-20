@@ -43,36 +43,36 @@ src/typings/route.d.ts
 
 ### 3. type RouteMeta
 
-  ```typescript
-		/** 路由描述 */
-  	type RouteMeta = {
-    	/** 路由标题(可用来作document.title或者菜单的名称) */
-    	title: string;
-    	/** 路由的动态路径 */
-    	dynamicPath?: PathToDynamicPath<'/login'>;
-    	/** 作为单级路由的父级路由布局组件 */
-    	singleLayout?: Extract<RouteComponent, 'basic' | 'blank'>;
-    	/** 需要登录权限 */
-    	requiresAuth?: boolean;
-    	/**
-    	 * 哪些类型的用户有权限才能访问的路由(空的话则表示不需要权限)
-    	 * @description 后端动态路由数据不需要该属性，直接由后端根据用户角色返回对应权限的路由数据
-    	 */
-    	permissions?: Auth.RoleType[];
-    	/** 缓存页面(开启缓存只需要对最后一级的路由添加该属性) */
-    	keepAlive?: boolean;
-    	/** 菜单和面包屑对应的图标 */
-    	icon?: string;
-    	/** 是否在菜单中隐藏 */
-    	hide?: boolean;
-    	/** 外链链接 */
-    	href?: string;
-    	/** 路由顺序，可用于菜单的排序 */
-    	order?: number;
-    	/** 表示是否是多级路由的中间级路由(用于转换路由数据时筛选多级路由的标识，定义路由时不用填写) */
-    	multi?: boolean;
- 		};
-  ```
+```typescript
+/** 路由描述 */
+interface RouteMeta {
+  /** 路由标题(可用来作document.title或者菜单的名称) */
+  title: string;
+  /** 路由的动态路径 */
+  dynamicPath?: PathToDynamicPath<'/login'>;
+  /** 作为单级路由的父级路由布局组件 */
+  singleLayout?: Extract<RouteComponent, 'basic' | 'blank'>;
+  /** 需要登录权限 */
+  requiresAuth?: boolean;
+  /**
+   * 哪些类型的用户有权限才能访问的路由(空的话则表示不需要权限)
+   * @description 后端动态路由数据不需要该属性，直接由后端根据用户角色返回对应权限的路由数据
+   */
+  permissions?: Auth.RoleType[];
+  /** 缓存页面(开启缓存只需要对最后一级的路由添加该属性) */
+  keepAlive?: boolean;
+  /** 菜单和面包屑对应的图标 */
+  icon?: string;
+  /** 是否在菜单中隐藏 */
+  hide?: boolean;
+  /** 外链链接 */
+  href?: string;
+  /** 路由顺序，可用于菜单的排序 */
+  order?: number;
+  /** 表示是否是多级路由的中间级路由(用于转换路由数据时筛选多级路由的标识，定义路由时不用填写) */
+  multi?: boolean;
+}
+```
 
 ::: info 提示
 
@@ -83,8 +83,6 @@ icon 图标值从这里获取：[https://icones.js.org/](https://icones.js.org/)
 ## 路由布局
 
 ### 1. 布局组件
-
-<br />
 
 #### BasicLayout：
 
@@ -109,7 +107,7 @@ icon 图标值从这里获取：[https://icones.js.org/](https://icones.js.org/)
 
 #### (1) 单级路由
 
-例如：
+例如:
 
 ```text
 views
@@ -184,18 +182,18 @@ type RouteKey =
 
 #### (1)单级路由
 
-```json
-{
-  "name": "about",
-  "path": "/about",
-  "component": "self",
-  "meta": {
-	  "title": "关于",
-	  "requiresAuth": true,
-	  "singleLayout": "basic",
-	  "permissions": ["super", "admin", "test"],
-	  "icon": "fluent:book-information-24-regular",
-	  "order": 7
+```typescript
+const about = {
+  name: 'about',
+  path: '/about',
+  component: 'self',
+  meta: {
+	  title: '关于',
+	  requiresAuth: true,
+	  singleLayout: 'basic',
+	  permissions: ['super', 'admin', 'test'],
+	  icon: 'fluent:book-information-24-regular',
+	  order: 7
   }
 }
 ```

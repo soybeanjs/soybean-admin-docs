@@ -51,7 +51,7 @@ class="border border-primary bg-success text-error"
 ```
 
 ```typescript
-const colors = {
+const  colors = {
   primary: 'var(--primary-color)',
   'primary-hover': 'var(--primary-color-hover)',
   'primary-pressed': 'var(--primary-color-pressed)',
