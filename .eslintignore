@@ -1,2 +1,4 @@
 !.vitepress
-/index.md
+.vitepress/dist
+.vitepress/theme/index.ts
+src/index.md

@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress';
+import path from 'path';
 
 export default defineConfig({
   title: 'Soybean Admin',
@@ -23,8 +24,9 @@ export default defineConfig({
     ],
     ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
+  srcDir: `${path.resolve(process.cwd())}/src`,
   themeConfig: {
-    logo: './logo.svg',
+    logo: '/logo.svg',
     editLink: {
       text: '为此页提供修改建议',
       pattern: 'https://github.com/honghuangdc/soybean-admin-docs/tree/main/:path'
@@ -48,8 +50,8 @@ export default defineConfig({
     },
     nav: [
       { text: '指引', link: '/guide/', activeMatch: '/guide/' },
-      { text: '规范', link: '/standard/', activeMatch: '/standard/' },
-      { text: '教程', link: '/tutorial/', activeMatch: '/tutorial/' },
+      { text: '规范', link: '/standard/category', activeMatch: '/standard' },
+      { text: '教程', link: '/tutorial/install', activeMatch: '/tutorial/' },
       {
         text: '相关链接',
         items: [
@@ -117,10 +119,6 @@ export default defineConfig({
           text: '规范',
           items: [
             {
-              text: '开始',
-              link: '/standard/'
-            },
-            {
               text: '目录规范',
               link: '/standard/category'
             },
@@ -147,10 +145,6 @@ export default defineConfig({
         {
           text: '教程',
           items: [
-            {
-              text: '开始',
-              link: '/tutorial/'
-            },
             {
               text: '安装教程',
               link: '/tutorial/install'

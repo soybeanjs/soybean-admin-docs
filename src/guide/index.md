@@ -152,6 +152,7 @@ soybean-admin
 ├── mock                       //mock
 │   ├── api                    //mock的接口
 │   └── model                  //mock的数据
+├── patch                      //修改的node_modules依赖的补丁文件
 ├── public                     //公共目录(文件夹里面的资源打包后会在根目录下)
 │   ├── resource               //资源文件夹
 │   └── favicon.ico            //网站标签图标

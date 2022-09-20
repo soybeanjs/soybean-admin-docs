@@ -38,7 +38,7 @@ content box-shadow border-radius transform
 例如 ：自定义类名结合 UnoCss
 
 ```html
-<div class="demo-container absolute flex justify-center items-center left-10px top-12px overflow-hidden wh-full p-10px border-1 px border-[#f00] m-24px bg-[#fff]text-32px text-[# 0f0]"></div>
+<div class="demo-container absolute flex justify-center items-center left-10px top-12px overflow-hidden wh-full p-10px border-1px border-[#f00] m-24px bg-[#fff]text-32px text-[#0f0]"></div>
 <style>
 .demo-container {
 	box-shadow: 2px 0 8px 0 rgb(29,35,41,0.05) ;

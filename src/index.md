@@ -2,12 +2,12 @@
 layout: home
 
 title: Soybean Admin
-titleTemplate: 一个优雅、清新、漂亮的中后台模版
+titleTemplate: 一个清新优雅的中后台模版
 
 hero:
   name: Soybean Admin
   text: 清新优雅的中后台模版
-  tagline: 基于 Vite + Vue3 + TS + NaiveUI + UnoCss
+  tagline: 基于 Vue3 + Vite3 + TS + NaiveUI + UnoCSS
   image:
     src: /logo.png
     alt: SoybeanAdmin
@@ -25,7 +25,7 @@ hero:
 features:
   - icon: 🆕
     title: 最新流行技术栈
-    details: 基于Vite、Vue3、TS、NaiveUI和UnoCss等最新技术栈开发
+    details: 基于Vue3、Vite3、TS、NaiveUI和UnoCSS等最新技术栈开发
   - icon: 🦋
     title: 极高水准的代码规范
     details: 代码规范完善，代码结构清晰

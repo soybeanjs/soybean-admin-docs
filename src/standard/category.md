@@ -9,25 +9,35 @@ soybean-admin
 ├── build                      //vite构建相关配置和插件
 │   ├── config                 //构建打包配置
 │   │   ├── define.ts          //定义的全局常量，通过vite构建时注入
-│   │   ├── path.ts            //路径解析
 │   │   └── proxy.ts           //网络请求代理
-│   └── plugins                //构建插件
-│       ├── auto-import.ts     //自动导入UI组件、自动解析iconify图标、自动解析本地svg作为图标
-│       ├── html.ts            //html插件(注入变量，压缩代码等)
-│       ├── mock.ts            //mock插件
-│       ├── visualizer.ts      //构建的依赖大小占比分析插件
-│       ├── vue.ts             //vue相关vite插件
-│       └── windicss.ts        //css框架插件
+│   ├── plugins                //构建插件
+│   │   ├── compress.ts        //代码压缩插件
+│   │   ├── html.ts            //html插件(注入变量，压缩代码等)
+│   │   ├── mock.ts            //mock插件
+│   │   ├── unocss.ts          //原子css框架unocss插件
+│   │   ├── unplugin.ts        //自动导入UI组件、自动解析iconify图标、自动解析本地svg作为图标
+│   │   ├── visualizer.ts      //构建的依赖大小占比分析插件
+│   │   └── vue.ts             //vue相关vite插件
+│   └── utils                  //构建相关工具函数
+├── mock                       //mock
+│   ├── api                    //mock的接口
+│   └── model                  //mock的数据
+├── patch                      //修改的node_modules依赖的补丁文件
 ├── public                     //公共目录(文件夹里面的资源打包后会在根目录下)
 │   ├── resource               //资源文件夹
 │   └── favicon.ico            //网站标签图标
 ├── src
 │   ├── assets                 //静态资源
+│   │   ├── imgs               //图片
+│   │   ├── svg                //svg，自定义的svg图标目录
+│   │   └── fonts              //字体
 │   ├── components             //全局组件
 │   │   ├── business           //业务相关组件
 │   │   ├── common             //公共组件
 │   │   └── custom             //自定义组件
 │   ├── composables            //组合式函数(从外部引入状态+内部状态)
+│   │   ├── echarts.ts         //echarts相关
+│   │   ├── events.ts          //事件相关
 │   │   ├── layout.ts          //布局相关
 │   │   ├── router.ts          //路由相关
 │   │   └── system.ts          //系统相关
@@ -35,6 +45,8 @@ soybean-admin
 │   │   ├── map-sdk.ts         //地图插件的sdk配置
 │   │   ├── regexp.ts          //常用正则
 │   │   └── service.ts         //请求相关配置
+│   ├── context                //上下文状态
+│   │   └── demo.ts            //上下文状态示例写法
 │   ├── directives             //vue指令
 │   │   ├── login.ts           //登录指令
 │   │   ├── network.ts         //网络检测指令
@@ -49,17 +61,16 @@ soybean-admin
 │   │   │   ├── useImageVerify //图片验证那
 │   │   │   └── useSmsCode     //短信验证码
 │   │   └── common             //通用hooks
-│   │       ├── useBodyScroll  //body标签滚动
 │   │       ├── useBoolean     //boolean
 │   │       ├── useContext     //上下文(provide、inject)
 │   │       ├── useLoading     //加载
 │   │       ├── useLoadingEmpty//加载和空状态
-│   │       ├── useModalVisible//弹窗可见(NaiveUI的弹窗需要禁用滚动条)
 │   │       └── useReload      //重载
 │   ├── layouts                //布局组件
 │   │   ├── BasicLayout        //基本布局(包含全局头部、多页签、侧边栏、底部等公共部分)
 │   │   ├── BlankLayout        //空白布局组件(单个页面)
 │   │   └── common             //全局头部、多页签、侧边栏、底部等公共部分组件
+│   │       ├── GlobalBackTop  //全局回到顶部
 │   │       ├── GlobalContent  //全局主体内容
 │   │       ├── GlobalFooter   //全局底部
 │   │       ├── GlobalHeader   //全局头部
@@ -98,7 +109,8 @@ soybean-admin
 │   ├── typings                //TS类型声明文件(*.d.ts)
 │   │   ├── api.d.ts           //请求接口返回的数据的类型声明
 │   │   ├── business.d.ts      //业务相关的类型声明
-│   │   ├── env.d.ts           //vue文件类型、vue路由描述相关的类型声明
+│   │   ├── components.d.ts    //自动导入的组件的类型声明
+│   │   ├── env.d.ts           //vue路由描述和请求环境相关的类型声明
 │   │   ├── expose.d.ts        //defineExpose暴露出变量的类型
 │   │   ├── global.d.ts        //全局通用类型
 │   │   ├── package.d.ts       //第三方依赖包的类型声明
@@ -116,10 +128,12 @@ soybean-admin
 │   │   └── storage            //存储相关工具函数
 │   ├── views                  //页面
 │   │   ├── about              //关于
+│   │   ├── auth-demo          //权限示例
 │   │   ├── component          //插件、组件
 │   │   ├── dashboard          //仪表盘
 │   │   ├── document           //文档
 │   │   ├── exception          //异常
+│   │   ├── functiuon          //功能
 │   │   ├── multi-menu         //多级菜单
 │   │   ├── plugin             //插件
 │   │   └── system-view        //系统内置页面：登录、异常页等
@@ -131,6 +145,7 @@ soybean-admin
 ├── .env-config.ts             //请求环境的配置文件
 ├── .eslintignore              //忽略eslint检查的配置文件
 ├── .eslintrc.js               //eslint配置文件
+├── .gitattributes             //git配置，统一eol为LF
 ├── .gitignore                 //忽略git提交的配置文件
 ├── .prettierrc.js             //prettier代码格式插件配置
 ├── CHANGELOG.md               //项目变更日志
@@ -141,6 +156,6 @@ soybean-admin
 ├── pnpm-lock.yaml             //npm包管理器pnpm依赖锁定文件
 ├── README.md                  //项目介绍文档
 ├── tsconfig.json              //TS配置
-├── vite.config.ts             //vite配置
-└── windi.config.ts            //windicss框架配置
+├── uno.config.js              //原子css框架unocss配置
+└── vite.config.ts             //vite配置
 ```
