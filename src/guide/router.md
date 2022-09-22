@@ -74,7 +74,7 @@ interface RouteMeta {
 }
 ```
 
-::: info 提示
+::: tip 提示
 
 icon 图标值从这里获取：[https://icones.js.org/](https://icones.js.org/)
 

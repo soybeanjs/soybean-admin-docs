@@ -29,7 +29,7 @@ soybean-admin
 ├── src
 │   ├── assets                 //静态资源
 │   │   ├── imgs               //图片
-│   │   ├── svg                //svg，自定义的svg图标目录
+│   │   ├── svg-icon           //本地svg图标
 │   │   └── fonts              //字体
 │   ├── components             //全局组件
 │   │   ├── business           //业务相关组件

@@ -150,8 +150,8 @@ export default defineConfig({
               link: '/tutorial/install'
             },
             {
-              text: 'iconify图标使用方法',
-              link: '/tutorial/iconify'
+              text: '项目中的图标使用方法',
+              link: '/tutorial/icon'
             }
           ]
         }
