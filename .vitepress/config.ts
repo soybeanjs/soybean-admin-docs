@@ -45,8 +45,8 @@ export default defineConfig({
       indexName: 'soybean'
     },
     footer: {
-      message: '根据 MIT 许可证发布。',
-      copyright: 'Copyright © 2021-present Soybean'
+      message: '根据 MIT 许可证发布',
+      copyright: 'Copyright © 2021-2022 Soybean'
     },
     nav: [
       { text: '指引', link: '/guide/', activeMatch: '/guide/' },
