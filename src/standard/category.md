@@ -58,7 +58,7 @@ soybean-admin
 │   ├── hooks                  //组合式的函数hooks(状态从函数里面产生)
 │   │   ├── business           //业务相关hooks
 │   │   │   ├── useCountDown   //倒计时
-│   │   │   ├── useImageVerify //图片验证那
+│   │   │   ├── useImageVerify //图片验证码
 │   │   │   └── useSmsCode     //短信验证码
 │   │   └── common             //通用hooks
 │   │       ├── useBoolean     //boolean
