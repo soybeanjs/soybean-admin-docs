@@ -27,7 +27,7 @@ npm config set cache "D:\Program Files\Nodejs\node_cache"
 6.设置国内淘宝镜像：
 
 ```bash
- npm config set registry=http://registry.npm.taobao.org
+ npm config set registry=https://registry.npmmirror.com/
 ```
 
 mac 平台下安装：
