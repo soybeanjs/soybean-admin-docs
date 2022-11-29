@@ -1,4 +1,4 @@
-# 路由
+# 系统路由方案
 
 ## 说明
 
@@ -6,34 +6,11 @@
 
 **解释：**
 
-联合类型 RouteKey 声明所有的路由 key，方便统一管理路由
+联合类型 RouteKey 声明所有的路由 key，方便统一管理路由， 该类型由插件@soybeanjs/router-page 根据 views 下面的页面文件自动生成
 
-**位置：**
-
-```bash
-src/typings/route.d.ts
-```
-
-**写法：**
-
-- 小写加连字符表示一个层级的路由
-
-```text
-| 'login'
-| 'not-found'
-```
-
-- 多层级的路由通过下划线隔开
-
-```text
-| 'document'
-| 'document_vue'
-| 'document_vite'
-| 'document_naive'
-| 'multi-menu'
-| 'multi-menu_first'
-| 'multi-menu_first_second'
-```
+::: tip 代码位置
+./src/typings/router-page.d.ts
+:::
 
 ### 2. type RoutePath
 
@@ -47,37 +24,41 @@ src/typings/route.d.ts
 /** 路由描述 */
 interface RouteMeta {
   /** 路由标题(可用来作document.title或者菜单的名称) */
-  title: string;
-  /** 路由的动态路径 */
-  dynamicPath?: PathToDynamicPath<'/login'>;
-  /** 作为单级路由的父级路由布局组件 */
-  singleLayout?: Extract<RouteComponent, 'basic' | 'blank'>;
-  /** 需要登录权限 */
-  requiresAuth?: boolean;
-  /**
-   * 哪些类型的用户有权限才能访问的路由(空的话则表示不需要权限)
-   * @description 后端动态路由数据不需要该属性，直接由后端根据用户角色返回对应权限的路由数据
-   */
-  permissions?: Auth.RoleType[];
-  /** 缓存页面(开启缓存只需要对最后一级的路由添加该属性) */
-  keepAlive?: boolean;
-  /** 菜单和面包屑对应的图标 */
-  icon?: string;
-  /** 是否在菜单中隐藏 */
-  hide?: boolean;
-  /** 外链链接 */
-  href?: string;
-  /** 路由顺序，可用于菜单的排序 */
-  order?: number;
-  /** 表示是否是多级路由的中间级路由(用于转换路由数据时筛选多级路由的标识，定义路由时不用填写) */
-  multi?: boolean;
+    title: string;
+    /** 路由的动态路径(需要动态路径的页面需要将path添加进范型参数) */
+    dynamicPath?: AuthRouteUtils.GetDynamicPath<'/login'>;
+    /** 作为单级路由的父级路由布局组件 */
+    singleLayout?: Extract<RouteComponentType, 'basic' | 'blank'>;
+    /** 需要登录权限 */
+    requiresAuth?: boolean;
+    /**
+     * 哪些类型的用户有权限才能访问的路由(空的话则表示不需要权限)
+     * @description 后端动态路由数据不需要该属性，直接由后端根据用户角色返回对应权限的路由数据
+     */
+    permissions?: Auth.RoleType[];
+    /** 缓存页面 */
+    keepAlive?: boolean;
+    /** 菜单和面包屑对应的图标 */
+    icon?: string;
+    /** 使用本地svg作为的菜单和面包屑对应的图标(assets/svg-icon文件夹的的svg文件名) */
+    localIcon?: string;
+    /** 是否在菜单中隐藏(一些列表、表格的详情页面需要通过参数跳转，所以不能显示在菜单中) */
+    hide?: boolean;
+    /** 外链链接 */
+    href?: string;
+    /** 是否支持多个tab页签(默认一个，即相同name的路由会被替换) */
+    multiTab?: boolean;
+    /** 路由顺序，可用于菜单的排序 */
+    order?: number;
+    /** 当前路由需要选中的菜单项(用于跳转至不在左侧菜单显示的路由且需要高亮某个菜单的情况) */
+    activeMenu?: RouteKey;
+    /** 表示是否是多级路由的中间级路由(用于转换路由数据时筛选多级路由的标识，定义路由时不用填写) */
+    multi?: boolean;
 }
 ```
 
 ::: tip 提示
-
 icon 图标值从这里获取：[https://icones.js.org/](https://icones.js.org/)
-
 :::
 
 ## 路由布局
@@ -147,32 +128,7 @@ views
 
 ```
 
-### 2. 添加路由 key
-
-在**RouteKey**类型中添加新增的页面的路由 key（src/typings/route.d.ts）
-
-::: warning 注意
-
-RouteKey 必须和 views 下面的文件夹名称一一对应，否则无法加载到对应的 vue 文件
-
-:::
-
-示例：
-
-```typescript
-type RouteKey =
-| 'about' // 一级路由
-| 'dashboard' // 二级路由
-| 'dashboard_analysis'
-| 'dashboard_workbench'
-| 'multi-menu' // 三级及三级以上路由
-| 'multi-menu_first'
-| 'multi-menu_first_second'
-| 'multi-menu_first_second-new'
-| 'multi-menu_first_second-new_third'
-```
-
-### 3.mock 声明路由
+### 2.mock 声明路由
 
 ::: tip 提示
 
@@ -288,3 +244,11 @@ const multiMenu = {
   }
 }
 ```
+
+### 3.前端路由 modules 添加
+
+路由数据等同于上面的 mock 数据
+
+::: info
+后期等插件实现了根据文件自动生成 modules 数据，即可省略该步骤
+:::

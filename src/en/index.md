@@ -31,14 +31,14 @@ features:
     details: perfect code standard, clean code structure
   - icon: 🛠️
     title: Rich plugins
-    details: 常见的Web端插件示例实现
+    details: familiar plugin examples for web
   - icon: 🔩
-    title: 主题配置
-    details: 丰富的主题配置及暗黑主题适配
+    title: theme settings
+    details: rich theme settings and support dark mode theme
   - icon: 🔗
-    title: 基于文件的路由系统
-    details: 通过创建文件自动生成路由声明、路由模块
+    title: router system based on page file
+    details: auto generate route declaration and route modules
   - icon: 🔑
-    title: 权限管理
-    details: 完善的前后端权限管理方案
+    title: auth management
+    details: perfect auth management based front-end and backend
 ---

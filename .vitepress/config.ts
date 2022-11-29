@@ -64,9 +64,7 @@ export default defineConfig({
       copyright: 'Copyright © 2021-2022 Soybean'
     },
     nav: [
-      { text: '指引', link: '/guide/', activeMatch: '/guide/' },
-      { text: '规范', link: '/standard/category', activeMatch: '/standard' },
-      { text: '教程', link: '/tutorial/icon', activeMatch: '/tutorial/' },
+      { text: '项目指南', link: '/guide/', activeMatch: '/guide/' },
       {
         text: '相关链接',
         items: [
@@ -100,7 +98,7 @@ export default defineConfig({
     sidebar: {
       '/guide/': [
         {
-          text: '指引',
+          text: '项目指南',
           items: [
             {
               text: '介绍',
@@ -111,58 +109,36 @@ export default defineConfig({
               link: '/guide/'
             },
             {
-              text: '项目配置',
-              link: '/guide/settings'
+              text: '系统加载',
+              link: '/guide/loading'
             },
             {
-              text: '路由',
+              text: '系统主题',
+              link: '/guide/theme'
+            },
+            {
+              text: '系统图标',
+              link: '/guide/icon'
+            },
+            {
+              text: '系统路由',
               link: '/guide/router'
             },
             {
-              text: '菜单',
+              text: '系统请求',
+              link: '/guide/request'
+            },
+            {
+              text: '系统菜单',
               link: '/guide/menu'
             },
             {
-              text: '权限',
-              link: '/guide/auth'
-            }
-          ]
-        }
-      ],
-      '/standard/': [
-        {
-          text: '规范',
-          items: [
-            {
-              text: '目录规范',
-              link: '/standard/category'
+              text: '系统标签',
+              link: '/guide/tab'
             },
             {
-              text: '命名规范',
-              link: '/standard/name'
-            },
-            {
-              text: 'css规范',
-              link: '/standard/css'
-            },
-            {
-              text: 'ts规范',
-              link: '/standard/ts'
-            },
-            {
-              text: 'vue规范',
-              link: '/standard/vue'
-            }
-          ]
-        }
-      ],
-      '/tutorial/': [
-        {
-          text: '教程',
-          items: [
-            {
-              text: '系统的图标教程',
-              link: '/tutorial/icon'
+              text: '常见问题解答',
+              link: '/guide/qa'
             }
           ]
         }
