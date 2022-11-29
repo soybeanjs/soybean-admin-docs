@@ -5,6 +5,18 @@ export default defineConfig({
   title: 'Soybean Admin',
   lang: 'zh-CN',
   description: '一个优雅、清新、漂亮的中后台模版',
+  locales: {
+    '/': {
+      lang: 'zh-CN',
+      title: 'Soybean Admin',
+      description: '一个优雅、清新、漂亮的中后台模版'
+    },
+    '/en/': {
+      lang: 'en-US',
+      title: 'Soybean Admin',
+      description: 'A fresh and elegant admin template'
+    }
+  },
   head: [
     ['meta', { name: 'author', content: 'Soybean' }],
     [
@@ -36,8 +48,11 @@ export default defineConfig({
       { icon: 'discord', link: 'https://qm.qq.com/cgi-bin/qm/qr?k=XTjkqjV1KynFoEAdrqxMd6i71-TtCVGV&jump_from=webapi' }
     ],
     localeLinks: {
-      text: '简体中文',
-      items: []
+      text: '',
+      items: [
+        { text: '简体中文', link: '/' },
+        { text: 'English', link: '/en/' }
+      ]
     },
     algolia: {
       appId: '98WN1RY04S',
@@ -51,7 +66,7 @@ export default defineConfig({
     nav: [
       { text: '指引', link: '/guide/', activeMatch: '/guide/' },
       { text: '规范', link: '/standard/category', activeMatch: '/standard' },
-      { text: '教程', link: '/tutorial/install', activeMatch: '/tutorial/' },
+      { text: '教程', link: '/tutorial/icon', activeMatch: '/tutorial/' },
       {
         text: '相关链接',
         items: [
@@ -146,11 +161,7 @@ export default defineConfig({
           text: '教程',
           items: [
             {
-              text: '安装教程',
-              link: '/tutorial/install'
-            },
-            {
-              text: '项目中的图标使用方法',
+              text: '系统的图标教程',
               link: '/tutorial/icon'
             }
           ]

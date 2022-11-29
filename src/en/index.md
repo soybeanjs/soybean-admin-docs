@@ -2,35 +2,35 @@
 layout: home
 
 title: Soybean Admin
-titleTemplate: 一个清新优雅的中后台模版
+titleTemplate: A fresh and elegant admin template
 
 hero:
   name: Soybean Admin
-  text: 清新优雅的中后台模版
-  tagline: 基于 Vue3 + Vite3 + TS + NaiveUI + UnoCSS
+  text: Fresh and elegant
+  tagline: Based on Vue3,Vite3,TypeScript,NaiveUI and UnoCSS
   image:
     src: /logo.png
     alt: SoybeanAdmin
   actions:
     - theme: brand
-      text: 开始
+      text: start
       link: /guide/
     - theme: alt
-      text: 介绍
+      text: introduction
       link: /guide/introduction
     - theme: alt
-      text: 在 GitHub 上查看
+      text: view on github
       link: https://github.com/honghuangdc/soybean-admin
 
 features:
   - icon: 🆕
-    title: 最新流行技术栈
-    details: 基于Vue3、Vite3、TS、NaiveUI和UnoCSS等最新技术栈开发
+    title: Latest popular technology stack
+    details: based on Vue3,Vite3,TypeScript,NaiveUI and UnoCSS
   - icon: 🦋
-    title: 极高水准的代码规范
-    details: 代码规范完善，代码结构清晰
+    title: High quality code standard
+    details: perfect code standard, clean code structure
   - icon: 🛠️
-    title: 丰富的插件
+    title: Rich plugins
     details: 常见的Web端插件示例实现
   - icon: 🔩
     title: 主题配置
