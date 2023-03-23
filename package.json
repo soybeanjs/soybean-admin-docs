@@ -19,16 +19,18 @@
     "dev": "vitepress dev",
     "build": "vitepress build",
     "serve": "vitepress serve",
+    "commit": "pnpm soy git-commit",
     "lint": "eslint . --fix",
+    "format": "pnpm soy prettier-format",
     "update-pkg": "ncu --deep -u"
   },
   "devDependencies": {
-    "@types/node": "^18.11.9",
-    "eslint": "^8.28.0",
-    "eslint-config-soybeanjs": "^0.1.2",
-    "npm-check-updates": "^16.4.3",
-    "typescript": "4.8.4",
-    "vite": "^3.2.4",
-    "vitepress": "^1.0.0-alpha.29"
+    "@soybeanjs/cli": "^0.1.7",
+    "@types/node": "^18.15.5",
+    "eslint": "^8.36.0",
+    "eslint-config-soybeanjs": "^0.3.1",
+    "typescript": "4.9.5",
+    "vite": "^4.2.1",
+    "vitepress": "^1.0.0-alpha.61"
   }
 }

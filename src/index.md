@@ -10,7 +10,7 @@ hero:
   tagline: 基于 Vue3 + Vite3 + TS + NaiveUI + UnoCSS
   image:
     src: /logo.png
-    alt: SoybeanAdmin
+    alt: Soybean Admin
   actions:
     - theme: brand
       text: 开始
@@ -37,7 +37,7 @@ features:
     details: 丰富的主题配置及暗黑主题适配
   - icon: 🔗
     title: 基于文件的路由系统
-    details: 通过创建文件自动生成路由声明、路由模块
+    details: 自动生成路由声明、路由导入和路由模块
   - icon: 🔑
     title: 权限管理
     details: 完善的前后端权限管理方案

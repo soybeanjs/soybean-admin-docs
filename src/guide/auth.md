@@ -12,7 +12,7 @@
  * - test: 测试
  * - normal: 普通用户
  */
- type RoleType = 'super' | 'admin' | 'test' | 'normal';
+type RoleType = "super" | "admin" | "test" | "normal";
 ```
 
 在定义路由时通过给路由 meta 的 permissions 属性传入以上的值，就表示该路由对传入的角色类型才有权限访问

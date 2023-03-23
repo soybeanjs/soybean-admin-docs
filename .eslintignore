@@ -1,5 +1,0 @@
-!.vitepress
-.vitepress/dist
-.vitepress/theme/index.ts
-src/en/index.md
-src/index.md

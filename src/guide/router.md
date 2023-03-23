@@ -23,37 +23,37 @@
 ```typescript
 /** 路由描述 */
 interface RouteMeta {
-  /** 路由标题(可用来作document.title或者菜单的名称) */
-    title: string;
-    /** 路由的动态路径(需要动态路径的页面需要将path添加进范型参数) */
-    dynamicPath?: AuthRouteUtils.GetDynamicPath<'/login'>;
-    /** 作为单级路由的父级路由布局组件 */
-    singleLayout?: Extract<RouteComponentType, 'basic' | 'blank'>;
-    /** 需要登录权限 */
-    requiresAuth?: boolean;
-    /**
-     * 哪些类型的用户有权限才能访问的路由(空的话则表示不需要权限)
-     * @description 后端动态路由数据不需要该属性，直接由后端根据用户角色返回对应权限的路由数据
-     */
-    permissions?: Auth.RoleType[];
-    /** 缓存页面 */
-    keepAlive?: boolean;
-    /** 菜单和面包屑对应的图标 */
-    icon?: string;
-    /** 使用本地svg作为的菜单和面包屑对应的图标(assets/svg-icon文件夹的的svg文件名) */
-    localIcon?: string;
-    /** 是否在菜单中隐藏(一些列表、表格的详情页面需要通过参数跳转，所以不能显示在菜单中) */
-    hide?: boolean;
-    /** 外链链接 */
-    href?: string;
-    /** 是否支持多个tab页签(默认一个，即相同name的路由会被替换) */
-    multiTab?: boolean;
-    /** 路由顺序，可用于菜单的排序 */
-    order?: number;
-    /** 当前路由需要选中的菜单项(用于跳转至不在左侧菜单显示的路由且需要高亮某个菜单的情况) */
-    activeMenu?: RouteKey;
-    /** 表示是否是多级路由的中间级路由(用于转换路由数据时筛选多级路由的标识，定义路由时不用填写) */
-    multi?: boolean;
+	/** 路由标题(可用来作document.title或者菜单的名称) */
+	title: string;
+	/** 路由的动态路径(需要动态路径的页面需要将path添加进范型参数) */
+	dynamicPath?: AuthRouteUtils.GetDynamicPath<"/login">;
+	/** 作为单级路由的父级路由布局组件 */
+	singleLayout?: Extract<RouteComponentType, "basic" | "blank">;
+	/** 需要登录权限 */
+	requiresAuth?: boolean;
+	/**
+	 * 哪些类型的用户有权限才能访问的路由(空的话则表示不需要权限)
+	 * @description 后端动态路由数据不需要该属性，直接由后端根据用户角色返回对应权限的路由数据
+	 */
+	permissions?: Auth.RoleType[];
+	/** 缓存页面 */
+	keepAlive?: boolean;
+	/** 菜单和面包屑对应的图标 */
+	icon?: string;
+	/** 使用本地svg作为的菜单和面包屑对应的图标(assets/svg-icon文件夹的的svg文件名) */
+	localIcon?: string;
+	/** 是否在菜单中隐藏(一些列表、表格的详情页面需要通过参数跳转，所以不能显示在菜单中) */
+	hide?: boolean;
+	/** 外链链接 */
+	href?: string;
+	/** 是否支持多个tab页签(默认一个，即相同name的路由会被替换) */
+	multiTab?: boolean;
+	/** 路由顺序，可用于菜单的排序 */
+	order?: number;
+	/** 当前路由需要选中的菜单项(用于跳转至不在左侧菜单显示的路由且需要高亮某个菜单的情况) */
+	activeMenu?: RouteKey;
+	/** 表示是否是多级路由的中间级路由(用于转换路由数据时筛选多级路由的标识，定义路由时不用填写) */
+	multi?: boolean;
 }
 ```
 
@@ -140,109 +140,109 @@ views
 
 ```typescript
 const about = {
-  name: 'about',
-  path: '/about',
-  component: 'self',
-  meta: {
-	  title: '关于',
-	  requiresAuth: true,
-	  singleLayout: 'basic',
-	  permissions: ['super', 'admin', 'test'],
-	  icon: 'fluent:book-information-24-regular',
-	  order: 7
-  }
-}
+	name: "about",
+	path: "/about",
+	component: "self",
+	meta: {
+		title: "关于",
+		requiresAuth: true,
+		singleLayout: "basic",
+		permissions: ["super", "admin", "test"],
+		icon: "fluent:book-information-24-regular",
+		order: 7,
+	},
+};
 ```
 
 #### (2)二级路由
 
 ```typescript
 const dashboard = {
-  name: 'dashboard',
-  path: '/dashboard',
-  component: 'basic',
-  children: [
-    {
-      name: 'dashboard_analysis',
-      path: '/dashboard/analysis',
-      component: 'self',
-      meta: {
-        title: '分析页',
-        requiresAuth: true
-      }
-    },
-    {
-      name: 'dashboard_workbench',
-      path: '/dashboard/workbench',
-      component: 'self',
-      meta: {
-        title: '工作台',
-        requiresAuth: true,
-        permissions: ['super', 'admin']
-      }
-    }
-  ],
-  meta: {
-  	title: '仪表盘',
-  	icon: 'carbon:dashboard',
-    order: 1
-  }
-}
+	name: "dashboard",
+	path: "/dashboard",
+	component: "basic",
+	children: [
+		{
+			name: "dashboard_analysis",
+			path: "/dashboard/analysis",
+			component: "self",
+			meta: {
+				title: "分析页",
+				requiresAuth: true,
+			},
+		},
+		{
+			name: "dashboard_workbench",
+			path: "/dashboard/workbench",
+			component: "self",
+			meta: {
+				title: "工作台",
+				requiresAuth: true,
+				permissions: ["super", "admin"],
+			},
+		},
+	],
+	meta: {
+		title: "仪表盘",
+		icon: "carbon:dashboard",
+		order: 1,
+	},
+};
 ```
 
 #### (3)三级及三级以上路由
 
 ```typescript
 const multiMenu = {
-  name: 'multi-menu',
-  path: '/multi-menu',
-  component: 'basic',
-  children: [
-    {
-      name: 'multi-menu_first',
-      path: '/multi-menu/first',
-      component: 'multi',
-      children: [
-        {
-          name: 'multi-menu_first_second',
-          path: '/multi-menu/first/second',
-          component: 'self',
-          meta: {
-            title: '二级菜单',
-            requiresAuth: true
-          }
-        },
-        {
-          name: 'multi-menu_first_second-new',
-          path: '/multi-menu/first/second-new',
-          component: 'multi',
-          children: [
-            {
-              name: 'multi-menu_first_second-new_third',
-              path: '/multi-menu/first/second-new/third',
-              component: 'self',
-              meta: {
-                title: '三级菜单',
-                requiresAuth: true
-              }
-            }
-          ],
-          meta: {
-            title: '二级菜单(有子菜单)'
-          }
-        }
-      ],
-      meta: {
-        title: '一级菜单'
-      }
-    }
-  ],
-  meta: {
-    title: '多级菜单',
-    icon: 'carbon:menu',
-    order: 6
-  }
-}
+	name: "multi-menu",
+	path: "/multi-menu",
+	component: "basic",
+	children: [
+		{
+			name: "multi-menu_first",
+			path: "/multi-menu/first",
+			component: "multi",
+			children: [
+				{
+					name: "multi-menu_first_second",
+					path: "/multi-menu/first/second",
+					component: "self",
+					meta: {
+						title: "二级菜单",
+						requiresAuth: true,
+					},
+				},
+				{
+					name: "multi-menu_first_second-new",
+					path: "/multi-menu/first/second-new",
+					component: "multi",
+					children: [
+						{
+							name: "multi-menu_first_second-new_third",
+							path: "/multi-menu/first/second-new/third",
+							component: "self",
+							meta: {
+								title: "三级菜单",
+								requiresAuth: true,
+							},
+						},
+					],
+					meta: {
+						title: "二级菜单(有子菜单)",
+					},
+				},
+			],
+			meta: {
+				title: "一级菜单",
+			},
+		},
+	],
+	meta: {
+		title: "多级菜单",
+		icon: "carbon:menu",
+		order: 6,
+	},
+};
 ```
 
 ### 3.前端路由 modules 添加

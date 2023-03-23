@@ -40,13 +40,13 @@
 
 ```ts
 /** 是否可读 */
-function canRead(){
-  return true;
+function canRead() {
+	return true;
 }
 
 /** 获取姓名 */
-function getName(){
-  return '';
+function getName() {
+	return "";
 }
 ```
 
@@ -56,7 +56,7 @@ function getName(){
 
 ```ts
 const MAX_COUNT = 10;
-const URL = 'http://www.baidu.com';
+const URL = "http://www.baidu.com";
 ```
 
 ## TS 类型接口 interface 和 type
@@ -65,11 +65,11 @@ const URL = 'http://www.baidu.com';
 
 ```typescript
 interface PersonInfo {
-  /** 姓名 */
-  name: string;
-  /** 性别 '0':男; '1': 女; '2': 未知 */
-  gender: '0' | '1' | '2';
-  /** 年龄 */
-  age: 25;
+	/** 姓名 */
+	name: string;
+	/** 性别 '0':男; '1': 女; '2': 未知 */
+	gender: "0" | "1" | "2";
+	/** 年龄 */
+	age: 25;
 }
 ```

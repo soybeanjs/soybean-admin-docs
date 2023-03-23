@@ -31,8 +31,8 @@ backendConfig：后端接口字段配置，传入各个字段名称(请求状态
 例如：
 
 ```typescript
-import { createRequest } from './request';
-import { serviceEnv } from '~/.env-config';
+import { createRequest } from "./request";
+import { serviceEnv } from "~/.env-config";
 
 const { url } = serviceEnv[import.meta.env.VITE_HTTP_ENV];
 
@@ -46,6 +46,6 @@ export const request = createRequest({ baseURL: url });
 ```typescript
 /** 获取用户信息 */
 export function fetchUserInfo() {
-  return mockRequest.get<ApiAuth.UserInfo>('/getUserInfo');
+	return mockRequest.get<ApiAuth.UserInfo>("/getUserInfo");
 }
 ```

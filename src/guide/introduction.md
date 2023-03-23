@@ -2,15 +2,20 @@
 
 ## 简介
 
-[Soybean Admin](https://github.com/honghuangdc/soybean-admin) 是一个基于 Vue3、Vite3、TypeScript、NaiveUI、Pinia 和 UnoCSS 的清新优雅的中后台模版，它使用了最新的前端技术栈，内置丰富的主题配置，有着极高的代码规范，基于 mock 实现的动态权限路由，开箱即用的中后台前端解决方案，也可用于学习参考。
+<div align="center">
+	<img src="https://soybeanjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/soybean.svg" width="180" />
+</div>
+
+[Soybean Admin](https://github.com/honghuangdc/soybean-admin) 是一个基于 Vue3、Vite3、TypeScript、NaiveUI、Pinia 和 UnoCSS 的清新优雅的中后台模版，它使用了最新流行的前端技术栈，内置丰富的主题配置，有着极高的代码规范，基于文件的路由系统以及基于 Mock 的动态权限路由，开箱即用的中后台前端解决方案，也可用于学习参考。
 
 ## 特性
 
-- **最新技术栈**：使用 Vue3/vite2 等前端前沿技术开发, 使用高效率的 npm 包管理器 pnpm
+- **最新流行技术栈**：使用 Vue3/Vite 等前端前沿技术开发, 使用高效率的 npm 包管理器 pnpm
 - **TypeScript**: 应用程序级 JavaScript 的语言
 - **主题**：丰富可配置的主题、暗黑模式，基于原子 css 框架 - UnoCss 的动态主题颜色
 - **代码规范**：丰富的规范插件及极高的代码规范
-- **权限路由**：基于文件的路由系统、基于 mock 的动态路由能快速实现后端动态路由
+- **文件路由系统**：基于文件的路由系统，根据页面文件自动生成路由声明、路由导入和路由模块
+- **权限路由**：提供前端静态和后端动态两种路由模式，基于 mock 的动态路由能快速实现后端动态路由
 - **请求函数**：基于 axios 的完善的请求函数封装，提供 Promise 和 hooks 两种请求函数，加入请求结果数据转换的适配器
 
 ## 特性细节
@@ -19,10 +24,11 @@
 
 - **严格的代码规范**：
 
-  - eslint + prettier + eslint-config-airbnb-base + eslint-plugin-vue + eslint-plugin-import + @typescript-eslint/eslint-plugin 等插件提供代码全面的格式规范，eslintrc 的 import/order 规则规范了导入依赖的顺序
-  - husky + lint-staged + vuetsc + commitlint + commitizen 保证了提交的代码符合 eslint 规则和 TS 类型检测，提交的内容规范遵循了 angular 提交规范
-  - 应用设计模式优化代码：项目里面多次用到策略模式替换 if else
-  - 所有页面使用 script-setup 写法，并遵循特定顺序(用文档规范)
+  - 基于 eslint + prettier 抽离的 [eslint 规则依赖](https://github.com/soybeanjs/eslint-config)提供代码全面的格式规范，eslintrc 的 import/order 规则规范了导入依赖的顺序
+  - 基于 simple-git-hooks 和 lint-staged 对 git 提交代码进行规范，提交的内容规范遵循 Angular 提交规范
+    > 通过[@soybeanjs/cli](https://github.com/soybeanjs/cli) 提供的 git-commit 命令生成符合 Angular 提交规范的 commit，通过 git-commit-verify 命令校验 commit 是否符合 Angular 提交规范
+  - 应用设计模式优化代码：项目里面多次用到策略模式
+  - 所有页面使用 script-setup 写法，并遵循约定的顺序写法
   - 目录结构组织遵循特定规范，页面的写法严格遵循模块思想，使得每个页面的代码结构清晰明了
 
 - **权限路由**：
@@ -50,26 +56,26 @@
     ```typescript
     /** 自定义的请求成功结果 */
     interface SuccessResult<T = any> {
-      /** 请求错误 */
-      error: null;
-      /** 请求数据 */
-      data: T;
+    	/** 请求错误 */
+    	error: null;
+    	/** 请求数据 */
+    	data: T;
     }
     /** 请求错误 */
     interface RequestError {
-      /** 请求服务的错误类型 */
-      type: RequestErrorType;
-      /** 错误码 */
-      code: string | number;
-      /** 错误信息 */
-      msg: string;
+    	/** 请求服务的错误类型 */
+    	type: RequestErrorType;
+    	/** 错误码 */
+    	code: string | number;
+    	/** 错误信息 */
+    	msg: string;
     }
     /** 自定义的请求失败结果 */
     interface FailedResult {
-      /** 请求错误 */
-      error: RequestError;
-      /** 请求数据 */
-      data: null;
+    	/** 请求错误 */
+    	error: RequestError;
+    	/** 请求数据 */
+    	data: null;
     }
     /** 自定义的请求结果 */
     type RequestResult<T = any> = SuccessResult<T> | FailedResult;

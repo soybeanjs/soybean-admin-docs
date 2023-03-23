@@ -24,8 +24,8 @@
 
     ```html
     <div>
-      <icon-mdi-emoticon class="text-24px text-red" />
-      <icon-mdi:emoticon style="font-size:24px;color:#f00;" />
+    	<icon-mdi-emoticon class="text-24px text-red" />
+    	<icon-mdi:emoticon style="font-size:24px;color:#f00;" />
     </div>
     ```
 
@@ -64,7 +64,12 @@
   - 多个图标动态渲染
 
     ```html
-    <svg-icon v-for="icon in icons" :key="icon" :icon="icon" class="text-24px text-red" />
+    <svg-icon
+    	v-for="icon in icons"
+    	:key="icon"
+    	:icon="icon"
+    	class="text-24px text-red"
+    />
     ```
 
 - **本地 svg 图标**
@@ -88,11 +93,11 @@
 - 使用 **useIconRender**
 
   ```typescript
-  import { useIconRender } from '@/composables';
+  import { useIconRender } from "@/composables";
 
   const { iconRender } = useIconRender();
 
-  iconRender({ icon: 'mdi-emoticon', fontSize: 24, color: '#f00' }); // iconify
+  iconRender({ icon: "mdi-emoticon", fontSize: 24, color: "#f00" }); // iconify
 
-  iconRender({ localIcon: 'custom-icon' }); // 本地svg图标
+  iconRender({ localIcon: "custom-icon" }); // 本地svg图标
   ```

@@ -21,13 +21,13 @@
 ```typescript
 interface Props {
 	/** 姓名 */
-  name: string;
+	name: string;
 	/** 年龄 */
-  age?: number;
+	age?: number;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  age: 24
+	age: 24,
 });
 // 其中 name 是必须的属性，age 是可选属性，通过 withDefaults 添加默认值
 ```
@@ -38,11 +38,11 @@ const props = withDefaults(defineProps<Props>(), {
 
 ```typescript
 interface Emits {
-  /**
-   * 删除事件
-   * @param id - 删除项的id
-   */
-	(e: 'delete', id: number): void;
+	/**
+	 * 删除事件
+	 * @param id - 删除项的id
+	 */
+	(e: "delete", id: number): void;
 }
 
 const emit = defineEmits<Emits>();
@@ -68,13 +68,13 @@ const { height: domRefHeight } = useElementSize(domRef);
 ```ts
 const count = ref(0);
 const setCount = (val: number) => {
-  count.value = val;
-}
+	count.value = val;
+};
 
 const visible = ref(false);
 const setVisible = (val: boolean) => {
-  visible.value = val;
-}
+	visible.value = val;
+};
 ```
 
 <br />
@@ -83,22 +83,22 @@ const setVisible = (val: boolean) => {
 
 ```ts
 function init() {
-  //
+	//
 }
 
-watch(visible, newValue => {
-  //
-})
+watch(visible, (newValue) => {
+	//
+});
 
 // init初始化调用
 init();
 
 onMounted(() => {
-  //
+	//
 });
 
 onBeforeMount(() => {
-  //
+	//
 });
 ```
 

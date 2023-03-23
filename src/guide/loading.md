@@ -26,11 +26,11 @@
 ```ts
 const appLoading = createApp(AppLoading);
 
-appLoading.mount('#appLoading');
+appLoading.mount("#appLoading");
 
 const app = createApp(App);
 
-app.mount('#app');
+app.mount("#app");
 ```
 
 ::: tip 代码位置
@@ -39,10 +39,10 @@ app.mount('#app');
 
 ```html
 <body>
-  <div id="app">
-    <div id="appLoading"></div>
-  </div>
-  <script type="module" src="/src/main.ts"></script>
+	<div id="app">
+		<div id="appLoading"></div>
+	</div>
+	<script type="module" src="/src/main.ts"></script>
 </body>
 ```
 

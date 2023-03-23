@@ -3,20 +3,7 @@ import path from 'path';
 
 export default defineConfig({
   title: 'Soybean Admin',
-  lang: 'zh-CN',
   description: '一个优雅、清新、漂亮的中后台模版',
-  locales: {
-    '/': {
-      lang: 'zh-CN',
-      title: 'Soybean Admin',
-      description: '一个优雅、清新、漂亮的中后台模版'
-    },
-    '/en/': {
-      lang: 'en-US',
-      title: 'Soybean Admin',
-      description: 'A fresh and elegant admin template'
-    }
-  },
   head: [
     ['meta', { name: 'author', content: 'Soybean' }],
     [
@@ -47,13 +34,6 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/honghuangdc/soybean-admin' },
       { icon: 'discord', link: 'https://qm.qq.com/cgi-bin/qm/qr?k=XTjkqjV1KynFoEAdrqxMd6i71-TtCVGV&jump_from=webapi' }
     ],
-    localeLinks: {
-      text: '',
-      items: [
-        { text: '简体中文', link: '/' },
-        { text: 'English', link: '/en/' }
-      ]
-    },
     algolia: {
       appId: '98WN1RY04S',
       apiKey: '13e9f5767b774422a5880723d9c23265',
@@ -61,17 +41,13 @@ export default defineConfig({
     },
     footer: {
       message: '根据 MIT 许可证发布',
-      copyright: 'Copyright © 2021-2022 Soybean'
+      copyright: 'Copyright © 2021 Soybean'
     },
     nav: [
       { text: '项目指南', link: '/guide/', activeMatch: '/guide/' },
       {
         text: '相关链接',
         items: [
-          {
-            text: 'Discord Chat',
-            link: 'https://discord.com/invite/CgUJzKpj'
-          },
           {
             text: '预览地址',
             link: 'https://soybean.pro'
