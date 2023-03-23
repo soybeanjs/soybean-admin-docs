@@ -90,7 +90,7 @@ icon 图标值从这里获取：[https://icones.js.org/](https://icones.js.org/)
 
 例如:
 
-```text
+```
 views
 ├── about
 │   └── index.vue
@@ -101,7 +101,7 @@ views
 
 例如：
 
-```text
+```
 views
 ├── dashboard
 │   ├── analysis
@@ -116,7 +116,7 @@ views
 
 例如：
 
-```text
+```
 views
 ├── multi-menu
 │   ├── first

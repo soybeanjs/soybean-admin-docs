@@ -2,31 +2,31 @@
 
 - 定位属性：
 
-```text
+```
 position display float left top right bottom overflow clear z-index
 ```
 
 - 自身属性：
 
-```text
+```
 width height padding border margin background
 ```
 
 - 文字样式：
 
-```text
+```
 font-family font-size font-style font-weight font-varient color
 ```
 
 - 文本属性：
 
-```text
+```
 text-align vertical-align text-wrap text-transform text-indent text-decoration letter-spacing word-spacing white-space text-overflow
 ```
 
 - css3 中新增属性：
 
-```text
+```
 content box-shadow border-radius transform
 ```
 

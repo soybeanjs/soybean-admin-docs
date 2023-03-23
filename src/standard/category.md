@@ -1,6 +1,6 @@
 ## 目录规范
 
-```text
+```
 soybean-admin
 ├── .husky                     //git commit提交钩子，提交前检查代码格式和提交commit内容的格式
 ├── .vscode                    //vscode插件和设置
