@@ -6,10 +6,10 @@
 
 **解释：**
 
-联合类型 RouteKey 声明所有的路由 key，方便统一管理路由， 该类型由插件@soybeanjs/router-page 根据 views 下面的页面文件自动生成
+联合类型 RouteKey 声明所有的路由 key，方便统一管理路由， 该类型由插件@soybeanjs/vite-plugin-vue-page-route 根据 views 下面的页面文件自动生成
 
 ::: tip 代码位置
-./src/typings/router-page.d.ts
+./src/typings/page-route.d.ts
 :::
 
 ### 2. type RoutePath
