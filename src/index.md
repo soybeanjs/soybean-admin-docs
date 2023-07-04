@@ -9,7 +9,7 @@ hero:
   text: 清新优雅的中后台模版
   tagline: 基于 Vue3 + Vite3 + TS + NaiveUI + UnoCSS
   image:
-    src: /logo.png
+    src: /logo.svg
     alt: Soybean Admin
   actions:
     - theme: brand

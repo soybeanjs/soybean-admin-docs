@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress';
 import path from 'path';
+import { qqSvg } from './icon';
 
 export default defineConfig({
   title: 'Soybean Admin',
@@ -32,7 +33,12 @@ export default defineConfig({
     },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/honghuangdc/soybean-admin' },
-      { icon: 'discord', link: 'https://qm.qq.com/cgi-bin/qm/qr?k=XTjkqjV1KynFoEAdrqxMd6i71-TtCVGV&jump_from=webapi' }
+      {
+        icon: {
+          svg: qqSvg
+        },
+        link: 'https://qm.qq.com/cgi-bin/qm/qr?k=XTjkqjV1KynFoEAdrqxMd6i71-TtCVGV&jump_from=webapi'
+      }
     ],
     algolia: {
       appId: '98WN1RY04S',
@@ -45,6 +51,7 @@ export default defineConfig({
     },
     nav: [
       { text: '项目指南', link: '/guide/', activeMatch: '/guide/' },
+      { text: '常见问题', link: '/faq/', activeMatch: '/faq/' },
       {
         text: '相关链接',
         items: [
@@ -111,10 +118,6 @@ export default defineConfig({
             {
               text: '系统标签',
               link: '/guide/tab'
-            },
-            {
-              text: '常见问题解答',
-              link: '/guide/qa'
             }
           ]
         }

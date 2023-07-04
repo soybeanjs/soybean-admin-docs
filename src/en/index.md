@@ -9,7 +9,7 @@ hero:
   text: Fresh and elegant
   tagline: Based on Vue3,Vite3,TypeScript,NaiveUI and UnoCSS
   image:
-    src: /logo.png
+    src: /logo.svg
     alt: SoybeanAdmin
   actions:
     - theme: brand

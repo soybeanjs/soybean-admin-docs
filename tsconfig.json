@@ -11,12 +11,8 @@
     "resolveJsonModule": true,
     "noUnusedLocals": true,
     "strictNullChecks": true,
-    "forceConsistentCasingInFileNames": true,
-    "paths": {
-      "@/*": ["./src/*"],
-      "~/*": ["./*"]
-    },
-    "types": ["node"]
+    "forceConsistentCasingInFileNames": true
   },
-  "exclude": ["dist", "node_modules"]
+	"include": [".vitepress"],
+  "exclude": ["dist", "node_modules", "cache"]
 }
