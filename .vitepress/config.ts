@@ -57,7 +57,7 @@ export default defineConfig({
         items: [
           {
             text: '预览地址',
-            link: 'https://soybean.pro'
+            link: 'https://admin.soybeanjs.cn'
           },
           {
             text: '项目源码',
