@@ -93,7 +93,7 @@ pnpm prepare
 
 ### 开启 Volar 的 takeover mode
 
-- 搜索插件 @builin typescript
+- 搜索插件 @builtin typescript
 - 鼠标右键 “JavaScript 和 TypeScript 的语言功能”
 - 点击 “禁用工作区”
 
