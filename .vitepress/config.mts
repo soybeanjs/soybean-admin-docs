@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitepress';
 import path from 'path';
-import { qqSvg } from './icon';
+import { qqSvg } from './icon.mjs';
 
 export default defineConfig({
   title: 'Soybean Admin',

@@ -25,11 +25,11 @@
     "ncu": "soy ncu"
   },
   "devDependencies": {
-    "@soybeanjs/cli": "0.6.2",
-    "@types/node": "20.3.3",
-    "eslint": "8.44.0",
-    "eslint-config-soybeanjs": "0.4.10",
-    "typescript": "5.1.6",
-    "vitepress": "1.0.0-beta.5"
+    "@soybeanjs/cli": "0.7.4",
+    "@types/node": "20.8.9",
+    "eslint": "8.52.0",
+    "eslint-config-soybeanjs": "0.5.7",
+    "typescript": "5.2.2",
+    "vitepress": "1.0.0-rc.24"
   }
 }
