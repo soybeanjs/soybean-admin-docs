@@ -1,7 +1,8 @@
 {
   "name": "soybean-admin-docs",
-  "version": "0.9.7",
-  "description": "soybean-admin中后台管理系统的说明文档",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "The documentation of Soybean Admin",
   "author": {
     "name": "Soybean",
     "email": "soybeanjs@outlook.com",
@@ -16,20 +17,23 @@
     "url": "https://github.com/honghuangdc/soybean-admin-docs/issues"
   },
   "scripts": {
-    "dev": "vitepress dev",
     "build": "vitepress build",
-    "serve": "vitepress serve",
-    "commit": "pnpm soy git-commit",
+    "cleanup": "soy cleanup",
+    "commit": "soy git-commit",
+    "dev": "vitepress dev --port 1026",
     "lint": "eslint . --fix",
-    "format": "pnpm soy prettier-write",
-    "ncu": "soy ncu"
+    "preview": "vite preview",
+    "release": "soy release",
+    "serve": "vitepress serve",
+    "typecheck": "vue-tsc --noEmit --skipLibCheck",
+    "update-pkg": "soy update-pkg"
   },
   "devDependencies": {
-    "@soybeanjs/cli": "0.7.4",
-    "@types/node": "20.8.9",
-    "eslint": "8.52.0",
-    "eslint-config-soybeanjs": "0.5.7",
-    "typescript": "5.2.2",
-    "vitepress": "1.0.0-rc.24"
+    "@soybeanjs/cli": "1.0.2",
+    "@soybeanjs/eslint-config": "1.1.6",
+    "@types/node": "20.11.5",
+    "eslint": "8.56.0",
+    "typescript": "5.3.3",
+    "vitepress": "1.0.0-rc.39"
   }
 }

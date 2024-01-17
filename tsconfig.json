@@ -1,18 +1,23 @@
 {
   "compilerOptions": {
+    "target": "ESNext",
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "lib": ["DOM", "ESNext"],
     "baseUrl": ".",
     "module": "ESNext",
-    "target": "ESNext",
-    "lib": ["DOM", "ESNext"],
-    "strict": true,
-    "esModuleInterop": true,
-    "jsx": "preserve",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "noUnusedLocals": true,
+    "types": ["vite/client", "node"],
+    "strict": true,
     "strictNullChecks": true,
-    "forceConsistentCasingInFileNames": true
+    "noUnusedLocals": true,
+    "outDir": "dist",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true
   },
-	"include": [".vitepress"],
-  "exclude": ["dist", "node_modules", "cache"]
+  "include": [".vitepress/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }

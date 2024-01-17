@@ -1,5 +1,5 @@
-# 赞助
+# Donate
 
-如果您觉得这个项目对您有帮助，可以帮作者买杯饮料鼓励鼓励!
+If you think this project is helpful to you, you can buy Soybean a drink to show your support, Soybean open source power can not be separated from your support and encouragement.
 
-![](../assets/donate01.png)
+![](https://soybeanjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/donation.png)
