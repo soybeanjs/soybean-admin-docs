@@ -84,7 +84,7 @@ export default defineConfig({
     logo: '/logo.svg',
     socialLinks: [
       { icon: 'github', link: 'https://github.com/soybeanjs' },
-      { icon: 'discord', link: 'https://discord.gg/n44HfksX' },
+      { icon: 'discord', link: 'https://discord.gg/mEFKh8xm9y' },
       {
         icon: {
           svg: qqSvg
