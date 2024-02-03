@@ -41,7 +41,7 @@ export default defineConfig({
               },
               {
                 text: 'Repository',
-                link: 'https://github.com/honghuangdc/soybean-admin'
+                link: 'https://github.com/soybeanjs/soybean-admin'
               }
             ]
           }
@@ -49,8 +49,12 @@ export default defineConfig({
         sidebar: {
           '/zh/guide/': [
             {
+              text: '开始',
+              link: '/zh/guide/'
+            },
+            {
               text: '介绍',
-              link: '/guide/introduction'
+              link: '/zh/guide/introduction'
             }
           ],
           '/zh/faq/': [],
@@ -119,13 +123,17 @@ export default defineConfig({
           },
           {
             text: 'Repository',
-            link: 'https://github.com/honghuangdc/soybean-admin'
+            link: 'https://github.com/soybeanjs/soybean-admin'
           }
         ]
       }
     ],
     sidebar: {
       '/guide/': [
+        {
+          text: 'Start',
+          link: '/guide/'
+        },
         {
           text: 'Introduction',
           link: '/guide/introduction'

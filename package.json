@@ -9,12 +9,12 @@
     "url": "https://github.com/soybeanjs"
   },
   "license": "MIT",
-  "homepage": "https://github.com/honghuangdc/soybean-admin-docs",
+  "homepage": "https://github.com/soybeanjs/soybean-admin-docs",
   "repository": {
-    "url": "https://github.com/honghuangdc/soybean-admin-docs.git"
+    "url": "https://github.com/soybeanjs/soybean-admin-docs.git"
   },
   "bugs": {
-    "url": "https://github.com/honghuangdc/soybean-admin-docs/issues"
+    "url": "https://github.com/soybeanjs/soybean-admin-docs/issues"
   },
   "scripts": {
     "build": "vitepress build",
@@ -26,14 +26,14 @@
     "release": "soy release",
     "serve": "vitepress serve",
     "typecheck": "vue-tsc --noEmit --skipLibCheck",
-    "update-pkg": "soy update-pkg"
+    "update-pkg": "soy ncu"
   },
   "devDependencies": {
-    "@soybeanjs/cli": "1.0.2",
-    "@soybeanjs/eslint-config": "1.1.6",
-    "@types/node": "20.11.5",
+    "@soybeanjs/cli": "1.0.6",
+    "@soybeanjs/eslint-config": "1.2.2",
+    "@types/node": "20.11.16",
     "eslint": "8.56.0",
     "typescript": "5.3.3",
-    "vitepress": "1.0.0-rc.39"
+    "vitepress": "1.0.0-rc.41"
   }
 }

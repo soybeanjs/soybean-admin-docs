@@ -20,7 +20,7 @@ hero:
       link: /guide/introduction
     - theme: alt
       text: View on GitHub
-      link: https://github.com/honghuangdc/soybean-admin
+      link: https://github.com/soybeanjs/soybean-admin
 
 features:
   - icon: 🆕

@@ -14,13 +14,13 @@ hero:
   actions:
     - theme: brand
       text: 开始
-      link: /guide/
+      link: /zh/guide/
     - theme: alt
       text: 介绍
-      link: /guide/introduction
+      link: /zh/guide/introduction
     - theme: alt
       text: 在 GitHub 上查看
-      link: https://github.com/honghuangdc/soybean-admin
+      link: https://github.com/soybeanjs/soybean-admin
 
 features:
   - icon: 🆕
