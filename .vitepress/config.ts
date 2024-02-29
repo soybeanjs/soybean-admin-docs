@@ -9,14 +9,14 @@ export default defineConfig({
       label: 'English',
       lang: 'en',
       dir: 'src/en',
-      title: 'Soybean Admin',
+      title: 'SoybeanAdmin',
       description: 'a fresh and elegant admin template'
     },
     zh: {
       label: '简体中文',
       lang: 'zh',
       dir: 'src/zh',
-      title: 'Soybean Admin',
+      title: 'SoybeanAdmin',
       description: '一个清新优雅的后台管理模板',
       themeConfig: {
         footer: {

@@ -1,16 +1,16 @@
 ---
 layout: home
 
-title: Soybean Admin
+title: SoybeanAdmin
 titleTemplate: A fresh and elegant admin template
 
 hero:
-  name: Soybean Admin
+  name: SoybeanAdmin
   text: Fresh and elegant
   tagline: Based on Vue3,Vite5,TypeScript and UnoCSS
   image:
     src: /logo.svg
-    alt: Soybean Admin
+    alt: SoybeanAdmin
   actions:
     - theme: brand
       text: Start

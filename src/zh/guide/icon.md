@@ -4,11 +4,9 @@
 
 基于 iconify 的 svg 的 json 数据，通过 unplugin-icons 插件，将 svg 数据转换成 vue 组件
 
-[unplugin-icons](https://github.com/antfu/unplugin-icons)
-
-[iconify](https://github.com/iconify/iconify)
-
-[Journey with Icons Continues](https://antfu.me/posts/journey-with-icons-continues)
+- [unplugin-icons](https://github.com/antfu/unplugin-icons)
+- [iconify](https://github.com/iconify/iconify)
+- [Journey with Icons Continues](https://antfu.me/posts/journey-with-icons-continues)
 
 ## 图标教程
 
@@ -24,8 +22,8 @@
 
     ```html
     <div>
-    	<icon-mdi-emoticon class="text-24px text-red" />
-    	<icon-mdi:emoticon style="font-size:24px;color:#f00;" />
+      <icon-mdi-emoticon class="text-24px text-red" />
+      <icon-mdi:emoticon style="font-size:24px;color:#f00;" />
     </div>
     ```
 
@@ -65,10 +63,10 @@
 
     ```html
     <svg-icon
-    	v-for="icon in icons"
-    	:key="icon"
-    	:icon="icon"
-    	class="text-24px text-red"
+      v-for="icon in icons"
+      :key="icon"
+      :icon="icon"
+      class="text-24px text-red"
     />
     ```
 

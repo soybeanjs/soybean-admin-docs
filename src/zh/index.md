@@ -1,16 +1,16 @@
 ---
 layout: home
 
-title: Soybean Admin
+title: SoybeanAdmin
 titleTemplate: 一个清新优雅的中后台模版
 
 hero:
-  name: Soybean Admin
+  name: SoybeanAdmin
   text: 清新优雅的中后台模版
   tagline: 基于 Vue3,Vite5,TypeScript 和 UnoCSS
   image:
     src: /logo.svg
-    alt: Soybean Admin
+    alt: SoybeanAdmin
   actions:
     - theme: brand
       text: 开始

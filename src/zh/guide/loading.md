@@ -7,9 +7,8 @@
 - 系统初始化时的加载样式通过html代码方式实现
 
   ::: tip 组件位置
-  .src/plugins/loading.ts
+  src/plugins/loading.ts
   :::
-
 
 - 系统的 Logo 使用 SystemLogo 组件实现
 
@@ -65,14 +64,14 @@ export function setupLoading() {
 ```
 
 ::: tip 代码位置
-./src/plugins/loading.ts
+src/plugins/loading.ts
 :::
 
 最后要将 setupLoading 函数注册到 main.ts 中
 
 ```typescript
 async function setupApp() {
-    setupLoading();
-    app.mount('#app');
+  setupLoading();
+  app.mount('#app');
 }
 ```
