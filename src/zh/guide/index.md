@@ -55,9 +55,7 @@ git clone https://gitee.com/honghuangdc/soybean-admin.git
 ```
 
 ::: warning 注意
-
 最新版本的代码以 github 为准。
-
 :::
 
 ### 安装依赖

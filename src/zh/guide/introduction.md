@@ -16,6 +16,18 @@
 - **命令行工具**：内置高效的命令行工具，git提交、删除文件、发布等。
 - **移动端适配**：完美支持移动端，实现自适应布局。
 
+## 版本
+
+- **NaiveUI 版本:**
+  - [预览地址](https://naive.soybeanjs.com/)
+  - [Github 仓库](https://github.com/soybeanjs/soybean-admin)
+  - [Gitee 仓库](https://gitee.com/honghuangdc/soybean-admin)
+
+- **AntDesignVue 版本:**
+  - [预览地址](https://antd.soybeanjs.com/)
+  - [Github 仓库](https://github.com/soybeanjs/soybean-admin-antd)
+  - [Gitee 仓库](https://gitee.com/honghuangdc/soybean-admin-antd)
+
 ## 文档
 
 - 文档地址为 [soybean-admin-docs](https://github.com/soybeanjs/soybean-admin-docs)，采用 Vitepress 开发。如发现文档有误，欢迎提 pr 帮助我们改进。

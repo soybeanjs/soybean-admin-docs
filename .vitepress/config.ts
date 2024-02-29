@@ -36,12 +36,24 @@ export default defineConfig({
             text: '链接',
             items: [
               {
-                text: 'Preview',
-                link: 'https://soybeanjs.cn'
+                text: '在线预览(NaiveUI)',
+                link: 'https://naive.soybeanjs.cn'
               },
               {
-                text: 'Repository',
+                text: '在线预览(AntDesignVue)',
+                link: 'https://antd.soybeanjs.cn'
+              },
+              {
+                text: 'Github 仓库',
                 link: 'https://github.com/soybeanjs/soybean-admin'
+              },
+              {
+                text: 'Gitee 仓库',
+                link: 'https://gitee.com/honghuangdc/soybean-admin'
+              },
+              {
+                text: '旧版文档',
+                link: 'https://legacy-docs.soybeanjs.cn'
               }
             ]
           }
@@ -75,7 +87,7 @@ export default defineConfig({
             {
               text: '系统请求',
               link: '/zh/guide/request'
-            },
+            }
           ],
           '/zh/faq/': [],
           '/zh/standard/': []
@@ -138,12 +150,24 @@ export default defineConfig({
         text: 'Links',
         items: [
           {
-            text: 'Preview',
-            link: 'https://soybeanjs.cn'
+            text: 'Preview(NaiveUI)',
+            link: 'https://naive.soybeanjs.cn'
           },
           {
-            text: 'Repository',
+            text: 'Preview(AntDesignVue)',
+            link: 'https://antd.soybeanjs.cn'
+          },
+          {
+            text: 'Github Repository',
             link: 'https://github.com/soybeanjs/soybean-admin'
+          },
+          {
+            text: 'Gitee Repository',
+            link: 'https://gitee.com/honghuangdc/soybean-admin'
+          },
+          {
+            text: 'Legacy Docs',
+            link: 'https://legacy-docs.soybeanjs.cn'
           }
         ]
       }
@@ -157,6 +181,26 @@ export default defineConfig({
         {
           text: 'Introduction',
           link: '/guide/introduction'
+        },
+        {
+          text: 'System Loading',
+          link: '/guide/loading'
+        },
+        {
+          text: 'System Theme',
+          link: '/guide/theme'
+        },
+        {
+          text: 'System Icon',
+          link: '/guide/icon'
+        },
+        {
+          text: 'System Routing',
+          link: '/guide/router'
+        },
+        {
+          text: 'System Request',
+          link: '/guide/request'
         }
       ],
       '/faq/': [],
