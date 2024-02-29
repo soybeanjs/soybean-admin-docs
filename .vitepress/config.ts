@@ -55,7 +55,27 @@ export default defineConfig({
             {
               text: '介绍',
               link: '/zh/guide/introduction'
-            }
+            },
+            {
+              text: '系统加载',
+              link: '/zh/guide/loading'
+            },
+            {
+              text: '系统主题',
+              link: '/zh/guide/theme'
+            },
+            {
+              text: '系统图标',
+              link: '/zh/guide/icon'
+            },
+            {
+              text: '系统路由',
+              link: '/zh/guide/router'
+            },
+            {
+              text: '系统请求',
+              link: '/zh/guide/request'
+            },
           ],
           '/zh/faq/': [],
           '/zh/standard/': []
