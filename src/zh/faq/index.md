@@ -215,7 +215,7 @@ const MAX_COUNT = 10;
 
 🎯 文件位置：`.npmrc`
 
-```npmrc
+```
 registry=https://registry.npmmirror.com/
 shamefully-hoist=true
 ignore-workspace-root-check=true
