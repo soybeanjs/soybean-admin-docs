@@ -1,6 +1,6 @@
 # System Loading
 
-![](../../assets/loading01.png)
+![](../assets/loading01.png)
 
 ## Style
 
