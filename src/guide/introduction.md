@@ -16,6 +16,23 @@
 - **Command line tools**: Built-in efficient command line tools, git submission, file deletion, publishing, etc.
 - **Mobile adaptation**: Perfectly support mobile devices, achieve adaptive layout.
 
+## Version
+
+- **NaiveUI Version:**
+  - [Preview Link](https://naive.soybeanjs.cn/)
+  - [Github Repository](https://github.com/soybeanjs/soybean-admin)
+  - [Gitee Repository](https://gitee.com/honghuangdc/soybean-admin)
+
+- **AntDesignVue Version:**
+  - [Preview Link](https://antd.soybeanjs.cn/)
+  - [Github Repository](https://github.com/soybeanjs/soybean-admin-antd)
+  - [Gitee Repository](https://gitee.com/honghuangdc/soybean-admin-antd)
+
+- **Legacy Version:**
+  - [Preview Link](https://legacy.soybeanjs.cn/)
+  - [Github Repository](https://github.com/soybeanjs/soybean-admin/tree/legacy)
+
+
 ## Documentation
 
 - The documentation address is [soybean-admin-docs](https://github.com/soybeanjs/soybean-admin-docs), developed with Vitepress. If you find any errors in the documentation, please help us improve by submitting a pr.
@@ -50,16 +67,3 @@ Supports modern browsers, does not support IE
 
 - [SoybeanAdmin](https://github.com/honghuangdc/soybean-admin) is still being updated. This project welcomes your participation, joint maintenance, gradual improvement, and making the project stronger. The project adopts the MIT open source license, adheres to the principle of everything being free, and in principle will not charge any fees or copyrights, so you can use it with confidence.
 - If you want to join us, you can provide more good suggestions or submit pr, we will invite you to join based on your activity.
-
-
-## Version
-
-- **NaiveUI Version:**
-  - [Preview Link](https://naive.soybeanjs.com/)
-  - [Github Repository](https://github.com/soybeanjs/soybean-admin)
-  - [Gitee Repository](https://gitee.com/honghuangdc/soybean-admin)
-
-- **AntDesignVue Version:**
-  - [Preview Link](https://antd.soybeanjs.com/)
-  - [Github Repository](https://github.com/soybeanjs/soybean-admin-antd)
-  - [Gitee Repository](https://gitee.com/honghuangdc/soybean-admin-antd)
