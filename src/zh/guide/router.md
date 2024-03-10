@@ -577,8 +577,8 @@ interface RouteMeta {
   multiTab?: boolean;
   /** 若设置，路由将在标签页中固定显示，其值表示固定标签页的顺序 */
   fixedIndexInTab?: number;
-  /** 通过点击菜单进入该路由时会自动携带的query参数 */
-  fixedQuery?: Record<string, string>;
+  /** 路由查询参数，如果设置的话，点击菜单进入该路由时会自动携带的query参数 */
+  query?: Record<string, string>;
 }
 ```
 
