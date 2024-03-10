@@ -578,6 +578,8 @@ interface RouteMeta {
   multiTab?: boolean;
   /** If set, the route will be displayed fixed in the tab, and its value represents the order of the fixed tab */
   fixedIndexInTab?: number;
+  /** Fixed query parameters that are automatically carried when entering the route by menu */
+  fixedQuery?: Record<string, string>;
 }
 ```
 
