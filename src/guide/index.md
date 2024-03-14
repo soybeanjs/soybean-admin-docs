@@ -28,8 +28,7 @@
 - [Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense) - 智能显示导入的路径
 - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - 代码格式化插件
 - [UnoCSS](https://marketplace.visualstudio.com/items?itemName=antfu.unocss) - unocss 写法提示插件
-- [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - Vue 服务插件
-- [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) - Vue 的 TS 服务插件
+- [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - Vue 服务插件
 - [Vue VSCode Snippets](https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-snippets) - vue2、vue3 写法提示
 
 ## 代码获取
@@ -87,15 +86,9 @@ pnpm prepare
 
 ## 插件配置
 
-### 安装 Volar，禁用 Vetur
+### 安装 Vue - Official，禁用 Vetur
 
-- [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) - volar 插件， Language support for Vue 3
-
-### 开启 Volar 的 takeover mode
-
-- 搜索插件 @builtin typescript
-- 鼠标右键 “JavaScript 和 TypeScript 的语言功能”
-- 点击 “禁用工作区”
+- [Vue - Official](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) 插件， Language support for Vue 3
 
 ## npm scripts
 
