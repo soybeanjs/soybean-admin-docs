@@ -34,8 +34,7 @@ The following are the recommended plugins:
 - [One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme) - Theme
 - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - Code formatting plugin
 - [UnoCSS](https://marketplace.visualstudio.com/items?itemName=antfu.unocss) - unocss writing hint plugin
-- [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - Vue service plugin
-- [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) - TS service plugin for Vue
+- [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - Vue service plugin
 - [Vue VSCode Snippets](https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-snippets) - vue2, vue3 writing hint
 
 ## Getting the Code
@@ -67,15 +66,9 @@ pnpm i
 ```
 
 ## Plugin configuration
-### Install Volar, disable Vetur
+### Install Vue - Official, disable Vetur
 
-- [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - Vue service plugin
-- [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) - Vue's TS service plugin
-
-### Enable Volar's takeover mode (optional)
-- Search for the plugin @builtin typescript
-- Right-click on "JavaScript and TypeScript Language Features"
-- Click "Disable Workspace"
+- [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - Vue service plugin
 
 ## npm scripts
 
