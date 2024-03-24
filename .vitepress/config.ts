@@ -85,6 +85,10 @@ export default defineConfig({
               link: '/zh/guide/router'
             },
             {
+              text: '路由守卫',
+              link: '/zh/guide/router-guard'
+            },
+            {
               text: '系统请求',
               link: '/zh/guide/request'
             }
@@ -195,8 +199,12 @@ export default defineConfig({
           link: '/guide/icon'
         },
         {
-          text: 'System Routing',
+          text: 'System Router',
           link: '/guide/router'
+        },
+        {
+          text: 'Router Guard',
+          link: '/guide/router-guard'
         },
         {
           text: 'System Request',
