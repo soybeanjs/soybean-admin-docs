@@ -4,6 +4,6 @@
 
 ## Router guard flow
 
-![](../../assets/router-guard-flow.png)
+![](../assets/router-guard-flow.png)
 
-[HD PDF](../../assets/router-guard-flow.pdf)
+[HD PDF](../assets/router-guard-flow.pdf)
