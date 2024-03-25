@@ -4,4 +4,4 @@
 
 ![](../../assets/router-guard-flow.png)
 
-[高清PDF](../../assets/router-guard-flow.pdf)
+[高清PDF](/router-guard-flow.pdf)

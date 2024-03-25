@@ -6,4 +6,4 @@
 
 ![](../assets/router-guard-flow.png)
 
-[HD PDF](../assets/router-guard-flow.pdf)
+[HD PDF](/router-guard-flow.pdf)
