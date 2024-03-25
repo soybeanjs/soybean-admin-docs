@@ -129,7 +129,7 @@ export default defineConfig({
         icon: {
           svg: qqSvg
         },
-        link: 'https://qm.qq.com/cgi-bin/qm/qr?k=XTjkqjV1KynFoEAdrqxMd6i71-TtCVGV&jump_from=webapi'
+        link: 'https://qm.qq.com/cgi-bin/qm/qr?k=WBX5tYiXMmmeid0Vw4yaqtSFqdBugAYY&jump_from=webapi&authKey=DNjXMlJRUf0EMrM+WV9fed2D1PaB3isk8Ph/6GYyruQeR2W/eIz5V6sk1FLJUP98'
       }
     ],
     algolia: {
