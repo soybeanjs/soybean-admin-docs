@@ -56,45 +56,210 @@ export default defineConfig({
                 link: 'https://legacy-docs.soybeanjs.cn'
               }
             ]
+          },
+          {
+            text: '博客',
+            link: '/zh/blogs/',
+            activeMatch: '/zh/blogs/'
           }
         ],
         sidebar: {
           '/zh/guide/': [
             {
               text: '开始',
-              link: '/zh/guide/'
+              items: [
+                {
+                  text: '简介',
+                  link: '/zh/guide/intro'
+                },
+                {
+                  text: '快速上手',
+                  link: '/zh/guide/quick-start'
+                }
+              ]
             },
             {
-              text: '介绍',
-              link: '/zh/guide/introduction'
-            },
-            {
-              text: '系统加载',
-              link: '/zh/guide/loading'
-            },
-            {
-              text: '系统主题',
-              link: '/zh/guide/theme'
+              text: '主题',
+              items: [
+                {
+                  text: '概述',
+                  link: '/zh/guide/theme/intro'
+                },
+                {
+                  text: '配置',
+                  link: '/zh/guide/theme/config'
+                },
+                {
+                  text: '主题 Tokens',
+                  link: '/zh/guide/theme/tokens'
+                },
+                {
+                  text: 'UnoCSS 主题',
+                  link: '/zh/guide/theme/unocss'
+                },
+                {
+                  text: 'UI 主题',
+                  link: '/zh/guide/theme/ui'
+                },
+                {
+                  text: '加载',
+                  link: '/zh/guide/theme/loading'
+                },
+                {
+                  text: 'Logo',
+                  link: '/zh/guide/theme/logo'
+                }
+              ]
             },
             {
               text: '系统图标',
-              link: '/zh/guide/icon'
+              items: [
+                {
+                  text: '概述',
+                  link: '/zh/guide/icon/intro'
+                },
+                {
+                  text: '使用',
+                  link: '/zh/guide/icon/usage'
+                }
+              ]
             },
             {
-              text: '系统路由',
-              link: '/zh/guide/router'
+              text: '路由',
+              items: [
+                {
+                  text: '概述',
+                  link: '/zh/guide/router/intro'
+                },
+                {
+                  text: '路由创建',
+                  link: '/zh/guide/router/create'
+                },
+                {
+                  text: '路由说明',
+                  link: '/zh/guide/router/instruction'
+                },
+                {
+                  text: '路由缓存',
+                  link: '/zh/guide/router/cache'
+                },
+                {
+                  text: '路由守卫',
+                  link: '/zh/guide/router/guard'
+                }
+              ]
             },
             {
-              text: '路由守卫',
-              link: '/zh/guide/router-guard'
+              text: '请求',
+              items: [
+                {
+                  text: '概述',
+                  link: '/zh/guide/request/intro'
+                },
+                {
+                  text: '使用',
+                  link: '/zh/guide/request/usage'
+                },
+                {
+                  text: '代理',
+                  link: '/zh/guide/request/proxy'
+                },
+                {
+                  text: '对接后端',
+                  link: '/zh/guide/request/backend'
+                }
+              ]
             },
             {
-              text: '系统请求',
-              link: '/zh/guide/request'
+              text: '命令行',
+              items: [
+                {
+                  text: '概述',
+                  link: '/zh/guide/cli/intro'
+                },
+                {
+                  text: '命令',
+                  link: '/zh/guide/cli/command'
+                }
+              ]
             }
           ],
-          '/zh/faq/': [],
-          '/zh/standard/': []
+          '/zh/standard/': [
+            {
+              text: '规范',
+              link: '/zh/standard/'
+            },
+            {
+              text: '命名',
+              link: '/zh/standard/naming'
+            },
+            {
+              text: 'Vue 写法',
+              link: '/zh/standard/vue'
+            },
+            {
+              text: 'TS 写法',
+              link: '/zh/standard/ts'
+            },
+            {
+              text: '综合',
+              link: '/zh/standard/synthesis'
+            },
+            {
+              text: '工具',
+              link: '/zh/standard/tools'
+            }
+          ],
+          '/zh/tutorial/': [
+            {
+              text: '前言',
+              link: '/zh/tutorial/'
+            },
+            {
+              text: 'Git 安装',
+              link: '/zh/tutorial/git'
+            },
+            {
+              text: 'NodeJS 安装',
+              link: '/zh/tutorial/nodejs'
+            },
+            {
+              text: 'Debug 教程',
+              link: '/zh/tutorial/debug'
+            },
+            {
+              text: '常用软件安装',
+              link: '/zh/tutorial/software'
+            },
+            {
+              text: '其他',
+              link: '/zh/tutorial/software'
+            }
+          ],
+          '/zh/blogs/': [
+            {
+              text: '博客',
+              link: '/zh/blogs/'
+            },
+            {
+              text: '高阶教程',
+              items: [
+                {
+                  text: '开发一个依赖包',
+                  link: '/zh/blogs/advanced/pkg'
+                }
+              ]
+            },
+            {
+              text: '日常',
+              items: [
+                {
+                  text: '2024-03-30',
+                  link: '/zh/blogs/daily/2024-03-30'
+                }
+              ]
+            }
+          ]
         }
       }
     }
@@ -174,45 +339,210 @@ export default defineConfig({
             link: 'https://legacy-docs.soybeanjs.cn'
           }
         ]
+      },
+      {
+        text: 'Blog',
+        link: '/blogs/',
+        activeMatch: '/blogs/'
       }
     ],
     sidebar: {
       '/guide/': [
         {
-          text: 'Start',
-          link: '/guide/'
+          text: 'Getting Started',
+          items: [
+            {
+              text: 'Introduction',
+              link: '/guide/intro'
+            },
+            {
+              text: 'Quick Start',
+              link: '/guide/quick-start'
+            }
+          ]
         },
         {
-          text: 'Introduction',
-          link: '/guide/introduction'
+          text: 'Theme',
+          items: [
+            {
+              text: 'Introduction',
+              link: '/guide/theme/intro'
+            },
+            {
+              text: 'Config',
+              link: '/guide/theme/config'
+            },
+            {
+              text: 'Theme Tokens',
+              link: '/guide/theme/tokens'
+            },
+            {
+              text: 'UnoCSS Theme',
+              link: '/guide/theme/unocss'
+            },
+            {
+              text: 'UI Theme',
+              link: '/guide/theme/ui'
+            },
+            {
+              text: 'Loading',
+              link: '/guide/theme/loading'
+            },
+            {
+              text: 'Logo',
+              link: '/guide/theme/logo'
+            }
+          ]
         },
         {
-          text: 'System Loading',
-          link: '/guide/loading'
+          text: 'Icon',
+          items: [
+            {
+              text: 'Introduction',
+              link: '/guide/icon/intro'
+            },
+            {
+              text: 'Usage',
+              link: '/guide/icon/usage'
+            }
+          ]
         },
         {
-          text: 'System Theme',
-          link: '/guide/theme'
+          text: 'Router',
+          items: [
+            {
+              text: 'Introduction',
+              link: '/guide/router/intro'
+            },
+            {
+              text: 'Router Creation',
+              link: '/guide/router/create'
+            },
+            {
+              text: 'Router Instruction',
+              link: '/guide/router/instruction'
+            },
+            {
+              text: 'Router Cache',
+              link: '/guide/router/cache'
+            },
+            {
+              text: 'Router Guard',
+              link: '/guide/router/guard'
+            }
+          ]
         },
         {
-          text: 'System Icon',
-          link: '/guide/icon'
+          text: 'Request',
+          items: [
+            {
+              text: 'Introduction',
+              link: '/guide/request/intro'
+            },
+            {
+              text: 'Usage',
+              link: '/guide/request/usage'
+            },
+            {
+              text: 'Proxy',
+              link: '/guide/request/proxy'
+            },
+            {
+              text: 'Connect Backend',
+              link: '/guide/request/backend'
+            }
+          ]
         },
         {
-          text: 'System Router',
-          link: '/guide/router'
-        },
-        {
-          text: 'Router Guard',
-          link: '/guide/router-guard'
-        },
-        {
-          text: 'System Request',
-          link: '/guide/request'
+          text: 'Command Line',
+          items: [
+            {
+              text: 'Introduction',
+              link: '/guide/cli/intro'
+            },
+            {
+              text: 'Command',
+              link: '/guide/cli/command'
+            }
+          ]
         }
       ],
-      '/faq/': [],
-      '/standard/': []
+      '/standard/': [
+        {
+          text: 'Standard',
+          link: '/standard/'
+        },
+        {
+          text: 'Naming',
+          link: '/standard/naming'
+        },
+        {
+          text: 'Vue Writing',
+          link: '/standard/vue'
+        },
+        {
+          text: 'TS Writing',
+          link: '/standard/ts'
+        },
+        {
+          text: 'Synthesis',
+          link: '/standard/synthesis'
+        },
+        {
+          text: 'Tools',
+          link: '/standard/tools'
+        }
+      ],
+      '/tutorial/': [
+        {
+          text: 'Preface',
+          link: '/tutorial/'
+        },
+        {
+          text: 'Git Installation',
+          link: '/tutorial/git'
+        },
+        {
+          text: 'NodeJS Installation',
+          link: '/tutorial/nodejs'
+        },
+        {
+          text: 'Debug Tutorial',
+          link: '/tutorial/debug'
+        },
+        {
+          text: 'Common Software Installation',
+          link: '/tutorial/software'
+        },
+        {
+          text: 'Other',
+          link: '/tutorial/software'
+        }
+      ],
+      '/blogs/': [
+        {
+          text: 'Blog',
+          link: '/blogs/'
+        },
+        {
+          text: 'Advanced Tutorial',
+          items: [
+            {
+              text: 'Develop a Dependency Package',
+              link: '/blogs/advanced/pkg'
+            }
+          ]
+        },
+        {
+          text: 'Daily',
+          items: [
+            {
+              text: '2024-03-30',
+              link: '/blogs/daily/2024-03-30'
+            }
+          ]
+        }
+      ]
     }
   }
 });
