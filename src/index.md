@@ -14,10 +14,10 @@ hero:
   actions:
     - theme: brand
       text: Start
-      link: /guide/
+      link: /guide/quick-start
     - theme: alt
       text: Introduction
-      link: /guide/introduction
+      link: /guide/intro
     - theme: alt
       text: View on GitHub
       link: https://github.com/soybeanjs/soybean-admin

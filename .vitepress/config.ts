@@ -24,7 +24,7 @@ export default defineConfig({
           copyright: 'Copyright © 2021 Soybean'
         },
         nav: [
-          { text: '指引', link: '/zh/guide/introduction', activeMatch: '/zh/guide/' },
+          { text: '指引', link: '/zh/guide/intro', activeMatch: '/zh/guide/' },
           { text: '常见问题', link: '/zh/faq/', activeMatch: '/zh/faq/' },
           { text: '规范', link: '/zh/standard/', activeMatch: '/zh/standard/' },
           { text: '教程', link: '/zh/tutorial/', activeMatch: '/zh/tutorial/' },
@@ -307,7 +307,7 @@ export default defineConfig({
       copyright: 'Copyright © 2021 Soybean'
     },
     nav: [
-      { text: 'Guide', link: '/guide/introduction', activeMatch: '/guide/' },
+      { text: 'Guide', link: '/guide/intro', activeMatch: '/guide/' },
       { text: 'FAQ', link: '/faq/', activeMatch: '/faq/' },
       { text: 'Standard', link: '/standard/', activeMatch: '/standard/' },
       { text: 'Tutorial', link: '/tutorial/', activeMatch: '/tutorial/' },
@@ -341,7 +341,7 @@ export default defineConfig({
         ]
       },
       {
-        text: 'Blog',
+        text: 'Blogs',
         link: '/blogs/',
         activeMatch: '/blogs/'
       }
@@ -521,7 +521,7 @@ export default defineConfig({
       ],
       '/blogs/': [
         {
-          text: 'Blog',
+          text: 'Blogs',
           link: '/blogs/'
         },
         {

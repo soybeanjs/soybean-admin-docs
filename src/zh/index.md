@@ -14,10 +14,10 @@ hero:
   actions:
     - theme: brand
       text: 开始
-      link: /zh/guide/
+      link: /zh/guide/quick-start
     - theme: alt
       text: 介绍
-      link: /zh/guide/introduction
+      link: /zh/guide/intro
     - theme: alt
       text: 在 GitHub 上查看
       link: https://github.com/soybeanjs/soybean-admin
