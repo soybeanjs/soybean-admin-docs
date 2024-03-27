@@ -62,7 +62,7 @@ SoybeanAdmin 的项目配置默认是  `localStorage` , 初始化时对项目�
   src/typings/router.d.ts
   :::
 
-跳转查看 [`RouteMeta`](../guide/router.md#类型说明)
+跳转查看 [`RouteMeta`](../guide/router/intro.md#配置属性)
 
 **解决方案:**
 

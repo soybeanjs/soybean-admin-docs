@@ -1,18 +1,32 @@
-# 系统请求
+# 请求
 
-## 请求配置
-
-### 多个请求环境
+## 多个请求环境
 
 开发项目经常会用到多个请求环境地址：如用户开发环境的后台地址、用于测试环境的后台地址、用于预生产环境的后台地址和用于生产环境的地址等
 
-在 `env-config.ts` 文件里面添加不同的请求环境地址
+在环境文件中配置多个请求地址，然后在请求函数中根据环境变量来判断使用哪个请求地址
 
-### 创建请求函数
+目前项目的环境文件有
 
-在 src/service/request/index.ts 里面创建请求函数
+`.env.prod`, `.env.test`
 
-1. **选择创建请求函数：createRequest 和 createFlatRequest**
+## 请求相关配置介绍
+
+`.env` 文件中的配置项
+
+- `VITE_SERVICE_SUCCESS_CODE`: 后端请求成功的 code
+- `VITE_SERVICE_LOGOUT_CODES`: 后端请求失败并需要用户退出登录的 code，多个 code 用 `,` 分隔
+- `VITE_SERVICE_MODAL_LOGOUT_CODES`: 后端请求失败并需要用户退出登录的 code（通过弹窗形式提醒），多个 code 用 `,` 分隔
+- `VITE_SERVICE_EXPIRED_TOKEN_CODES`: 后端请求失败并刷新 token 的 code，多个 code 用 `,` 分隔
+
+`.env.test` 或 `.env.prod` 文件中的配置项
+
+- `VITE_SERVICE_BASE_URL`: 请求的基础地址
+- `VITE_OTHER_SERVICE_BASE_URL`: 其他请求的基础地址
+
+### 请求函数介绍
+
+1. **请求函数：createRequest 和 createFlatRequest**
 
 `createRequest`: 返回的请求实例直接返回 Axios 响应数据（可转换)
 
@@ -50,75 +64,5 @@ interface RequestOption<ResponseData = any> {
    * 当请求失败时调用的函数(包括请求失败和后端业务上的失败请求)，例如：处理错误信息
    */
   onError: (error: AxiosError<ResponseData>) => void | Promise<void>;
-}
-```
-
-3. **导出创建的请求函数，在 api 文件夹下的文件里引入创建好的请求函数**
-
-例如：
-
-```typescript
-import { BACKEND_ERROR_CODE, NO_PERMISSION, createFlatRequest } from '@sa/axios';
-import { localStg } from '@/utils/storage';
-import { createProxyPattern, createServiceConfig } from '~/env.config';
-
-const { baseURL, otherBaseURL } = createServiceConfig(import.meta.env);
-
-const isHttpProxy = import.meta.env.VITE_HTTP_PROXY === 'Y';
-
-export const request = createFlatRequest<App.Service.Response>(
-  {
-    baseURL: isHttpProxy ? createProxyPattern() : baseURL,
-    headers: {
-      apifoxToken: 'XL299LiMEDZ0H5h3A29PxwQXdMJqWyY2'
-    }
-  },
-  {
-    async onRequest(config) {
-      const { headers } = config;
-
-      const token = localStg.get('token');
-      const Authorization = token ? `Bearer ${token}` : null;
-      Object.assign(headers, { Authorization });
-
-      return config;
-    },
-    isBackendSuccess(response) {
-      return response.data.code === '0000';
-    },
-    async onBackendFail(_response) {
-    },
-    transformBackendResponse(response) {
-      return response.data.data;
-    },
-    onError(error) {
-      let message = error.message;
-
-      if (error.code === BACKEND_ERROR_CODE) {
-        message = error.response?.data?.msg || message;
-      }
-
-      window.$message?.error(message);
-    }
-  }
-);
-```
-
-4. **调用请求函数时，需要传入一个范型，表示该接口请求成功后的数据的类型**
-
-例如：
-
-```typescript
-/**
- * 登录
- *
- * @param loginRes 登录参数
- */
-export function fetchLogin(loginRes: Api.Auth.UserLogin) {
-  return request({
-    url: '/auth/accounts/login',
-    method: 'post',
-    data: loginRes
-  });
 }
 ```

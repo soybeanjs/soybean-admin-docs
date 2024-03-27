@@ -6,8 +6,8 @@
 
 确保你的环境满足以下要求：
 
-- **git**: 你需要git来克隆和管理项目版本。[安装教程](/zh/tutorials/git)
-- **NodeJS**: >=18.0.0，推荐 18.19.0 或更高。[安装教程](/zh/tutorials/nodejs)
+- **git**: 你需要git来克隆和管理项目版本。[安装教程](../tutorial/git.md)
+- **NodeJS**: >=18.0.0，推荐 18.19.0 或更高。[安装教程](../tutorial/nodejs.md)
 - **pnpm**: >= 8.0.0，推荐最新版本。
 
 ## VSCode插件

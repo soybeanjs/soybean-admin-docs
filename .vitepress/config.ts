@@ -136,8 +136,12 @@ export default defineConfig({
                   link: '/zh/guide/router/create'
                 },
                 {
-                  text: '路由说明',
-                  link: '/zh/guide/router/instruction'
+                  text: '路由结构',
+                  link: '/zh/guide/router/structure'
+                },
+                {
+                  text: '路由组件',
+                  link: '/zh/guide/router/component'
                 },
                 {
                   text: '路由缓存',
@@ -190,15 +194,19 @@ export default defineConfig({
               link: '/zh/standard/'
             },
             {
+              text: '格式化检查',
+              link: '/zh/standard/lint'
+            },
+            {
               text: '命名',
               link: '/zh/standard/naming'
             },
             {
-              text: 'Vue 写法',
+              text: 'Vue 写法规范',
               link: '/zh/standard/vue'
             },
             {
-              text: 'TS 写法',
+              text: 'TS 写法规范',
               link: '/zh/standard/ts'
             },
             {
@@ -206,7 +214,7 @@ export default defineConfig({
               link: '/zh/standard/synthesis'
             },
             {
-              text: '工具',
+              text: '工具规范',
               link: '/zh/standard/tools'
             }
           ],
@@ -245,7 +253,7 @@ export default defineConfig({
               text: '高阶教程',
               items: [
                 {
-                  text: '开发一个依赖包',
+                  text: '开发依赖包',
                   link: '/zh/blogs/advanced/pkg'
                 }
               ]
@@ -415,15 +423,19 @@ export default defineConfig({
               link: '/guide/router/intro'
             },
             {
-              text: 'Router Creation',
+              text: 'Route Creation',
               link: '/guide/router/create'
             },
             {
-              text: 'Router Instruction',
-              link: '/guide/router/instruction'
+              text: 'Route Structure',
+              link: '/guide/router/structure'
             },
             {
-              text: 'Router Cache',
+              text: 'Route Component',
+              link: '/guide/router/component'
+            },
+            {
+              text: 'Route Cache',
               link: '/guide/router/cache'
             },
             {
@@ -473,15 +485,19 @@ export default defineConfig({
           link: '/standard/'
         },
         {
+          text: 'Lint',
+          link: '/standard/lint'
+        },
+        {
           text: 'Naming',
           link: '/standard/naming'
         },
         {
-          text: 'Vue Writing',
+          text: 'Vue Writing Style',
           link: '/standard/vue'
         },
         {
-          text: 'TS Writing',
+          text: 'TS Writing Style',
           link: '/standard/ts'
         },
         {
@@ -528,7 +544,7 @@ export default defineConfig({
           text: 'Advanced Tutorial',
           items: [
             {
-              text: 'Develop a Dependency Package',
+              text: 'Develop Package',
               link: '/blogs/advanced/pkg'
             }
           ]

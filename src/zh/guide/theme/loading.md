@@ -1,6 +1,6 @@
 # 系统加载
 
-![](../../assets/loading01.png)
+![](../../../assets/loading01.png)
 
 ## 样式
 
@@ -12,7 +12,7 @@
 
 - 系统的 Logo 使用 SystemLogo 组件实现
 
-  [系统图标方案](icon.md)
+  [系统Logo](./logo.md)
 
 ## 渲染原理
 
