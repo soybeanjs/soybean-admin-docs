@@ -8,11 +8,11 @@
 
 ```ts
 type Response<T = unknown> = {
-  /** 后端请求编码 */
+  /** 业务状态码 */
   code: string;
-  /** 后端请求消息 */
+  /** 响应信息 */
   msg: string;
-  /** 后端请求数据 */
+  /** 响应数据 */
   data: T;
 };
 ```
