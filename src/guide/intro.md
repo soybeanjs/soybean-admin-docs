@@ -18,12 +18,12 @@
 
 ## Version
 
-- **NaiveUI Version:**
+- **Naive UI:**
   - [Preview Link](https://naive.soybeanjs.cn/)
   - [Github Repository](https://github.com/soybeanjs/soybean-admin)
   - [Gitee Repository](https://gitee.com/honghuangdc/soybean-admin)
 
-- **AntDesignVue Version:**
+- **Ant Design Vue:**
   - [Preview Link](https://antd.soybeanjs.cn/)
   - [Github Repository](https://github.com/soybeanjs/soybean-admin-antd)
   - [Gitee Repository](https://gitee.com/honghuangdc/soybean-admin-antd)
@@ -37,9 +37,9 @@
 
 - The documentation address is [soybean-admin-docs](https://github.com/soybeanjs/soybean-admin-docs), developed with Vitepress. If you find any errors in the documentation, please help us improve by submitting a pr.
 
-## Basic knowledge you need to master
+## Pre-Requisite Knowledge
 
-This project is based on Vue3, Vite, TS development, and all use Vue3's **script-setup** method. It is recommended to learn the following content before development, understanding and learning these knowledge in advance will be very helpful for understanding the project:
+This project is based on Vue3, Vite, and TS development, and all use Vue3's **script-setup** method. It is recommended to learn the following content before development; understanding and learning this knowledge in advance will be beneficial for understanding the project:
 
 - [ES6](https://es6.ruanyifeng.com/)
 - [Vue3](https://vuejs.org/)

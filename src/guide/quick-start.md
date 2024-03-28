@@ -10,11 +10,11 @@ Make sure your environment meets the following requirements:
 - **NodeJS**: >=18.0.0, recommended 18.19.0 or higher. [Install Tutorial](/tutorial/nodejs)
 - **pnpm**: >= 8.0.0, recommended latest version.
 
-## VSCode Plugins
+## VSCode Extensions
 
-This project recommends using VSCode for development, and the project has built-in VSCode configurations, including recommended plugins and settings.
+We recommend using VSCode for development, and the project has built-in VSCode configurations, including recommended extensions and settings.
 
-The following are the recommended plugins:
+Recommended extensions list:
 
 - [Auto Close Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag) - Automatically add HTML/XML closing tags
 - [Auto Complete Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-complete-tag) - Add closing tags and automatically rename paired tags for HTML/XML
@@ -36,16 +36,16 @@ The following are the recommended plugins:
 - [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - Vue service plugin
 - [Vue VSCode Snippets](https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-snippets) - Vue2, Vue3 writing hint plugin
 
-## Getting the Code
+## Code Repositories
 
-### Get the Code from GitHub
+### GitHub
 
 ```bash
 # Clone the code
 git clone https://github.com/soybeanjs/soybean-admin.git
 ```
 
-### Get code from Gitee
+### Gitee
 
 ```bash
 # Clone the code
@@ -64,10 +64,10 @@ Install project dependencies
 pnpm i
 ```
 
-## Plugin configuration
-### Install Vue - Official, disable Vetur
+## Extension Configuration
+### Install Vue - Official and disable Vetur
 
-- [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - Vue service plugin
+- [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - ⚡Fast Vue Language Support Extension
 
 ## npm scripts
 
@@ -106,8 +106,8 @@ pnpm i
 
 ```
 soybean-admin
-├── .vscode                        // vscode plugins and settings
-│   ├── extensions.json            // recommended vscode plugins
+├── .vscode                        // vscode extensions and settings
+│   ├── extensions.json            // recommended vscode extensions
 │   ├── launch.json                // debug configuration file (debug Vue and TS)
 │   └── settings.json              // vscode configuration (effective in this project, can be copied to user configuration file)
 ├── build                          // vite build related configuration and plugins
