@@ -1,29 +1,44 @@
-# System Request
+# Request
 
-## Request Configuration
-
-### Multiple Request Environments
+## Multiple Request Environments
 
 Development projects often use multiple request environment addresses: such as the backend address for the user development environment, the backend address for the test environment, the backend address for the pre-production environment, and the address for the production environment, etc.
 
-Add different request environment addresses in the `env-config.ts` file.
+Configure multiple request addresses in the environment file, and then determine which request address to use in the request function based on the environment variable.
 
-### Create Request Function
+The current project's environment files are
 
-Create request functions in src/service/request/index.ts.
+`.env.prod`, `.env.test`
 
-1. **Choose to create request function: createRequest and createFlatRequest**
+## Introduction to Request Related Configuration
 
-`createRequest`: The returned request instance directly returns Axios response data (convertible).
+Configuration items in the `.env` file
 
-`createFlatRequest`: The returned request instance will wrap the response data and error information in a flat object, returning the result in a unified format.
+- `VITE_SERVICE_SUCCESS_CODE`: The code for successful backend requests
+- `VITE_SERVICE_LOGOUT_CODES`: The code for backend request failures that require the user to log out, multiple codes are separated by `,`
+- `VITE_SERVICE_MODAL_LOGOUT_CODES`: The code for backend request failures that require the user to log out (reminded by popup), multiple codes are separated by `,`
+- `VITE_SERVICE_EXPIRED_TOKEN_CODES`: The code for backend request failures and refresh token, multiple codes are separated by `,`
+
+Configuration items in the `.env.test` or `.env.prod` file
+
+- `VITE_SERVICE_BASE_URL`: The base address for requests
+- `VITE_OTHER_SERVICE_BASE_URL`: The base address for other requests
+
+### Introduction to Request Functions
+
+1. **Request functions: createRequest and createFlatRequest**
+
+`createRequest`: The returned request instance directly returns Axios response data (convertible)
+
+`createFlatRequest`: The returned request instance will wrap the response data and error information in a flat object, and return the result in a unified format.
 
 
-2. **createRequest/createFlatRequest Parameters**
+2. **Parameters for createRequest/createFlatRequest**
 
 `axiosConfig`: axios configuration, input baseUrl, define some other configurations: such as: request timeout, request header, etc.
 
-`options`: Configure input verification and other logic (see `RequestOption` below).
+`options`: Configure input validation and other logic (see `RequestOption` below)
+
 
 ```ts
 interface RequestOption<ResponseData = any> {
@@ -50,75 +65,5 @@ interface RequestOption<ResponseData = any> {
    * The function called when the request fails (including request failure and backend business failure request), for example: handle error information
    */
   onError: (error: AxiosError<ResponseData>) => void | Promise<void>;
-}
-```
-
-3. **Export the created request function, and import the created request function in the file under the api folder**
-
-For example:
-
-```typescript
-import { BACKEND_ERROR_CODE, NO_PERMISSION, createFlatRequest } from '@sa/axios';
-import { localStg } from '@/utils/storage';
-import { createProxyPattern, createServiceConfig } from '~/env.config';
-
-const { baseURL, otherBaseURL } = createServiceConfig(import.meta.env);
-
-const isHttpProxy = import.meta.env.VITE_HTTP_PROXY === 'Y';
-
-export const request = createFlatRequest<App.Service.Response>(
-  {
-    baseURL: isHttpProxy ? createProxyPattern() : baseURL,
-    headers: {
-      apifoxToken: 'XL299LiMEDZ0H5h3A29PxwQXdMJqWyY2'
-    }
-  },
-  {
-    async onRequest(config) {
-      const { headers } = config;
-
-      const token = localStg.get('token');
-      const Authorization = token ? `Bearer ${token}` : null;
-      Object.assign(headers, { Authorization });
-
-      return config;
-    },
-    isBackendSuccess(response) {
-      return response.data.code === '0000';
-    },
-    async onBackendFail(_response) {
-    },
-    transformBackendResponse(response) {
-      return response.data.data;
-    },
-    onError(error) {
-      let message = error.message;
-
-      if (error.code === BACKEND_ERROR_CODE) {
-        message = error.response?.data?.msg || message;
-      }
-
-      window.$message?.error(message);
-    }
-  }
-);
-```
-
-4. **When calling the request function, you need to pass in a generic, which represents the type of data after the interface request is successful**
-
-For example:
-
-```typescript
-/**
- * Login
- *
- * @param loginRes Login parameters
- */
-export function fetchLogin(loginRes: Api.Auth.UserLogin) {
-  return request({
-    url: '/auth/accounts/login',
-    method: 'post',
-    data: loginRes
-  });
 }
 ```

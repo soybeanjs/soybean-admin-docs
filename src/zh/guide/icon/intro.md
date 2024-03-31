@@ -11,7 +11,7 @@
 
 ## 本地 svg 图标渲染原理
 
-通过 unplugin-icons 插件 与 vite-plugin-svg-icons 插件，将本地 svg 文件转换成 vue 组件
+通过 `unplugin-icons` 插件 与 `vite-plugin-svg-icons` 插件，将本地 svg 文件转换成 vue 组件
 
 > 本地 svg 图标需要放在 src/assets/svg-icon 目录下
 
