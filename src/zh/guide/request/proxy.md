@@ -20,11 +20,11 @@
 
 在 `@/service/request/index.ts` 里，通过给 `getServiceBaseURL` 的第二个参数传入根据代码运行环境与 `VITE_HTTP_PROXY` 共同判断出的 `isHttpProxy` 来决定该URL是否需要处理代理，您可以在这里通过传入不同的参数解构获取所需的请求URL
 
-::: tip 示例
+```
 const isHttpProxy = import.meta.env.DEV && import.meta.env.VITE_HTTP_PROXY === 'Y';
 const { baseURL } = getServiceBaseURL(import.meta.env, isHttpProxy);
 const { otherBaseURL } = getServiceBaseURL(import.meta.env, false);
-:::
+```
 
 ## 原理
 
