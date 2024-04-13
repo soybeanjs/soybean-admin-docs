@@ -150,6 +150,10 @@ export default defineConfig({
                 {
                   text: '路由守卫',
                   link: '/zh/guide/router/guard'
+                },
+                {
+                  text: '路由跳转',
+                  link: '/zh/guide/router/push'
                 }
               ]
             },
@@ -441,6 +445,10 @@ export default defineConfig({
             {
               text: 'Router Guard',
               link: '/guide/router/guard'
+            },
+            {
+              text: 'Router Push',
+              link: '/guide/router/push'
             }
           ]
         },
