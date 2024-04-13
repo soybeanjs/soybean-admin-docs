@@ -188,6 +188,10 @@ export default defineConfig({
                 {
                   text: '命令',
                   link: '/zh/guide/cli/command'
+                },
+                {
+                  text: 'Git Hooks',
+                  link: '/zh/guide/cli/git-hooks'
                 }
               ]
             }
@@ -483,6 +487,10 @@ export default defineConfig({
             {
               text: 'Command',
               link: '/guide/cli/command'
+            },
+            {
+              text: 'Git Hooks',
+              link: '/guide/cli/git-hooks'
             }
           ]
         }
