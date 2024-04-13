@@ -27,9 +27,9 @@
 
 ```json
 {
-  "name": "Soybean",
-  "path": "/soybean",
-  "component": "layout.base$view.soybean"
+  "name": "soybean",
+  "path": "/soybean-page",
+  "component": "layout.base$view.soybean-page"
 }
 ```
 
@@ -40,7 +40,7 @@ import { useRouterPush } from '@/hooks/common/router';
 
 const { routerPushByKey } = useRouterPush();
 
-routerPushByKey('Soybean')
+routerPushByKey('soybean')
 ```
 
 它支持传入可选参数 `query` 或是 `params`。
