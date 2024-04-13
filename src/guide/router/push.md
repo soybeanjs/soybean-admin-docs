@@ -31,9 +31,9 @@ The `key` here refers to the `name` attribute of the route, e.g. a route configu
 
 ```json
 {
-  "name": "Soybean",
-  "path": "/soybean",
-  "component": "layout.base$view.soybean"
+  "name": "soybean",
+  "path": "/soybean-page",
+  "component": "layout.base$view.soybean-page"
 }
 ```
 
@@ -44,7 +44,7 @@ import { useRouterPush } from '@/hooks/common/router';
 
 const { routerPushByKey } = useRouterPush();
 
-routerPushByKey('Soybean')
+routerPushByKey('soybean')
 ```
 
 It supports passing optional parameters `query` or `params`.
