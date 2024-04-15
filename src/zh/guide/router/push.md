@@ -5,7 +5,6 @@
 ## 介绍
 
 该hook对 `router.push` 进行二次封装，主要目的是代替 `router.push` 使用，通过该hook可更便捷得进行跳转， `useRouterPush` 返回一个对象，包含以下属性和方法：
- - route: 当前路由对象。
  - routerPush: Vue Router 的 push 方法。
  - routerBack: Vue Router 的 back 方法。
  - routerPushByKey: 根据路由key跳转的方法。
@@ -19,7 +18,7 @@
 
 ## 详细说明
 
-`route`、`routerPush` 和 `routerBack` 都是原有属性，就不再赘述了，这里主要介绍一下后面几个。
+`routerPush` 和 `routerBack` 都是原有属性，就不再赘述了，这里主要介绍一下后面几个。
 
 ### routerPushByKey
 
