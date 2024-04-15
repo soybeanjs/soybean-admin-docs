@@ -9,7 +9,6 @@ In the project, you can use normal `router.push` and other conventional ways to 
 ## Introduce
 
 This hook encapsulates `router.push` and is intended to be used in place of `router.push` to make jumping easier. `useRouterPush` returns an object containing the following properties and methods:
-  - route: The current route object.
   - routerPush: The push method of the Vue Router.
   - routerBack: The back method of the Vue Router.
   - routerPushByKey: The method to push based on the route key.
@@ -23,7 +22,7 @@ Pass `false` to `useRouterPush` when used outside of `setup`.
 
 ## explanation
 
-`route`, `routerPush` and `routerBack` are all original attributes, so I won't go into them again, but I'll focus on the latter ones here.
+`routerPush` and `routerBack` are all original attributes, so I won't go into them again, but I'll focus on the latter ones here.
 
 ### routerPushByKey
 
