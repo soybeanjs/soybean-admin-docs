@@ -21,3 +21,7 @@ By using the `unplugin-icons` plugin and `vite-plugin-svg-icons` plugin, local s
 
 - VITE_ICON_PREFIX: iconify icon prefix
 - VITE_ICON_LOCAL_PREFIX: local svg icon prefix, the format follows {VITE_ICON_PREFIX}-{local icon name}
+
+## Note
+
+Based on the rendering mechanism of svg icons, once the svg files are loaded and transformed into components, they become a part of your project and will not automatically detect and update any changes made to the source files. Therefore, if you modify an svg file and want to see the changes in your project, you need to restart the project.

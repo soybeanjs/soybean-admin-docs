@@ -21,3 +21,7 @@
 
 - VITE_ICON_PREFIX: iconify 图标前缀
 - VITE_ICON_LOCAL_PREFIX: 本地 svg 图标前缀，格式遵循 {VITE_ICON_PREFIX}-{local icon name}
+
+## 请注意
+
+>根据 svg 图标渲染原理，已被转换为静态资源，这意味着一旦 svg 文件被加载并转换为组件，它们将成为您项目的一部分，不会自动检测和更新源文件的更改。因此，如果您修改了 svg 文件并希望在项目中看到更改的效果，您需要重新启动项目。
