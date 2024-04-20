@@ -192,7 +192,16 @@ export default defineConfig({
                   link: '/zh/guide/cli/git-hooks'
                 }
               ]
-            }
+            },
+            {
+              text: 'Hooks 函数',
+              items: [
+                {
+                  text: 'useTable',
+                  link: 'zh/guide/hooks/use-table'
+                }
+              ]
+            },
           ],
           '/zh/standard/': [
             {
@@ -491,7 +500,16 @@ export default defineConfig({
               link: '/guide/cli/git-hooks'
             }
           ]
-        }
+        },
+        {
+          text: 'Hooks Function',
+          items: [
+            {
+              text: 'useTable',
+              link: '/guide/hooks/use-table'
+            }
+          ]
+        },
       ],
       '/standard/': [
         {
