@@ -1,5 +1,3 @@
-import process from 'node:process';
-import path from 'node:path';
 import { defineConfig } from 'vitepress';
 import { qqSvg } from './icon.js';
 
@@ -299,8 +297,8 @@ export default defineConfig({
     ],
     ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
-  assetsDir: path.join(process.cwd(), 'public'),
-  srcDir: path.join(process.cwd(), 'src'),
+  assetsDir: 'public',
+  srcDir: 'src',
   themeConfig: {
     logo: '/logo.svg',
     socialLinks: [
