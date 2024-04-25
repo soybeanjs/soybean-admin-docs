@@ -16,6 +16,10 @@
   "bugs": {
     "url": "https://github.com/soybeanjs/soybean-admin-docs/issues"
   },
+  "engines": {
+    "node": ">=18.12.0",
+    "pnpm": ">=8.7.0"
+  },
   "scripts": {
     "build": "vitepress build",
     "cleanup": "soy cleanup",
