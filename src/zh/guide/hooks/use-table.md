@@ -143,7 +143,19 @@ useTable 是一个专为 SoybeanAdmin 设计的表格数据处理函数，它提
   immediate: true
   ```
 
+### `showTotal`
 
+- **类型**: `boolean`
+
+- **描述**: 控制是否在表格分页前边显示总条数（移动端默认不显示）。
+
+- **默认值**: `false`
+
+- **示例**:
+
+  ```javascript
+  showTotal: true
+  ```
 
 ## 主要功能及函数
 
