@@ -142,6 +142,19 @@ By reading this document, you will learn about:
   immediate: true
   ```
 
+### `showTotal`
+
+- **Type**: `boolean`
+
+- **Description**: Control whether to display the total number of records before the table pagination(Not displayed by default on mobile).
+
+- **Default Value**: `false`
+
+- **Example**:
+
+  ```javascript
+  showTotal: true
+  ```
 
 
 ## Main Features and Functions
