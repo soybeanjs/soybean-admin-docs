@@ -411,3 +411,66 @@ The entire project is a single-page application, so it does not support loading 
 **Solution**
 
 Integrate the `vite-plugin-mpa` plugin.
+
+## Refresh after Packaging, Page 404
+
+**Background**
+
+After building the project:
+
+- Development Environment: Using plugins like live server to locally launch the packaged index.html, refreshing the page results in a 404 error.
+- Production Environment: Deploying to a server and refreshing the page results in a 404 error.
+
+**Cause of the Problem**
+
+The default routing mode used by the system is the `history` mode. However, web servers like `Nginx` are based on static files by default. When requesting addresses like `/login`, `Nginx` will search for a `login.html` file. If it cannot find it, it will report a 404 error. Therefore, this mode requires the backend to cooperate by redirecting all access to `index.html`, leaving the specific routing information to be handled by `vue-router`.
+
+**Solution**
+
+Previewing Packaging Products in the Development Environment:
+
+- Use the `pnpm preview` command to start previewing.
+
+Production Environment:
+
+- `Nginx` Configuration Reference (Please search for other web servers)
+
+```java
+# nginx.conf
+
+server {
+  listen 80;
+  listen [::]:80;
+  server_name localhost;
+
+  location / {
+    root /usr/share/nginx/html;
+    index index.html index.htm;
+    try_files $uri $uri/ /index.html; // [!code ++]
+  }
+
+  error_page 500 502 503 504 /50x.html;
+  location = /50x.html {
+    root /usr/share/nginx/html;
+  }
+}
+```
+
+- Modifying the Routing Mode
+
+If you cannot modify the web server, you can avoid this problem by changing the frontend routing mode to `hash`.
+
+::: tip Code Location
+./env
+:::
+
+```dotenv{5}
+# whether to enable http proxy when is dev mode
+VITE_HTTP_PROXY=Y
+
+# vue-router mode: hash | history | memory // [!code focus:2]
+VITE_ROUTER_HISTORY_MODE=hash
+
+# success code of backend service, when the code is received, the request is successful
+VITE_SERVICE_SUCCESS_CODE=0000
+```
