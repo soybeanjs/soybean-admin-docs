@@ -407,3 +407,63 @@ server {
 **解决方案**
 
 集成 `vite-plugin-mpa` 插件。
+
+## 打包后刷新，页面404
+
+**问题背景**
+
+项目build之后：
+- 开发环境： 用live server等插件在本地启动打包后的index.html，刷新页面404
+- 生产环境： 部署到服务器，刷新页面404
+
+**问题原因**
+
+系统默认使用的路由模式是 `history` 模式，而 `Nginx` 等web服务器默认是基于静态文件的，在请求 `/login` 等地址的时候，`Nginx` 会去寻找 `login.html` 这个文件，找不到就会报404了，所以该模式需要后端配合将所有访问都指向 `index.html`，将具体的路由信息交由 `vue-router` 处理。
+
+**解决方案**
+
+开发环境预览打包产物：
+- 使用 `pnpm preview` 命令启动预览。
+
+生产环境：
+- `Nginx` 配置参考（其他web服务器自行搜索）
+
+```java
+# nginx.conf
+
+server {
+  listen 80;
+  listen [::]:80;
+  server_name localhost;
+
+  location / {
+    root /usr/share/nginx/html;
+    index index.html index.htm;
+    try_files $uri $uri/ /index.html; // [!code ++]
+  }
+
+  error_page 500 502 503 504 /50x.html;
+  location = /50x.html {
+    root /usr/share/nginx/html;
+  }
+}
+```
+
+- 修改路由模式
+
+如果无法修改web服务器，可以通过修改前端路由模式为 `hash` 避免该问题
+
+::: tip 代码位置
+./env
+:::
+
+```dotenv{5}
+# whether to enable http proxy when is dev mode
+VITE_HTTP_PROXY=Y
+
+# vue-router mode: hash | history | memory // [!code focus:2]
+VITE_ROUTER_HISTORY_MODE=hash
+
+# success code of backend service, when the code is received, the request is successful
+VITE_SERVICE_SUCCESS_CODE=0000
+```
