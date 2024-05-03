@@ -152,6 +152,10 @@ export default defineConfig({
                 {
                   text: '路由跳转',
                   link: '/zh/guide/router/push'
+                },
+                {
+                  text: '路由权限',
+                  link: '/zh/guide/router/dynamic'
                 }
               ]
             },
@@ -460,6 +464,10 @@ export default defineConfig({
             {
               text: 'Router Push',
               link: '/guide/router/push'
+            },
+            {
+              text: 'Router Dynamic',
+              link: '/guide/router/dynamic'
             }
           ]
         },
