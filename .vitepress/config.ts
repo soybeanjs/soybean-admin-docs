@@ -26,6 +26,7 @@ export default defineConfig({
           { text: '常见问题', link: '/zh/faq/', activeMatch: '/zh/faq/' },
           { text: '规范', link: '/zh/standard/', activeMatch: '/zh/standard/' },
           { text: '教程', link: '/zh/tutorial/', activeMatch: '/zh/tutorial/' },
+          { text: '生态', link: '/zh/awesome/', activeMatch: '/zh/awesome/' },
           {
             text: '捐赠',
             link: '/zh/other/donate'
@@ -338,6 +339,7 @@ export default defineConfig({
       { text: 'FAQ', link: '/faq/', activeMatch: '/faq/' },
       { text: 'Standard', link: '/standard/', activeMatch: '/standard/' },
       { text: 'Tutorial', link: '/tutorial/', activeMatch: '/tutorial/' },
+      { text: 'EcoSystem', link: '/awesome/', activeMatch: '/awesome/' },
       {
         text: 'Donate',
         link: '/other/donate'
