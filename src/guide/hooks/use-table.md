@@ -142,7 +142,7 @@ By reading this document, you will learn about:
   immediate: true
   ```
 
-### `showTotal`
+#### `showTotal` <sup class="vt-badge"> v1.1.0+ </sup>
 
 - **Type**: `boolean`
 

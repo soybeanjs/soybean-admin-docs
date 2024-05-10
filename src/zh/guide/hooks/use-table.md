@@ -143,7 +143,7 @@ useTable 是一个专为 SoybeanAdmin 设计的表格数据处理函数，它提
   immediate: true
   ```
 
-### `showTotal`
+#### `showTotal` <sup class="vt-badge"> v1.1.0+ </sup>
 
 - **类型**: `boolean`
 
