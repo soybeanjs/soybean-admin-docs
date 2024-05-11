@@ -32,6 +32,9 @@
   - [Preview Link](https://legacy.soybeanjs.cn/)
   - [Github Repository](https://github.com/soybeanjs/soybean-admin/tree/legacy)
 
+## Branch
+
+For the convenience of users, the main branch defaults to a simplified version, retaining only the core framework content and not including high business examples. If you need more example references, you can switch to the `example` branch, which previews the content presented by the address and includes the complete example menu.
 
 ## Documentation
 
