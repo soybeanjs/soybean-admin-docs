@@ -27,10 +27,14 @@
   - [预览地址](https://antd.soybeanjs.cn/)
   - [Github 仓库](https://github.com/soybeanjs/soybean-admin-antd)
   - [Gitee 仓库](https://gitee.com/honghuangdc/soybean-admin-antd)
-  -
+
 - **旧版:**
   - [预览地址](https://legacy.soybeanjs.cn/)
   - [Github 仓库](https://github.com/soybeanjs/soybean-admin/tree/legacy)
+
+## 分支
+
+为方便用户使用，main分支默认采用精简版，只保留核心框架内容，不包含业务性较高的示例，如果您需要更多的示例参考，可以切换到 `example` 分支，该分支即预览地址所呈现的内容，包含完整的示例菜单。
 
 ## 文档
 
