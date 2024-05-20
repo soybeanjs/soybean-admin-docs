@@ -84,7 +84,7 @@ interface RouteMeta {
   activeMenu?: import('@elegant-router/types').RouteKey;
   /** By default, routes with the same path share a tab. If set to true, multiple tabs are used */
   multiTab?: boolean;
-  /** If set, the route will be displayed fixed in the tab, and its value represents the order of the fixed tab */
+  /** If set, the route will be displayed fixed in the tab, and its value represents the order of the fixed tab.(The home page is special, it will automatically stay fixed) */
   fixedIndexInTab?: number;
   /** if set query parameters, it will be automatically carried when entering the route */
   query?: Record<string, string>;

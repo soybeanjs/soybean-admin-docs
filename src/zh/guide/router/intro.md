@@ -85,7 +85,7 @@ interface RouteMeta {
   activeMenu?: import('@elegant-router/types').RouteKey;
   /** 默认情况下，相同路径的路由会共享一个标签页，若设置为true，则使用多个标签页 */
   multiTab?: boolean;
-  /** 若设置，路由将在标签页中固定显示，其值表示固定标签页的顺序 */
+  /** 若设置，路由将在标签页中固定显示，其值表示固定标签页的顺序（首页是特殊的，它将自动保持fixed） */
   fixedIndexInTab?: number;
   /** 路由查询参数，如果设置的话，点击菜单进入该路由时会自动携带的query参数 */
   query?: Record<string, string>;
