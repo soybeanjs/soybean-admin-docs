@@ -7,8 +7,8 @@ This document will help you start the project from scratch.
 Make sure your environment meets the following requirements:
 
 - **git**: You need git to clone and manage project versions. [Install Tutorial](/tutorial/git)
-- **NodeJS**: >=18.0.0, recommended 18.19.0 or higher. [Install Tutorial](/tutorial/nodejs)
-- **pnpm**: >= 8.0.0, recommended latest version.
+- **NodeJS**: >=18.12.0, recommended 18.19.0 or higher. [Install Tutorial](/tutorial/nodejs)
+- **pnpm**: >= 8.7.0, recommended latest version.
 
 ## VSCode Plugins
 
