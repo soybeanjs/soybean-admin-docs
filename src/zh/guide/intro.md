@@ -34,7 +34,7 @@
 
 ## 分支
 
-为方便用户使用，main分支默认采用精简版，只保留核心框架内容，不包含业务性较高的示例，如果您需要更多的示例参考，可以切换到 `example` 分支，该分支即预览地址所呈现的内容，包含完整的示例菜单。
+为方便用户使用，`main` 分支默认采用精简版，只保留核心框架内容，不包含业务性较高的示例，如果您需要更多的示例参考，可以切换到 `example` 分支，该分支即预览地址所呈现的内容，包含完整的示例菜单。
 
 ## 文档
 
@@ -52,8 +52,7 @@
 - [Pinia](https://pinia.vuejs.org/)
 - [UnoCSS](https://uno.antfu.me/)
 - [VueUse](https://vueuse.org/)
-- [NaiveUI](https://www.naiveui.com/zh-CN/os-theme)
-- [AntDesign Vue](https://www.antdv.com/components/overview-cn/)
+- [NaiveUI](https://www.naiveui.com/zh-CN/os-theme) / [AntDesign Vue](https://www.antdv.com/components/overview-cn/)
 
 ## 浏览器支持
 

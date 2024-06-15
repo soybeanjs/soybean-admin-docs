@@ -34,7 +34,7 @@
 
 ## Branch
 
-For the convenience of users, the main branch defaults to a simplified version, retaining only the core framework content and not including high business examples. If you need more example references, you can switch to the `example` branch, which previews the content presented by the address and includes the complete example menu.
+For the convenience of users, the `main` branch defaults to a simplified version, retaining only the core framework content and not including high business examples. If you need more example references, you can switch to the `example` branch, which previews the content presented by the address and includes the complete example menu.
 
 ## Documentation
 
@@ -52,8 +52,7 @@ This project is based on Vue3, Vite, TS development, and all use Vue3's **script
 - [Pinia](https://pinia.vuejs.org/)
 - [UnoCSS](https://uno.antfu.me/)
 - [VueUse](https://vueuse.org/)
-- [NaiveUI](https://www.naiveui.com/zh-CN/os-theme)
-- [AntDesign Vue](https://www.antdv.com/components/overview-cn/)
+- [NaiveUI](https://www.naiveui.com/zh-CN/os-theme) / [AntDesign Vue](https://www.antdv.com/components/overview-cn/)
 
 ## Browser Support
 
