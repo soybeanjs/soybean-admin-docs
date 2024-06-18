@@ -7,8 +7,6 @@
 项目内有两个相关函数，分别是 `useTable` 和 `useHookTable`， `useTable` 是 `useHookTable` 的一个示例实现，请阅读时注意区分。
 :::
 
-## 目录
-
 [[toc]]
 
 ## 前言
@@ -23,47 +21,47 @@
 
 ### 配置项
 
-- **apiFn**
+- `apiFn`
   - 类型：函数
   - 是否必须：是
   - 说明：用于获取表格数据，这个函数应该返回一个 `Promise`，并且提供完整的参数与返回值类型。
 
-- **apiParams**
+- `apiParams`
   - 类型：对象
   - 是否必须：是
   - 说明：包含调用 `apiFn` 时需要传递的参数。
 
-- **transformer**
+- `transformer`
   - 类型：函数
   - 是否必须：是
   - 说明：用于将 `apiFn` 的响应转换为表格数据。
 
-- **columns**
+- `columns`
   - 类型：函数
   - 是否必须：是
   - 说明：返回一个数组，数组中的每个元素代表一个表格列。
 
-- **getColumnChecks**
+- `getColumnChecks`
   - 类型：函数
   - 是否必须：是
-  - 说明：接收 `columns` 作为参数，返回一个数组，数组中的每个元素是一个对象，包含 key、title 和 checked 属性，分别代表列的键、标题和是否被选中。这个方法并没有自身的实现，它依赖于外部传入。
+  - 说明：接收 `columns` 作为参数，返回一个数组，数组中的每个元素是一个对象，包含 `key`、`title` 和 `checked` 属性，分别代表列的键、标题和是否被选中。这个方法并没有自身的实现，它依赖于外部传入。
 
-- **getColumns**
+- `getColumns`
   - 类型：函数
   - 是否必须：是
   - 说明：接收 `columns` 和 `checks` 作为参数，返回一个新的列数组。
 
-- **getData**
+- `getData`
   - 类型：函数
   - 是否必须：是
   - 说明：用于获取表格数据。
 
-- **onFetched**
+- `onFetched`
   - 类型：函数
   - 是否必须：否
   - 说明：当响应被获取并转换后会被调用，接收转换后的数据作为参数。
 
-- **immediate**
+- `immediate`
   - 类型：布尔值
   - 是否必须：否
   - 说明：是否立即获取数据。
@@ -81,11 +79,11 @@
 
 - `loading`:
   - 类型：布尔值
-  - 说明：表示是否正在加载数据。当 apiFn 被调用时，loading 会被设置为 true，当数据被获取并转换完成后，loading 会被设置为 false。
+  - 说明：表示是否正在加载数据。当 `apiFn` 被调用时，`loading` 会被设置为 `true`，当数据被获取并转换完成后，`loading` 会被设置为 `false`。
 
 - `empty`:
   - 类型：布尔值
-  - 说明：表示获取的数据是否为空。如果 transformer 转换的数据为空数组，那么 empty 会被设置为 true。
+  - 说明：表示获取的数据是否为空。如果 `transformer` 转换的数据为空数组，那么 `empty` 会被设置为 `true`。
 
 - `data`:
   - 类型：数组
@@ -97,27 +95,27 @@
 
 - `columnChecks`:
   - 类型：数组
-  - 说明：包含了列的检查信息。每个元素是一个对象，包含 key、title 和 checked 属性，分别代表列的键、标题和是否被选中。
+  - 说明：包含了列的检查信息。每个元素是一个对象，包含 `key`、`title` 和 `checked` 属性，分别代表列的键、标题和是否被选中。
 
 - `reloadColumns`:
   - 类型：函数
-  - 说明：用于重新加载列。当调用这个函数时，会重新调用 columns 函数获取列，然后使用 getColumnChecks 和 getColumns 来确定哪些列应该被展示。
+  - 说明：用于重新加载列。当调用这个函数时，会重新调用 `columns` 函数获取列，然后使用 `getColumnChecks` 和 `getColumns` 来确定哪些列应该被展示。
 
 - `getData`:
   - 类型：函数
-  - 说明：用于获取数据。当调用这个函数时，会调用 apiFn 获取数据，然后使用 transformer 将响应转换为表格数据。
+  - 说明：用于获取数据。当调用这个函数时，会调用 `apiFn` 获取数据，然后使用 `transformer` 将响应转换为表格数据。
 
 - `searchParams`:
   - 类型：对象
-  - 说明：包含了调用 apiFn 时的参数。
+  - 说明：包含了调用 `apiFn` 时的参数。
 
 - `updateSearchParams`:
   - 类型：函数
-  - 说明：用于更新 searchParams。这个函数接收一个对象作为参数，该对象的属性会被合并到 searchParams 中。
+  - 说明：用于更新 `searchParams`。这个函数接收一个对象作为参数，该对象的属性会被合并到 `searchParams` 中。
 
 - `resetSearchParams`:
   - 类型：函数
-  - 说明：用于重置 searchParams。当调用这个函数时，searchParams 会被重置为 apiParams。
+  - 说明：用于重置 `searchParams`。当调用这个函数时，`searchParams` 会被重置为 `apiParams`。
 
 
 ### 使用
@@ -288,9 +286,10 @@ const {
 ## 基本使用流程
 
 1. 定义 API 函数
-2. 配置 useTable
-3. 使用返回的数据和状态
-4. 处理分页和筛选
+2. 配置 `useTable`
+3. 配置 `transformer`
+4. 使用返回的数据和状态
+5. 处理分页和筛选
 
 #### 步骤 1: 定义 API 函数
 
@@ -314,9 +313,9 @@ export function fetchGetUserList(params?: Api.SystemManage.UserSearchParams) {
 
 在使用 `useTable` 时，传入一个配置对象，该对象至少需要包含 `apiFn` 和 `columns` 两个字段。
 
-- **`apiFn`**: 您在步骤 1 中定义的 API 函数。
+- `apiFn`: 您在步骤 1 中定义的 API 函数。
 
-- **`columns`**: 一个集合，用于展示表的列名称
+- `columns`: 一个集合，用于展示表的列名称
 
 ```javascript
 import { useTable } from '@/hooks/common/table';
@@ -372,6 +371,7 @@ const { data, loading, pagination } = useTable({
 - `total` 是总条数
 
 则 `transformer` 的写法如下：
+
 ```typescript
 transformer: res => {
   const { records = [], current = 1, size = 10, total = 0 } = res.data || {};
@@ -440,7 +440,7 @@ const { columns, columnChecks, data, loading, pagination, getData } = useTable({
 </template>
 ```
 
-#### 步骤 4: 处理分页和筛选
+#### 步骤 5: 处理分页和筛选
 
 如果您的表格需要支持分页和筛选，您可以通过更新 `useTable` 配置对象中的 `apiParams` 来实现。`apiParams` 是一个响应式对象，您可以根据用户的操作动态更新它的值，`useTable` 会自动重新调用 `apiFn` 获取更新后的数据。
 
