@@ -130,7 +130,7 @@
 <script setup lang="tsx">
 import { ref } from 'vue';
 import { fetchGetUserList } from '@/service/api';
-import useHookTable from '@/hooks/common/table';
+import useHookTable from '@sa/hooks';
 
 const apiParams = ref({
   current: 1,
