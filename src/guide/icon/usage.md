@@ -18,7 +18,7 @@
     ```
 
     ::: tip Tip
-    'icon-' is a preset prefix, set the variable VITE_ICON_PREFFIX in .env
+    'icon-' is a preset prefix, set the variable VITE_ICON_PREFIX in .env
     :::
 
   - Set the style: Apply the style attribute or class attribute directly like the html tag; set the corresponding color and size by setting the color and font-size attributes
@@ -34,7 +34,7 @@
     ```
 
     ::: tip Tip
-    'icon-local' is a preset prefix, set the variable VITE_ICON_LOCAL_PREFFIX in .env
+    'icon-local' is a preset prefix, set the variable VITE_ICON_LOCAL_PREFIX in .env
     :::
 
 

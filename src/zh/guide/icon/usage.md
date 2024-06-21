@@ -18,7 +18,7 @@
     ```
 
     ::: tip 提示
-    'icon-' 为预设的前缀, 在.env 里面设置变量 VITE_ICON_PREFFIX
+    'icon-' 为预设的前缀, 在.env 里面设置变量 VITE_ICON_PREFIX
     :::
 
   - 设置样式：同 html 标签一样直接应用 style 属性或者 class 属性; 通过设置 color 和 font-size 属性设置对应的颜色和大小
@@ -34,7 +34,7 @@
     ```
 
     ::: tip 提示
-    'icon-local' 为预设的前缀, 在.env 里面设置变量 VITE_ICON_LOCAL_PREFFIX
+    'icon-local' 为预设的前缀, 在.env 里面设置变量 VITE_ICON_LOCAL_PREFIX
     :::
 
 ## 二、动态渲染: 根据图标名称渲染对应图标
