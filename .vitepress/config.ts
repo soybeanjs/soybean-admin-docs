@@ -27,6 +27,7 @@ export default defineConfig({
           { text: '规范', link: '/zh/standard/', activeMatch: '/zh/standard/' },
           { text: '教程', link: '/zh/tutorial/', activeMatch: '/zh/tutorial/' },
           { text: '生态', link: '/zh/awesome/', activeMatch: '/zh/awesome/' },
+          { text: '团队', link: '/zh/team/', activeMatch: '/zh/team/' },
           {
             text: '捐赠',
             link: '/zh/other/donate'
@@ -340,6 +341,7 @@ export default defineConfig({
       { text: 'Standard', link: '/standard/', activeMatch: '/standard/' },
       { text: 'Tutorial', link: '/tutorial/', activeMatch: '/tutorial/' },
       { text: 'EcoSystem', link: '/awesome/', activeMatch: '/awesome/' },
+      { text: 'Team', link: '/team/', activeMatch: '/team/' },
       {
         text: 'Donate',
         link: '/other/donate'
