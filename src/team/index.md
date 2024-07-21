@@ -66,6 +66,14 @@ const partners = [
       { icon: 'github', link: 'https://github.com/SonyLeo' }
     ]
   },
+   {
+    avatar: '	https://avatars.githubusercontent.com/u/155351881?v=4',
+    name: 'Ohh',
+    title: 'Front-end development · zhengzhou',
+    links: [
+      { icon: 'github', link: 'https://github.com/mufeng889' }
+    ]
+  },
 ]
 </script>
 
