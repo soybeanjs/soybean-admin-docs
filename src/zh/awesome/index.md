@@ -4,6 +4,7 @@
 
 | 项目名称                | 描述                                                                                                 | 地址                                           |
 |---------------------|----------------------------------------------------------------------------------------------------|----------------------------------------------|
+| react-soybean-admin | 基于Soybean,实现的React版本！ 采用 React18  / Redux-toolkit /Antd/Vite5/Typescript 采用最原生最简洁的方式来实现, 前端清新优雅高颜值，后端 结构清晰，优雅易懂，功能强大，期待您的体验！ | https://github.com/mufeng889/react-soybean-admin          |
 | pea                 | 采用SpringBoot3.2 + JDK21、MyBatis-Plus、SpringSecurity安全框架等，适配 soybean-admin 开发的简单权限系统。               | https://github.com/haitang1894/pea           |
 | electron-mock-admin | 一个 Mock Api 管理系统，帮助前端开发伙伴快速实现接口的 mock                                                              | https://github.com/lixin59/electron-mock-api |
 | T-Shell             | 是一个可配置命令提示的终端模拟器和 SSH 客户端                                                                          | https://github.com/TheBlindM/T-Shell         |
