@@ -28,4 +28,39 @@ const { otherBaseURL } = getServiceBaseURL(import.meta.env, false);
 
 ## Principle
 
-The default requested proxy match string is `/proxy-default/`，Suppose the address of the request is `https://api.example.com/v1/user`，Then the address of the local proxy obtained is `http://localhost:3000/proxy-default/v1/user`，When this request is sent, it matches to the proxy configuration via `/proxy-default/` and forwards the request to `https://api.example.com/v1/user`.
+SoybeanAdmin simplifies the process of configuring proxies by setting the matching string to `/proxy-default/` (other requests use `proxy-{key}`). This way, when configuring the proxy, you only need to replace `/proxy-default/` in the request address with the actual request address, thus achieving the proxy configuration.
+
+### Note
+
+Here are 2 configurations that are easily confused:
+
+1. Suppose the path of a request is `https://example.com/api/user`, most would configure the proxy like this:
+
+```ts
+
+{
+  '/api': {
+    target: 'https://example.com',
+    changeOrigin: true,
+  }
+}
+
+```
+
+> In this case, `/api` serves both as the matching string and the request path. Therefore, there is no rewrite configuration needed because the request path and the matching string are the same.
+
+2. Suppose the path of a request is `https://example.com/user`, but the matching string for the proxy configuration is `/api`
+
+```ts
+{
+  '/api': {
+    target: 'https://example.com',
+    changeOrigin: true,
+    rewrite: (path) => path.replace(/^\/api/, ''),
+  }
+}
+```
+
+> In this case, `/api` serves as the matching string, and user serves as the request path. Therefore, a rewrite configuration is needed to remove the matching string.
+
+In SoybeanAdmin, the second configuration with `rewrite` is used. This is to support proxies for multiple services and avoid conflicts where multiple services contain the same `/api` path. Therefore, SoybeanAdmin chooses to create matching strings like `/proxy-*` to separate the matching string from the request path, avoiding conflicts.

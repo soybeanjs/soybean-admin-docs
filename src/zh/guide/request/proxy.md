@@ -28,4 +28,41 @@ const { otherBaseURL } = getServiceBaseURL(import.meta.env, false);
 
 ## 原理
 
-默认请求的代理匹配字符串为 `/proxy-default/`，假如请求的地址为 `https://api.example.com/v1/user`，则得到的本地代理的地址为 `http://localhost:3000/proxy-default/v1/user`，当该请求发送时，通过 `/proxy-default/` 匹配到代理配置，将请求转发到 `https://api.example.com/v1/user`。
+SoybeanAdmin 为了简化配置代理的过程，特意将匹配字符串设定为 `/proxy-default/` (其他请求 `proxy-{key}`)，这样在配置代理时，只需要将请求的地址中的 `/proxy-default/` 替换为实际的请求地址即可，这样就可以实现代理的配置。
+
+### 注意
+
+这里介绍2种容易混淆的配置：
+
+1. 假设一个请求的路径为 `https://example.com/api/user`, 大多数会这样配置代理
+
+```ts
+
+{
+  '/api': {
+    target: 'https://example.com',
+    changeOrigin: true,
+  }
+}
+
+```
+
+> 这时候 `/api` 既是作为匹配字符串，也是作为请求的路径。所以这里没有 `rewrite` 的配置，因为请求的路径和匹配字符串是一样的。
+
+2. 假设一个请求的路径为 `https://example.com/user`, 但是配置代理时，匹配字符串为 `/api`
+
+```ts
+
+{
+  '/api': {
+    target: 'https://example.com',
+    changeOrigin: true,
+    rewrite: (path) => path.replace(/^\/api/, ''),
+  }
+}
+
+```
+> 这时候 `/api` 是作为匹配字符串，`user` 是作为请求的路径。所以这里需要配置 `rewrite`，将匹配字符串去掉。
+
+在 SoybeanAdmin 中，使用的是第二种包含`rewrite`配置，因为为了支持多个服务的代理，同时避免多个服务包含相同的`/api`路径，所以SoybeanAdmin 选择创建了类似 `/proxy-*` 作为匹配字符串和请求的路径分开。避免冲突。
+
