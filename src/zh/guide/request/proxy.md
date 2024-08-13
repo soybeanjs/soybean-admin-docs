@@ -30,6 +30,21 @@ const { otherBaseURL } = getServiceBaseURL(import.meta.env, false);
 
 SoybeanAdmin 为了简化配置代理的过程，特意将匹配字符串设定为 `/proxy-default/` (其他请求 `proxy-{key}`)，这样在配置代理时，只需要将请求的地址中的 `/proxy-default/` 替换为实际的请求地址即可，这样就可以实现代理的配置。
 
+```ts
+{
+  '/proxy-default': {
+    target: 'https://default.com',
+    changeOrigin: true,
+    rewrite: (path) => path.replace(/^\/proxy-default/, ''),
+  },
+  '/proxy-demo': {
+    target: 'https://demo.com',
+    changeOrigin: true,
+    rewrite: (path) => path.replace(/^\/proxy-demo/, ''),
+  }
+}
+```
+
 ### 注意
 
 这里介绍2种容易混淆的配置：

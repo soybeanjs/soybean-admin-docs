@@ -30,6 +30,21 @@ const { otherBaseURL } = getServiceBaseURL(import.meta.env, false);
 
 SoybeanAdmin simplifies the process of configuring proxies by setting the matching string to `/proxy-default/` (other requests use `proxy-{key}`). This way, when configuring the proxy, you only need to replace `/proxy-default/` in the request address with the actual request address, thus achieving the proxy configuration.
 
+```ts
+{
+  '/proxy-default': {
+    target: 'https://default.com',
+    changeOrigin: true,
+    rewrite: (path) => path.replace(/^\/proxy-default/, ''),
+  },
+  '/proxy-demo': {
+    target: 'https://demo.com',
+    changeOrigin: true,
+    rewrite: (path) => path.replace(/^\/proxy-demo/, ''),
+  }
+}
+```
+
 ### Note
 
 Here are 2 configurations that are easily confused:
