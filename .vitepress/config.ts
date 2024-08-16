@@ -26,6 +26,11 @@ export default defineConfig({
           { text: '常见问题', link: '/zh/faq/', activeMatch: '/zh/faq/' },
           { text: '规范', link: '/zh/standard/', activeMatch: '/zh/standard/' },
           { text: '教程', link: '/zh/tutorial/', activeMatch: '/zh/tutorial/' },
+          {
+            text: '合作',
+            link: '/zh/cooperate/',
+            activeMatch: '/zh/cooperate/'
+          },
           { text: '生态', link: '/zh/awesome/', activeMatch: '/zh/awesome/' },
           { text: '团队', link: '/zh/team/', activeMatch: '/zh/team/' },
           {
