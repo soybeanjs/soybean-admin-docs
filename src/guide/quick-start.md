@@ -10,6 +10,10 @@ Make sure your environment meets the following requirements:
 - **NodeJS**: >=18.12.0, recommended 18.19.0 or higher. [Install Tutorial](/tutorial/nodejs)
 - **pnpm**: >= 8.7.0, recommended latest version.
 
+### Mock
+
+Our project uses the cloud mock function of [Apifox](https://apifox.com/) to implement mock requests, API documentation：[soybean-admin-mock](https://apifox.com/apidoc/shared-35c8727a-d3ab-47e9-8863-ef8e37df6887?pwd=F6LN1ArU)
+
 ## VSCode Plugins
 
 This project recommends using VSCode for development, and the project has built-in VSCode configurations, including recommended plugins and settings.
