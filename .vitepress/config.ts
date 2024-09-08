@@ -61,11 +61,6 @@ export default defineConfig({
                 link: 'https://legacy-docs.soybeanjs.cn'
               }
             ]
-          },
-          {
-            text: '博客',
-            link: '/zh/blogs/',
-            activeMatch: '/zh/blogs/'
           }
         ],
         sidebar: {
@@ -250,7 +245,7 @@ export default defineConfig({
               link: '/zh/tutorial/'
             },
             {
-              text: 'Git 安装',
+              text: 'Git 安装与使用',
               link: '/zh/tutorial/git'
             },
             {
@@ -267,31 +262,7 @@ export default defineConfig({
             },
             {
               text: '其他',
-              link: '/zh/tutorial/software'
-            }
-          ],
-          '/zh/blogs/': [
-            {
-              text: '博客',
-              link: '/zh/blogs/'
-            },
-            {
-              text: '高阶教程',
-              items: [
-                {
-                  text: '开发依赖包',
-                  link: '/zh/blogs/advanced/pkg'
-                }
-              ]
-            },
-            {
-              text: '日常',
-              items: [
-                {
-                  text: '2024-03-30',
-                  link: '/zh/blogs/daily/2024-03-30'
-                }
-              ]
+              link: '/zh/tutorial/other'
             }
           ]
         }
@@ -375,11 +346,6 @@ export default defineConfig({
             link: 'https://legacy-docs.soybeanjs.cn'
           }
         ]
-      },
-      {
-        text: 'Blogs',
-        link: '/blogs/',
-        activeMatch: '/blogs/'
       }
     ],
     sidebar: {
@@ -564,7 +530,7 @@ export default defineConfig({
           link: '/tutorial/'
         },
         {
-          text: 'Git Installation',
+          text: 'Git Installation and Usage',
           link: '/tutorial/git'
         },
         {
@@ -581,31 +547,7 @@ export default defineConfig({
         },
         {
           text: 'Other',
-          link: '/tutorial/software'
-        }
-      ],
-      '/blogs/': [
-        {
-          text: 'Blogs',
-          link: '/blogs/'
-        },
-        {
-          text: 'Advanced Tutorial',
-          items: [
-            {
-              text: 'Develop Package',
-              link: '/blogs/advanced/pkg'
-            }
-          ]
-        },
-        {
-          text: 'Daily',
-          items: [
-            {
-              text: '2024-03-30',
-              link: '/blogs/daily/2024-03-30'
-            }
-          ]
+          link: '/tutorial/other'
         }
       ]
     }
