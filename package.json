@@ -26,9 +26,8 @@
     "commit": "soy git-commit",
     "dev": "vitepress dev --port 1026",
     "lint": "eslint . --fix",
-    "preview": "vite preview",
+    "preview": "vitepress serve",
     "release": "soy release",
-    "serve": "vitepress serve",
     "typecheck": "vue-tsc --noEmit --skipLibCheck",
     "update-pkg": "soy ncu"
   },
