@@ -2,7 +2,7 @@
 
 ## 使用 ESLint 和 Prettier 进行代码格式化
 
-SoybeanJS团队使用[`@soybeanjs/eslint-config`](@soybeanjs/eslint-config)来进行代码格式化。这个配置包含了ESLint和Prettier的配置，以及一些自定义的规则。
+SoybeanJS团队使用[`@soybeanjs/eslint-config`](https://github.com/soybeanjs/eslint-config)来进行代码格式化。这个配置包含了ESLint和Prettier的配置，以及一些自定义的规则。
 
 ## 代码检查
 

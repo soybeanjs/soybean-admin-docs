@@ -2,7 +2,7 @@
 
 ## Code Formatting with ESLint and Prettier
 
-The SoybeanJS team uses @soybeanjs/eslint-config for code formatting. This configuration includes ESLint and Prettier settings, as well as some custom rules.
+The SoybeanJS team uses [`@soybeanjs/eslint-config`](https://github.com/soybeanjs/eslint-config) for code formatting. This configuration includes ESLint and Prettier settings, as well as some custom rules.
 
 ## Code Check
 
@@ -14,7 +14,7 @@ Install `lint-staged`:
 pnpm i lint-staged -D
 ```
 
-Add to [`package.json`](command:_github.copilot.openRelativePath?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fsoybean%2FWeb%2FProjects%2FSoybeanJS%2Fsoybean-admin-docs%2Fpackage.json%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22b28280bf-b8f5-4383-b503-4edb7f54a6d5%22%5D "/Users/soybean/Web/Projects/SoybeanJS/soybean-admin-docs/package.json"):
+Add to `package.json`:
 
 ```json
 {
@@ -32,7 +32,7 @@ Install `simple-git-hooks`:
 pnpm i simple-git-hooks -D
 ```
 
-Add git hooks to [`package.json`](command:_github.copilot.openRelativePath?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fsoybean%2FWeb%2FProjects%2FSoybeanJS%2Fsoybean-admin-docs%2Fpackage.json%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22b28280bf-b8f5-4383-b503-4edb7f54a6d5%22%5D "/Users/soybean/Web/Projects/SoybeanJS/soybean-admin-docs/package.json"):
+Add git hooks to `package.json`:
 
 ```json
 {
@@ -43,7 +43,7 @@ Add git hooks to [`package.json`](command:_github.copilot.openRelativePath?%5B%7
 }
 ```
 
-Add scripts to [`package.json`](command:_github.copilot.openRelativePath?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fsoybean%2FWeb%2FProjects%2FSoybeanJS%2Fsoybean-admin-docs%2Fpackage.json%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22b28280bf-b8f5-4383-b503-4edb7f54a6d5%22%5D "/Users/soybean/Web/Projects/SoybeanJS/soybean-admin-docs/package.json"):
+Add scripts to `package.json`:
 
 ```json
 {
@@ -54,5 +54,5 @@ Add scripts to [`package.json`](command:_github.copilot.openRelativePath?%5B%7B%
 ```
 
 ::: tip
-When changing the `simple-git-hooks` configuration or removing `simple-git-hooks`, first update the corresponding configuration in [`package.json`](command:_github.copilot.openRelativePath?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fsoybean%2FWeb%2FProjects%2FSoybeanJS%2Fsoybean-admin-docs%2Fpackage.json%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22b28280bf-b8f5-4383-b503-4edb7f54a6d5%22%5D "/Users/soybean/Web/Projects/SoybeanJS/soybean-admin-docs/package.json"), then run `pnpm run prepare` to apply the changes.
+When changing the `simple-git-hooks` configuration or removing `simple-git-hooks`, first update the corresponding configuration in `package.json`, then run `pnpm run prepare` to apply the changes.
 :::
