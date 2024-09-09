@@ -92,6 +92,14 @@
   };
   ```
 
+- 必要的`init`函数，所有的初始化逻辑都放在这里
+
+  ```ts
+  async function init() {
+    await fetchData();
+  }
+  ```
+
 - watch和watchEffect
 
   ```ts
@@ -110,13 +118,12 @@
 - 生命周期钩子
 
   ```ts
-  // 等同于 created
-  init(() => {
-    console.log('init');
-  });
+  // 相当于在`created`钩子中执行
+  init();
 
+  // 或者
   onMounted(() => {
-    console.log('mounted');
+    init();
   });
   ```
 

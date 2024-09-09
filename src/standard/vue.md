@@ -92,6 +92,14 @@
   };
   ```
 
+- Necessary `init` function, all initialization logic is placed here
+
+  ```ts
+  async function init() {
+    await fetchData();
+  }
+  ```
+
 - watch and watchEffect
 
   ```ts
@@ -110,10 +118,8 @@
 - Lifecycle hooks
 
   ```ts
-  // Equivalent to created
-  init(() => {
-    console.log('init');
-  });
+  // Equivalent to executing in the `created` hook
+  init();
 
   onMounted(() => {
     console.log('mounted');
