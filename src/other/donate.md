@@ -7,6 +7,10 @@ If you think this project is helpful to you, you can buy Soybean a drink to show
 
 ## Donation List
 
+::: tip 🎉 thank
+Sincerely thank the bosses who have helped SoybeanAdmin develop, the following list is not all, only part of the display. Please understand~
+:::
+
 > The information comes from order records. If there are any omissions, modifications or deletions needed, please contact team members in the official groups.
 
 | donor       | amount of money | time                | leave a message    |
