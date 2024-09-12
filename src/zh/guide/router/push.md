@@ -5,12 +5,13 @@
 ## 介绍
 
 该hook对 `router.push` 进行二次封装，主要目的是代替 `router.push` 使用，通过该hook可更便捷得进行跳转， `useRouterPush` 返回一个对象，包含以下属性和方法：
- - routerPush: Vue Router 的 push 方法。
- - routerBack: Vue Router 的 back 方法。
- - routerPushByKey: 根据路由key跳转的方法。
- - toLogin: 跳转到登录页的方法。
- - toggleLoginModule: 切换登录模块的方法。
- - redirectFromLogin: 从登录页重定向的方法。
+
+- routerPush: Vue Router 的 push 方法。
+- routerBack: Vue Router 的 back 方法。
+- routerPushByKey: 根据路由key跳转的方法。
+- toLogin: 跳转到登录页的方法。
+- toggleLoginModule: 切换登录模块的方法。
+- redirectFromLogin: 从登录页重定向的方法。
 
 ::: warning 注意
 在 `setup` 外使用时需要给 `useRouterPush` 传入 `false`。
@@ -39,7 +40,7 @@ import { useRouterPush } from '@/hooks/common/router';
 
 const { routerPushByKey } = useRouterPush();
 
-routerPushByKey('soybean')
+routerPushByKey('soybean');
 ```
 
 它支持传入可选参数 `query` 或是 `params`。
@@ -48,22 +49,21 @@ routerPushByKey('soybean')
 
 字面意思，快速跳转到登录页，注意跳转前要清除登录信息，否则在路由守卫一样会被拦截回首页的。
 
-
 ### toggleLoginModule
 
 该方法传入参数类型为
 
 ```ts
 /**
-   * The login module
-   *
-   * - pwd-login: password login
-   * - code-login: phone code login
-   * - register: register
-   * - reset-pwd: reset password
-   * - bind-wechat: bind wechat
-   */
-  type LoginModule = 'pwd-login' | 'code-login' | 'register' | 'reset-pwd' | 'bind-wechat';
+ * The login module
+ *
+ * - pwd-login: password login
+ * - code-login: phone code login
+ * - register: register
+ * - reset-pwd: reset password
+ * - bind-wechat: bind wechat
+ */
+type LoginModule = 'pwd-login' | 'code-login' | 'register' | 'reset-pwd' | 'bind-wechat';
 ```
 
 作用是根据传入的 `LoginModule` 改变登录页挂载的登录功能模块，您可以自行删除或是扩展更多的模块，只需要确保类型是正确的就可以了。

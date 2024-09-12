@@ -7,6 +7,7 @@ const isHttpProxy = import.meta.env.DEV && import.meta.env.VITE_HTTP_PROXY === '
 
 const { baseURL, otherBaseURL } = getServiceBaseURL(import.meta.env, isHttpProxy);
 ```
+
 > `isHttpProxy` Used to determine if a proxy is being used.`baseURL` indicates the value of `VITE_SERVICE_BASE_URL` in the environment file.`otherBaseURL` is used for other requests, configured via `VITE_OTHER_SERVICE_BASE_URL`.
 
 > The `getServiceBaseURL` method is used to get the base path of the request, and determine if a proxy is used based on the environment variables `import.meta.env` and `isHttpProxy`.
@@ -24,6 +25,7 @@ See below for examples
 ## Confirmation of Paradigm Parameters for the Create Request Instance Function
 
 - Data type of the request result: `App.Service.Response` The default request uses this type, please modify it according to your own back-end return data type
+
   > This is because the different types affect the parameter types of the `isBackendSuccess` and `transformBackendResponse` fields in `RequestOption`, as well as the error message fields.
 
   > Please define new type declarations for other request instances.
@@ -187,23 +189,22 @@ You need to define the type of data that will be used after a successful request
 - If the request function was created with `createFlatRequest`, the data type of a successful request is wrapped in an object that can be retrieved from the `data` field.
 
 ```ts
-
 async function login() {
   const { error, data } = await fetchLogin({ username: 'admin', password: 'admin' });
 
-  if(!error) {
+  if (!error) {
     // Request successful
   }
 }
-
 ```
+
 - If the request function was created with `createRequest`, the data type of a successful request is returned directly and is not wrapped in an object.
 
 ```ts
 async function login() {
   const data = await fetchLogin({ username: 'admin', password: 'admin' });
 
-  if(data) {
+  if (data) {
     // Request successful
   }
 }

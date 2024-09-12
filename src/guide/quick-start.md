@@ -69,6 +69,7 @@ pnpm i
 ```
 
 ## Plugin configuration
+
 ### Install Vue - Official, disable Vetur
 
 - [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - Vue service plugin

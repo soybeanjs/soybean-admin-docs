@@ -1,3 +1,7 @@
 import { defineConfig } from '@soybeanjs/eslint-config';
 
-export default defineConfig();
+export default defineConfig({
+  formatter: {
+    markdown: true
+  }
+});

@@ -34,3 +34,4 @@ Enable/disable dynamic route mode by configuring the `VITE_AUTH_ROUTE_MODE` vari
 ```dotenv:line-numbers=14
 # auth route mode: static | dynamic
 VITE_AUTH_ROUTE_MODE=dynamic
+```

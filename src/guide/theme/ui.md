@@ -27,8 +27,8 @@ function getNaiveTheme(colors: App.Theme.ThemeColor) {
 
 /** Naive theme */
 const naiveTheme = computed(() => getNaiveTheme(themeColors.value));
-
 ```
+
 ::: tip Code location
 src/store/modules/theme/shared.ts
 
@@ -52,6 +52,7 @@ src/store/modules/theme/index.ts
   </NConfigProvider>
 </template>
 ```
+
 ::: tip Code location
 src/App.vue
 :::

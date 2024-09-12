@@ -60,7 +60,6 @@ export function setupLoading() {
     app.innerHTML = loading;
   }
 }
-
 ```
 
 ::: tip Code location
@@ -74,3 +73,4 @@ async function setupApp() {
   setupLoading();
   app.mount('#app');
 }
+```

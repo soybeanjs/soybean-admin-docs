@@ -8,7 +8,6 @@ Based on the svg json data of iconify, the svg data is converted into vue compon
 - [iconify](https://github.com/iconify/iconify)
 - [Journey with Icons Continues](https://antfu.me/posts/journey-with-icons-continues)
 
-
 ## Local svg icon rendering principle
 
 By using the `unplugin-icons` plugin and `vite-plugin-svg-icons` plugin, local svg files are converted into vue components

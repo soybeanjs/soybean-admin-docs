@@ -1,6 +1,7 @@
 # 命名规范
 
 - 文件和文件夹命名: 统一用小写加连字符`-`命名，多个单词用连字符连接
+
 ```
 views
 ├── home
@@ -9,7 +10,9 @@ views
 ```
 
 - Vue 组件名称
+
   - 组件名称统一用 PascalCase 法命名，多个单词首字母大写
+
   ```vue
   <template>
     <AppProvider>
@@ -17,14 +20,16 @@ views
     </AppProvider>
   </template>
   ```
+
   - iconify 图标组件名称统一用 kebab-case 法命名，多个单词用中划线连接
+
   ```vue
   <template>
     <icon-mdi-emoticon />
   </template>
   ```
-  > 方便iconify插件直接展示图标
 
+  > 方便iconify插件直接展示图标
 
 - 构造函数、class 类、TS 类型命名：统一用 PascalCase 法命名，多个单词首字母大写
 
@@ -71,4 +76,3 @@ const MAX_COUNT = 10;
 ```ts
 function fetchUser() {}
 ```
-

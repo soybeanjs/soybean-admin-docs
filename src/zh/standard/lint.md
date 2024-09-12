@@ -20,7 +20,7 @@ pnpm i lint-staged -D
 {
   "lint-staged": {
     "*": "eslint --fix"
-  },
+  }
 }
 ```
 

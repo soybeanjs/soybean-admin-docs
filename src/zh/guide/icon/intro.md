@@ -8,7 +8,6 @@
 - [iconify](https://github.com/iconify/iconify)
 - [Journey with Icons Continues](https://antfu.me/posts/journey-with-icons-continues)
 
-
 ## 本地 svg 图标渲染原理
 
 通过 `unplugin-icons` 插件 与 `vite-plugin-svg-icons` 插件，将本地 svg 文件转换成 vue 组件
@@ -24,4 +23,4 @@
 
 ## 请注意
 
->根据 svg 图标渲染原理，已被转换为静态资源，这意味着一旦 svg 文件被加载并转换为组件，它们将成为您项目的一部分，不会自动检测和更新源文件的更改。因此，如果您修改了 svg 文件并希望在项目中看到更改的效果，您需要重新启动项目。
+> 根据 svg 图标渲染原理，已被转换为静态资源，这意味着一旦 svg 文件被加载并转换为组件，它们将成为您项目的一部分，不会自动检测和更新源文件的更改。因此，如果您修改了 svg 文件并希望在项目中看到更改的效果，您需要重新启动项目。

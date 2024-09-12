@@ -15,7 +15,7 @@ Related Documents： [Transition | Vue.js (vuejs.org)](https://cn.vuejs.org/guid
 
 By setting the `keepAlive` field in the `meta` attribute of the route data, you can control whether the route is cached.
 
-
+```js
 {
   name: 'about',
   path: '/about',
@@ -25,4 +25,4 @@ By setting the `keepAlive` field in the `meta` attribute of the route data, you 
     keepAlive: true
   }
 }
-
+```

@@ -20,6 +20,7 @@ Using `git-hooks` for pre-commit checksums not only helps you improve your own c
 
 ::: details Option 1: Temporary closure of checksums
 It is recommended to follow the well-established type checks as fully as possible initially, only skipping them slightly a few times by temporarily cancelling the submission checks when needed.
+
 ```shell
 git add .
 
@@ -28,12 +29,14 @@ git commit -m "commit message" --no-verify # [!code ++]
 
 git push
 ```
+
 :::
 
 ::: details Option 2: Permanently disable checksums
+
 > [!CAUTION] not recommended
 > 1、Remove the commands from `simple-git-hooks` in `package.json
 >
 > 2、Execute the `simple-git-hooks` command.
 >
-:::
+> :::

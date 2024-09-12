@@ -32,7 +32,6 @@
 
 `createFlatRequest`: 返回的请求实例会将响应数据和错误信息包装在一个扁平的对象中，以统一的格式返回结果。
 
-
 2. **createRequest/createFlatRequest 参数**
 
 `axiosConfig`: axios 配置，传入 baseUrl，定义一些其他配置：如：请求的超时时间、请求头等

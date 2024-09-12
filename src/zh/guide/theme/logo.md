@@ -13,6 +13,7 @@ defineOptions({ name: 'SystemLogo' });
 
 <style scoped></style>
 ```
+
 ::: tip 代码位置
 src/components/common/system-logo.vue
 :::

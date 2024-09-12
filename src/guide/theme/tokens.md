@@ -12,6 +12,7 @@ type ThemeToken = {
   };
 };
 ```
+
 ::: tip source file
 src/typings/app.d.ts
 :::

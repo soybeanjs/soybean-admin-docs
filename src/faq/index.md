@@ -12,7 +12,7 @@ When encountering problems, you can try the following solutions
 - Try to use search engines, technical websites, AI tools, etc. to search for the keywords of the error
 
 | [Google](https://google.com) | [Bing](https://www.bing.com/) | ChatGPT | [StackoverFlow](https://stackoverflow.com/) |
-| ---------------------------- | ----------------------------- | -------- | ------------------------------------------- |
+| ---------------------------- | ----------------------------- | ------- | ------------------------------------------- |
 
 - If the error is a dependency package problem, please try to search in the Github Issues of the dependency package
 - Try to ask friends or tech gurus you know
@@ -48,7 +48,6 @@ The project's cache is divided into two aspects
 
 > The effect of real-time modification, `F5` refresh can solve it.
 
-
 ## The menu does not display after adding static routes in the front end
 
 📢 Some enthusiastic group friends feedback: When first getting in touch with the project, add components first and then add static routes, but the menu and page cannot be rendered on the page, and the project does not report errors
@@ -59,9 +58,9 @@ When the project initializes the route, the top-level route data meta of this cl
 
 So neither the menu nor the page can be displayed
 
-  ::: tip Component location
-  src/typings/router.d.ts
-  :::
+::: tip Component location
+src/typings/router.d.ts
+:::
 
 Go check [`RouteMeta`](../guide/router.md#Type Description)
 
@@ -131,7 +130,9 @@ views
 ```
 
 - Vue component names
+
   - The component name is uniformly named by the PascalCase method, and the first letter of multiple words is capitalized
+
   ```vue
   <template>
     <AppProvider>
@@ -139,14 +140,16 @@ views
     </AppProvider>
   </template>
   ```
+
   - The name of the iconify icon component is uniformly named by the kebab-case method, and multiple words are connected with hyphens
+
   ```vue
   <template>
     <icon-mdi-emoticon />
   </template>
   ```
-  > Convenient for the iconify plugin to directly display icons
 
+  > Convenient for the iconify plugin to directly display icons
 
 - Constructor, class, TS type naming: uniformly named by the PascalCase method, and the first letter of multiple words is capitalized
 
@@ -177,7 +180,6 @@ function getNum() {}
 ```ts
 const MAX_COUNT = 10;
 ```
-
 
 - Naming of styles: Use lowercase letters uniformly, and connect multiple words with hyphens
 
@@ -303,8 +305,6 @@ Cross-origin refers to the situation in the browser where the current webpage re
 _Forward proxy is a client proxy, proxying the client, the server does not know the actual client initiating the request._
 
 > In this project, it refers to implementing forward proxy through configuring `Vite`
-
-
 
 2. Reverse Proxy
 

@@ -13,7 +13,7 @@ src/typings/app.d.ts
 ```ts
 export const themeSettings: App.Theme.ThemeSetting = {
   //default config
-}
+};
 ```
 
 ::: tip source file
@@ -40,6 +40,6 @@ src/theme/settings.ts
 
   > To see the changes in the theme config in real-time during the development stage, the theme config will not be cached.
 
-- When the project is in `prod`,  the theme config will be cached in `localStorage`
+- When the project is in `prod`, the theme config will be cached in `localStorage`
 
   > Each time a new version is released, the theme config can be overridden by updating the `overrideThemeSettings` in `src/theme/settings.ts`.

@@ -32,13 +32,11 @@ Configuration items in the `.env.test` or `.env.prod` file
 
 `createFlatRequest`: The returned request instance will wrap the response data and error information in a flat object, and return the result in a unified format.
 
-
 2. **Parameters for createRequest/createFlatRequest**
 
 `axiosConfig`: axios configuration, input baseUrl, define some other configurations: such as: request timeout, request header, etc.
 
 `options`: Configure input validation and other logic (see `RequestOption` below)
-
 
 ```ts
 interface RequestOption<ResponseData = any> {

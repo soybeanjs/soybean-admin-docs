@@ -7,10 +7,9 @@ import { themeVars } from './src/theme/vars';
 
 export default defineConfig<Theme>({
   theme: {
-    ...themeVars,
+    ...themeVars
   }
 });
-
 ```
 
 ::: tip Code location
@@ -23,7 +22,7 @@ By using the dark mode solution provided by UnoCSS, as long as the class="dark" 
 
 ```ts
 export default defineConfig<Theme>({
-	presets: [presetUno({ dark: "class" })],
+  presets: [presetUno({ dark: 'class' })]
 });
 ```
 

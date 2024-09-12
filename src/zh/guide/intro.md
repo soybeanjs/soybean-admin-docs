@@ -19,11 +19,13 @@
 ## 版本
 
 - **NaiveUI 版本:**
+
   - [预览地址](https://naive.soybeanjs.cn/)
   - [Github 仓库](https://github.com/soybeanjs/soybean-admin)
   - [Gitee 仓库](https://gitee.com/honghuangdc/soybean-admin)
 
 - **AntDesignVue 版本:**
+
   - [预览地址](https://antd.soybeanjs.cn/)
   - [Github 仓库](https://github.com/soybeanjs/soybean-admin-antd)
   - [Gitee 仓库](https://gitee.com/honghuangdc/soybean-admin-antd)

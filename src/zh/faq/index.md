@@ -12,7 +12,7 @@
 - 尝试使用搜索引擎、技术网站、AI 工具等搜索错误的关键词
 
 | [Google](https://google.com) | [Bing](https://www.bing.com/) | ChatGPT | [StackoverFlow](https://stackoverflow.com/) |
-| ---------------------------- | ----------------------------- | -------- | ------------------------------------------- |
+| ---------------------------- | ----------------------------- | ------- | ------------------------------------------- |
 
 - 若是错误为依赖包的问题，请尝试去依赖包的 Github 的 Issues 中搜索
 - 尝试请教认识的朋友或技术大佬
@@ -22,7 +22,7 @@
 
 **问题背景**
 
-SoybeanAdmin 的项目配置默认是  `localStorage` , 初始化时对项目的主题涉及的数据进行持久化
+SoybeanAdmin 的项目配置默认是 `localStorage` , 初始化时对项目的主题涉及的数据进行持久化
 
 项目的缓存分为两方面
 
@@ -40,7 +40,7 @@ SoybeanAdmin 的项目配置默认是  `localStorage` , 初始化时对项目�
 
 ## 关于修改文件相关的问题
 
-1. 当修改  `.env`  等环境文件及  `vite.config.ts`  文件时，vite 会自动重启服务。
+1. 当修改 `.env` 等环境文件及 `vite.config.ts` 文件时，vite 会自动重启服务。
 
 > 但是自动重启有几率出现问题，请重新运行项目即可解决。
 
@@ -58,9 +58,9 @@ SoybeanAdmin 的项目配置默认是  `localStorage` , 初始化时对项目�
 
 所以菜单和页面都无法显示出来
 
-  ::: tip 组件位置
-  src/typings/router.d.ts
-  :::
+::: tip 组件位置
+src/typings/router.d.ts
+:::
 
 跳转查看 [`RouteMeta`](../guide/router/intro.md#配置属性)
 
@@ -130,7 +130,9 @@ views
 ```
 
 - Vue 组件名称
+
   - 组件名称统一用 PascalCase 法命名，多个单词首字母大写
+
   ```vue
   <template>
     <AppProvider>
@@ -138,14 +140,16 @@ views
     </AppProvider>
   </template>
   ```
+
   - iconify 图标组件名称统一用 kebab-case 法命名，多个单词用中划线连接
+
   ```vue
   <template>
     <icon-mdi-emoticon />
   </template>
   ```
-  > 方便iconify插件直接展示图标
 
+  > 方便iconify插件直接展示图标
 
 - 构造函数、class 类、TS 类型命名：统一用 PascalCase 法命名，多个单词首字母大写
 
@@ -290,9 +294,9 @@ Day.js 对国际化有很大的支持。但是，除非您使用它们，否则�
 **跨域的形成原因**
 
 - 同源策略：浏览器的安全策略限制了页面只能请求同一域名下的资源，其他域名下的资源不能访问。
-- 域名不同：请求的资源在不同的域名下，例如  [http://www.aaa.com]  和  [http://www.bbb.com]
-- 端口不同：请求的资源在同一域名下，但端口不同，例如  [http://www.xxx.com]  和  [http://www.xxx.com:8080]
-- 协议不同：请求的资源在同一域名下，但协议不同，例如  [http://www.xxx.com]  和  [https://www.xxx.com]
+- 域名不同：请求的资源在不同的域名下，例如 [http://www.aaa.com] 和 [http://www.bbb.com]
+- 端口不同：请求的资源在同一域名下，但端口不同，例如 [http://www.xxx.com] 和 [http://www.xxx.com:8080]
+- 协议不同：请求的资源在同一域名下，但协议不同，例如 [http://www.xxx.com] 和 [https://www.xxx.com]
 
 **正向代理和反向代理**
 
@@ -413,6 +417,7 @@ server {
 **问题背景**
 
 项目build之后：
+
 - 开发环境： 用live server等插件在本地启动打包后的index.html，刷新页面404
 - 生产环境： 部署到服务器，刷新页面404
 
@@ -423,9 +428,11 @@ server {
 **解决方案**
 
 开发环境预览打包产物：
+
 - 使用 `pnpm preview` 命令启动预览。
 
 生产环境：
+
 - `Nginx` 配置参考（其他web服务器自行搜索）
 
 ```java

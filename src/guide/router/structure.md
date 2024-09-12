@@ -368,18 +368,18 @@ views
 ### Advanced parameter route
 
 ```ts
-import type { RouteKey } from "@elegant-router/types";
+import type { RouteKey } from '@elegant-router/types';
 
 ElegantVueRouter({
   routePathTransformer(routeName, routePath) {
     const routeKey = routeName as RouteKey;
 
-    if (routeKey === "user") {
-      return "/user/:id(\\d+)";
+    if (routeKey === 'user') {
+      return '/user/:id(\\d+)';
     }
 
     return routePath;
-  },
+  }
 });
 ```
 
@@ -393,11 +393,11 @@ the custom route is only used to generate the route declaration, and the route f
 ElegantVueRouter({
   customRoutes: {
     map: {
-      root: "/",
-      notFound: "/:pathMatch(.*)*",
+      root: '/',
+      notFound: '/:pathMatch(.*)*'
     },
-    names: ["two-level_route"],
-  },
+    names: ['two-level_route']
+  }
 });
 ```
 
@@ -405,13 +405,13 @@ ElegantVueRouter({
 
 ```ts
 type RouteMap = {
-  root: "/";
-  notFound: "/:pathMatch(.*)*";
-  "two-level": "/two-level";
-  "two-level_route": "/two-level/route";
+  root: '/';
+  notFound: '/:pathMatch(.*)*';
+  'two-level': '/two-level';
+  'two-level_route': '/two-level/route';
 };
 
-type CustomRouteKey = "root" | "notFound" | "two-level" | "two-level_route";
+type CustomRouteKey = 'root' | 'notFound' | 'two-level' | 'two-level_route';
 ```
 
 ### Custom routes's component
@@ -419,32 +419,32 @@ type CustomRouteKey = "root" | "notFound" | "two-level" | "two-level_route";
 **it can use existing page components as the route component**
 
 ```ts
-import type { CustomRoute } from "@elegant-router/types";
+import type { CustomRoute } from '@elegant-router/types';
 
 const customRoutes: CustomRoute[] = [
   {
-    name: "root",
-    path: "/",
+    name: 'root',
+    path: '/',
     redirect: {
-      name: "403",
-    },
+      name: '403'
+    }
   },
   {
-    name: "not-found",
-    path: "/:pathMatch(.*)*",
-    component: "layout.base$view.404",
+    name: 'not-found',
+    path: '/:pathMatch(.*)*',
+    component: 'layout.base$view.404'
   },
   {
-    name: "two-level",
-    path: "/two-level",
-    component: "layout.base",
+    name: 'two-level',
+    path: '/two-level',
+    component: 'layout.base',
     children: [
       {
-        name: "two-level_route",
-        path: "/two-level/route",
-        component: "view.about",
-      },
-    ],
-  },
+        name: 'two-level_route',
+        path: '/two-level/route',
+        component: 'view.about'
+      }
+    ]
+  }
 ];
 ```

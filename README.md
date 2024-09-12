@@ -1,1 +1,1 @@
-#  SoybeanAdmin Documentation
+# SoybeanAdmin Documentation

@@ -22,10 +22,10 @@
 
     例如：
 
-      ```ts
-      import { ref } from 'vue';
-      import type { Ref } from 'vue';
-      ```
+    ```ts
+    import { ref } from 'vue';
+    import type { Ref } from 'vue';
+    ```
 
 - defineOptions
 
@@ -132,7 +132,7 @@
   ```ts
   const exposed = {
     count,
-    increment,
+    increment
   };
 
   defineExpose(exposed);

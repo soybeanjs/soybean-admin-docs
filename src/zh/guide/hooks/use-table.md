@@ -1,4 +1,5 @@
 # useTableHook 函数
+
 ---
 
 `useTableHook` 是一个专为 SoybeanAdmin 设计的表格数据处理Hook，它提供了丰富的配置项，可以轻松的实现适配后端接口、处理数据、控制列的显示隐藏，以及实现数据的延迟加载等功能。本文档将详细介绍每个配置项，帮助你更顺手的使用这个Hook。
@@ -22,36 +23,43 @@
 ### 配置项
 
 - `apiFn`
+
   - 类型：函数
   - 是否必须：是
   - 说明：用于获取表格数据，这个函数应该返回一个 `Promise`，并且提供完整的参数与返回值类型。
 
 - `apiParams`
+
   - 类型：对象
   - 是否必须：是
   - 说明：包含调用 `apiFn` 时需要传递的参数。
 
 - `transformer`
+
   - 类型：函数
   - 是否必须：是
   - 说明：用于将 `apiFn` 的响应转换为表格数据。
 
 - `columns`
+
   - 类型：函数
   - 是否必须：是
   - 说明：返回一个数组，数组中的每个元素代表一个表格列。
 
 - `getColumnChecks`
+
   - 类型：函数
   - 是否必须：是
   - 说明：接收 `columns` 作为参数，返回一个数组，数组中的每个元素是一个对象，包含 `key`、`title` 和 `checked` 属性，分别代表列的键、标题和是否被选中。这个方法并没有自身的实现，它依赖于外部传入。
 
 - `getColumns`
+
   - 类型：函数
   - 是否必须：是
   - 说明：接收 `columns` 和 `checks` 作为参数，返回一个新的列数组。
 
 - `onFetched`
+
   - 类型：函数
   - 是否必须：否
   - 说明：当响应被获取并转换后会被调用，接收转换后的数据作为参数。
@@ -73,45 +81,53 @@
 `useHookTable` 返回一个对象，该对象包含以下属性：
 
 - `loading`:
+
   - 类型：布尔值
   - 说明：表示是否正在加载数据。当 `apiFn` 被调用时，`loading` 会被设置为 `true`，当数据被获取并转换完成后，`loading` 会被设置为 `false`。
 
 - `empty`:
+
   - 类型：布尔值
   - 说明：表示获取的数据是否为空。如果 `transformer` 转换的数据为空数组，那么 `empty` 会被设置为 `true`。
 
 - `data`:
+
   - 类型：数组
   - 说明：包含了转换后的表格数据。
 
 - `columns`:
+
   - 类型：数组
   - 说明：包含了应该被展示的列。
 
 - `columnChecks`:
+
   - 类型：数组
   - 说明：包含了列的检查信息。每个元素是一个对象，包含 `key`、`title` 和 `checked` 属性，分别代表列的键、标题和是否被选中。
 
 - `reloadColumns`:
+
   - 类型：函数
   - 说明：用于重新加载列。当调用这个函数时，会重新调用 `columns` 函数获取列，然后使用 `getColumnChecks` 和 `getColumns` 来确定哪些列应该被展示。
 
 - `getData`:
+
   - 类型：函数
   - 说明：用于获取数据。当调用这个函数时，会调用 `apiFn` 获取数据，然后使用 `transformer` 将响应转换为表格数据。
 
 - `searchParams`:
+
   - 类型：对象
   - 说明：包含了调用 `apiFn` 时的参数。
 
 - `updateSearchParams`:
+
   - 类型：函数
   - 说明：用于更新 `searchParams`。这个函数接收一个对象作为参数，该对象的属性会被合并到 `searchParams` 中。
 
 - `resetSearchParams`:
   - 类型：函数
   - 说明：用于重置 `searchParams`。当调用这个函数时，`searchParams` 会被重置为 `apiParams`。
-
 
 ### 使用
 
@@ -138,15 +154,21 @@ const columns = () => [
     title: 'User Name',
     align: 'center',
     minWidth: 100
-  },
+  }
   // ...其他列配置
 ];
 
 const getColumnChecks = columns => columns.map(column => ({ key: column.key, title: column.title, checked: true }));
 
-const getColumns = (columns, checks) => columns.filter(column => checks.find(check => check.key === column.key && check.checked));
+const getColumns = (columns, checks) =>
+  columns.filter(column => checks.find(check => check.key === column.key && check.checked));
 
-const transformer = response => ({ data: response.data, pageNum: response.pageNum, pageSize: response.pageSize, total: response.total });
+const transformer = response => ({
+  data: response.data,
+  pageNum: response.pageNum,
+  pageSize: response.pageSize,
+  total: response.total
+});
 
 const { loading, empty, data, getData } = useHookTable({
   apiFn: fetchGetUserList,
@@ -202,7 +224,7 @@ useTable({
       title: '用户名',
       align: 'center',
       minWidth: 100
-    },
+    }
     // 更多列...
   ]
 });
@@ -319,23 +341,24 @@ import { fetchGetUserList } from '@/api/userApi';
 const { data, loading, pagination } = useTable({
   apiFn: fetchGetUserList,
   columns: () => [
-      {
-          type: 'selection',
-          align: 'center',
-          width: 48
-      },
-      {
-          key: 'index',
-          title: '序号',
-          align: 'center',
-          width: 64
-      },
-      {
-          key: 'userName',
-          title: '用户名',
-          align: 'center',
-          minWidth: 100
-      }]
+    {
+      type: 'selection',
+      align: 'center',
+      width: 48
+    },
+    {
+      key: 'index',
+      title: '序号',
+      align: 'center',
+      width: 64
+    },
+    {
+      key: 'userName',
+      title: '用户名',
+      align: 'center',
+      minWidth: 100
+    }
+  ]
 });
 ```
 
@@ -344,6 +367,7 @@ const { data, loading, pagination } = useTable({
 在 `@/hooks/common/table` 中配置 `useTable` ，修改 `transformer` 函数以适配您的后端接口数据结构。<br />
 
 假设后端返回的数据为：
+
 ```json
 {
   "code": 200,
@@ -359,7 +383,9 @@ const { data, loading, pagination } = useTable({
     "total": 1
 }
 ```
+
 说明：
+
 - `records` 是表格数据
 - `current` 是当前页码
 - `size` 是每页条数
@@ -410,7 +436,7 @@ const { columns, columnChecks, data, loading, pagination, getData } = useTable({
       key: 'id',
       title: $t('page.manage.menu.id'),
       align: 'center'
-    },
+    }
     // 其他内容
   ]
 });
@@ -496,8 +522,8 @@ transformer: res => {
     pageNum: res.data.pageNum,
     pageSize: res.data.pageSize,
     total: totalRecords
-    };
-  }
+  };
+};
 ```
 
 #### 场景三：动态筛选条件
@@ -510,7 +536,7 @@ transformer: res => {
 const apiParams = reactive<TableParams>({
   pageSize: 10,
   pageNum: 1,
-  filter: '',
+  filter: ''
 });
 
 // 假设这是一个响应用户输入的方法
@@ -525,17 +551,17 @@ function updateUserFilter(newFilter: string) {
 
 为了进一步优化和规范代码的结构、您还可以在 `useTableOperate` 的配置对象里通过配置对表格进行操作，如添加、编辑、删除条目以及管理弹出抽屉的可见性，通过在指定函数中实现自己的业务逻辑。
 
-* 函数和字段说明
+- 函数和字段说明
 
-| 字段名                | 类别     | 说明                                                                                   |
-|--------------------|--------|--------------------------------------------------------------------------------------|
-| **drawerVisible**  | Ref 对象 | 表示操作抽屉（如添加或编辑表单的抽屉）的可见性。                                                             |
-| **openDrawer**     | 函数     | 用于打开操作抽屉。                                                                            |
-| **closeDrawer**    | 函数     | 用于关闭操作抽屉。                                                                            |
-| **operateType**    | Ref 对象 | 用于标识当前操作类型（'add' 或 'edit'）。                                                          |
-| **handleAdd**      | 函数     | 用于处理添加操作。它将 operateType 设置为 'add' 并打开操作抽屉。                                           |
-| **editingData**    | Ref 对象 | 用于存储当前正在编辑的数据项。                                                                      |
+| 字段名             | 类别     | 说明                                                                                                                                |
+| ------------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| **drawerVisible**  | Ref 对象 | 表示操作抽屉（如添加或编辑表单的抽屉）的可见性。                                                                                    |
+| **openDrawer**     | 函数     | 用于打开操作抽屉。                                                                                                                  |
+| **closeDrawer**    | 函数     | 用于关闭操作抽屉。                                                                                                                  |
+| **operateType**    | Ref 对象 | 用于标识当前操作类型（'add' 或 'edit'）。                                                                                           |
+| **handleAdd**      | 函数     | 用于处理添加操作。它将 operateType 设置为 'add' 并打开操作抽屉。                                                                    |
+| **editingData**    | Ref 对象 | 用于存储当前正在编辑的数据项。                                                                                                      |
 | **handleEdit**     | 函数     | 用于处理编辑操作。它接受一个 id 参数，用于查找并设置 editingData 为对应的数据项，并将 operateType 设置为 'edit'，然后打开操作抽屉。 |
-| **checkedRowKeys** | Ref 对象 | 用于存储选中行的键（通常是 ID）数组。                                                                 |
-| **onBatchDeleted** | 异步函数   | 用于处理批量删除操作完成后的逻辑，如显示删除成功的消息并刷新数据。                                                    |
-| **onDeleted**      | 异步函数   | 用于处理单个删除操作完成后的逻辑，如显示删除成功的消息并刷新数据。                                                    |
+| **checkedRowKeys** | Ref 对象 | 用于存储选中行的键（通常是 ID）数组。                                                                                               |
+| **onBatchDeleted** | 异步函数 | 用于处理批量删除操作完成后的逻辑，如显示删除成功的消息并刷新数据。                                                                  |
+| **onDeleted**      | 异步函数 | 用于处理单个删除操作完成后的逻辑，如显示删除成功的消息并刷新数据。                                                                  |

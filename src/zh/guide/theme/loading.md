@@ -60,7 +60,6 @@ export function setupLoading() {
     app.innerHTML = loading;
   }
 }
-
 ```
 
 ::: tip 代码位置

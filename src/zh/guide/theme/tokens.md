@@ -12,6 +12,7 @@ type ThemeToken = {
   };
 };
 ```
+
 ::: tip 代码位置
 src/typings/app.d.ts
 :::

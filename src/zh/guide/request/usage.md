@@ -7,6 +7,7 @@ const isHttpProxy = import.meta.env.DEV && import.meta.env.VITE_HTTP_PROXY === '
 
 const { baseURL, otherBaseURL } = getServiceBaseURL(import.meta.env, isHttpProxy);
 ```
+
 > `isHttpProxy` 用于判断是否使用代理，`baseURL` 表示环境文件中 `VITE_SERVICE_BASE_URL` 的值，`otherBaseURL` 用于其他请求，通过 `VITE_OTHER_SERVICE_BASE_URL` 配置。
 
 > `getServiceBaseURL` 方法用于获取请求的基础路径，根据环境变量 `import.meta.env` 和 `isHttpProxy` 判断是否使用代理。
@@ -24,6 +25,7 @@ import { createFlatRequest, createRequest } from '@sa/axios';
 ## 确认创建请求实例函数的范型参数
 
 - 请求结果的数据类型: `App.Service.Response`，默认请求用该类型，请根据自己的后端返回数据类型进行修改
+
   > 因为不同的类型会影响到 `RequestOption` 中的 `isBackendSuccess` 和 `transformBackendResponse` 以及错误信息的字段的参数类型
 
   > 其他请求实例的数据类型请自行再定义新的类型声明
@@ -187,23 +189,22 @@ export function fetchLogin(loginRes: Api.Auth.LoginReq) {
 - 如果 request 函数是通过 `createFlatRequest` 创建的，请求成功后的数据类型会被包装在一个对象中，可以通过 `data` 字段获取。
 
 ```ts
-
 async function login() {
   const { error, data } = await fetchLogin({ username: 'admin', password: 'admin' });
 
-  if(!error) {
+  if (!error) {
     // 请求成功
   }
 }
-
 ```
+
 - 如果 request 函数是通过 `createRequest` 创建的，请求成功后的数据类型会直接返回，不会被包装在对象中。
 
 ```ts
 async function login() {
   const data = await fetchLogin({ username: 'admin', password: 'admin' });
 
-  if(data) {
+  if (data) {
     // 请求成功
   }
 }

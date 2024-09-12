@@ -22,6 +22,6 @@
 
 - **Email**: [soybeanjs@outlook.com](mailto:soybeanjs@outlook.com)
 - **GitHub Issues**: 欢迎通过 [GitHub Issues](https://github.com/soybeanjs/soybean-admin/issues/new) 联系我们，进行初步的合作洽谈。
-- **商务合作微信**:  honghuangdc
+- **商务合作微信**: honghuangdc
 
 期待与您开展深入合作，共同推动 SoybeanAdmin 项目及其在更多领域的成功应用！

@@ -66,6 +66,7 @@ views
 │   ├── detail
 │   │   └── index.vue
 ```
+
 > 请不要出现上述 index.vue 和文件夹同级的情况，这种情况不在约定的规则中
 
 ### 生成的路由
@@ -367,18 +368,18 @@ views
 ### 高级的参数路由
 
 ```ts
-import type { RouteKey } from "@elegant-router/types";
+import type { RouteKey } from '@elegant-router/types';
 
 ElegantVueRouter({
   routePathTransformer(routeName, routePath) {
     const routeKey = routeName as RouteKey;
 
-    if (routeKey === "user") {
-      return "/user/:id(\\d+)";
+    if (routeKey === 'user') {
+      return '/user/:id(\\d+)';
     }
 
     return routePath;
-  },
+  }
 });
 ```
 
@@ -392,11 +393,11 @@ ElegantVueRouter({
 ElegantVueRouter({
   customRoutes: {
     map: {
-      root: "/",
-      notFound: "/:pathMatch(.*)*",
+      root: '/',
+      notFound: '/:pathMatch(.*)*'
     },
-    names: ["two-level_route"],
-  },
+    names: ['two-level_route']
+  }
 });
 ```
 
@@ -404,13 +405,13 @@ ElegantVueRouter({
 
 ```ts
 type RouteMap = {
-  root: "/";
-  notFound: "/:pathMatch(.*)*";
-  "two-level": "/two-level";
-  "two-level_route": "/two-level/route";
+  root: '/';
+  notFound: '/:pathMatch(.*)*';
+  'two-level': '/two-level';
+  'two-level_route': '/two-level/route';
 };
 
-type CustomRouteKey = "root" | "notFound" | "two-level" | "two-level_route";
+type CustomRouteKey = 'root' | 'notFound' | 'two-level' | 'two-level_route';
 ```
 
 ### 自定义路由的component
@@ -418,32 +419,32 @@ type CustomRouteKey = "root" | "notFound" | "two-level" | "two-level_route";
 **复用已经存在的页面路由component**
 
 ```ts
-import type { CustomRoute } from "@elegant-router/types";
+import type { CustomRoute } from '@elegant-router/types';
 
 const customRoutes: CustomRoute[] = [
   {
-    name: "root",
-    path: "/",
+    name: 'root',
+    path: '/',
     redirect: {
-      name: "403",
-    },
+      name: '403'
+    }
   },
   {
-    name: "not-found",
-    path: "/:pathMatch(.*)*",
-    component: "layout.base$view.404",
+    name: 'not-found',
+    path: '/:pathMatch(.*)*',
+    component: 'layout.base$view.404'
   },
   {
-    name: "two-level",
-    path: "/two-level",
-    component: "layout.base",
+    name: 'two-level',
+    path: '/two-level',
+    component: 'layout.base',
     children: [
       {
-        name: "two-level_route",
-        path: "/two-level/route",
-        component: "view.about",
-      },
-    ],
-  },
+        name: 'two-level_route',
+        path: '/two-level/route',
+        component: 'view.about'
+      }
+    ]
+  }
 ];
 ```

@@ -52,12 +52,7 @@
   - 多个图标动态渲染
 
     ```html
-    <svg-icon
-      v-for="icon in icons"
-      :key="icon"
-      :icon="icon"
-      class="text-24px text-red"
-    />
+    <svg-icon v-for="icon in icons" :key="icon" :icon="icon" class="text-24px text-red" />
     ```
 
 - **本地 svg 图标**
@@ -87,5 +82,5 @@
 
     SvgIconVNode({ icon: 'ant-design:close-outlined', fontSize: 18 }); // iconify
 
-    SvgIconVNode({ localIcon: "custom-icon" }); // 本地svg图标
+    SvgIconVNode({ localIcon: 'custom-icon' }); // 本地svg图标
     ```

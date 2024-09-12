@@ -7,10 +7,9 @@ import { themeVars } from './src/theme/vars';
 
 export default defineConfig<Theme>({
   theme: {
-    ...themeVars,
+    ...themeVars
   }
 });
-
 ```
 
 ::: tip 代码位置
@@ -23,7 +22,7 @@ export default defineConfig<Theme>({
 
 ```ts
 export default defineConfig<Theme>({
-	presets: [presetUno({ dark: "class" })],
+  presets: [presetUno({ dark: 'class' })]
 });
 ```
 

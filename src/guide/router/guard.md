@@ -1,7 +1,5 @@
 # Router Guard
 
-
-
 ## Router guard flow
 
 ![](../../assets/router-guard-flow.png)

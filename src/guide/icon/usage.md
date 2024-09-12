@@ -37,7 +37,6 @@
     'icon-local' is a preset prefix, set the variable VITE_ICON_LOCAL_PREFIX in .env
     :::
 
-
 ### II. Dynamic Rendering: Render corresponding icon based on the icon name
 
 - **iconify**
@@ -53,12 +52,7 @@
   - Dynamic rendering of multiple icons
 
     ```html
-    <svg-icon
-      v-for="icon in icons"
-      :key="icon"
-      :icon="icon"
-      class="text-24px text-red"
-    />
+    <svg-icon v-for="icon in icons" :key="icon" :icon="icon" class="text-24px text-red" />
     ```
 
 - **Local svg icons**
@@ -93,5 +87,5 @@
 
     SvgIconVNode({ icon: 'ant-design:close-outlined', fontSize: 18 }); // iconify
 
-    SvgIconVNode({ localIcon: "custom-icon" }); // Local svg icon
+    SvgIconVNode({ localIcon: 'custom-icon' }); // Local svg icon
     ```
