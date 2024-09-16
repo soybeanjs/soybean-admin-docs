@@ -32,7 +32,7 @@ export default defineConfig({
             activeMatch: '/zh/cooperate/'
           },
           { text: '生态', link: '/zh/awesome/', activeMatch: '/zh/awesome/' },
-          { text: '团队', link: '/zh/team/', activeMatch: '/zh/team/' },
+          { text: '技术推荐', link: '/zh/recommend/', activeMatch: '/zh/recommend/' },
           {
             text: '捐赠',
             link: '/zh/other/donate'
@@ -264,6 +264,16 @@ export default defineConfig({
               text: '其他',
               link: '/zh/tutorial/other'
             }
+          ],
+          '/zh/recommend/': [
+            {
+              text: '前言',
+              link: '/zh/recommend/'
+            },
+            {
+              text: 'Alova-下一代请求工具',
+              link: '/zh/recommend/alova'
+            }
           ]
         }
       }
@@ -317,7 +327,7 @@ export default defineConfig({
       { text: 'Standard', link: '/standard/', activeMatch: '/standard/' },
       { text: 'Tutorial', link: '/tutorial/', activeMatch: '/tutorial/' },
       { text: 'EcoSystem', link: '/awesome/', activeMatch: '/awesome/' },
-      { text: 'Team', link: '/team/', activeMatch: '/team/' },
+      { text: 'Recommend', link: '/recommend/', activeMatch: '/recommend/' },
       {
         text: 'Donate',
         link: '/other/donate'
@@ -548,6 +558,16 @@ export default defineConfig({
         {
           text: 'Other',
           link: '/tutorial/other'
+        }
+      ],
+      '/recommend/': [
+        {
+          text: 'Preface',
+          link: '/recommend/'
+        },
+        {
+          text: 'Alova-Next Generation Request Tool',
+          link: '/recommend/alova'
         }
       ]
     }
