@@ -396,9 +396,9 @@ server {
 >
 > 如果后台服务开启 CROS， 前台服务则不需要额外配置
 
-## 接口请求成功，无法获取到响应数据
+## vscode的i18nAlly插件无法新增多语言
 
-> 📢 有热心群友反馈：项目在接口时，请求发送成功 , 可以在请求的响应体中看到数据，但是无法将数据渲染到页面中
+参考：[fix(utils): 修复windows系统下使用vscode的i18nAlly插件无法新增多语言的问题 #630](https://github.com/soybeanjs/soybean-admin/pull/630)
 
 ## 项目中使用 Iframe 嵌入本地的 HTML 时出现 404 的问题
 
