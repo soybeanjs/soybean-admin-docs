@@ -85,9 +85,9 @@ The permission routing mode in the project is divided into:
 
 > When the project uses the dynamic routing mode for data rendering, it will automatically overwrite the name value of the routing homepage
 
-## The Tab page is blank after refreshing
+## Vscode's i18nAlly plugin cannot add multiple languages
 
-📢 Some enthusiastic group friends feedback, there is a situation of `Tab page switching appears blank page` in the project in the development environment
+reference resources: [fix(utils): 修复windows系统下使用vscode的i18nAlly插件无法新增多语言的问题 #630](https://github.com/soybeanjs/soybean-admin/pull/630)
 
 ---
 
