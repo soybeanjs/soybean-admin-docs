@@ -385,7 +385,7 @@ ElegantVueRouter({
 
 ## Custom Route
 
-the custom route is only used to generate the route declaration, and the route file is not generated, you should create the route file manually.
+the custom route is only used to generate the route declaration, and the route data is not generated, you should create the route data manually.
 
 ### Config custom routes
 
