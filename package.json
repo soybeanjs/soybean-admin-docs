@@ -24,6 +24,7 @@
     "build": "vitepress build",
     "cleanup": "soy cleanup",
     "commit": "soy git-commit",
+    "commit:zh": "soy git-commit -l=zh-cn",
     "dev": "vitepress dev --port 1026",
     "lint": "eslint . --fix",
     "preview": "vitepress serve",
