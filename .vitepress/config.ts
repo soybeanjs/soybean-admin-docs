@@ -41,24 +41,55 @@ export default defineConfig({
             text: '链接',
             items: [
               {
-                text: '在线预览(NaiveUI)',
-                link: 'https://naive.soybeanjs.cn'
+                text: '预览',
+                items: [
+                  {
+                    text: '在线预览(NaiveUI)',
+                    link: 'https://naive.soybeanjs.cn'
+                  },
+                  {
+                    text: '在线预览(AntDesignVue)',
+                    link: 'https://antd.soybeanjs.cn'
+                  },
+                ]
               },
               {
-                text: '在线预览(AntDesignVue)',
-                link: 'https://antd.soybeanjs.cn'
+                text: '源码仓库',
+                items: [
+                  {
+                    text: 'Github(NaiveUI) 仓库',
+                    link: 'https://github.com/soybeanjs/soybean-admin'
+                  },
+                  {
+                    text: 'Github(AntDesignVue) 仓库',
+                    link: 'https://github.com/soybeanjs/soybean-admin-antd'
+                  },
+                  {
+                    text: 'Gitee(NaiveUI) 仓库',
+                    link: 'https://gitee.com/honghuangdc/soybean-admin'
+                  },
+                  {
+                    text: 'Gitee(AntDesignVue) 仓库',
+                    link: 'https://gitee.com/honghuangdc/soybean-admin-antd'
+                  },
+                ]
               },
               {
-                text: 'Github 仓库',
-                link: 'https://github.com/soybeanjs/soybean-admin'
+                text: '文档',
+                items: [
+                  {
+                    text: '旧版文档',
+                    link: 'https://legacy-docs.soybeanjs.cn'
+                  },
+                  {
+                    text: '文档源码',
+                    link: 'https://github.com/soybeanjs/soybean-admin-docs'
+                  },
+                ]
               },
               {
-                text: 'Gitee 仓库',
-                link: 'https://gitee.com/honghuangdc/soybean-admin'
-              },
-              {
-                text: '旧版文档',
-                link: 'https://legacy-docs.soybeanjs.cn'
+                text: 'SoybeanJS 仓库列表',
+                link: 'https://github.com/orgs/soybeanjs/repositories?type=source'
               }
             ]
           }
@@ -336,24 +367,55 @@ export default defineConfig({
         text: 'Links',
         items: [
           {
-            text: 'Preview(NaiveUI)',
-            link: 'https://naive.soybeanjs.cn'
+            text: 'Preview',
+            items: [
+              {
+                text: 'Preview(NaiveUI)',
+                link: 'https://naive.soybeanjs.cn'
+              },
+              {
+                text: 'Preview(AntDesignVue)',
+                link: 'https://antd.soybeanjs.cn'
+              },
+            ]
           },
           {
-            text: 'Preview(AntDesignVue)',
-            link: 'https://antd.soybeanjs.cn'
+            text: 'Repository',
+            items: [
+              {
+                text: 'Github(NaiveUI)',
+                link: 'https://github.com/soybeanjs/soybean-admin'
+              },
+              {
+                text: 'Github(AntDesignVue)',
+                link: 'https://github.com/soybeanjs/soybean-admin-antd'
+              },
+              {
+                text: 'Gitee(NaiveUI)',
+                link: 'https://gitee.com/honghuangdc/soybean-admin'
+              },
+              {
+                text: 'Gitee(AntDesignVue)',
+                link: 'https://gitee.com/honghuangdc/soybean-admin-antd'
+              },
+            ]
           },
           {
-            text: 'Github Repository',
-            link: 'https://github.com/soybeanjs/soybean-admin'
+            text: 'Docs',
+            items: [
+              {
+                text: 'Legacy Docs',
+                link: 'https://legacy-docs.soybeanjs.cn'
+              },
+              {
+                text: 'Docs Repository',
+                link: 'https://github.com/soybeanjs/soybean-admin-docs'
+              },
+            ]
           },
           {
-            text: 'Gitee Repository',
-            link: 'https://gitee.com/honghuangdc/soybean-admin'
-          },
-          {
-            text: 'Legacy Docs',
-            link: 'https://legacy-docs.soybeanjs.cn'
+            text: 'SoybeanJS repository list',
+            link: 'https://github.com/orgs/soybeanjs/repositories?type=source'
           }
         ]
       }
