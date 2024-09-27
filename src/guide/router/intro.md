@@ -6,6 +6,9 @@ The routing of this system is based on the plugin [Elegant Router](https://githu
 
 After starting the project, the plugin will automatically generate the src/router/elegant directory. The files in this directory are automatically generated files for route import, route definition, and route conversion.
 
+> [!IMPORTANT]
+> Routing is a byproduct of files, so deleting a route is deleting a file, and the route will disappear along with the file. <br> The only content that can be modified by routing is the 'components' and' meta 'information, and the automatically generated operation will not affect these two properties.
+
 ## Configuration properties
 
 ### 1. type RouteKey
