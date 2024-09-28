@@ -50,7 +50,7 @@ export default defineConfig({
                   {
                     text: '在线预览(AntDesignVue)',
                     link: 'https://antd.soybeanjs.cn'
-                  },
+                  }
                 ]
               },
               {
@@ -304,6 +304,10 @@ export default defineConfig({
             {
               text: 'Alova-下一代请求工具',
               link: '/zh/recommend/alova'
+            },
+            {
+              text: 'PageSpy-多端远程调试平台',
+              link: '/zh/recommend/page-spy'
             }
           ]
         }
