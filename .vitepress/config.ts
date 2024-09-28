@@ -71,7 +71,7 @@ export default defineConfig({
                   {
                     text: 'Gitee(AntDesignVue) 仓库',
                     link: 'https://gitee.com/honghuangdc/soybean-admin-antd'
-                  },
+                  }
                 ]
               },
               {
@@ -84,7 +84,7 @@ export default defineConfig({
                   {
                     text: '文档源码',
                     link: 'https://github.com/soybeanjs/soybean-admin-docs'
-                  },
+                  }
                 ]
               },
               {
@@ -302,6 +302,10 @@ export default defineConfig({
               link: '/zh/recommend/'
             },
             {
+              text: '@soybeanjs/cli-脚手架工具',
+              link: '/zh/recommend/soybean-cli'
+            },
+            {
               text: 'Alova-下一代请求工具',
               link: '/zh/recommend/alova'
             },
@@ -380,7 +384,7 @@ export default defineConfig({
               {
                 text: 'Preview(AntDesignVue)',
                 link: 'https://antd.soybeanjs.cn'
-              },
+              }
             ]
           },
           {
@@ -401,7 +405,7 @@ export default defineConfig({
               {
                 text: 'Gitee(AntDesignVue)',
                 link: 'https://gitee.com/honghuangdc/soybean-admin-antd'
-              },
+              }
             ]
           },
           {
@@ -414,7 +418,7 @@ export default defineConfig({
               {
                 text: 'Docs Repository',
                 link: 'https://github.com/soybeanjs/soybean-admin-docs'
-              },
+              }
             ]
           },
           {
@@ -632,8 +636,16 @@ export default defineConfig({
           link: '/recommend/'
         },
         {
-          text: 'Alova-Next Generation Request Tool',
+          text: '@soybeanjs/cli',
+          link: '/recommend/soybean-cli'
+        },
+        {
+          text: 'Alova',
           link: '/recommend/alova'
+        },
+        {
+          text: 'PageSpy',
+          link: '/recommend/page-spy'
         }
       ]
     }
