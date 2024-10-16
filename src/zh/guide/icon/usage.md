@@ -84,3 +84,50 @@
 
     SvgIconVNode({ localIcon: 'custom-icon' }); // 本地svg图标
     ```
+
+## 四、离线加载：添加指定的离线 iconify 图标集合
+
+- **使用步骤**
+
+  - 安装依赖
+
+    ```bash
+    ## 包含图标组件数据
+    pnpm add @iconify/vue
+
+    ## 包含离线图标数据
+    pnpm add @iconify/json
+    ```
+
+  ::: tip 提示
+  项目中已经引入相关依赖，直接在组件内引用即可
+  :::
+
+  - 准备离线图标集合数据
+
+    如：我们需要在项目中使用 `Ant Design` 图标库，则可以按照以下方式引入离线图标
+
+    ```typescript
+    import AntDesign from '@iconify/json/json/ant-design.json';
+    ```
+
+  - 在页面中使用 `addCollection` 方法添加离线图标
+
+    ```typescript
+    import { addCollection } from '@iconify/vue';
+    ```
+
+- **代码示例**
+
+  ```vue
+  <script lang="ts" setup>
+  import { Icon, addCollection } from '@iconify/vue';
+  import AntDesign from '@iconify/json/json/ant-design.json';
+
+  addCollection(AntDesign);
+  </script>
+
+  <template>
+    <Icon icon="ant-design:search" class="text-40px text-success" />
+  </template>
+  ```

@@ -37,7 +37,7 @@
     'icon-local' is a preset prefix, set the variable VITE_ICON_LOCAL_PREFIX in .env
     :::
 
-### II. Dynamic Rendering: Render corresponding icon based on the icon name
+## II. Dynamic Rendering: Render corresponding icon based on the icon name
 
 - **iconify**
 
@@ -89,3 +89,50 @@
 
     SvgIconVNode({ localIcon: 'custom-icon' }); // Local svg icon
     ```
+
+## IV. Offline Loading: Adding Specified Offline Iconify Icon Collections
+
+- **Usage Steps**
+
+  - Install dependencies
+
+    ```bash
+    ## Include icon component data
+    pnpm add @iconify/vue
+
+    ## Include offline icon data
+    pnpm add @iconify/json
+    ```
+
+  ::: tip Tip
+  The project has already imported the relevant dependencies, so you can directly reference them in the component.
+  :::
+
+  - Prepare offline icon collection data
+
+    For example, if we need to use the `Ant Design` icon library in our project, we can introduce offline icons as follows
+
+    ```typescript
+    import AntDesign from '@iconify/json/json/ant-design.json';
+    ```
+
+  - Use the `addCollection` method to add offline icons in the page
+
+    ```typescript
+    import { addCollection } from '@iconify/vue';
+    ```
+
+- **Code Example**
+
+  ```vue
+  <script lang="ts" setup>
+  import { Icon, addCollection } from '@iconify/vue';
+  import AntDesign from '@iconify/json/json/ant-design.json';
+
+  addCollection(AntDesign);
+  </script>
+
+  <template>
+    <Icon icon="ant-design:search" class="text-40px text-success" />
+  </template>
+  ```
