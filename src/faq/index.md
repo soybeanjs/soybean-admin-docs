@@ -308,7 +308,7 @@ _Forward proxy is a client proxy, proxying the client, the server does not know 
 
 2. Reverse Proxy
 
-<u>A forward proxy is a client proxy, proxying for the client, and the server does not know the actual client initiating the request.</u>
+<u>Reverse proxy is a server configuration that allows an intermediate server to receive requests from clients and then forward these requests to one or more backend servers. Clients usually do not know that they are actually communicating with the backend server, as all interactions are conducted through a reverse proxy server.</u>
 
 > Generally, the dist directory is deployed to the `Nginx` server, and reverse proxy is implemented by configuring `nginx.conf`
 
