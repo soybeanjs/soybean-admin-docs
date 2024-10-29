@@ -2,6 +2,11 @@
 
 本系统的路由基于插件 [Elegant Router](https://github.com/soybeanjs/elegant-router)，详细用法请查看插件文档。
 
+::: danger 警告
+由于使用了 `<Transition>` 标签支持页面过渡动画，所以在页面的 `.vue` 文件的 `template` 中只能有一个根元素，注释和纯文本都不行，必须只有一个根标签元素。
+相关文档： [Transition | Vue.js (vuejs.org)](https://cn.vuejs.org/guide/built-ins/transition.html#the-transition-component)
+:::
+
 ## 自动生成
 
 启动项目后，插件会自动生成 src/router/elegant 目录，该目录下的文件为自动生成的路由导入、路由定义和路由转换的文件
