@@ -106,12 +106,21 @@ const partners = [
       { icon: 'github', link: 'https://github.com/SonyLeo' }
     ]
   },
-    {
-    avatar: '	https://avatars.githubusercontent.com/u/155351881?v=4',
+  {
+    avatar: 'https://avatars.githubusercontent.com/u/155351881?v=4',
     name: 'Ohh',
     title: 'Front-end development · zhengzhou',
     links: [
       { icon: 'github', link: 'https://github.com/mufeng889' }
+    ]
+  },
+  {
+    avatar: 'https://avatars.githubusercontent.com/u/23544762?s=96&v=4',
+    name: '一寸灰',
+    title: 'Front-end development · Beijing',
+    desc: 'Why not',
+    links: [
+      { icon: 'github', link: 'https://github.com/skyfeiz' }
     ]
   },
 ]
