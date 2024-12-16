@@ -34,9 +34,9 @@
   },
   "devDependencies": {
     "@soybeanjs/cli": "1.1.1",
-    "@soybeanjs/eslint-config": "1.4.3",
-    "@types/node": "22.10.0",
-    "eslint": "9.15.0",
+    "@soybeanjs/eslint-config": "1.4.4",
+    "@types/node": "22.10.2",
+    "eslint": "9.17.0",
     "typescript": "5.7.2",
     "vitepress": "1.5.0"
   }
