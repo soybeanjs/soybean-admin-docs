@@ -106,6 +106,10 @@ export default defineConfig({
                 {
                   text: '快速上手',
                   link: '/zh/guide/quick-start'
+                },
+                {
+                  text: '同步代码',
+                  link: '/zh/guide/sync'
                 }
               ]
             },
@@ -440,6 +444,10 @@ export default defineConfig({
             {
               text: 'Quick Start',
               link: '/guide/quick-start'
+            },
+            {
+              text: 'Sync Code',
+              link: '/guide/sync'
             }
           ]
         },
