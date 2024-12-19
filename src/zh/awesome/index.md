@@ -16,3 +16,4 @@
 | web-firewall        | web-firewall基于golang+vue3 开发的Web Linux防火墙，前端使用SoybeanAdmin框架，后端使用goframe2，数据库支持 sqlite3(默认)/postgresql ，它可以在Linux系统中基于nfatables用于替代firewalld工具。                                                                          | https://github.com/moreKing/web-firewall         |
 | soybean-admin-nestjs | 基于 NestJS 和 CQRS 的后台管理系统脚手架，融合 DDD 驱动设计和 NestJS monorepo 结构，内置基础权限管理。为开发者提供一个灵活、模块化的起点，助力构建基础的管理系统。 | https://github.com/soybeanjs/soybean-admin-nestjs |
 | soybean-admin-quarkus | 基于 Kotlin 和 Quarkus 的后台管理系统脚手架，融合 DDD 驱动设计、CQRS 和事件溯源。采用 Gradle 构建，旨在为开发者提供一个轻量级、高性能的现代化管理系统开发框架。 | https://github.com/soybeanjs/soybean-admin-quarkus |
+| jzero-admin | 基于 golang  [go-zero](https://github.com/zeromicro/go-zero) 框架扩展的 [jzero](https://github.com/jzero-io/jzero) 脚手架开发，配备服务端/数据库/客户端 SDK 代码自动生成并支持多模块插件化的下一代后台管理系统。 | https://github.com/jzero-io/jzero-admin |
