@@ -25,7 +25,8 @@ ssh-keygen -t rsa -C "soybeanjs@outlook.com"
 ```
 
 > -t rsa表示生成rsa密钥，-C表示注释，后面跟上注释内容
-> :::
+
+:::
 
 - 上传git密钥
 

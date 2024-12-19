@@ -25,7 +25,8 @@ ssh-keygen -t rsa -C "soybeanjs@outlook.com"
 ```
 
 > -t rsa indicates generating an RSA key, -C indicates a comment, followed by the comment content
-> :::
+
+:::
 
 - Upload git SSH key
 
