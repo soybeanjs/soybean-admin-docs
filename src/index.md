@@ -21,11 +21,20 @@ hero:
     - theme: alt
       text: View on GitHub
       link: https://github.com/soybeanjs/soybean-admin
+    - theme: alt
+      text: React Version Docs ->
+      link: https://react-soybean-docs.ohh-889.com/index-cn
 
 features:
   - icon: 🆕
     title: Latest popular technology stack
     details: Vue3, Vite5, TypeScript, Pinia, UnoCSS.
+  - icon: 🔄
+    title: Multi-version Support
+    details: Simultaneously supports Vue3 and React, allowing you to flexibly choose your front-end tech stack.
+  - icon: 🎨
+    title: Integration of Multiple Component Libraries
+    details: Adapts to various component libraries such as Element Plus, Naive UI, Ant Design, and Ant Design Vue to meet diverse UI needs.
   - icon: 🦋
     title: Clean Structure
     details: Use pnpm monorepo, clean and elegant structure, easy to maintain. Very high code specification.
@@ -41,6 +50,9 @@ features:
   - icon: 🔑
     title: Auth Router
     details: Support front-end static routing and back-end dynamic routing.
+  - icon: ⚙️
+    title: Extended Script Tools
+    details: Provides multiple scripting capabilities, including one-click dependency upgrades, automatic generation of ChangeLogs, commit messages, etc., greatly improving development efficiency.
 ---
 
 <script setup>

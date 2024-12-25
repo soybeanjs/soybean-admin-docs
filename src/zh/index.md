@@ -21,11 +21,20 @@ hero:
     - theme: alt
       text: 在 GitHub 上查看
       link: https://github.com/soybeanjs/soybean-admin
+    - theme: alt
+      text: React 版本文档 ->
+      link: https://react-soybean-docs.ohh-889.com/index-cn
 
 features:
   - icon: 🆕
     title: 最新流行技术栈
     details: Vue3,Vite5,TypeScript 和 UnoCSS
+  - icon: 🔄
+    title: 多版本支持
+    details: 同时支持 Vue3 和 React，让您可灵活选择前端开发技术栈。
+  - icon: 🎨
+    title: 多组件库集成
+    details: 适配 Element Plus、Naive UI、Ant Design、Ant Design Vue 等多种组件库，满足多样化 UI 需求。
   - icon: 🦋
     title: 清晰的项目结构
     details: 采用 pnpm monorepo，结构清晰优雅，易于维护。代码规范性极高。
@@ -41,6 +50,9 @@ features:
   - icon: 🔑
     title: 权限路由
     details: 支持前端静态路由和后端动态路由。
+  - icon: ⚙️
+    title: 扩展 Script 脚本
+    details: 提供一键升级依赖、自动生成 ChangeLog、生成提交信息等多种脚本功能，显著提升开发效率。
 ---
 
 <script setup>
