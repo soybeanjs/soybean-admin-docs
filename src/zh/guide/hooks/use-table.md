@@ -419,6 +419,8 @@ transformer: res => {
 
 `useTable` 返回的对象中包含了表格数据（`data`）、加载状态（`loading`）、分页信息（`pagination`）等，您可以直接在组件中使用这些数据和状态。
 
+> 注意：这里需要给 `NDataTable` 组件配置 `remote` 属性，否则分页组件状态会异常。详情请查看 [NDataTable 远程数据](https://www.naiveui.com/zh-CN/os-theme/components/data-table#ajax-usage)。
+
 ```vue
 <script setup lang="ts">
 import { useTable } from '@/hooks/common/table';
