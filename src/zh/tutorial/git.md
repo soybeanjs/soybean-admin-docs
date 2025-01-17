@@ -1,5 +1,7 @@
 # Git
 
+通过[git](https://git-scm.com/)网站来下载 git 工具
+
 ## 初始化git
 
 - 设置用户信息
