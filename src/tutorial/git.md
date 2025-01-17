@@ -1,5 +1,7 @@
 # Git
 
+Download the Git tool from the [git](https://git-scm.com/) website.
+
 ## Initialize git
 
 - Set user information

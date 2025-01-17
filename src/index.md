@@ -27,10 +27,10 @@ hero:
 
 features:
   - icon: 🆕
-    title: Latest popular technology stack
+    title: The latest technology stack popular in the community.
     details: Vue3, Vite5, TypeScript, Pinia, UnoCSS.
   - icon: 🔄
-    title: Multi-version Support
+    title: Multi-framework Support
     details: Simultaneously supports Vue3 and React, allowing you to flexibly choose your front-end tech stack.
   - icon: 🎨
     title: Integration of Multiple Component Libraries
@@ -40,10 +40,10 @@ features:
     details: Use pnpm monorepo, clean and elegant structure, easy to maintain. Very high code specification.
   - icon: 🛠️
     title: TypeScript
-    details: Strictly typed, easy to maintain.
+    details: Strictly typed, easy for team development and maintenance.
   - icon: 🔩
     title: Theme
-    details: Built-in rich theme configuration, easy to incorporate UnoCSS.
+    details: Built-in rich theme configuration, easily integrate with UnoCSS.
   - icon: 🔗
     title: File routing System
     details: Automatic, intelligent file routing system.
