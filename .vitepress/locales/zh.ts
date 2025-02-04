@@ -38,6 +38,10 @@ export default {
               {
                 text: '在线预览(AntDesignVue)',
                 link: 'https://antd.soybeanjs.cn'
+              },
+              {
+                text: '在线预览(ElementPlus)',
+                link: 'https://elp.soybeanjs.cn/'
               }
             ]
           },
@@ -51,6 +55,10 @@ export default {
               {
                 text: 'Github(AntDesignVue) 仓库',
                 link: 'https://github.com/soybeanjs/soybean-admin-antd'
+              },
+              {
+                text: 'Github(ElementPlus) 仓库',
+                link: 'https://github.com/soybeanjs/soybean-admin-element-plus'
               },
               {
                 text: 'Gitee(NaiveUI) 仓库',

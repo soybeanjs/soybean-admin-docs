@@ -38,6 +38,10 @@ export default {
               {
                 text: 'オンラインプレビュー (AntDesignVue)',
                 link: 'https://antd.soybeanjs.cn'
+              },
+              {
+                text: 'オンラインプレビュー (ElementPlus)',
+                link: 'https://elp.soybeanjs.cn/'
               }
             ]
           },
@@ -51,6 +55,10 @@ export default {
               {
                 text: 'GitHub (AntDesignVue) リポジトリ',
                 link: 'https://github.com/soybeanjs/soybean-admin-antd'
+              },
+              {
+                text: 'Github(ElementPlus) リポジトリ',
+                link: 'https://github.com/soybeanjs/soybean-admin-element-plus'
               },
               {
                 text: 'Gitee (NaiveUI) リポジトリ',

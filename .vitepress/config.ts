@@ -81,6 +81,10 @@ export default defineConfig({
               {
                 text: 'Preview(AntDesignVue)',
                 link: 'https://antd.soybeanjs.cn'
+              },
+              {
+                text: 'Preview(ElementPlus)',
+                link: 'https://elp.soybeanjs.cn/'
               }
             ]
           },
@@ -94,6 +98,10 @@ export default defineConfig({
               {
                 text: 'Github(AntDesignVue)',
                 link: 'https://github.com/soybeanjs/soybean-admin-antd'
+              },
+              {
+                text: 'Github(ElementPlus)',
+                link: 'https://github.com/soybeanjs/soybean-admin-element-plus'
               },
               {
                 text: 'Gitee(NaiveUI)',
