@@ -45,7 +45,7 @@ export default defineConfig({
         icon: {
           svg: qqSvg
         },
-        link: 'https://qm.qq.com/cgi-bin/qm/qr?k=lf7vqv-9JgJ_NDBAUk9EofQEfpqDw7so&jump_from=webapi&authKey=Ueo/dyEtrRm1vgkMI4yqiKjBRtKQuaEGNxMaXX56CoPQz2GRFP+qAADfKoe3ajJN'
+        link: 'https://qm.qq.com/cgi-bin/qm/qr?k=0TX9KUKJ9JNCwJeAvaKfJMxXp4Sd1nmt&jump_from=webapi&authKey=sc7Zwz/R98OxcLT9R/dlDftvl/vi4aKcD2rJmNR8mpbbjdDSegJDud2Q2DwW5HD+'
       }
     ],
     algolia: {
