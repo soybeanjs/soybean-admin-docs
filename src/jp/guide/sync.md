@@ -15,7 +15,7 @@ git fetch otherOrigin
 3. `cherry-pick` を使用して、更新が必要な Git コミットを選択する
 
 ```bash
-git cherry [commit id]
+git cherry-pick [commit id]
 ```
 
 4. コードにコンフリクトが発生した場合は、まずコンフリクトを解決し、以下のコマンドを実行した後、`vim` で保存する
