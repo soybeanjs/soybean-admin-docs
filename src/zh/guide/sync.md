@@ -15,7 +15,7 @@ git fetch otherOrigin
 3. 通过`cherry-pick`挑选需要更新的git提交
 
 ```bash
-git cherry [commit id]
+git cherry-pick [commit id]
 ```
 
 4. 代码有冲突时, 先解决冲突，然后执行下面命令，再执行`vim`保存

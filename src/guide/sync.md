@@ -15,7 +15,7 @@ git fetch otherOrigin
 3. Pick the git commit that needs to be updated through `cherry-pick`
 
 ```bash
-git cherry [commit id]
+git cherry-pick [commit id]
 ```
 
 4. When there is a conflict in the code, resolve the conflict, then excute the following command, and then execute `vim` to save
