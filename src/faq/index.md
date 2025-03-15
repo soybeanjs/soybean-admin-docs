@@ -245,7 +245,7 @@ git clone https://github.com/soybeanjs/soybean-admin.git
 
 ```bash
 # 'up' is the name of the source, it can be set arbitrarily
-# gitUrl is the latest open source code
+# gitUrl is your own git source address
 git remote add up gitUrl;
 ```
 

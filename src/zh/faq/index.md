@@ -245,7 +245,7 @@ git clone https://github.com/soybeanjs/soybean-admin.git
 
 ```bash
 # up 为源名称,可以随意设置
-# gitUrl为开源最新代码
+# gitUrl为自己的 git 源地址
 git remote add up gitUrl;
 ```
 
