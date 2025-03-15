@@ -243,7 +243,7 @@ git clone https://github.com/soybeanjs/soybean-admin.git
 
 ```bash
 # up は任意のソース名に設定できます
-# gitUrl は最新のオープンソースコード
+# gitUrl は自分のGitソースアドレス
 git remote add up gitUrl;
 ```
 
