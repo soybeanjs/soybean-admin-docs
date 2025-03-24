@@ -2,7 +2,6 @@
 
 The routing of this system is based on the plugin [Elegant Router](https://github.com/soybeanjs/elegant-router). For detailed usage, please refer to the plugin documentation.
 
-
 ::: danger
 Since the `<Transition>` tag is used to support page transition animations, there can only be one root element in the `template` of the `.vue` file, and neither annotations nor plain text can be used, there must be only one root element.
 Related Documents： [Transition | Vue.js (vuejs.org)](https://cn.vuejs.org/guide/built-ins/transition.html#the-transition-component)
@@ -13,7 +12,7 @@ Related Documents： [Transition | Vue.js (vuejs.org)](https://cn.vuejs.org/guid
 After starting the project, the plugin will automatically generate the src/router/elegant directory. The files in this directory are automatically generated files for route import, route definition, and route conversion.
 
 > [!IMPORTANT]
-> Routing is a byproduct of files, so deleting a route is deleting a file, and the route will disappear along with the file. <br> The only content that can be modified by routing is the 'components' and' meta 'information, and the automatically generated operation will not affect these two properties.
+> Routing is a byproduct of files, so deleting a route is deleting a file, and the route will disappear along with the file. <br> The only content that can be modified by routing is the `component` and `meta` information, and the automatically generated operation will not affect these two properties.
 
 ## Configuration properties
 
