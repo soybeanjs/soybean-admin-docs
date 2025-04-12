@@ -6,7 +6,7 @@ titleTemplate: 洗練されたエレガントなバックエンドテンプレ�
 hero:
   name: SoybeanAdmin
   text: 洗練されたエレガントなバックエンドテンプレート
-  tagline: Vue3、Vite5、TypeScript、UnoCSS に基づいて
+  tagline: Vue3、Vite6、TypeScript、UnoCSS に基づいて
   image:
     src: /logo.svg
     alt: SoybeanAdmin
@@ -27,7 +27,7 @@ hero:
 features:
   - icon: 🆕
     title: 最新の人気技術スタック
-    details: Vue3、Vite5、TypeScript、UnoCSS
+    details: Vue3、Vite6、TypeScript、UnoCSS
   - icon: 🔄
     title: マルチフレームワーク対応
     details: Vue3とReactの両方をサポートし、フロントエンド技術スタックを柔軟に選択可能

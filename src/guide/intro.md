@@ -1,10 +1,10 @@
 # Introduction
 
-[`SoybeanAdmin`](https://github.com/soybeanjs/soybean-admin) is a fresh, elegant, high-quality, and powerful backend management template, based on the latest front-end technology stack, including Vue3, Vite5, TypeScript, Pinia, and UnoCSS. It has built-in rich theme configurations and components, strict code specifications, and implements an automated file routing system. In addition, it also adopts an online Mock data solution based on ApiFox. `SoybeanAdmin` provides you with a one-stop backend management solution, no additional configuration required, ready to use. It is also a best practice for quickly learning cutting-edge technology.
+[`SoybeanAdmin`](https://github.com/soybeanjs/soybean-admin) is a fresh, elegant, high-quality, and powerful backend management template, based on the latest front-end technology stack, including Vue3, Vite6, TypeScript, Pinia, and UnoCSS. It has built-in rich theme configurations and components, strict code specifications, and implements an automated file routing system. In addition, it also adopts an online Mock data solution based on ApiFox. `SoybeanAdmin` provides you with a one-stop backend management solution, no additional configuration required, ready to use. It is also a best practice for quickly learning cutting-edge technology.
 
 ## Features
 
-- **Application of cutting-edge technology**: Adopt the latest popular technology stack such as Vue3, Vite5, TypeScript, Pinia, and UnoCSS.
+- **Application of cutting-edge technology**: Adopt the latest popular technology stack such as Vue3, Vite6, TypeScript, Pinia, and UnoCSS.
 - **Clear project architecture**: Adopt pnpm monorepo architecture, with a clear and elegant structure.
 - **Strict code specifications**: Follow the [SoybeanJS specification](/standard/), integrated with eslint, prettier, and simple-git-hooks to ensure code standardization.
 - **TypeScript**: Supports strict type checking to improve code maintainability.

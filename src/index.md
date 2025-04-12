@@ -7,7 +7,7 @@ titleTemplate: A fresh and elegant admin template
 hero:
   name: SoybeanAdmin
   text: Fresh and elegant
-  tagline: Based on Vue3,Vite5,TypeScript and UnoCSS
+  tagline: Based on Vue3,Vite6,TypeScript and UnoCSS
   image:
     src: /logo.svg
     alt: SoybeanAdmin
@@ -28,7 +28,7 @@ hero:
 features:
   - icon: 🆕
     title: The latest technology stack popular in the community.
-    details: Vue3, Vite5, TypeScript, Pinia, UnoCSS.
+    details: Vue3, Vite6, TypeScript, Pinia, UnoCSS.
   - icon: 🔄
     title: Multi-framework Support
     details: Simultaneously supports Vue3 and React, allowing you to flexibly choose your front-end tech stack.

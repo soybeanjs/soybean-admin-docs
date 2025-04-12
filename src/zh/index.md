@@ -7,7 +7,7 @@ titleTemplate: 一个清新优雅的中后台模版
 hero:
   name: SoybeanAdmin
   text: 清新优雅的中后台模版
-  tagline: 基于 Vue3、Vite5、TypeScript 和 UnoCSS
+  tagline: 基于 Vue3、Vite6、TypeScript 和 UnoCSS
   image:
     src: /logo.svg
     alt: SoybeanAdmin
@@ -28,7 +28,7 @@ hero:
 features:
   - icon: 🆕
     title: 社区流行的最新技术栈
-    details: Vue3,Vite5,TypeScript 和 UnoCSS
+    details: Vue3,Vite6,TypeScript 和 UnoCSS
   - icon: 🔄
     title: 多框架支持
     details: 同时支持 Vue3 和 React，让您可灵活选择前端开发技术栈
