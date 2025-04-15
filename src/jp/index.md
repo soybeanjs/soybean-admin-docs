@@ -22,7 +22,7 @@ hero:
       link: https://github.com/soybeanjs/soybean-admin
     - theme: alt
       text: React版ドキュメント ->
-      link: https://react-soybean-docs.ohh-889.com/index-cn
+      link: https://react-docs.soybeanjs.cn/
 
 features:
   - icon: 🆕
