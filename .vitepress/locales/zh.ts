@@ -312,6 +312,10 @@ export default {
         {
           text: 'PageSpy-多端远程调试平台',
           link: '/zh/recommend/page-spy'
+        },
+        {
+          text: 'Klona-深克隆工具',
+          link: '/zh/recommend/klona'
         }
       ]
     }

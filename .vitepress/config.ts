@@ -355,6 +355,10 @@ export default defineConfig({
         {
           text: 'PageSpy',
           link: '/recommend/page-spy'
+        },
+        {
+          text: 'Klona',
+          link: '/recommend/klona'
         }
       ]
     }

@@ -312,6 +312,10 @@ export default {
         {
           text: 'PageSpy - マルチプラットフォーム対応のリモートデバッグツール',
           link: '/jp/recommend/page-spy'
+        },
+        {
+          text: 'Klona - 深クローンツール',
+          link: '/jp/recommend/klona'
         }
       ]
     }
