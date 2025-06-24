@@ -1,23 +1,48 @@
 <template>
-  <div class="notice-bar">
+  <div v-if="notice" class="notice-bar">
     <div class="notice-content">
-      <span class="notice-text">{{ t.text  }}</span>
+      <span class="notice-text">{{ notice.text }}</span>
       <a
         href="https://www.bilibili.com/video/BV1YKdRYXELC"
         target="_blank"
         class="notice-link"
       >
-        {{ t.linkText }}
+        {{ notice.linkText }}
       </a>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useData } from 'vitepress';
+import { watch, ref, onMounted } from 'vue'
+import { useData } from 'vitepress'
 
-const { theme } = useData();
-const t = theme.value.notice || { text: '🎉 The video tutorial has been released and is gradually being updated', linkText: 'Click to view →' };
+const { lang, site } = useData()
+
+interface NoticeData {
+  text: string;
+  linkText: string;
+}
+
+const notice = ref<NoticeData | null>(null)
+
+function updateNotice(langValue: string) {
+  if (langValue === 'en') {
+    notice.value = {
+      text: '🎉 The video tutorial has been released and is gradually being updated',
+      linkText: 'Click to view →'
+    }
+    return
+  }
+  const localeConfig = site.value.locales[langValue]
+  notice.value = localeConfig?.notice || null
+}
+
+onMounted(() => {
+  updateNotice(lang.value)
+})
+
+watch(lang, updateNotice)
 </script>
 
 <style scoped>
