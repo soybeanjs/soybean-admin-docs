@@ -18,6 +18,6 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true
   },
-  "include": [".vitepress/**/*.ts"],
+  "include": [".vitepress/**/*.ts", ".vitepress/**/*.vue"],
   "exclude": ["node_modules", "dist"]
 }

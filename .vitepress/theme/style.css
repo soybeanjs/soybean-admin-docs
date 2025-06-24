@@ -104,3 +104,24 @@
   transition: color 0.5s;
   background-color: var(--vp-c-brand);
 }
+
+/**
+ * Notice Bar adjustments
+ * --------------------------------------------------------------------------
+ */
+.VPNav {
+  position: fixed;
+  top: var(--vp-layout-top-height, 0px);
+  transition: top 0.25s;
+}
+
+/* 当有 layout-top 内容时的样式调整 */
+:root {
+  --vp-layout-top-height: 40px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --vp-layout-top-height: 35px;
+  }
+}

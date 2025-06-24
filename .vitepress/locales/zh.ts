@@ -319,5 +319,9 @@ export default {
         }
       ]
     }
+  },
+  notice: {
+    text: '🎉 视频教程已推出，正在逐步更新中',
+    linkText: '点击查看 →'
   }
 };
