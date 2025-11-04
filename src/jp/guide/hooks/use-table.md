@@ -1,329 +1,288 @@
-# useTableHook 関数
+# useTable 関数
 
----
+`useTable` は、テーブルのデータ・列・ローディング状態を管理するための Vue フックです。データ取得、ページネーション、列の表示/非表示など、一般的なテーブル機能を柔軟に扱えます。
 
-`useTableHook` は、`SoybeanAdmin`向けに設計されたテーブルデータ処理のためのフック（Hook）であり、バックエンドAPIとの適応、データ処理、列の表示/非表示制御、データの遅延ロードなどの機能を簡単に実装できる豊富な設定オプションを提供します。本ドキュメントでは、各設定オプションの詳細を説明し、このフックをよりスムーズに活用できるようにします。
+本ガイドでは、最新の `useTable` の使い方に加え、Naive UI 向けのラッパーである `useNaiveTable` と `useNaivePaginatedTable` を紹介します。
 
-::: warning 注意
-プロジェクト内には関連する関数が2つあり、それぞれ `useTable` と `useHookTable` です。`useTable` は `useHookTable` のサンプル実装となっているため、読み進める際は区別してください。
+## クイック比較
 
-:::
+- `useTable`：特定の UI ライブラリに依存せず、リクエスト・データ変換・列定義・列の表示/非表示（checks）のみを管理。
+- `useNaiveTable`：`useTable` を基に Naive UI の列定義へ適合。`scrollX` を提供し、i18n 切り替え時に列を自動リフレッシュ。
+- `useNaivePaginatedTable`：`useNaiveTable` を基に、ページネーション（`PaginationProps`）、モバイル向けページネーション `mobilePagination`、`getDataByPage` などを統合。
+- `useTableOperate`：追加/編集/一括削除/単一削除の UI 状態とコールバックを共通化。
+- `defaultTransform`：バックエンドの統一ページネーション構造を `PaginationData<T>` に変換。
 
-[[toc]]
+## `useTable`
 
-## はじめに
+`useTable` は「データ駆動」にのみ注力し、具体的なテーブルコンポーネントや UI ライブラリには依存しません。データ取得・変換・列管理を柔軟に設定できます。
 
-プロジェクト内では、`useHookTable` を基に `useTable` という基本関数を実装しており、一部の操作を簡略化することで、よりスムーズな画面操作を実現しています。この `useTable` は、一般的なテーブルデータ処理の要件を満たす汎用的な実装となっており、多くのシナリオで活用できます。もし特殊な要件がある場合は、本ドキュメントの設定オプションを参考にして、独自の `useTable` 関数を作成してください。
+### 関数シグネチャ
 
-## useHookTable の説明
+```typescript
+export default function useTable<ResponseData, ApiData, Column, Pagination extends boolean>(
+  options: UseTableOptions<ResponseData, ApiData, Column, Pagination>
+);
+```
 
-> プロジェクト内の `useTable` はすべて `useHookTable` に基づいています。そのため、まず `useHookTable` の設定オプションと使用方法を理解することが重要です。
+### `UseTableOptions` インターフェース
 
-`useHookTable` は、テーブルデータの取得、変換、表示を処理するカスタムフックです。この関数は設定オブジェクトを受け取り、処理後の状態値を返します。
+```typescript
+export interface UseTableOptions<ResponseData, ApiData, Column, Pagination extends boolean> {
+  /**
+   * テーブルデータを取得する API 関数
+   */
+  api: () => Promise<ResponseData>;
+  /**
+   * ページネーションを有効にするか
+   */
+  pagination?: Pagination;
+  /**
+   * API レスポンスをテーブルデータへ変換する関数
+   */
+  transform: Transform<ResponseData, ApiData, Pagination>;
+  /**
+   * 列定義を返すファクトリー関数
+   */
+  columns: () => Column[];
+  /**
+   * 列のチェック情報を生成
+   */
+  getColumnChecks: (columns: Column[]) => TableColumnCheck[];
+  /**
+   * チェック情報から最終的な列を生成
+   */
+  getColumns: (columns: Column[], checks: TableColumnCheck[]) => Column[];
+  /**
+   * データ取得後のコールバック
+   */
+  onFetched?: (data: GetApiData<ApiData, Pagination>) => void | Promise<void>;
+  /**
+   * 初期化時に即座にデータ取得するか
+   *
+   * @default true
+   */
+  immediate?: boolean;
+}
+```
 
-### 設定オプション
+### 返り値
 
-- `apiFn`
-  - 型：関数
-  - 必須ですか：はい
-  - 説明：テーブルデータを取得する関数で、`Promise` を返す必要があります。また、適切なパラメータと戻り値の型を提供する必要があります。
+```ts
+{
+    loading: Ref<boolean, boolean>;
+    empty: Ref<boolean, boolean>;
+    data: Ref<ApiData[], ApiData[]>;
+    columns: ComputedRef<Column[]>;
+    columnChecks: Ref<TableColumnCheck[], TableColumnCheck[]>;
+    reloadColumns: () => void;
+    getData: () => Promise<void>;
+}
+```
 
-- `apiParams`
-  - 型：对象
-  - 必須ですか：はい
-  - 説明：`apiFn` を呼び出す際に必要なパラメータ。
+### 説明
 
-- `transformer`
-  - 型：関数
-  - 必須ですか：はい
-  - 説明：`apiFn` のレスポンスをテーブルデータに変換するための関数。
+- `columnChecks` は列の表示/非表示を決定します。`columns()` はファクトリー関数で、呼び出すたびに列定義を再生成します。
+- `reloadColumns` はチェック状態を維持したまま、現在のファクトリー関数の出力で列を再構築します（例：言語切替でタイトルが変わった際に呼び出す）。
+- `pagination` が `true` の場合、`transform` は `PaginationData<ApiData>` を返し、その中の `data` をテーブルデータとして使用します。
 
-- `columns`
-  - 型：関数
-  - 必須ですか：はい
-  - 説明：テーブルの列を定義する配列を返す。
+### 使い方例
 
-- `getColumnChecks`
-  - 型：関数
-  - 必須ですか：はい
-  - 説明：`columns`を引数に取り、`key`、`title`、`checked` プロパティを持つオブジェクトの配列を返す。
+```typescript
+import { useTable } from '@sa/hooks';
+import type { UseTableOptions } from '@sa/hooks';
+import type { PaginationData } from '@sa/hooks';
+import type { DataTableColumns } from 'naive-ui';
 
-- `getColumns`
-  - 型：関数
-  - 必須ですか：はい
-  - 説明：`columns` と `checks` を受け取り、表示すべき列のリストを返す。
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
 
-- `onFetched`
-  - 型：関数
-  - 必須ですか：いいえ
-  - 説明：データ取得および変換後に呼び出されるコールバック関数。
+interface UserResponse {
+  data: User[];
+  total: number;
+}
 
-- `immediate`
-  - 型：ブール値
-  - 必須ですか：いいえ
-  - 説明：データを即時取得するかどうか（デフォルト：true）。
-
-#### `transformer` と `onFetched` の違い
-
-両者ともデータ変換に関係しますが、焦点が異なります：
-
-- `transformer` は必須の関数で、その役割は `apiFn` のレスポンスをテーブルデータに変換することです。この関数は `apiFn` のレスポンスを引数として受け取り、変換後のテーブルデータとページング情報を含むオブジェクトを返します。この関数の主な焦点はデータの変換であり、APIから取得した生データをテーブルに表示するためのデータに変換することです。
-- `onFetched` はオプショナルな関数で、レスポンスが取得されて変換された後に呼び出され、変換後のデータを引数として受け取ります。この関数の主な焦点は、データの取得と変換が完了した後に追加の操作を実行することです。たとえば、ステータスの更新やログの出力などです。この関数はデータを変更することなく、データの取得と変換が完了した後に副作用を実行するだけです。
-
-### 戻り値
-
-`useHookTable` は次のプロパティを持つオブジェクトを返します。
-
-- `loading`:
-  - 型：ブール値
-  - 説明：データが読み込まれているかどうかを示します。`apiFn` が呼び出されると、`loading` は `true` に設定され、データが取得され変換が完了すると、`loading` は `false` に設定されます。
-
-- `empty`:
-  - 型：ブール値
-  - 説明：取得したデータが空であるかどうかを示します。`transformer` によって変換されたデータが空の配列である場合、`empty` は `true` に設定されます。
-
-- `data`:
-  - 型：数组
-  - 説明：変換後のテーブルデータを含みます。
-
-- `columns`:
-  - 型：数组
-  - 説明：表示するべき列を含みます。
-
-- `columnChecks`:
-  - 型：数组
-  - 説明：列のチェック情報を含みます。各要素はオブジェクトで、`key`、`title`、`checked` のプロパティを持ち、それぞれ列のキー、タイトル、選択されているかどうかを表します。
-
-- `reloadColumns`:
-  - 型：関数
-  - 説明：列を再読み込みするための関数です。この関数を呼び出すと、`columns` 関数が再度呼び出され、その後 `getColumnChecks` と `getColumns` を使用して、どの列を表示するべきかを決定します。
-
-- `getData`:
-  - 型：関数
-  - 説明：データを取得するための関数です。この関数を呼び出すと、`apiFn` がデータを取得し、その後 `transformer` によってレスポンスがテーブルデータに変換されます。
-
-- `searchParams`:
-  - 型：对象
-  - 説明：apiFn を呼び出す際のパラメータを含みます。
-
-- `updateSearchParams`:
-  - 型：関数
-  - 説明：`searchParams` を更新するための関数です。この関数はオブジェクトを引数として受け取り、そのオブジェクトのプロパティが `searchParams` にマージされます。
-
-- `resetSearchParams`:
-  - 型：関数
-  - 説明：`searchParams` をリセットするための関数です。この関数を呼び出すと、`searchParams` は `apiParams` にリセットされます。
-
-### 使用方法
-
-`useHookTable` は非常に汎用的なフックで、ページ上で直接呼び出して使用できます。この方法の利点は、シンプルで直接的な点です。ページコンポーネント内で簡単にテーブルデータを取得して処理できます。
-しかし、プロジェクトに類似したテーブルページが多く存在する場合は、`useHookTable` を基にラップしてさらに封装する方がよい場合もあります。
-新しいフックを作成し、`useHookTable` を基にして、例えば apiFn や transformer などのデフォルト設定を提供することができます。これにより、テーブルページはより簡潔になり、特定の設定（例えば `apiParams` や `columns` など）だけを提供すればよくなります。 <br />
-
-以下は、ページ内で `useHookTable` を直接使用する簡単な例です。実際の状況に応じて調整が必要です。
-
-```vue
-<script setup lang="tsx">
-import { ref } from 'vue';
-import { fetchGetUserList } from '@/service/api';
-import useHookTable from '@sa/hooks';
-
-const apiParams = ref({
-  current: 1,
-  size: 10
-});
-
-const columns = () => [
+const columns = (): DataTableColumns<User> => [
   {
-    key: 'userName',
-    title: 'User Name',
-    align: 'center',
-    minWidth: 100
+    key: 'id',
+    title: 'ID'
+  },
+  {
+    key: 'name',
+    title: 'Name'
+  },
+  {
+    key: 'email',
+    title: 'Email'
   }
-  // ...その他の列設定
 ];
 
-const getColumnChecks = columns => columns.map(column => ({ key: column.key, title: column.title, checked: true }));
-
-const getColumns = (columns, checks) =>
-  columns.filter(column => checks.find(check => check.key === column.key && check.checked));
-
-const transformer = response => ({
-  data: response.data,
-  pageNum: response.pageNum,
-  pageSize: response.pageSize,
-  total: response.total
-});
-
-const { loading, empty, data, getData } = useHookTable({
-  apiFn: fetchGetUserList,
-  apiParams,
-  transformer,
-  columns,
-  getColumnChecks,
-  getColumns,
-  immediate: true
-});
-
-// データが必要な場合、例えばコンポーネントのマウント後やユーザーが更新ボタンをクリックしたときに getData 関数を呼び出す
-getData();
-</script>
-```
-
-## `useTable` の紹介
-
-`useTable` は `useHookTable` を基にした実装の一例で、いくつかのデフォルト設定（例えば `apiFn` や `transformer` など）を提供し、使いやすくなっています。プロジェクトに多くの類似のテーブルページがある場合、`useTable` を使用すると便利です。
-
-### 設定項目
-
-`useTable` 関数は、以下のプロパティを持つ設定オブジェクトを受け取ります：
-
-- `apiFn`: テーブルデータを取得するためのAPI関数。
-
-- `apiParams`: `apiFn` に渡すパラメータのオブジェクト。
-
-- `immediate`: ブール値で、コンポーネントがマウントされた後に `apiFn` をすぐに呼び出すかどうかを決定します。デフォルトは `true`。
-
-- `showTotal`: ブール値、ページングコンポーネントで総件数を表示するかどうかを決定します。デフォルトは `false`。
-
-- `columns`: 配列で、テーブルの列を定義します。各要素は以下のプロパティを含むオブジェクトです：
-  - `key`: 文字列,列の一意な識別子。
-  - `title`: 文字列、列のタイトル。
-  - `align`: 文字列、列の配置方法，（`'left'`、`'center'`、`'right'` など）。
-  - `width`: 数字、列的宽度。
-  - `minWidth`: 数値、列の最小幅
-  - `render`: 関数，列の内容をカスタマイズするため。
-  - その他の設定項目は `naive-ui` のドキュメントを参考にしてください。
-
-示例：
-
-```typescript
-useTable({
-  apiFn: getUsers,
-  apiParams: { page: 1, size: 10 },
-  immediate: true,
-  showTotal: true,
-  columns: [
-    {
-      key: 'userName',
-      title: 'ユーザー名',
-      align: 'center',
-      minWidth: 100
-    }
-    // その他の列...
-  ]
-});
-```
-
-### 返回值
-
-`useTable` 関数返回一个对象，该对象包含以下属性：
-
-- `loading`: ブール値で、データのロード中かどうか。
-
-- `empty`: ブール値，テーブルデータが空かどうか。
-
-- `data`: 配列で，テーブルデータ。
-
-- `columns`: 配列で，テーブル列。
-
-- `columnChecks`: 配列で，テーブル列の選択状態。
-
-- `reloadColumns`: 関数で，テーブル列を再読み込みします。
-
-- `pagination`: オブジェクトで，テーブルのページング設定。
-
-- `mobilePagination`: オブジェクトで、モバイルデバイス向けのテーブルページング設定。
-
-- `updatePagination`: 関数，テーブルのページング設定を更新します。
-
-- `getData`: 関数，テーブルデータを取得します。
-
-- `searchParams`: オブジェクトで、検索パラメータ。
-
-- `updateSearchParams`: 関数，検索パラメータを更新します。
-
-- `resetSearchParams`: 関数，検索パラメータをリセットします。
-
-示例：
-
-```typescript
 const {
   loading,
-  empty,
   data,
+  columns: tableColumns,
+  getData
+} = useTable<UserResponse, User, DataTableColumns<User>, false>({
+  api: fetchUsers, // Promise<UserResponse> を返す関数
+  transform: response => response.data,
   columns,
-  columnChecks,
-  reloadColumns,
-  pagination,
-  mobilePagination,
-  updatePagination,
-  getData,
-  searchParams,
-  updateSearchParams,
-  resetSearchParams
-} = useTable(config);
+  getColumnChecks: cols =>
+    cols.map(col => ({ key: col.key as string, title: col.title!, checked: true, visible: true })),
+  getColumns: (cols, checks) => cols.filter(col => checks.find(c => c.key === col.key)?.checked)
+});
+
+// データ取得
+getData();
 ```
 
-### 使用方法
+## `useNaiveTable`
 
-プロジェクト内の `useTable` 関数は、`useHookTable` を基にした実装の一例で、いくつかのベストプラクティスを実現しています。例えば、デフォルト設定を提供し、よく使われる操作（検索、削除など）をラップしています。 <br />
-使用する際には、`apiFn` を渡すだけで、関数のパラメーター型と `request` の戻り型を定義し、システムが自動的に `apiParams` や `columns` の `key` の型を推測します。そのため、データ処理とロジックにのみ集中すればよくなります。詳細はシステム管理内の管理ページを参照してください。
-もし、プロジェクトに多くの類似のテーブルページが存在する場合、`useTable` 関数を使用すると便利です。
+`useNaiveTable` は `useTable` を Naive UI 向けにラップしたものです。`NaiveUI.TableColumn<T>` を使用し、横スクロール幅 `scrollX` を提供、i18n 変更時に列を自動リフレッシュします。
 
-::: warning 注意
-`useHookTable` では `transformer` を実装していません。多くのリストページが類似したAPIを使用していることを考慮し、`transformer` は `useTable` 内で記述されており、重複したコードの記述を減らすことができます。初回の呼び出し前に、`useTable` 内の `transformer` 関数を変更してバックエンドのAPIに適応させる必要があります。
-:::
+追加オプション：
 
-具体的なコードはここには記載しませんので、プロジェクト内の管理ページを直接確認してください。
+- `getColumnVisible?: (column: NaiveUI.TableColumn<ApiData>) => boolean`
+  - その列を「列表示/非表示パネル」に含めるかどうかを制御します（例：`selection/expand` 列をパネルに表示しない）。
 
-## 注意点
+追加の返り値：
 
-### 型に関する説明
+- `scrollX: ComputedRef<number>`（`width/minWidth` の合計に基づき、`NDataTable` の横スクロールに利用）。
 
-`useHookTable` は `apiFn` 関数の戻り型に基づいて自動的に column などのオブジェクトの型を処理します。したがって、`apiFn` 関数を定義する際には、戻り値の型を明確にする必要があります。
+説明：
 
-同様に、リクエストの戻り値はすでに型が決まっているため、`Common.CommonRecord`、`Common.PaginatingQueryRecord`、`CommonType.RecordNullable`、`Pick` などのツール型を使用して、各部分の型を迅速に決定できます。これらは基本的な操作であり、`main` ブランチの管理ページにサンプルがありますので、ここでは詳細に説明しません。
+- `getColumnChecks` と `getColumns` を提供する必要はありません。Naive UI の列表示/非表示は内部で適合されています。
+- `selection/expand` のように `key` がない列には、内部で安定した `key` が付与され、表示/非表示制御に参加します。
 
-## 基本的な使用フロー
-
-1. API 関数を定義する
-2. useTable を設定する
-3. transformer を設定する
-4. 戻り値のデータと状態を使用する
-5. ページングとフィルターを処理する
-
-#### ステップ 1: API 関数を定義する
-
-まず、API 関数を定義する必要があります。この関数はバックエンド API と通信して、テーブルデータを取得します。この関数は `Promise` を返す必要があります。`@/service/request` 内でラップされた関数はすでに `Promise` を返します。
+### 関数シグネチャ
 
 ```typescript
-// api/userApi.js
-import { request } from '../request';
+export function useNaiveTable<ResponseData, ApiData>(options: UseNaiveTableOptions<ResponseData, ApiData, false>);
+```
 
-// ユーザーリストを取得するAPI関数を定義
-export function fetchGetUserList(params?: Api.SystemManage.UserSearchParams) {
+### `UseNaiveTableOptions` インターフェース
+
+```typescript
+export type UseNaiveTableOptions<ResponseData, ApiData, Pagination extends boolean> = Omit<
+  UseTableOptions<ResponseData, ApiData, NaiveUI.TableColumn<ApiData>, Pagination>,
+  'pagination' | 'getColumnChecks' | 'getColumns'
+> & {
+  /**
+   * get column visible
+   *
+   * @param column
+   *
+   * @default true
+   *
+   * @returns true if the column is visible, false otherwise
+   */
+  getColumnVisible?: (column: NaiveUI.TableColumn<ApiData>) => boolean;
+};
+```
+
+### 使い方例
+
+```typescript
+import { useNaiveTable } from '@/hooks/common/table';
+
+/** get user list */
+function fetchGetUserList(params?: Api.SystemManage.UserSearchParams) {
   return request<Api.SystemManage.UserList>({
     url: '/systemManage/getUserList',
     method: 'get',
     params
   });
 }
+
+const searchParams: Api.SystemManage.UserSearchParams = reactive({
+  current: 1,
+  size: 999,
+  status: null,
+  userName: null,
+  userGender: null,
+  nickName: null,
+  userPhone: null,
+  userEmail: null
+});
+
+const { loading, data, columns, getData, scrollX } = useNaiveTable({
+  api: () => fetchGetUserList(),
+  transform: response => {
+    const { data: list, error } = response;
+
+    if (!error) {
+      return list.records;
+    }
+
+    return [];
+  },
+  columns
+});
+
+// データ取得
+getData();
 ```
 
-#### ステップ 2: `useTable` を設定する
+> 注意：`fetchGetUserList` は戻り値の型を明示する必要があります。`useNaiveTable` は総称型を渡さなくても型推論が可能です。
 
-`useTable` を使用する際は、設定オブジェクトを渡します。このオブジェクトには少なくとも `apiFn` と `columns` の2つのフィールドを含める必要があります。
+## `useNaivePaginatedTable`
 
-- `apiFn`: ステップ 1 で定義した API 関数。
-- `columns`: 表示するテーブルの列設定の集合。
+`useNaivePaginatedTable` は、ページネーションが必要な Naive UI の `DataTable` を対象としたラッパーです。
 
-```javascript
-import { useTable } from '@/hooks/common/table';
-import { fetchGetUserList } from '@/api/userApi';
+### 関数シグネチャ
 
-const { data, loading, pagination } = useTable({
-  apiFn: fetchGetUserList,
+```typescript
+export function useNaivePaginatedTable<ResponseData, ApiData>(
+  options: UseNaivePaginatedTableOptions<ResponseData, ApiData>
+);
+```
+
+### `UseNaivePaginatedTableOptions` インターフェース
+
+```typescript
+type UseNaivePaginatedTableOptions<ResponseData, ApiData> = UseNaiveTableOptions<ResponseData, ApiData, true> & {
+  paginationProps?: Omit<PaginationProps, 'page' | 'pageSize' | 'itemCount'>;
+  /**
+   * whether to show the total count of the table
+   *
+   * @default true
+   */
+  showTotal?: boolean;
+  onPaginationParamsChange?: (params: PaginationParams) => void | Promise<void>;
+};
+```
+
+### 使い方例
+
+```typescript
+import { defaultTransform, useNaivePaginatedTable } from '@/hooks/common/table';
+
+/** get role list */
+function fetchGetRoleList(params?: Api.SystemManage.RoleSearchParams) {
+  return request<Api.SystemManage.RoleList>({
+    url: '/systemManage/getRoleList',
+    method: 'get',
+    params
+  });
+}
+
+const searchParams: Api.SystemManage.RoleSearchParams = reactive({
+  current: 1,
+  size: 10,
+  roleName: null,
+  roleCode: null,
+  status: null
+});
+
+const { loading, data, columns, pagination, getDataByPage } = useNaivePaginatedTable({
+  api: fetchGetRoleList,
+  transform: response => defaultTransform(response),
+  onPaginationParamsChange: ({ page, pageSize }) => {
+    // ページングパラメータを検索条件に同期（重要）
+    searchParams.current = page;
+    searchParams.size = pageSize;
+  },
   columns: () => [
     {
       type: 'selection',
@@ -332,86 +291,400 @@ const { data, loading, pagination } = useTable({
     },
     {
       key: 'index',
-      title: '序号',
+      title: $t('common.index'),
+      width: 64,
       align: 'center',
-      width: 64
+      render: (_, index) => index + 1
     },
     {
-      key: 'userName',
-      title: '用户名',
+      key: 'roleName',
+      title: $t('page.manage.role.roleName'),
       align: 'center',
-      minWidth: 100
+      minWidth: 120
     }
+    // ...その他の列
   ]
 });
+
+const {
+  // よく使う CRUD 状態と関数
+  drawerVisible,
+  operateType,
+  editingData,
+  handleAdd,
+  handleEdit,
+  checkedRowKeys,
+  onBatchDeleted,
+  onDeleted
+} = useTableOperate<Row>(data, 'id', getData);
 ```
 
-#### ステップ 3: `transformer` を設定する
+## useTableOperate（テーブル操作ヘルパー）
 
-`@/hooks/common/table` 内で `useTable` を設定し、`transformer` 関数をバックエンド API のデータ構造に適合させる必要があります。<br />
+追加/編集/一括削除/単一削除の UI 状態とコールバックをまとめて提供し、ドロワー/ダイアログと併用します。
 
-例えば、バックエンドが次のようなデータを返すと
+シグネチャ：
 
-```json
-{
-  "code": 200,
-  "msg": "操作成功",
-  "data": {
-    "records": [
-      {
-        "userName": "小白"
-      }
-    ],
-    "current": 1,
-    "size": 10,
-    "total": 1
-}
+```ts
+export function useTableOperate<TableData>(
+  data: Ref<TableData[]>,
+  idKey: keyof TableData,
+  getData: () => Promise<void>
+);
 ```
+
+引数：
+
+- `data`：現在のテーブルデータ（編集時に `id` で行を特定）
+- `idKey`：主キーのフィールド名（例：`id`）
+- `getData`：削除後のリフレッシュ関数
+
+返り値：
+
+- `drawerVisible`: Ref<boolean>
+- `openDrawer()`: void
+- `closeDrawer()`: void
+- `operateType`: Ref<'add' | 'edit'>
+- `handleAdd()`: void
+- `editingData`: Ref<TableData | null>
+- `handleEdit(id)`: void
+- `checkedRowKeys`: Ref<string[]>
+- `onBatchDeleted()`: Promise<void>（一括削除成功後：選択をクリア＋リフレッシュ）
+- `onDeleted()`: Promise<void>（単一削除成功後：リフレッシュ）
 
 説明：
 
-- `records` はテーブルデータ
-- `current` は現在のページ番号
-- `size` は1ページあたりの件数
-- `total` は総件数
+- `handleEdit(id)` は `data` から該当行を検索してドロワーを開き、その行データを `editingData` に設定します。
+- 削除が成功した後は `onBatchDeleted/onDeleted` を呼び出し、状態処理とリフレッシュを行います。
 
-したがって、`transformer` の実装は以下のようになります：
+## defaultTransform（ページネーションデータの統一変換）
+
+API が次のような構造を返す場合：
+
+- `FlatResponseData<any, Api.Common.PaginatingQueryRecord<ApiData>>`
+- `data` には通常 `records`、`current`、`size`、`total` が含まれます。
+
+`defaultTransform` を使うと、これをそのまま `PaginationData<ApiData>` に変換できます：
+
+> レスポンス構造が異なる場合は、同様の変換関数を実装して `transform` に渡してください。戻り値の型は明確に指定してください。
+
+## 列の表示/非表示と横スクロール
+
+- 列表示/非表示パネル：`columnChecks` は「表示する列」の集合です。`v-model:columns` でヘッダー操作コンポーネント（例：`TableHeaderOperation`）にバインドします。
+- Naive UI 適合では、`selection/expand` 列も表示/非表示に参加します（内部で安定した `key` を付与）。
+- 横スクロール：`scrollX = ∑(column.width || column.minWidth || 120)`。各列に `width/minWidth` を設定することを推奨。未設定の場合は最小幅 120 を使用します。
+
+## i18n と列のリフレッシュ
+
+- `useNaiveTable/useNaivePaginatedTable` は内部で `appStore.locale` を監視し、`reloadColumns()` を呼び出して、`$t(...)` によるタイトルが言語切替後すぐに更新されるようにします。
+- 純粋な `useTable` の場合に i18n を使うなら、`reloadColumns()` を自分で呼び出してください。
+
+## 例示ページとの対応
+
+「ユーザー管理 / 役割管理」ページ（`src/views/manage/user/index.vue`、`src/views/manage/role/index.vue`）を例に：
+
+- `useNaivePaginatedTable` は `columns`、`columnChecks`、`data`、`loading`、`getData`、`getDataByPage`、`mobilePagination`、`scrollX` を提供。
+- `TableHeaderOperation` では `v-model:columns="columnChecks"` を使って列の表示/非表示を制御。
+- `NDataTable`：
+  - `:columns`、`:data`、`:loading`、`:scroll-x="scrollX"` をバインド；
+  - `remote`；
+  - `:row-key="row => row.id"`；
+  - `:pagination="mobilePagination"`。
+- `useTableOperate` は追加/編集ドロワー管理と削除後の更新を担当。
+
+## よくある質問（FAQ）とベストプラクティス
+
+- `getDataByPage(1)` をいつ使う？フィルター条件が変わったとき、1 ページ目から取得します。
+- ページ情報の同期を忘れない：`onPaginationParamsChange` で `page/pageSize` を検索条件へ同期。
+- `immediate` のデフォルトは `true`：初期化時に 1 度取得します。不要なら `immediate: false` を渡し、`getData()` を手動で呼び出してください。
+- `NDataTable` の `row-key` は安定している必要があります。選択や展開などの機能のために重要です。
+- モバイル最適化：`mobilePagination` を利用すると小画面でのページネーション表示が使いやすくなります。
+
+# useTable 関数
+
+`useTable` は、テーブルのデータ・列・ローディング状態を管理するための Vue フックです。データ取得、ページネーション、列の表示/非表示など、一般的なテーブル機能を柔軟に扱えます。
+
+本ガイドでは、最新の `useTable` の使い方に加え、Naive UI 向けのラッパーである `useNaiveTable` と `useNaivePaginatedTable` を紹介します。
+
+## クイック比較
+
+- `useTable`：特定の UI ライブラリに依存せず、リクエスト・データ変換・列定義・列の表示/非表示（checks）のみを管理。
+- `useNaiveTable`：`useTable` を基に Naive UI の列定義へ適合。`scrollX` を提供し、i18n 切り替え時に列を自動リフレッシュ。
+- `useNaivePaginatedTable`：`useNaiveTable` を基に、ページネーション（`PaginationProps`）、モバイル向けページネーション `mobilePagination`、`getDataByPage` などを統合。
+- `useTableOperate`：追加/編集/一括削除/単一削除の UI 状態とコールバックを共通化。
+- `defaultTransform`：バックエンドの統一ページネーション構造を `PaginationData<T>` に変換。
+
+## `useTable`
+
+`useTable` は「データ駆動」にのみ注力し、具体的なテーブルコンポーネントや UI ライブラリには依存しません。データ取得・変換・列管理を柔軟に設定できます。
+
+### 関数シグネチャ
 
 ```typescript
-transformer: res => {
-  const { records = [], current = 1, size = 10, total = 0 } = res.data || {};
-
-  // データ処理（例：インデックスを追加）
-  const recordsWithIndex = records.map((item, index) => {
-    return {
-      ...item,
-      index: (current - 1) * size + index + 1
-    };
-  });
-
-  // 処理済みデータを返す
-  return {
-    data: recordsWithIndex,
-    pageNum: current,
-    pageSize: size,
-    total
-  };
-},
+export default function useTable<ResponseData, ApiData, Column, Pagination extends boolean>(
+  options: UseTableOptions<ResponseData, ApiData, Column, Pagination>
+);
 ```
 
-#### ステップ 4: 返されたデータと状態を使用する
+### `UseTableOptions` インターフェース
 
-`useTable` の戻り値には、テーブルデータ（`data`）、ローディング状態（`loading`）、ページ情報（`pagination`）などが含まれます。これらをコンポーネント内で直接利用できます。
+```typescript
+export interface UseTableOptions<ResponseData, ApiData, Column, Pagination extends boolean> {
+  /**
+   * テーブルデータを取得する API 関数
+   */
+  api: () => Promise<ResponseData>;
+  /**
+   * ページネーションを有効にするか
+   */
+  pagination?: Pagination;
+  /**
+   * API レスポンスをテーブルデータへ変換する関数
+   */
+  transform: Transform<ResponseData, ApiData, Pagination>;
+  /**
+   * 列定義を返すファクトリー関数
+   */
+  columns: () => Column[];
+  /**
+   * 列のチェック情報を生成
+   */
+  getColumnChecks: (columns: Column[]) => TableColumnCheck[];
+  /**
+   * チェック情報から最終的な列を生成
+   */
+  getColumns: (columns: Column[], checks: TableColumnCheck[]) => Column[];
+  /**
+   * データ取得後のコールバック
+   */
+  onFetched?: (data: GetApiData<ApiData, Pagination>) => void | Promise<void>;
+  /**
+   * 初期化時に即座にデータ取得するか
+   *
+   * @default true
+   */
+  immediate?: boolean;
+}
+```
 
->     注意: NDataTable コンポーネントには remote 属性を設定する必要があります。設定しないと、ページネーションの状態が正しく動作しません。詳細は [NDataTable リモートデータ](https://www.naiveui.com/en-US/os-theme/docs/customize-theme) をご確認ください。
+### 返り値
 
-```vue
-<script setup lang="ts">
-import { useTable } from '@/hooks/common/table';
-import { fetchUsers } from '@/api/userApi';
+```ts
+{
+    loading: Ref<boolean, boolean>;
+    empty: Ref<boolean, boolean>;
+    data: Ref<ApiData[], ApiData[]>;
+    columns: ComputedRef<Column[]>;
+    columnChecks: Ref<TableColumnCheck[], TableColumnCheck[]>;
+    reloadColumns: () => void;
+    getData: () => Promise<void>;
+}
+```
 
-const { columns, columnChecks, data, loading, pagination, getData } = useTable({
-  apiFn: fetchUsers,
+### 説明
+
+- `columnChecks` は列の表示/非表示を決定します。`columns()` はファクトリー関数で、呼び出すたびに列定義を再生成します。
+- `reloadColumns` はチェック状態を維持したまま、現在のファクトリー関数の出力で列を再構築します（例：言語切替でタイトルが変わった際に呼び出す）。
+- `pagination` が `true` の場合、`transform` は `PaginationData<ApiData>` を返し、その中の `data` をテーブルデータとして使用します。
+
+### 使い方例
+
+```typescript
+import { useTable } from '@sa/hooks';
+import type { UseTableOptions } from '@sa/hooks';
+import type { PaginationData } from '@sa/hooks';
+import type { DataTableColumns } from 'naive-ui';
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+interface UserResponse {
+  data: User[];
+  total: number;
+}
+
+const columns = (): DataTableColumns<User> => [
+  {
+    key: 'id',
+    title: 'ID'
+  },
+  {
+    key: 'name',
+    title: 'Name'
+  },
+  {
+    key: 'email',
+    title: 'Email'
+  }
+];
+
+const {
+  loading,
+  data,
+  columns: tableColumns,
+  getData
+} = useTable<UserResponse, User, DataTableColumns<User>, false>({
+  api: fetchUsers, // Promise<UserResponse> を返す関数
+  transform: response => response.data,
+  columns,
+  getColumnChecks: cols =>
+    cols.map(col => ({ key: col.key as string, title: col.title!, checked: true, visible: true })),
+  getColumns: (cols, checks) => cols.filter(col => checks.find(c => c.key === col.key)?.checked)
+});
+
+// データ取得
+getData();
+```
+
+## `useNaiveTable`
+
+`useNaiveTable` は `useTable` を Naive UI 向けにラップしたものです。`NaiveUI.TableColumn<T>` を使用し、横スクロール幅 `scrollX` を提供、i18n 変更時に列を自動リフレッシュします。
+
+追加オプション：
+
+- `getColumnVisible?: (column: NaiveUI.TableColumn<ApiData>) => boolean`
+  - その列を「列表示/非表示パネル」に含めるかどうかを制御します（例：`selection/expand` 列をパネルに表示しない）。
+
+追加の返り値：
+
+- `scrollX: ComputedRef<number>`（`width/minWidth` の合計に基づき、`NDataTable` の横スクロールに利用）。
+
+説明：
+
+- `getColumnChecks` と `getColumns` を提供する必要はありません。Naive UI の列表示/非表示は内部で適合されています。
+- `selection/expand` のように `key` がない列には、内部で安定した `key` が付与され、表示/非表示制御に参加します。
+
+### 関数シグネチャ
+
+```typescript
+export function useNaiveTable<ResponseData, ApiData>(options: UseNaiveTableOptions<ResponseData, ApiData, false>);
+```
+
+### `UseNaiveTableOptions` インターフェース
+
+```typescript
+export type UseNaiveTableOptions<ResponseData, ApiData, Pagination extends boolean> = Omit<
+  UseTableOptions<ResponseData, ApiData, NaiveUI.TableColumn<ApiData>, Pagination>,
+  'pagination' | 'getColumnChecks' | 'getColumns'
+> & {
+  /**
+   * get column visible
+   *
+   * @param column
+   *
+   * @default true
+   *
+   * @returns true if the column is visible, false otherwise
+   */
+  getColumnVisible?: (column: NaiveUI.TableColumn<ApiData>) => boolean;
+};
+```
+
+### 使い方例
+
+```typescript
+import { useNaiveTable } from '@/hooks/common/table';
+
+/** get user list */
+function fetchGetUserList(params?: Api.SystemManage.UserSearchParams) {
+  return request<Api.SystemManage.UserList>({
+    url: '/systemManage/getUserList',
+    method: 'get',
+    params
+  });
+}
+
+const searchParams: Api.SystemManage.UserSearchParams = reactive({
+  current: 1,
+  size: 999,
+  status: null,
+  userName: null,
+  userGender: null,
+  nickName: null,
+  userPhone: null,
+  userEmail: null
+});
+
+const { loading, data, columns, getData, scrollX } = useNaiveTable({
+  api: () => fetchGetUserList(),
+  transform: response => {
+    const { data: list, error } = response;
+
+    if (!error) {
+      return list.records;
+    }
+
+    return [];
+  },
+  columns
+});
+
+// データ取得
+getData();
+```
+
+> 注意：`fetchGetUserList` は戻り値の型を明示する必要があります。`useNaiveTable` は総称型を渡さなくても型推論が可能です。
+
+## `useNaivePaginatedTable`
+
+`useNaivePaginatedTable` は、ページネーションが必要な Naive UI の `DataTable` を対象としたラッパーです。
+
+### 関数シグネチャ
+
+```typescript
+export function useNaivePaginatedTable<ResponseData, ApiData>(
+  options: UseNaivePaginatedTableOptions<ResponseData, ApiData>
+);
+```
+
+### `UseNaivePaginatedTableOptions` インターフェース
+
+```typescript
+type UseNaivePaginatedTableOptions<ResponseData, ApiData> = UseNaiveTableOptions<ResponseData, ApiData, true> & {
+  paginationProps?: Omit<PaginationProps, 'page' | 'pageSize' | 'itemCount'>;
+  /**
+   * whether to show the total count of the table
+   *
+   * @default true
+   */
+  showTotal?: boolean;
+  onPaginationParamsChange?: (params: PaginationParams) => void | Promise<void>;
+};
+```
+
+### 使い方例
+
+```typescript
+import { defaultTransform, useNaivePaginatedTable } from '@/hooks/common/table';
+
+/** get role list */
+function fetchGetRoleList(params?: Api.SystemManage.RoleSearchParams) {
+  return request<Api.SystemManage.RoleList>({
+    url: '/systemManage/getRoleList',
+    method: 'get',
+    params
+  });
+}
+
+const searchParams: Api.SystemManage.RoleSearchParams = reactive({
+  current: 1,
+  size: 10,
+  roleName: null,
+  roleCode: null,
+  status: null
+});
+
+const { loading, data, columns, pagination, getDataByPage } = useNaivePaginatedTable({
+  api: fetchGetRoleList,
+  transform: response => defaultTransform(response),
+  onPaginationParamsChange: ({ page, pageSize }) => {
+    // ページングパラメータを検索条件に同期（重要）
+    searchParams.current = page;
+    searchParams.size = pageSize;
+  },
   columns: () => [
     {
       type: 'selection',
@@ -419,135 +692,112 @@ const { columns, columnChecks, data, loading, pagination, getData } = useTable({
       width: 48
     },
     {
-      key: 'id',
-      title: $t('page.manage.menu.id'),
-      align: 'center'
+      key: 'index',
+      title: $t('common.index'),
+      width: 64,
+      align: 'center',
+      render: (_, index) => index + 1
+    },
+    {
+      key: 'roleName',
+      title: $t('page.manage.role.roleName'),
+      align: 'center',
+      minWidth: 120
     }
-    // その他のカラム設定
-  ]
-});
-</script>
-
-<template>
-  <div>
-    <NButton @click="getData">データを取得</NButton>
-    <NDataTable
-      v-model:checked-row-keys="checkedRowKeys"
-      :columns="columns"
-      :data="data"
-      size="small"
-      :scroll-x="1088"
-      :loading="loading"
-      :row-key="row => row.id"
-      remote
-      :pagination="pagination"
-      class="sm:h-full"
-    />
-  </div>
-</template>
-```
-
-#### ステップ 5: ページネーションとフィルタリングの処理
-
-テーブルがページネーションやフィルタリングをサポートする場合、`useTable` の `apiParams` を更新することで実現できます。`apiParams` はリアクティブなオブジェクトであり、ユーザーの操作に応じて動的に値を変更できます。`useTable` は `apiParams` の変更を検知し、自動的に `apiFn` を再実行して最新データを取得します。
-
-```javascript
-const { data, loading, pagination, updateSearchParams } = useTable({
-  apiFn: fetchUsers,
-  apiParams: reactive({ current: 1, size: 10, searchKey: '' }), // 初期パラメータ
-  column: () => [
-    // カラム設定
+    // ...その他の列
   ]
 });
 
-// 検索条件を更新
-function search(searchKey) {
-  updateSearchParams(params => {
-    params.searchKey = searchKey;
-    params.current = 1; // 1ページ目にリセット
-  });
-}
+const {
+  // よく使う CRUD 状態と関数
+  drawerVisible,
+  operateType,
+  editingData,
+  handleAdd,
+  handleEdit,
+  checkedRowKeys,
+  onBatchDeleted,
+  onDeleted
+} = useTableOperate<Row>(data, 'id', getData);
 ```
 
-## よくあるユースケース
+## useTableOperate（テーブル操作ヘルパー）
 
-#### ケース 1：ネストされたデータ構造の処理
+追加/編集/一括削除/単一削除の UI 状態とコールバックをまとめて提供し、ドロワー/ダイアログと併用します。
 
-バックエンドのレスポンスがネストされたデータ構造になっている場合、一部のフィールドを展開する必要があります。
+シグネチャ：
 
-- **例**:
-
-```typescript
-transformer: res => {
-  const flattenedData = res.data.records.map(record => ({
-    ...record,
-    address: record.address.street, // `address` がオブジェクトの場合、`street` のみを取得
-  }));
-  return {
-    data: flattenedData,
-    pageNum: res.data.pageNum,
-    pageSize: res.data.pageSize,
-    total: res.data.total,
-  };
-},
+```ts
+export function useTableOperate<TableData>(
+  data: Ref<TableData[]>,
+  idKey: keyof TableData,
+  getData: () => Promise<void>
+);
 ```
 
-#### ケース 2：カスタムページネーションロジック
+引数：
 
-在某些情况下，后端的分页逻辑可能与前端的分页组件不完全兼容，需要在前端进行适配。
+- `data`：現在のテーブルデータ（編集時に `id` で行を特定）
+- `idKey`：主キーのフィールド名（例：`id`）
+- `getData`：削除後のリフレッシュ関数
 
-- **例**:
+返り値：
 
-```typescript
-transformer: res => {
-  // バックエンドが「総件数」ではなく「総ページ数」を返す場合
-  const totalRecords = res.data.pageNum * res.data.pageSize;
+- `drawerVisible`: Ref<boolean>
+- `openDrawer()`: void
+- `closeDrawer()`: void
+- `operateType`: Ref<'add' | 'edit'>
+- `handleAdd()`: void
+- `editingData`: Ref<TableData | null>
+- `handleEdit(id)`: void
+- `checkedRowKeys`: Ref<string[]>
+- `onBatchDeleted()`: Promise<void>（一括削除成功後：選択をクリア＋リフレッシュ）
+- `onDeleted()`: Promise<void>（単一削除成功後：リフレッシュ）
 
-  return {
-    data: res.data,
-    pageNum: res.data.pageNum,
-    pageSize: res.data.pageSize,
-    total: totalRecords
-  };
-};
-```
+説明：
 
-#### ケース 3：動的なフィルタリング
+- `handleEdit(id)` は `data` から該当行を検索してドロワーを開き、その行データを `editingData` に設定します。
+- 削除が成功した後は `onBatchDeleted/onDeleted` を呼び出し、状態処理とリフレッシュを行います。
 
-あるアプリケーションのシナリオでは、ユーザーの入力や選択に基づいて、テーブルデータのフィルタリング条件を動的に変更する必要がある場合があります。以下の例では、ユーザーの入力に基づいて `apiParams` を動的に更新し、データを再取得する方法を示します。
+## defaultTransform（ページネーションデータの統一変換）
 
-- **例**:
+API が次のような構造を返す場合：
 
-```typescript
-const apiParams = reactive<TableParams>({
-  pageSize: 10,
-  pageNum: 1,
-  filter: ''
-});
+- `FlatResponseData<any, Api.Common.PaginatingQueryRecord<ApiData>>`
+- `data` には通常 `records`、`current`、`size`、`total` が含まれます。
 
-// ユーザーの入力を基にフィルタを更新
-function updateUserFilter(newFilter: string) {
-  apiParams.filter = newFilter;
-  // データ再取得（useTable が提供する fetchData を使用）
-  fetchData();
-}
-```
+`defaultTransform` を使うと、これをそのまま `PaginationData<ApiData>` に変換できます：
 
-#### ケース 4：表の基本操作
+> レスポンス構造が異なる場合は、同様の変換関数を実装して `transform` に渡してください。戻り値の型は明確に指定してください。
 
-`useTableOperate` を使用すると、データの追加・編集・削除を簡単に管理できます。
+## 列の表示/非表示と横スクロール
 
-- フィールド・メソッド一覧
+- 列表示/非表示パネル：`columnChecks` は「表示する列」の集合です。`v-model:columns` でヘッダー操作コンポーネント（例：`TableHeaderOperation`）にバインドします。
+- Naive UI 適合では、`selection/expand` 列も表示/非表示に参加します（内部で安定した `key` を付与）。
+- 横スクロール：`scrollX = ∑(column.width || column.minWidth || 120)`。各列に `width/minWidth` を設定することを推奨。未設定の場合は最小幅 120 を使用します。
 
-| フィールド名       | 種類         | 説明                                                                                  |
-| ------------------ | ------------ | ------------------------------------------------------------------------------------- |
-| **drawerVisible**  | Ref モーダル | 表示操作抽屉（如添加或编辑表单的抽屉）的可见性                                        |
-| **openDrawer**     | 関数         | モーダルを開く                                                                        |
-| **closeDrawer**    | 関数         | 関数 モーダルを閉じる                                                                 |
-| **operateType**    | Ref モーダル | 操作タイプ（‘add’ または ‘edit’）                                                     |
-| **handleAdd**      | 関数         | データ追加処理。operateType を ‘add’ に設定し、モーダルを開く                         |
-| **editingData**    | Ref モーダル | 現在編集中のデータ                                                                    |
-| **handleEdit**     | 関数         | 編集処理。ID を指定してデータを取得し、operateType を ‘edit’ に設定してモーダルを開く |
-| **checkedRowKeys** | Ref モーダル | 選択された行のキー（通常は ID）                                                       |
-| **onBatchDeleted** | 非同期関数   | 一括削除処理（成功時にメッセージを表示しデータを更新）                                |
-| **onDeleted**      | 非同期関数   | 単一行の削除処理（成功時にメッセージを表示しデータを更新）                            |
+## i18n と列のリフレッシュ
+
+- `useNaiveTable/useNaivePaginatedTable` は内部で `appStore.locale` を監視し、`reloadColumns()` を呼び出して、`$t(...)` によるタイトルが言語切替後すぐに更新されるようにします。
+- 純粋な `useTable` の場合に i18n を使うなら、`reloadColumns()` を自分で呼び出してください。
+
+## 例示ページとの対応
+
+「ユーザー管理 / 役割管理」ページ（`src/views/manage/user/index.vue`、`src/views/manage/role/index.vue`）を例に：
+
+- `useNaivePaginatedTable` は `columns`、`columnChecks`、`data`、`loading`、`getData`、`getDataByPage`、`mobilePagination`、`scrollX` を提供。
+- `TableHeaderOperation` では `v-model:columns="columnChecks"` を使って列の表示/非表示を制御。
+- `NDataTable`：
+  - `:columns`、`:data`、`:loading`、`:scroll-x="scrollX"` をバインド；
+  - `remote`；
+  - `:row-key="row => row.id"`；
+  - `:pagination="mobilePagination"`。
+- `useTableOperate` は追加/編集ドロワー管理と削除後の更新を担当。
+
+## よくある質問（FAQ）とベストプラクティス
+
+- `getDataByPage(1)` をいつ使う？フィルター条件が変わったとき、1 ページ目から取得します。
+- ページ情報の同期を忘れない：`onPaginationParamsChange` で `page/pageSize` を検索条件へ同期。
+- `immediate` のデフォルトは `true`：初期化時に 1 度取得します。不要なら `immediate: false` を渡し、`getData()` を手動で呼び出してください。
+- `NDataTable` の `row-key` は安定している必要があります。選択や展開などの機能のために重要です。
+- モバイル最適化：`mobilePagination` を利用すると小画面でのページネーション表示が使いやすくなります。
