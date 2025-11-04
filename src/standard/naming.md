@@ -10,7 +10,6 @@ views
 ```
 
 - Vue component names
-
   - Component names are uniformly named in PascalCase, with the first letter of multiple words capitalized
 
   ```vue

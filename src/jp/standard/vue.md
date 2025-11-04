@@ -5,9 +5,7 @@
 ### script
 
 - import の記述順序
-
   - 以下の依存関係の順序に従うことを推奨:
-
     1. vue
     2. vue-router
     3. pinia

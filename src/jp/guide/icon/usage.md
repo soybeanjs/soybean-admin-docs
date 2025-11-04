@@ -3,7 +3,6 @@
 ## 一、静的な使用方法：template 内で直接記述する
 
 - **iconify**
-
   - VSCode の IntelliSense プラグインをインストール: [Iconify IntelliSense](https://marketplace.visualstudio.com/items?itemName=antfu.iconify)
 
   - アイコンを検索する：ウェブサイト [https://icones.js.org/](https://icones.js.org/) または VSCode 拡張機能 - [Icônes](https://marketplace.visualstudio.com/items?itemName=afzalsayed96.icones)
@@ -24,7 +23,6 @@
   - スタイルの設定：style 属性または class 属性を使用; color や font-size を設定して色やサイズを調整
 
 - **ローカル svg アイコン**
-
   - src/assets/svg-icon ディレクトリに svg を配置，取它的文件名，例: 'custom-icon.svg'
 
   - を使用する場合の Vue の template 記述
@@ -40,7 +38,6 @@
 ## 二、動的レンダリング：アイコン名に応じて適切なアイコンをレンダリング
 
 - **iconify**
-
   - アイコン名を決定，如：'mdi-emoticon'
 
   - 動的レンダリング
@@ -56,7 +53,6 @@
     ```
 
 - **ローカル svg アイコン**
-
   - アイコン名を決定，例如: 'custom-icon.svg'
 
   - 動的レンダリング
@@ -73,7 +69,6 @@
 ## 三、render 関数を使用してレンダリング：NaiveUI のアイコン表示向け
 
 - アイコン名を決定，例：iconify: **'mdi-emoticon'**, またはローカル svg アイコン: 'custom-icon.svg'
-
   - useSvgIcon を使用
 
     ```typescript
@@ -89,7 +84,6 @@
 ## 四、オフラインロード：指定した iconify アイコンコレクションを追加
 
 - **使用手順**
-
   - 依存関係をインストール
 
     ```bash
@@ -103,7 +97,6 @@
   ::: tip ヒント
   プロジェクトにはすでに必要な依存関係が含まれているため、コンポーネント内で直接利用できます。
   :::
-
   - オフラインアイコンコレクションデータを準備
 
     例: Ant Design のアイコンライブラリをプロジェクトに追加する場合：

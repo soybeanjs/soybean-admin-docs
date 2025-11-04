@@ -5,9 +5,7 @@
 ### script
 
 - import 导入语句
-
   - 建议按照以下依赖顺序:
-
     1. vue
     2. vue-router
     3. pinia

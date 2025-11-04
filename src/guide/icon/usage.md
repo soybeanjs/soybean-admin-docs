@@ -3,7 +3,6 @@
 ## I. Static Usage: Directly written in the template
 
 - **iconify**
-
   - Install the vscode smart prompt plugin: [Iconify IntelliSense](https://marketplace.visualstudio.com/items?itemName=antfu.iconify)
 
   - Find the icon: URL [https://icones.js.org/](https://icones.js.org/) or install vscode - [Icônes](https://marketplace.visualstudio.com/items?itemName=afzalsayed96.icones)
@@ -24,7 +23,6 @@
   - Set the style: Apply the style attribute or class attribute directly like the html tag; set the corresponding color and size by setting the color and font-size attributes
 
 - **Local svg icon**
-
   - Choose an svg in the src/assets/svg-icon directory, take its filename, for example: 'custom-icon.svg'
 
   - The corresponding vue template is
@@ -40,7 +38,6 @@
 ## II. Dynamic Rendering: Render corresponding icon based on the icon name
 
 - **iconify**
-
   - Determine the icon name, such as: 'mdi-emoticon'
 
   - Dynamic rendering
@@ -56,7 +53,6 @@
     ```
 
 - **Local svg icons**
-
   - Determine the svg file name, for example: 'custom-icon.svg'
 
   - Dynamic rendering
@@ -72,7 +68,6 @@
 ## III. Rendering through the render function: Suitable for NaiveUI icon rendering
 
 - Determine the icon name, such as: iconify: **'mdi-emoticon'**, or local svg icon 'custom-icon.svg'
-
   - Use **useSvgIconRender**
 
     ::: tip Code location
@@ -93,7 +88,6 @@
 ## IV. Offline Loading: Adding Specified Offline Iconify Icon Collections
 
 - **Usage Steps**
-
   - Install dependencies
 
     ```bash
@@ -107,7 +101,6 @@
   ::: tip Tip
   The project has already imported the relevant dependencies, so you can directly reference them in the component.
   :::
-
   - Prepare offline icon collection data
 
     For example, if we need to use the `Ant Design` icon library in our project, we can introduce offline icons as follows

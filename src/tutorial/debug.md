@@ -63,7 +63,6 @@ npm i -g tsx
 ```
 
 3. Debug test
-
    - Add a new file `debug.ts`
    - Add the following code to `debug.ts`
 

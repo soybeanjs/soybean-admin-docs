@@ -3,7 +3,6 @@
 ## 一、静态用法：直接写在 template 中
 
 - **iconify**
-
   - 安装 vscode 智能提示的插件: [Iconify IntelliSense](https://marketplace.visualstudio.com/items?itemName=antfu.iconify)
 
   - 找图标：网址 [https://icones.js.org/](https://icones.js.org/) 或者 vscode 安装 - [Icônes](https://marketplace.visualstudio.com/items?itemName=afzalsayed96.icones)
@@ -24,7 +23,6 @@
   - 设置样式：同 html 标签一样直接应用 style 属性或者 class 属性; 通过设置 color 和 font-size 属性设置对应的颜色和大小
 
 - **本地 svg 图标**
-
   - 在 src/assets/svg-icon 目录下选择一个 svg，取它的文件名，例如: 'custom-icon.svg'
 
   - 则对应的 vue 的 template 为
@@ -40,7 +38,6 @@
 ## 二、动态渲染: 根据图标名称渲染对应图标
 
 - **iconify**
-
   - 确定图标名字，如：'mdi-emoticon'
 
   - 动态渲染
@@ -56,7 +53,6 @@
     ```
 
 - **本地 svg 图标**
-
   - 确定 svg 文件名，例如: 'custom-icon.svg'
 
   - 动态渲染
@@ -72,7 +68,6 @@
 ## 三、通过 render 函数渲染: 适用于 NaiveUI 的图标渲染
 
 - 确定图标名字，如：iconify: **'mdi-emoticon'**, 或者本地 svg 图标 'custom-icon.svg'
-
   - 使用 `useSvgIcon`
 
     ```typescript
@@ -88,7 +83,6 @@
 ## 四、离线加载：添加指定的离线 iconify 图标集合
 
 - **使用步骤**
-
   - 安装依赖
 
     ```bash
@@ -102,7 +96,6 @@
   ::: tip 提示
   项目中已经引入相关依赖，直接在组件内引用即可
   :::
-
   - 准备离线图标集合数据
 
     如：我们需要在项目中使用 `Ant Design` 图标库，则可以按照以下方式引入离线图标

@@ -27,7 +27,6 @@
   - [Gitee 仓库](https://gitee.com/honghuangdc/soybean-admin-element-plus)
   - [Gitcode 仓库](https://gitcode.com/soybeanjs/soybean-admin-element-plus)
 - **旧版:**
-
   - [预览地址](https://legacy.soybeanjs.cn/)
   - [Github 仓库](https://github.com/soybeanjs/soybean-admin/tree/legacy)
   - [Gitee 仓库](https://gitee.com/honghuangdc/soybean-admin/tree/legacy)

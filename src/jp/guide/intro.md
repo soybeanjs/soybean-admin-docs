@@ -19,19 +19,16 @@
 バージョン
 
 - **NaiveUI バージョン:**
-
   - [Preview Link](https://naive.soybeanjs.cn/)
   - [Github Repository](https://github.com/soybeanjs/soybean-admin)
   - [Gitee Repository](https://gitee.com/honghuangdc/soybean-admin)
 
 - **AntDesignVue バージョン:**
-
   - [Preview Link](https://antd.soybeanjs.cn/)
   - [Github Repository](https://github.com/soybeanjs/soybean-admin-antd)
   - [Gitee Repository](https://gitee.com/honghuangdc/soybean-admin-antd)
 
 - **ElementPlus バージョン:**
-
   - [Preview Link](https://elp.soybeanjs.cn/)
   - [Github Repository](https://github.com/soybeanjs/soybean-admin-element-plus)
   - [Gitee Repository](https://gitee.com/honghuangdc/soybean-admin-element-plus)

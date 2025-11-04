@@ -21,7 +21,6 @@ Have you ever encountered the following situations?
 - **User device white screen**: Besides needing to pre-obtain user information when issues arise, methods to pinpoint problems include reviewing data monitoring, log analysis, and even visiting the client on-site. These approaches rely on the troubleshooting staff understanding both the business scenario and the technical implementation.
 
 - **Global "Feedback" Component**: Many user-centric websites provide a feedback form component to gather user reports after a product issue occurs, allowing for timely resolution. From the user's perspective, this improves user satisfaction, but the content submitted by users might not be very helpful for troubleshooting. The main reason is: users mostly submit a textual summary and screenshots, which may include user information, but what developers really want to see are:
-
   - The user’s action trail.
   - Runtime data generated during the operations, such as printed logs, network requests, and response data.
 

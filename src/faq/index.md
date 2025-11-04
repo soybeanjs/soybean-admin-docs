@@ -130,7 +130,6 @@ views
 ```
 
 - Vue component names
-
   - The component name is uniformly named by the PascalCase method, and the first letter of multiple words is capitalized
 
   ```vue

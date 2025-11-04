@@ -10,7 +10,6 @@ views
 ```
 
 - Vue 组件名称
-
   - 组件名称统一用 PascalCase 法命名，多个单词首字母大写
 
   ```vue

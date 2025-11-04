@@ -5,9 +5,7 @@
 ### script
 
 - import statements
-
   - Recommended dependency order:
-
     1. vue
     2. vue-router
     3. pinia
