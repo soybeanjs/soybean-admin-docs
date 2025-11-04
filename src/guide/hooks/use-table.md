@@ -1,232 +1,287 @@
-# useTable Hook
+# useTable Function
 
----
+`useTable` is a Vue hook for managing table data, columns, and loading state. It provides a flexible way to handle common table features such as data fetching, pagination, and column visibility.
 
-useTable is a table data processing function specifically designed for SoybeanAdmin. It offers a wide range of configuration options to adapt to backend interfaces, process data, control the visibility of columns, and implement data lazy loading, among other features. This document will detail each configuration option and provide optimized example code to help developers use this hook more efficiently.
+This guide introduces how to use the latest `useTable` as well as its Naive UI wrappers `useNaiveTable` and `useNaivePaginatedTable`.
 
-By reading this document, you will learn about:
+## Quick comparison
 
-- Complete Configuration and Explanation
+- `useTable`: UI-agnostic. It only manages request, data transformation, column configuration, and column visibility (checks).
+- `useNaiveTable`: Based on `useTable`, adapts to Naive UI column definitions, provides `scrollX`, and automatically refreshes columns on i18n changes.
+- `useNaivePaginatedTable`: Based on `useNaiveTable`, integrates pagination (`PaginationProps`), mobile pagination `mobilePagination`, `getDataByPage`, etc.
+- `useTableOperate`: Common UI states and callbacks for add/edit/batch delete/single delete.
+- `defaultTransform`: Converts a unified backend pagination structure to `PaginationData<T>`.
 
-- Main Features and Functions
+## `useTable`
 
-- Basic Usage Process
+`useTable` focuses on the “data-driven” part without caring about specific table components or UI libraries. It offers flexible options to configure data fetching, transformation, and column management.
 
-- Example Usage Scenarios
-
-## Complete Configuration and Explanation
-
-#### `apiFn`
-
-- **Type**: `(params: any) => Promise<any>`
-
-- **Description**: The API function used to fetch table data. This function takes `apiParams` as its parameter and returns a Promise, which resolves to the table data.
-
-- **Example**:
-
-  ```javascript
-  const fetchTableData = params => {
-    return axios.get('/api/tableData', { params });
-  };
-  ```
-
-#### `apiParams`
-
-- **Type**: `Object`
-
-- **Description**: The parameters passed to `apiFn`, usually including pagination information, filter conditions, etc.
-
-- **Example**:
-
-  ```javascript
-  apiParams: reactive({
-    pageSize: 10,
-    pageNum: 1,
-    filter: '',
-  }),
-  ```
-
-#### `transformer`
-
-- **Type**: `(response: any) => { data: Array<any>, pageNum: number, pageSize: number, total: number }`
-
-- **Description**: The transformer function used to convert the data format returned by `apiFn` into the format required by the hook.
-
-- **Example**:
-
-  ```javascript
-  transformer: (response) => ({
-    data: response.data.records,
-    pageNum: response.data.pageNum,
-    pageSize: response.data.pageSize,
-    total: response.data.total,
-  }),
-  ```
-
-#### `columns`
-
-- **Type**: `() => Array<{ key: string, title: string, visible?: boolean }>`
-
-- **Description**: The column configuration function, returning an array of table column configurations.
-
-- **Example**:
-
-  ```javascript
-  columns: () => [
-    { key: 'name', title: 'Name', visible: true },
-    { key: 'age', title: 'Age', visible: true },
-    { key: 'email', title: 'Email', visible: false },
-  ],
-  ```
-
-#### `getColumnChecks`
-
-- **Type**: `(columns: Array<{ key: string, title: string, visible?: boolean }>) => Array<{ key: string, title: string, checked: boolean }>`
-
-- **Description**: A function to generate the visibility state of columns.
-
-- **Example**:
-
-  ```javascript
-  getColumnChecks: (columns) => columns.map(column => ({
-    key: column.key,
-    title: column.title,
-    checked: column.visible,
-  })),
-  ```
-
-#### `getColumns`
-
-- **Type**: `(columns: Array<{ key: string, title: string }>, checks: Array<{ key: string, checked: boolean }>) => Array<{ key: string, title: string }>`
-
-- **Description**: A function to filter out the columns that should be displayed based on their visibility state.
-
-- **Example**:
-
-  ```javascript
-  getColumns: (columns, checks) => columns.filter(column => {
-    const check = checks.find(check => check.key === column.key);
-    return check ? check.checked : false;
-  }),
-  ```
-
-#### `onFetched`
-
-- **Type**: `?(transformedData: { data: Array<any>, pageNum: number, pageSize: number, total: number }) => void`
-
-- **Description**: A callback function after data is fetched and processed.
-
-- **Example**:
-
-  ```javascript
-  onFetched: transformedData => {
-    console.log('Data fetched', transformedData);
-  };
-  ```
-
-#### `immediate`
-
-- **Type**: `boolean`
-
-- **Description**: Controls whether to immediately fetch data upon hook initialization.
-
-- **Default Value**: `true`
-
-- **Example**:
-
-  ```javascript
-  immediate: true;
-  ```
-
-#### `showTotal` <sup class="vt-badge"> v1.1.0+ </sup>
-
-- **Type**: `boolean`
-
-- **Description**: Control whether to display the total number of records before the table pagination(Not displayed by default on mobile).
-
-- **Default Value**: `false`
-
-- **Example**:
-
-  ```javascript
-  showTotal: true;
-  ```
-
-## Main Features and Functions
-
-The `useTable` hook mainly provides the following features:
-
-- Data loading state management
-- Retrieval and display of table data
-- Data pagination handling
-- Data filtering functionality
-- Control over the visibility of columns
-
-The `useTable` hook mainly provides the following functions:
-
-| Field Name             | Type                | Description                                |
-| ---------------------- | ------------------- | ------------------------------------------ |
-| **loading**            | Boolean             | Indicates whether data is loading.         |
-| **empty**              | Boolean             | Indicates whether the table data is empty. |
-| **data**               | Reactive Reference  | Reactive reference to the table data.      |
-| **columns**            | Configuration Array | Configuration array for table columns.     |
-| **columnChecks**       | State Array         | Array of states for column visibility.     |
-| **reloadColumns**      | Function            | Used to reload column configurations.      |
-| **getData**            | Function            | Used to fetch table data.                  |
-| **searchParams**       | Reactive Object     | Reactive object for search parameters.     |
-| **updateSearchParams** | Function            | Used to update search parameters.          |
-| **resetSearchParams**  | Function            | Used to reset search parameters.           |
-
-## Basic Usage Process
-
-- Step 1: Define the API function
-
-- Step 2: Configure useTable
-
-- Step 3: Use the returned data and state
-
-- Step 4: Handle pagination and filtering
-
-#### Step 1: Define the API function
-
-First, you need to define an API function that is responsible for communicating with the backend interface to obtain table data. This function should return a Promise, and the result of the Promise resolution should be the data returned by the backend.
+### Function signature
 
 ```typescript
-// api/userApi.js
-import { request } from '../request';
+export default function useTable<ResponseData, ApiData, Column, Pagination extends boolean>(
+  options: UseTableOptions<ResponseData, ApiData, Column, Pagination>
+);
+```
 
-// Define the API function to fetch the user list
-export function fetchGetUserList(params?: Api.SystemManage.UserSearchParams) {
+### `UseTableOptions` interface
+
+```typescript
+export interface UseTableOptions<ResponseData, ApiData, Column, Pagination extends boolean> {
+  /**
+   * API function to fetch table data
+   */
+  api: () => Promise<ResponseData>;
+  /**
+   * Whether to enable pagination
+   */
+  pagination?: Pagination;
+  /**
+   * Function to transform API response to table data
+   */
+  transform: Transform<ResponseData, ApiData, Pagination>;
+  /**
+   * Factory function that returns column definitions
+   */
+  columns: () => Column[];
+  /**
+   * Get column checks from columns
+   */
+  getColumnChecks: (columns: Column[]) => TableColumnCheck[];
+  /**
+   * Build final columns from checks
+   */
+  getColumns: (columns: Column[], checks: TableColumnCheck[]) => Column[];
+  /**
+   * Callback after data fetched
+   */
+  onFetched?: (data: GetApiData<ApiData, Pagination>) => void | Promise<void>;
+  /**
+   * Fetch data immediately on init
+   *
+   * @default true
+   */
+  immediate?: boolean;
+}
+```
+
+### Return value
+
+```ts
+{
+    loading: Ref<boolean, boolean>;
+    empty: Ref<boolean, boolean>;
+    data: Ref<ApiData[], ApiData[]>;
+    columns: ComputedRef<Column[]>;
+    columnChecks: Ref<TableColumnCheck[], TableColumnCheck[]>;
+    reloadColumns: () => void;
+    getData: () => Promise<void>;
+}
+```
+
+### Notes
+
+- `columnChecks` determines which columns are visible; `columns()` is a factory function (each access rebuilds column definitions).
+- `reloadColumns` rebuilds columns based on the current factory function without losing “checked states” (e.g., call it after a locale change updates titles).
+- When `pagination` is `true`, `transform` returns `PaginationData<ApiData>`, and `useTable` uses `data` inside it as table data.
+
+### Usage example
+
+```typescript
+import { useTable } from '@sa/hooks';
+import type { UseTableOptions } from '@sa/hooks';
+import type { PaginationData } from '@sa/hooks';
+import type { DataTableColumns } from 'naive-ui';
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+interface UserResponse {
+  data: User[];
+  total: number;
+}
+
+const columns = (): DataTableColumns<User> => [
+  {
+    key: 'id',
+    title: 'ID'
+  },
+  {
+    key: 'name',
+    title: 'Name'
+  },
+  {
+    key: 'email',
+    title: 'Email'
+  }
+];
+
+const {
+  loading,
+  data,
+  columns: tableColumns,
+  getData
+} = useTable<UserResponse, User, DataTableColumns<User>, false>({
+  api: fetchUsers, // a function that returns Promise<UserResponse>
+  transform: response => response.data,
+  columns,
+  getColumnChecks: cols =>
+    cols.map(col => ({ key: col.key as string, title: col.title!, checked: true, visible: true })),
+  getColumns: (cols, checks) => cols.filter(col => checks.find(c => c.key === col.key)?.checked)
+});
+
+// fetch data
+getData();
+```
+
+## `useNaiveTable`
+
+`useNaiveTable` is a wrapper over `useTable` for Naive UI. It uses `NaiveUI.TableColumn<T>`, provides horizontal scroll width `scrollX`, and refreshes columns automatically when i18n changes.
+
+Extra option:
+
+- `getColumnVisible?: (column: NaiveUI.TableColumn<ApiData>) => boolean`
+  - Control whether a column appears in the “column visibility panel” (e.g., you can hide `selection/expand` columns from the panel).
+
+Extra return:
+
+- `scrollX: ComputedRef<number>` (sum from `width/minWidth`, useful for horizontal scrolling in NDataTable).
+
+Notes:
+
+- You no longer need to provide `getColumnChecks` and `getColumns`—the wrapper adapts Naive UI’s column visibility internally.
+- For `selection/expand` columns without a `key`, internal stable keys will be generated to participate in visibility control.
+
+### Function signature
+
+```typescript
+export function useNaiveTable<ResponseData, ApiData>(options: UseNaiveTableOptions<ResponseData, ApiData, false>);
+```
+
+### `UseNaiveTableOptions` interface
+
+```typescript
+export type UseNaiveTableOptions<ResponseData, ApiData, Pagination extends boolean> = Omit<
+  UseTableOptions<ResponseData, ApiData, NaiveUI.TableColumn<ApiData>, Pagination>,
+  'pagination' | 'getColumnChecks' | 'getColumns'
+> & {
+  /**
+   * get column visible
+   *
+   * @param column
+   *
+   * @default true
+   *
+   * @returns true if the column is visible, false otherwise
+   */
+  getColumnVisible?: (column: NaiveUI.TableColumn<ApiData>) => boolean;
+};
+```
+
+### Usage example
+
+```typescript
+import { useNaiveTable } from '@/hooks/common/table';
+
+/** get user list */
+function fetchGetUserList(params?: Api.SystemManage.UserSearchParams) {
   return request<Api.SystemManage.UserList>({
     url: '/systemManage/getUserList',
     method: 'get',
     params
   });
 }
+
+const searchParams: Api.SystemManage.UserSearchParams = reactive({
+  current: 1,
+  size: 999,
+  status: null,
+  userName: null,
+  userGender: null,
+  nickName: null,
+  userPhone: null,
+  userEmail: null
+});
+
+const { loading, data, columns, getData, scrollX } = useNaiveTable({
+  api: () => fetchGetUserList(),
+  transform: response => {
+    const { data: list, error } = response;
+
+    if (!error) {
+      return list.records;
+    }
+
+    return [];
+  },
+  columns
+});
+
+// fetch data
+getData();
 ```
 
-#### Step 2: Configure `useTable`
+> Note: `fetchGetUserList` needs an explicit return type. `useNaiveTable` can infer types without passing generics.
 
-When using `useTable`, pass in a configuration object, which must include at least two fields: `apiFn` and `transformer`.
+## `useNaivePaginatedTable`
 
-- **`apiFn`**: The API function you defined in Step 1.
-- **`transformer`**: A function that transforms the data format returned by the backend into the format required by `useTable`.
-- **`columns`**: A collection used to display the column names of the table.
+`useNaivePaginatedTable` is a wrapper targeting Naive UI `DataTable` with pagination.
 
-```javascript
-import { useTable } from '@/hooks/common/table';
-import { fetchGetUserList } from '@/api/userApi';
+### Function signature
 
-const { data, loading, pagination } = useTable({
-  apiFn: fetchGetUserList,
-  transformer: response => {
-    const { records, total, current, size } = response.data;
-    return {
-      data: records,
-      pageNum: current,
-      pageSize: size,
-      total
-    };
+```typescript
+export function useNaivePaginatedTable<ResponseData, ApiData>(
+  options: UseNaivePaginatedTableOptions<ResponseData, ApiData>
+);
+```
+
+### `UseNaivePaginatedTableOptions` interface
+
+```typescript
+type UseNaivePaginatedTableOptions<ResponseData, ApiData> = UseNaiveTableOptions<ResponseData, ApiData, true> & {
+  paginationProps?: Omit<PaginationProps, 'page' | 'pageSize' | 'itemCount'>;
+  /**
+   * whether to show the total count of the table
+   *
+   * @default true
+   */
+  showTotal?: boolean;
+  onPaginationParamsChange?: (params: PaginationParams) => void | Promise<void>;
+};
+```
+
+### Usage example
+
+```typescript
+import { defaultTransform, useNaivePaginatedTable } from '@/hooks/common/table';
+
+/** get role list */
+function fetchGetRoleList(params?: Api.SystemManage.RoleSearchParams) {
+  return request<Api.SystemManage.RoleList>({
+    url: '/systemManage/getRoleList',
+    method: 'get',
+    params
+  });
+}
+
+const searchParams: Api.SystemManage.RoleSearchParams = reactive({
+  current: 1,
+  size: 10,
+  roleName: null,
+  roleCode: null,
+  status: null
+});
+
+const { loading, data, columns, pagination, getDataByPage } = useNaivePaginatedTable({
+  api: fetchGetRoleList,
+  transform: response => defaultTransform(response),
+  onPaginationParamsChange: ({ page, pageSize }) => {
+    // sync pagination params back to search params (key point)
+    searchParams.current = page;
+    searchParams.size = pageSize;
   },
   columns: () => [
     {
@@ -236,269 +291,513 @@ const { data, loading, pagination } = useTable({
     },
     {
       key: 'index',
-      title: 'index',
+      title: $t('common.index'),
+      width: 64,
       align: 'center',
-      width: 64
+      render: (_, index) => index + 1
     },
     {
-      key: 'userName',
-      title: 'username',
+      key: 'roleName',
+      title: $t('page.manage.role.roleName'),
       align: 'center',
-      minWidth: 100
+      minWidth: 120
     }
+    // ...other columns
   ]
 });
+
+const {
+  // common CRUD states and methods
+  drawerVisible,
+  operateType,
+  editingData,
+  handleAdd,
+  handleEdit,
+  checkedRowKeys,
+  onBatchDeleted,
+  onDeleted
+} = useTableOperate<Row>(data, 'id', getData);
 ```
 
-#### Step 3: Using the Returned Data and State
+## useTableOperate (helper for table operations)
 
-The object returned by `useTable` contains table data (`data`), loading status (`loading`), pagination information (`pagination`), etc. You can directly use this data and state in your components.
+Encapsulates UI states and callbacks for add/edit/batch delete/single delete, typically used with drawers/dialogs.
 
-```html
-<template>
-  <div>
-    <NDataTable :data="data" :loading="loading" />
-    <NPagination v-model:current="pagination.page" v-model:pageSize="pagination.pageSize" :total="pagination.total" />
-  </div>
-</template>
+Signature:
 
-<script setup>
-  import { useTable } from '@/hooks/common/table';
-  import { fetchUsers } from '@/api/userApi';
-
-  const { data, loading, pagination } = useTable({
-    apiFn: fetchUsers,
-    transformer: response => {
-      const { records, total, current, size } = response.data;
-      return {
-        data: records,
-        pageNum: current,
-        pageSize: size,
-        total
-      };
-    }
-  });
-</script>
+```ts
+export function useTableOperate<TableData>(
+  data: Ref<TableData[]>,
+  idKey: keyof TableData,
+  getData: () => Promise<void>
+);
 ```
 
-#### Step 4: Handling Pagination and Filtering
+Parameters:
 
-If your table needs to support pagination and filtering, you can achieve this by updating the `apiParams` in the `useTable` configuration object. `apiParams` is a reactive object that you can dynamically update based on user actions, and `useTable` will automatically re-call `apiFn` to fetch the updated data.
+- `data`: current table data (used to locate the row by `id` when editing)
+- `idKey`: primary key field name (e.g., `id`)
+- `getData`: refresh function after deletion
 
-```javascript
-const { data, loading, pagination, updateSearchParams } = useTable({
-  apiFn: fetchUsers,
-  apiParams: reactive({ current: 1, size: 10, searchKey: '' }), // Initial parameters
-  transformer: response => {
-    const { records, total, current, size } = response.data;
-    return {
-      data: records,
-      pageNum: current,
-      pageSize: size,
-      total
-    };
-  }
-});
-// Update search parameters example
-function search(searchKey) {
-  updateSearchParams(params => {
-    params.searchKey = searchKey;
-    params.current = 1; // Reset to the first page
-  });
+Returns:
+
+- `drawerVisible`: Ref<boolean>
+- `openDrawer()`: void
+- `closeDrawer()`: void
+- `operateType`: Ref<'add' | 'edit'>
+- `handleAdd()`: void
+- `editingData`: Ref<TableData | null>
+- `handleEdit(id)`: void
+- `checkedRowKeys`: Ref<string[]>
+- `onBatchDeleted()`: Promise<void> (after batch deletion succeeds: clear selection + refresh)
+- `onDeleted()`: Promise<void> (after single deletion succeeds: refresh)
+
+Notes:
+
+- `handleEdit(id)` finds the row in `data`, opens the drawer, and assigns the row to `editingData`.
+- After deletion succeeds, call `onBatchDeleted/onDeleted` to handle states and refresh.
+
+## defaultTransform (unified pagination data conversion)
+
+If the API returns the following structure:
+
+- `FlatResponseData<any, Api.Common.PaginatingQueryRecord<ApiData>>`
+- Its `data` usually contains: `records`, `current`, `size`, `total`.
+
+You can directly use `defaultTransform` to convert it to `PaginationData<ApiData>`:
+
+> If your response structure differs, implement a similar transformer and pass it via `transform`. Be sure to specify the return type explicitly.
+
+## Column visibility and horizontal scrolling
+
+- Column visibility panel: `columnChecks` represents the set of visible columns. Bind it via `v-model:columns` to your table header operation component (e.g., `TableHeaderOperation`).
+- In the Naive UI adaptation, `selection/expand` columns also participate in visibility (with internal stable `key`).
+- Horizontal scrolling: `scrollX = ∑(column.width || column.minWidth || 120)`. It’s recommended to set `width/minWidth` for columns, otherwise a default min width of 120 is used.
+
+## i18n and column refresh
+
+- `useNaiveTable/useNaivePaginatedTable` listens to `appStore.locale` internally and calls `reloadColumns()` to ensure titles using `$t(...)` update immediately after switching languages.
+- In pure `useTable` scenarios with i18n, call `reloadColumns()` yourself.
+
+## Compare with example pages
+
+Using “User Management / Role Management” pages (`src/views/manage/user/index.vue`, `src/views/manage/role/index.vue`) as examples:
+
+- `useNaivePaginatedTable` provides `columns`, `columnChecks`, `data`, `loading`, `getData`, `getDataByPage`, `mobilePagination`, `scrollX`.
+- `TableHeaderOperation` uses `v-model:columns="columnChecks"` to control column visibility.
+- `NDataTable`:
+  - Bind `:columns`, `:data`, `:loading`, `:scroll-x="scrollX"`;
+  - `remote`;
+  - `:row-key="row => row.id"`;
+  - `:pagination="mobilePagination"`.
+- `useTableOperate` manages the add/edit drawer and refresh after deletion.
+
+## FAQ and best practices
+
+- When to call `getDataByPage(1)`? When filter conditions change, fetch from the first page.
+- Don’t forget to sync pagination: in `onPaginationParamsChange`, sync `page/pageSize` back to your search params.
+- `immediate` defaults to `true`: it fetches once on init. If you don’t need this, pass `immediate: false` and call `getData()` manually.
+- `row-key` of `NDataTable` must be stable to keep selection/expand and other features working correctly.
+- Mobile optimization: use `mobilePagination` for a better pagination experience on small screens.
+
+# useTable Function
+
+`useTable` is a Vue hook for managing table data, columns, and loading state. It provides a flexible way to handle common table features such as data fetching, pagination, and column visibility.
+
+This guide introduces how to use the latest `useTable` as well as its Naive UI wrappers `useNaiveTable` and `useNaivePaginatedTable`.
+
+## Quick comparison
+
+- `useTable`: UI-agnostic. It only manages request, data transformation, column configuration, and column visibility (checks).
+- `useNaiveTable`: Based on `useTable`, adapts to Naive UI column definitions, provides `scrollX`, and automatically refreshes columns on i18n changes.
+- `useNaivePaginatedTable`: Based on `useNaiveTable`, integrates pagination (`PaginationProps`), mobile pagination `mobilePagination`, `getDataByPage`, etc.
+- `useTableOperate`: Common UI states and callbacks for add/edit/batch delete/single delete.
+- `defaultTransform`: Converts a unified backend pagination structure to `PaginationData<T>`.
+
+## `useTable`
+
+`useTable` focuses on the “data-driven” part without caring about specific table components or UI libraries. It offers flexible options to configure data fetching, transformation, and column management.
+
+### Function signature
+
+```typescript
+export default function useTable<ResponseData, ApiData, Column, Pagination extends boolean>(
+  options: UseTableOptions<ResponseData, ApiData, Column, Pagination>
+);
+```
+
+### `UseTableOptions` interface
+
+```typescript
+export interface UseTableOptions<ResponseData, ApiData, Column, Pagination extends boolean> {
+  /**
+   * API function to fetch table data
+   */
+  api: () => Promise<ResponseData>;
+  /**
+   * Whether to enable pagination
+   */
+  pagination?: Pagination;
+  /**
+   * Function to transform API response to table data
+   */
+  transform: Transform<ResponseData, ApiData, Pagination>;
+  /**
+   * Factory function that returns column definitions
+   */
+  columns: () => Column[];
+  /**
+   * Get column checks from columns
+   */
+  getColumnChecks: (columns: Column[]) => TableColumnCheck[];
+  /**
+   * Build final columns from checks
+   */
+  getColumns: (columns: Column[], checks: TableColumnCheck[]) => Column[];
+  /**
+   * Callback after data fetched
+   */
+  onFetched?: (data: GetApiData<ApiData, Pagination>) => void | Promise<void>;
+  /**
+   * Fetch data immediately on init
+   *
+   * @default true
+   */
+  immediate?: boolean;
 }
 ```
 
-## Example Usage Scenarios
+### Return value
 
-#### Scenario One: Handling Complex Data Structures
-
-Suppose the data structure returned by the backend contains nested objects, and we need to flatten this data for display in the table.
-
-- **Example**:
-
-  ```typescript
-  const transformer: (response: ApiResponse) => {
-    data: Array<any>;
-    pageNum: number;
-    pageSize: number;
-    total: number;
-  } = response => {
-    const flattenedData = response.data.records.map(record => ({
-      ...record,
-      address: record.address.street // Assuming address is an object and we only need the street field
-    }));
-    return {
-      data: flattenedData,
-      pageNum: response.data.pageNum,
-      pageSize: response.data.pageSize,
-      total: response.data.total
-    };
-  };
-  ```
-
-#### Scenario Two: Custom Pagination Logic
-
-In some cases, the pagination logic on the backend may not be completely compatible with the pagination component on the frontend, and may need to be adapted on the frontend.
-
-- **Example**:
-  ```typescript
-  const transformer: (response: ApiResponse) => { data: Array<any>; pageNum: number; pageSize: number; total: number; } = (response) => {
-    // Suppose the backend returns the total number of pages instead of the total number of records
-    const totalRecords = response.data.pageNum * response.data.pageSize;
-    return {
-      data: response.data
-      pageNum: response.data.pageNum,
-      pageSize: response.data.pageSize,
-      total: totalRecords
-      };
-    }
-  ```
-
-#### Scenario Three: Dynamic Filter Conditions
-
-In some application scenarios, the filter conditions of table data may need to change dynamically based on user input or selection. The following example shows how to dynamically update `apiParams` based on user input to re-fetch data.
-
-- **Example**:
-
-  ```typescript
-  const apiParams = reactive<TableParams>({
-    pageSize: 10,
-    pageNum: 1,
-    filter: ''
-  });
-
-  // Assume this is a method that responds to user input
-  function updateUserFilter(newFilter: string) {
-    apiParams.filter = newFilter;
-    // Call the method to fetch data, assuming useTable provides a method to re-fetch data
-    fetchData();
-  }
-  ```
-
-#### Scenario Four: Show and Hide Columns
-
-In the configuration object of `useTable`, you can pass in column configurations through the `columns` field. In addition, you need to define the `getColumnChecks` and `getColumns` functions to handle the visibility status of the columns.
-
-- **`getColumnChecks`**: Used to generate the initial value of the column visibility status.
-- **`getColumns`**: Filter out the columns that should be displayed based on the column visibility status.
-
-```typescript
-import { useTable } from '@/hooks/common/table';
-
-const { columns, columnChecks, reloadColumns } = useTable({
-  // Other configurations...
-  columns: () => columnsConfig,
-  getColumnChecks: cols => cols.map(col => ({ key: col.key, title: col.title, checked: col.visible })),
-  getColumns: (cols, checks) => cols.filter(col => checks.find(check => check.key === col.key && check.checked))
-});
+```ts
+{
+    loading: Ref<boolean, boolean>;
+    empty: Ref<boolean, boolean>;
+    data: Ref<ApiData[], ApiData[]>;
+    columns: ComputedRef<Column[]>;
+    columnChecks: Ref<TableColumnCheck[], TableColumnCheck[]>;
+    reloadColumns: () => void;
+    getData: () => Promise<void>;
+}
 ```
 
-#### Scenario Five: Basic Operations on the Table
+### Notes
 
-To further optimize and standardize the structure of the code, you can also configure the table for operations in the `useTableOperate` configuration object, such as adding, editing, deleting entries, and managing the visibility of the pop-up drawer, by implementing your own business logic in the specified functions.
+- `columnChecks` determines which columns are visible; `columns()` is a factory function (each access rebuilds column definitions).
+- `reloadColumns` rebuilds columns based on the current factory function without losing “checked states” (e.g., call it after a locale change updates titles).
+- When `pagination` is `true`, `transform` returns `PaginationData<ApiData>`, and `useTable` uses `data` inside it as table data.
 
-- Function and Field Descriptions
+### Usage example
 
-| Field Name         | Type           | Description                                                                                                                                                                                                     |
-| ------------------ | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **drawerVisible**  | Ref Object     | Represents the visibility of the operation drawer (such as the drawer for adding or editing forms).                                                                                                             |
-| **openDrawer**     | Function       | Used to open the operation drawer.                                                                                                                                                                              |
-| **closeDrawer**    | Function       | Used to close the operation drawer.                                                                                                                                                                             |
-| **operateType**    | Ref Object     | Used to identify the current operation type ('add' or 'edit').                                                                                                                                                  |
-| **handleAdd**      | Function       | Used to handle the add operation. It sets the operateType to 'add' and opens the operation drawer.                                                                                                              |
-| **editingData**    | Ref Object     | Used to store the currently editing data item.                                                                                                                                                                  |
-| **handleEdit**     | Function       | Used to handle the edit operation. It takes an id parameter, which is used to find and set the editingData to the corresponding data item, sets the operateType to 'edit', and then opens the operation drawer. |
-| **checkedRowKeys** | Ref Object     | Used to store an array of keys (usually IDs) of the selected rows.                                                                                                                                              |
-| **onBatchDeleted** | Async Function | Used to handle the logic after the batch delete operation is completed, such as displaying a successful deletion message and refreshing the data.                                                               |
-| **onDeleted**      | Async Function | Used to handle the logic after a single delete operation is completed, such as displaying a successful deletion message and refreshing the data.                                                                |
+```typescript
+import { useTable } from '@sa/hooks';
+import type { UseTableOptions } from '@sa/hooks';
+import type { PaginationData } from '@sa/hooks';
+import type { DataTableColumns } from 'naive-ui';
 
-#### Scenario Six: Adapting Backend API Data Structures
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
 
-In daily development scenarios, it is common to encounter inconsistencies between frontend and backend API data structures. You can refer to this example to adapt the API data structures.
+interface UserResponse {
+  data: User[];
+  total: number;
+}
 
-- Frontend `api` Interface Declaration
-
-  ```typescript
-  interface UserSearchParams {
-      userName?: string;
-      current: number;
-      size: number;
-      total: number;
-  }
-
-  interface PaginatingCommonParams {
-      /** current page number */
-      current: number;
-      /** page size */
-      size: number;
-      /** total count */
-      total: number;
-  }
-
-  /** common params of paginating query list data */
-  interface PaginatingQueryRecord<T = any> extends PaginatingCommonParams {
-      records: T[];
-  }
-
-  type User {
-  	userName: string;
-  	userGender: 'Male' | 'Female';
-  	userAge: number;
-  }
-
-  type UserList = Common.PaginatingQueryRecord<User>;
-
-  /** get user list */
-  export function fetchGetUserList(params?: UserSearchParams) {
-    return request<UserList>({
-      url: '/systemManage/getUserList',
-      method: 'get',
-      params
-    });
-  }
-  ```
-
-- Backend API Response Data
-
-  ```json
+const columns = (): DataTableColumns<User> => [
   {
-    "code": 200,
-    "msg": "操作成功",
-    "data": {
-      "list": [
-        { "username": "小白", "gender": "男", "age": 18 },
-        { "username": "小粉", "gender": "女", "age": 24 }
-      ],
-      "currentPage": 1,
-      "pageSize": 2,
-      "totalCount": 12
-    }
+    key: 'id',
+    title: 'ID'
+  },
+  {
+    key: 'name',
+    title: 'Name'
+  },
+  {
+    key: 'email',
+    title: 'Email'
   }
-  ```
+];
 
-- Data Format Transformation
+const {
+  loading,
+  data,
+  columns: tableColumns,
+  getData
+} = useTable<UserResponse, User, DataTableColumns<User>, false>({
+  api: fetchUsers, // a function that returns Promise<UserResponse>
+  transform: response => response.data,
+  columns,
+  getColumnChecks: cols =>
+    cols.map(col => ({ key: col.key as string, title: col.title!, checked: true, visible: true })),
+  getColumns: (cols, checks) => cols.filter(col => checks.find(c => c.key === col.key)?.checked)
+});
 
-  ```typescript
-  import { useTable } from '@/hooks/common/table';
-  import { fetchGetUserList } from '@/api/userApi';
+// fetch data
+getData();
+```
 
-  const { data, loading, pagination } = useTable({
-    apiFn: fetchGetUserList,
-    transformer: response => {
-      const { list, currentPage, pageSize, totalCount } = response.data;
+## `useNaiveTable`
 
-      const transformData = list.map(item => ({
-        userName: item.username,
-        userGender: item.gender === '男' ? 'Male' : 'Female',
-        userAge: item.age
-      }));
+`useNaiveTable` is a wrapper over `useTable` for Naive UI. It uses `NaiveUI.TableColumn<T>`, provides horizontal scroll width `scrollX`, and refreshes columns automatically when i18n changes.
 
-      return {
-        records: transformData,
-        current: currentPage,
-        size: pageSize,
-        total: totalCount
-      };
-    }
+Extra option:
+
+- `getColumnVisible?: (column: NaiveUI.TableColumn<ApiData>) => boolean`
+  - Control whether a column appears in the “column visibility panel” (e.g., you can hide `selection/expand` columns from the panel).
+
+Extra return:
+
+- `scrollX: ComputedRef<number>` (sum from `width/minWidth`, useful for horizontal scrolling in NDataTable).
+
+Notes:
+
+- You no longer need to provide `getColumnChecks` and `getColumns`—the wrapper adapts Naive UI’s column visibility internally.
+- For `selection/expand` columns without a `key`, internal stable keys will be generated to participate in visibility control.
+
+### Function signature
+
+```typescript
+export function useNaiveTable<ResponseData, ApiData>(options: UseNaiveTableOptions<ResponseData, ApiData, false>);
+```
+
+### `UseNaiveTableOptions` interface
+
+```typescript
+export type UseNaiveTableOptions<ResponseData, ApiData, Pagination extends boolean> = Omit<
+  UseTableOptions<ResponseData, ApiData, NaiveUI.TableColumn<ApiData>, Pagination>,
+  'pagination' | 'getColumnChecks' | 'getColumns'
+> & {
+  /**
+   * get column visible
+   *
+   * @param column
+   *
+   * @default true
+   *
+   * @returns true if the column is visible, false otherwise
+   */
+  getColumnVisible?: (column: NaiveUI.TableColumn<ApiData>) => boolean;
+};
+```
+
+### Usage example
+
+```typescript
+import { useNaiveTable } from '@/hooks/common/table';
+
+/** get user list */
+function fetchGetUserList(params?: Api.SystemManage.UserSearchParams) {
+  return request<Api.SystemManage.UserList>({
+    url: '/systemManage/getUserList',
+    method: 'get',
+    params
   });
-  ```
+}
+
+const searchParams: Api.SystemManage.UserSearchParams = reactive({
+  current: 1,
+  size: 999,
+  status: null,
+  userName: null,
+  userGender: null,
+  nickName: null,
+  userPhone: null,
+  userEmail: null
+});
+
+const { loading, data, columns, getData, scrollX } = useNaiveTable({
+  api: () => fetchGetUserList(),
+  transform: response => {
+    const { data: list, error } = response;
+
+    if (!error) {
+      return list.records;
+    }
+
+    return [];
+  },
+  columns
+});
+
+// fetch data
+getData();
+```
+
+> Note: `fetchGetUserList` needs an explicit return type. `useNaiveTable` can infer types without passing generics.
+
+## `useNaivePaginatedTable`
+
+`useNaivePaginatedTable` is a wrapper targeting Naive UI `DataTable` with pagination.
+
+### Function signature
+
+```typescript
+export function useNaivePaginatedTable<ResponseData, ApiData>(
+  options: UseNaivePaginatedTableOptions<ResponseData, ApiData>
+);
+```
+
+### `UseNaivePaginatedTableOptions` interface
+
+```typescript
+type UseNaivePaginatedTableOptions<ResponseData, ApiData> = UseNaiveTableOptions<ResponseData, ApiData, true> & {
+  paginationProps?: Omit<PaginationProps, 'page' | 'pageSize' | 'itemCount'>;
+  /**
+   * whether to show the total count of the table
+   *
+   * @default true
+   */
+  showTotal?: boolean;
+  onPaginationParamsChange?: (params: PaginationParams) => void | Promise<void>;
+};
+```
+
+### Usage example
+
+```typescript
+import { defaultTransform, useNaivePaginatedTable } from '@/hooks/common/table';
+
+/** get role list */
+function fetchGetRoleList(params?: Api.SystemManage.RoleSearchParams) {
+  return request<Api.SystemManage.RoleList>({
+    url: '/systemManage/getRoleList',
+    method: 'get',
+    params
+  });
+}
+
+const searchParams: Api.SystemManage.RoleSearchParams = reactive({
+  current: 1,
+  size: 10,
+  roleName: null,
+  roleCode: null,
+  status: null
+});
+
+const { loading, data, columns, pagination, getDataByPage } = useNaivePaginatedTable({
+  api: fetchGetRoleList,
+  transform: response => defaultTransform(response),
+  onPaginationParamsChange: ({ page, pageSize }) => {
+    // sync pagination params back to search params (key point)
+    searchParams.current = page;
+    searchParams.size = pageSize;
+  },
+  columns: () => [
+    {
+      type: 'selection',
+      align: 'center',
+      width: 48
+    },
+    {
+      key: 'index',
+      title: $t('common.index'),
+      width: 64,
+      align: 'center',
+      render: (_, index) => index + 1
+    },
+    {
+      key: 'roleName',
+      title: $t('page.manage.role.roleName'),
+      align: 'center',
+      minWidth: 120
+    }
+    // ...other columns
+  ]
+});
+
+const {
+  // common CRUD states and methods
+  drawerVisible,
+  operateType,
+  editingData,
+  handleAdd,
+  handleEdit,
+  checkedRowKeys,
+  onBatchDeleted,
+  onDeleted
+} = useTableOperate<Row>(data, 'id', getData);
+```
+
+## useTableOperate (helper for table operations)
+
+Encapsulates UI states and callbacks for add/edit/batch delete/single delete, typically used with drawers/dialogs.
+
+Signature:
+
+```ts
+export function useTableOperate<TableData>(
+  data: Ref<TableData[]>,
+  idKey: keyof TableData,
+  getData: () => Promise<void>
+);
+```
+
+Parameters:
+
+- `data`: current table data (used to locate the row by `id` when editing)
+- `idKey`: primary key field name (e.g., `id`)
+- `getData`: refresh function after deletion
+
+Returns:
+
+- `drawerVisible`: Ref<boolean>
+- `openDrawer()`: void
+- `closeDrawer()`: void
+- `operateType`: Ref<'add' | 'edit'>
+- `handleAdd()`: void
+- `editingData`: Ref<TableData | null>
+- `handleEdit(id)`: void
+- `checkedRowKeys`: Ref<string[]>
+- `onBatchDeleted()`: Promise<void> (after batch deletion succeeds: clear selection + refresh)
+- `onDeleted()`: Promise<void> (after single deletion succeeds: refresh)
+
+Notes:
+
+- `handleEdit(id)` finds the row in `data`, opens the drawer, and assigns the row to `editingData`.
+- After deletion succeeds, call `onBatchDeleted/onDeleted` to handle states and refresh.
+
+## defaultTransform (unified pagination data conversion)
+
+If the API returns the following structure:
+
+- `FlatResponseData<any, Api.Common.PaginatingQueryRecord<ApiData>>`
+- Its `data` usually contains: `records`, `current`, `size`, `total`.
+
+You can directly use `defaultTransform` to convert it to `PaginationData<ApiData>`:
+
+> If your response structure differs, implement a similar transformer and pass it via `transform`. Be sure to specify the return type explicitly.
+
+## Column visibility and horizontal scrolling
+
+- Column visibility panel: `columnChecks` represents the set of visible columns. Bind it via `v-model:columns` to your table header operation component (e.g., `TableHeaderOperation`).
+- In the Naive UI adaptation, `selection/expand` columns also participate in visibility (with internal stable `key`).
+- Horizontal scrolling: `scrollX = ∑(column.width || column.minWidth || 120)`. It’s recommended to set `width/minWidth` for columns, otherwise a default min width of 120 is used.
+
+## i18n and column refresh
+
+- `useNaiveTable/useNaivePaginatedTable` listens to `appStore.locale` internally and calls `reloadColumns()` to ensure titles using `$t(...)` update immediately after switching languages.
+- In pure `useTable` scenarios with i18n, call `reloadColumns()` yourself.
+
+## Compare with example pages
+
+Using “User Management / Role Management” pages (`src/views/manage/user/index.vue`, `src/views/manage/role/index.vue`) as examples:
+
+- `useNaivePaginatedTable` provides `columns`, `columnChecks`, `data`, `loading`, `getData`, `getDataByPage`, `mobilePagination`, `scrollX`.
+- `TableHeaderOperation` uses `v-model:columns="columnChecks"` to control column visibility.
+- `NDataTable`:
+  - Bind `:columns`, `:data`, `:loading`, `:scroll-x="scrollX"`;
+  - `remote`;
+  - `:row-key="row => row.id"`;
+  - `:pagination="mobilePagination"`.
+- `useTableOperate` manages the add/edit drawer and refresh after deletion.
+
+## FAQ and best practices
+
+- When to call `getDataByPage(1)`? When filter conditions change, fetch from the first page.
+- Don’t forget to sync pagination: in `onPaginationParamsChange`, sync `page/pageSize` back to your search params.
+- `immediate` defaults to `true`: it fetches once on init. If you don’t need this, pass `immediate: false` and call `getData()` manually.
+- `row-key` of `NDataTable` must be stable to keep selection/expand and other features working correctly.
+- Mobile optimization: use `mobilePagination` for a better pagination experience on small screens.
