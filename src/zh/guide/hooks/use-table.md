@@ -104,30 +104,23 @@ interface UserResponse {
   total: number;
 }
 
-const columns = (): DataTableColumns<User> => [
-  {
-    key: 'id',
-    title: 'ID'
-  },
-  {
-    key: 'name',
-    title: 'Name'
-  },
-  {
-    key: 'email',
-    title: 'Email'
-  }
-];
-
-const {
-  loading,
-  data,
-  columns: tableColumns,
-  getData
-} = useTable<UserResponse, User, DataTableColumns<User>, false>({
+const { loading, data, columns, getData } = useTable<UserResponse, User, DataTableColumns<User>, false>({
   api: fetchUsers, // 一个返回 Promise<UserResponse> 的函数
   transform: response => response.data,
-  columns,
+  columns: () => [
+    {
+      key: 'id',
+      title: 'ID'
+    },
+    {
+      key: 'name',
+      title: 'Name'
+    },
+    {
+      key: 'email',
+      title: 'Email'
+    }
+  ],
   getColumnChecks: cols =>
     cols.map(col => ({ key: col.key as string, title: col.title!, checked: true, visible: true })),
   getColumns: (cols, checks) => cols.filter(col => checks.find(c => c.key === col.key)?.checked)
@@ -306,8 +299,8 @@ const { loading, data, columns, pagination, getDataByPage } = useNaivePaginatedT
   ]
 });
 
+// 常用的增删改查辅助状态和方法
 const {
-  // 常用的增删改查辅助状态和方法
   drawerVisible,
   operateType,
   editingData,
@@ -316,7 +309,8 @@ const {
   checkedRowKeys,
   onBatchDeleted,
   onDeleted
-} = useTableOperate<Row>(data, 'id', getData);
+  // ...其他方法
+} = useTableOperate(data, 'id', getData);
 ```
 
 ## useTableOperate（表格操作辅助）
@@ -335,22 +329,33 @@ export function useTableOperate<TableData>(
 
 入参：
 
-- `data`：表格当前数据（编辑时根据 `id` 定位行数据）。
-- `idKey`：主键字段名（如 `id`）。
-- `getData`：删除后的刷新函数。
+```typescript
+
+{
+  data: Ref<TableData[], TableData[]>, // 表格当前数据（编辑时根据 `id` 定位行数据）。
+  idKey: keyof TableData, // 主键字段名（如 `id`）。
+  getData: () => Promise<void> // 删除后的刷新函数。
+}
+
+```
 
 返回：
 
-- `drawerVisible`: Ref<boolean>
-- `openDrawer()`: void
-- `closeDrawer()`: void
-- `operateType`: Ref<'add' | 'edit'>
-- `handleAdd()`: void
-- `editingData`: Ref<TableData | null>
-- `handleEdit(id)`: void
-- `checkedRowKeys`: Ref<string[]>
-- `onBatchDeleted()`: Promise<void>（批量删除成功后调用：清空勾选 + 刷新）
-- `onDeleted()`: Promise<void>（单项删除成功后调用：刷新）
+```ts
+{
+    drawerVisible: Ref<boolean>;
+    openDrawer: () => void;
+    closeDrawer: () => void;
+    operateType: ShallowRef<NaiveUI.TableOperateType>;
+    handleAdd: () => void;
+    editingData: ShallowRef<TableData | null>;
+    handleEdit: (id: TableData[keyof TableData]) => void;
+    checkedRowKeys: ShallowRef<string[]>;
+    onBatchDeleted: () => Promise<void>; // （批量删除成功后调用：清空勾选 + 刷新）
+    onDeleted: () => Promise<void>; // （单项删除成功后调用：刷新）
+}
+
+```
 
 说明：
 
