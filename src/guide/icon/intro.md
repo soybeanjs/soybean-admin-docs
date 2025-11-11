@@ -6,6 +6,7 @@ Based on the svg json data of iconify, the svg data is converted into vue compon
 
 - [unplugin-icons](https://github.com/antfu/unplugin-icons)
 - [iconify](https://github.com/iconify/iconify)
+- [Iconify icon sets](https://icon-sets.iconify.design)
 - [Journey with Icons Continues](https://antfu.me/posts/journey-with-icons-continues)
 
 ## Local svg icon rendering principle

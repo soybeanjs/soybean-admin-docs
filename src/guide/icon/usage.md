@@ -7,12 +7,11 @@
 
   - Find the icon: URL [https://icones.js.org/](https://icones.js.org/) or install vscode - [Icônes](https://marketplace.visualstudio.com/items?itemName=afzalsayed96.icones)
 
-  - Determine the icon name: After finding the icon, copy the name such as: 'mdi:emoticon' or 'mdi-emoticon', the corresponding vue template is
+  - Determine the icon name: After finding the icon, copy the name such as: 'mdi-emoticon', the corresponding vue template is
 
     ```html
     <div>
       <icon-mdi-emoticon class="text-24px text-red" />
-      <icon-mdi:emoticon style="font-size:24px;color:#f00;" />
     </div>
     ```
 
