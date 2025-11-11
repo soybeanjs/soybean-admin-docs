@@ -7,12 +7,11 @@
 
   - 找图标：网址 [https://icones.js.org/](https://icones.js.org/) 或者 vscode 安装 - [Icônes](https://marketplace.visualstudio.com/items?itemName=afzalsayed96.icones)
 
-  - 确定图标名字：找到图标后复制名字 如：'mdi:emoticon' 或者 'mdi-emoticon'，则对应的 vue 的 template 为
+  - 确定图标名字：找到图标后复制名字 如：'mdi-emoticon'，则对应的 vue 的 template 为
 
     ```html
     <div>
       <icon-mdi-emoticon class="text-24px text-red" />
-      <icon-mdi:emoticon style="font-size:24px;color:#f00;" />
     </div>
     ```
 
