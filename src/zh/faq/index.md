@@ -317,83 +317,15 @@ _正向代理即是客户端代理, 代理客户端, 服务端不知道实际发
 
 **本地开发跨域**
 
-在进行本地开发时，一般比较常见的是使用下面三种方式进行处理：
-
-1. Vite 的 Proxy 配置正向代理 （项目本地开发环境使用的此方案）
-2. 后台服务器开启 CORS
-3. 前端服务器 Nginx 配置反向代理
+SoybeanAdmin 目前已经内置了全自动的代理配置，详情查看 [代理](/zh/guide/request/proxy.html)
 
 > 本地开发环境中，默认开启本地代理
 
 **生产环境跨域**
 
-项目部署至生产环境后，一般使用 Nginx 进行请求转发至后台服务器
+项目部署至生产环境后，一般使用 Nginx 进行请求转发至后台服务器，详情可以给 ai 提供一下请求地址，跟它要具体的配置步骤
 
-- SoybeanAdmin
-
-🎯 文件位置： `./env-config.ts`
-
-```ts
-# 关键代码如下所示
-
-/** 不同请求服务的环境配置 */
-
-const serviceConfigMap: App.Service.ServiceConfigMap = {
-  dev: {
-    baseURL: mockURL,
-    otherBaseURL: {
-      demo: 'http://localhost:9528'
-    }
-  },
-  test: {
-    baseURL: mockURL,
-    otherBaseURL: {
-      demo: 'http://localhost:9529'
-    }
-  },
-  prod: {
-    baseURL: mockURL,
-    otherBaseURL: {
-      demo: 'http://localhost:9530'
-    }
-  }
-};
-```
-
-> 完整代码指路 [SoybeanAdmin🔜](https://github.com/soybeanjs/soybean-admin/blob/main/env-config.ts)
-
-⚙ Nginx 配置参考
-
-```java
-# nginx.conf
-
-server {
-  listen       8080;
-  server_name  localhost;
-
-  # 接口代理，用于解决跨域问题
-  location /url {
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-
-    # 后台接口地址
-    proxy_pass http://xxx.xxx.xx.x:8080/api;
-
-    proxy_redirect default;
-    add_header Access-Control-Allow-Origin *;
-    add_header Access-Control-Allow-Headers X-Requested-With;
-    add_header Access-Control-Allow-Methods GET,POST,OPTIONS;
-  }
-}
-
-```
-
-就可以通过 `http://localhost:8080` 访问到这个已部署项目的首页
-
-> 项目中配置生产环境端口必须和 `nginx.conf` 中 listen 配置的 端口号 保持一致
->
-> 如果后台服务开启 CROS， 前台服务则不需要额外配置
+> 如果后端服务允许 CROS 通过， 前台服务则不需要额外配置
 
 ## vscode的i18nAlly插件无法新增多语言
 

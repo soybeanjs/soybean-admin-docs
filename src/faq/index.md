@@ -317,83 +317,15 @@ There are two types of cross-domain situations that may be encountered in actual
 
 **Local Development Cross-Domain**
 
-During local development, the following three methods are commonly used:
-
-1. Vite's Proxy configuration forward proxy (this scheme is used in the project's local development environment)
-2. Backend server enables CORS
-3. Front-end server Nginx configures reverse proxy
+SoybeanAdmin currently has a fully automatic proxy configuration built-in. For details, please see [Proxy](/guide/request/proxy.html).
 
 > In the local development environment, the local proxy is enabled by default
 
 **Production Environment Cross-Domain**
 
-After the project is deployed to the production environment, Nginx is generally used to forward requests to the backend server
+After the project is deployed to the production environment, Nginx is generally used to forward requests to the backend server. For details, you can provide the request address to AI and ask it for specific configuration steps.
 
-- SoybeanAdmin
-
-🎯 File location: `./env-config.ts`
-
-```ts
-# The key code is as follows
-
-/** Configuration of different request services */
-
-const serviceConfigMap: App.Service.ServiceConfigMap = {
-  dev: {
-    baseURL: mockURL,
-    otherBaseURL: {
-      demo: 'http://localhost:9528'
-    }
-  },
-  test: {
-    baseURL: mockURL,
-    otherBaseURL: {
-      demo: 'http://localhost:9529'
-    }
-  },
-  prod: {
-    baseURL: mockURL,
-    otherBaseURL: {
-      demo: 'http://localhost:9530'
-    }
-  }
-};
-```
-
-> For the complete code, please refer to [SoybeanAdmin🔜](https://github.com/soybeanjs/soybean-admin/blob/main/env-config.ts)
-
-⚙ Nginx Configuration Reference
-
-```java
-# nginx.conf
-
-server {
-  listen       8080;
-  server_name  localhost;
-
-  # 接口代理，用于解决跨域问题
-  location /url {
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-
-    # 后台接口地址
-    proxy_pass http://xxx.xxx.xx.x:8080/api;
-
-    proxy_redirect default;
-    add_header Access-Control-Allow-Origin *;
-    add_header Access-Control-Allow-Headers X-Requested-With;
-    add_header Access-Control-Allow-Methods GET,POST,OPTIONS;
-  }
-}
-
-```
-
-You can access the homepage of this deployed project through `http://localhost:8080`
-
-> The port configured in the project for the production environment must be consistent with the port number configured in `nginx.conf`
->
-> If the backend service enables CROS, the frontend service does not need additional configuration
+> If the backend service allows CORS through, the frontend service does not need additional configuration
 
 ## The interface request is successful, but the response data cannot be obtained
 
