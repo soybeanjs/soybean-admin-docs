@@ -21,9 +21,6 @@ hero:
     - theme: alt
       text: View on GitHub
       link: https://github.com/soybeanjs/soybean-admin
-    - theme: alt
-      text: React Version Docs ->
-      link: https://react-docs.soybeanjs.cn/
 
 features:
   - icon: 🆕

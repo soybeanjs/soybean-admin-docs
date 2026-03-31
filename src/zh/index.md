@@ -21,9 +21,6 @@ hero:
     - theme: alt
       text: 在 GitHub 上查看
       link: https://github.com/soybeanjs/soybean-admin
-    - theme: alt
-      text: React 版本文档 ->
-      link: https://react-docs.soybeanjs.cn/
 
 features:
   - icon: 🆕

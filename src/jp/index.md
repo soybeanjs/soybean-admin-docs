@@ -20,9 +20,6 @@ hero:
     - theme: alt
       text: GitHubで見る
       link: https://github.com/soybeanjs/soybean-admin
-    - theme: alt
-      text: React版ドキュメント ->
-      link: https://react-docs.soybeanjs.cn/
 
 features:
   - icon: 🆕
