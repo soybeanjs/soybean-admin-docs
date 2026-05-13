@@ -52,6 +52,8 @@ features:
     details: Provides multiple scripting capabilities, including one-click dependency upgrades, automatic generation of ChangeLogs, commit messages, etc., greatly improving development efficiency.
 ---
 
+<SbUiPromo v-bind="promoCopy" />
+
 <script setup>
 import {
   VPTeamPage,
@@ -59,6 +61,24 @@ import {
   VPTeamMembers,
   VPTeamPageSection
 } from 'vitepress/theme';
+import SbUiPromo from '../.vitepress/theme/SbUiPromo.vue';
+
+const promoCopy = {
+  eyebrow: 'Featured UI',
+  mobileEyebrow: 'Featured UI',
+  description: 'A powerful and elegant component system for Vue 3, combining headless interaction primitives with ready-to-use styled components.',
+  metaItems: ['@soybeanjs/ui', 'Vue 3', '91+ Components'],
+  tags: ['Button', 'Dialog', 'Table'],
+  stats: [
+    { value: '91+', label: 'Components' },
+    { value: 'A11y', label: 'Ready' }
+  ],
+  directLinkLabel: 'Open ui.soybeanjs.cn',
+  drawerCloseLabel: 'Close SoybeanUI drawer',
+  siteHint: 'Official site',
+  githubText: 'GitHub',
+  githubHint: 'Source code'
+};
 
 const partners = [
   {

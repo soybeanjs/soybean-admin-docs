@@ -125,3 +125,683 @@
     --vp-layout-top-height: 35px;
   }
 }
+
+/**
+ * Home: SoybeanUI Promo
+ * --------------------------------------------------------------------------
+ */
+
+.VPHome .soybean-ui-promo {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  width: min(100%, 340px);
+  margin: 28px 0 48px auto;
+  padding: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(100, 108, 255, 0.14);
+  border-radius: 24px;
+  background: linear-gradient(
+    160deg,
+    rgba(100, 108, 255, 0.16),
+    rgba(37, 194, 160, 0.12) 52%,
+    rgba(255, 255, 255, 0.97)
+  );
+  box-shadow: 0 18px 44px rgba(76, 88, 140, 0.14);
+  backdrop-filter: blur(20px);
+}
+
+.VPHome .soybean-ui-promo::before,
+.VPHome .soybean-ui-promo::after {
+  position: absolute;
+  border-radius: 999px;
+  content: '';
+  pointer-events: none;
+}
+
+.VPHome .soybean-ui-promo::before {
+  top: -64px;
+  right: -48px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 72%);
+}
+
+.VPHome .soybean-ui-promo::after {
+  bottom: -120px;
+  left: -48px;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(37, 194, 160, 0.2) 0%, rgba(37, 194, 160, 0) 72%);
+}
+
+.VPHome .soybean-ui-promo > * {
+  position: relative;
+  z-index: 1;
+}
+
+.VPHome .soybean-ui-promo__brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.soybean-ui-promo-drawer .soybean-ui-promo__brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.VPHome .soybean-ui-promo__logo,
+.VPHome .soybean-ui-promo-mobile__logo,
+.soybean-ui-promo-drawer__panel .soybean-ui-promo__logo {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  padding: 6px;
+  border-radius: 12px;
+  box-shadow:
+    inset 0 0 0 1px rgba(100, 108, 255, 0.12),
+    0 10px 24px rgba(100, 108, 255, 0.12);
+}
+
+.VPHome .soybean-ui-promo-mobile,
+.soybean-ui-promo-drawer {
+  display: none;
+}
+
+.VPHome .soybean-ui-promo__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--vp-c-brand-dark);
+  background-color: rgba(255, 255, 255, 0.72);
+  box-shadow: inset 0 0 0 1px rgba(100, 108, 255, 0.12);
+}
+
+.VPHome .soybean-ui-promo__desc {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--vp-c-text-2);
+}
+
+.VPHome .soybean-ui-promo__meta,
+.VPHome .soybean-ui-promo__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.VPHome .soybean-ui-promo__footer {
+  display: grid;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(100, 108, 255, 0.12);
+}
+
+.VPHome .soybean-ui-promo__meta {
+  margin-top: 0;
+}
+
+.VPHome .soybean-ui-promo__meta span {
+  padding: 7px 11px;
+  border: 1px solid rgba(100, 108, 255, 0.12);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(6px);
+}
+
+.VPHome .soybean-ui-promo__actions {
+  margin-top: 4px;
+}
+
+.VPHome .soybean-ui-promo__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.VPHome .soybean-ui-promo__action:hover {
+  transform: translateY(-1px);
+}
+
+.VPHome .soybean-ui-promo__action::after {
+  content: '->';
+  flex: none;
+  margin-left: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  opacity: 0.7;
+}
+
+.VPHome .soybean-ui-promo__action-text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.VPHome .soybean-ui-promo__action-text strong,
+.VPHome .soybean-ui-promo__action-text small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.VPHome .soybean-ui-promo__action-text strong {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.VPHome .soybean-ui-promo__action-text small {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.1;
+  opacity: 0.72;
+}
+
+.VPHome .soybean-ui-promo__action--brand {
+  color: var(--vp-c-white);
+  background: linear-gradient(135deg, var(--vp-c-brand), #25c2a0);
+  box-shadow: 0 14px 28px rgba(73, 117, 220, 0.24);
+}
+
+.VPHome .soybean-ui-promo__action--brand::after {
+  color: #fff !important;
+}
+
+.VPHome .soybean-ui-promo__action--brand:hover {
+  box-shadow: 0 18px 34px rgba(73, 117, 220, 0.28);
+}
+
+.VPHome .soybean-ui-promo__action--alt {
+  min-width: 0;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  color: var(--vp-c-text-1);
+  background-color: rgba(255, 255, 255, 0.72);
+  box-shadow: inset 0 0 0 1px rgba(100, 108, 255, 0.14);
+}
+
+.VPHome .soybean-ui-promo__action--alt:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.VPHome .soybean-ui-promo__package {
+  display: block;
+  font-size: 26px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--vp-c-text-1);
+}
+
+.dark .VPHome .soybean-ui-promo {
+  border-color: rgba(148, 153, 255, 0.18);
+  background: linear-gradient(160deg, rgba(62, 70, 156, 0.6), rgba(13, 78, 71, 0.8) 50%, rgba(20, 24, 36, 0.96));
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(20px);
+}
+
+.dark .VPHome .soybean-ui-promo::before {
+  background: radial-gradient(circle, rgba(148, 153, 255, 0.24) 0%, rgba(148, 153, 255, 0) 72%);
+}
+
+.dark .VPHome .soybean-ui-promo__eyebrow,
+.dark .VPHome .soybean-ui-promo__meta span,
+.dark .VPHome .soybean-ui-promo__action--alt {
+  color: var(--vp-c-text-1);
+  background-color: rgba(15, 23, 42, 0.56);
+  box-shadow: inset 0 0 0 1px rgba(148, 153, 255, 0.18);
+}
+
+@media (min-width: 768px) {
+  .VPHome .soybean-ui-promo {
+    position: fixed;
+    top: 124px;
+    right: 20px;
+    width: 320px;
+    margin: 0;
+    z-index: 14;
+  }
+}
+
+@media (max-width: 768px) {
+  .VPHome .soybean-ui-promo {
+    display: none;
+  }
+
+  .VPHome .soybean-ui-promo-mobile {
+    position: fixed;
+    right: 20px;
+    top: 120px;
+    z-index: 22;
+    display: block;
+  }
+
+  .VPHome .soybean-ui-promo-mobile__card {
+    position: relative;
+    /* width: 92px; */
+    min-height: 92px;
+  }
+
+  .VPHome .soybean-ui-promo-mobile__toggle,
+  .VPHome .soybean-ui-promo-mobile__link {
+    border: 0;
+    text-decoration: none;
+  }
+
+  .VPHome .soybean-ui-promo-mobile__toggle {
+    display: grid;
+    gap: 6px;
+    width: 100%;
+    min-height: 92px;
+    padding: 12px;
+    border-radius: 22px;
+    color: var(--vp-c-white);
+    text-align: left;
+    background: linear-gradient(160deg, rgba(100, 108, 255, 0.4), rgba(37, 194, 160, 0.5));
+    box-shadow: 0 16px 36px rgba(73, 117, 220, 0.3);
+    backdrop-filter: blur(20px);
+  }
+
+  .VPHome .soybean-ui-promo-mobile__logo {
+    width: 32px;
+    height: 32px;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
+  }
+
+  .VPHome .soybean-ui-promo-mobile__eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    opacity: 0.84;
+  }
+
+  .VPHome .soybean-ui-promo-mobile__title {
+    font-size: 18px;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  .VPHome .soybean-ui-promo-mobile__link {
+    display: inline-flex;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--vp-c-text-1);
+    background-color: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+    backdrop-filter: blur(10px);
+  }
+
+  .soybean-ui-promo-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    display: block;
+  }
+
+  .soybean-ui-promo-drawer__backdrop {
+    position: absolute;
+    inset: 0;
+    border: 0;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(4px);
+  }
+
+  .soybean-ui-promo-drawer__panel {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    gap: 14px;
+    padding: 24px 20px calc(20px + env(safe-area-inset-bottom));
+    border-radius: 28px 28px 0 0;
+    border-top: 1px solid rgba(100, 108, 255, 0.12);
+    background: linear-gradient(180deg, rgba(100, 108, 255, 0.08), rgba(100, 108, 255, 0) 88px), #ffffff;
+    box-shadow: 0 -18px 50px rgba(15, 23, 42, 0.22);
+  }
+
+  .soybean-ui-promo-drawer__visual {
+    display: grid;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid rgba(100, 108, 255, 0.1);
+    border-radius: 20px;
+    background: rgba(248, 250, 255, 0.92);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  }
+
+  .soybean-ui-promo-drawer__chrome {
+    display: flex;
+    gap: 6px;
+  }
+
+  .soybean-ui-promo-drawer__chrome span {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(148, 153, 255, 0.4);
+  }
+
+  .soybean-ui-promo-drawer__chrome span:first-child {
+    background: #646cff;
+  }
+
+  .soybean-ui-promo-drawer__chrome span:nth-child(2) {
+    background: #25c2a0;
+  }
+
+  .soybean-ui-promo-drawer__chrome span:nth-child(3) {
+    background: rgba(15, 23, 42, 0.22);
+  }
+
+  .soybean-ui-promo-drawer__showcase,
+  .soybean-ui-promo-drawer__stats {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .soybean-ui-promo-drawer__tag,
+  .soybean-ui-promo-drawer__stats div {
+    display: grid;
+    place-items: center;
+    min-height: 44px;
+    padding: 10px 8px;
+    border-radius: 14px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--vp-c-text-1);
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: inset 0 0 0 1px rgba(100, 108, 255, 0.08);
+  }
+
+  .soybean-ui-promo-drawer__bars {
+    display: grid;
+    gap: 8px;
+  }
+
+  .soybean-ui-promo-drawer__bars span {
+    display: block;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(148, 153, 255, 0.16);
+  }
+
+  .soybean-ui-promo-drawer__bars .is-primary {
+    width: 100%;
+    background: linear-gradient(90deg, #646cff, #7d9dff);
+  }
+
+  .soybean-ui-promo-drawer__bars .is-secondary {
+    width: 72%;
+    background: linear-gradient(90deg, #25c2a0, #6ee7d2);
+  }
+
+  .soybean-ui-promo-drawer__bars .is-muted {
+    width: 48%;
+  }
+
+  .soybean-ui-promo-drawer__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .soybean-ui-promo-drawer__stats div {
+    align-items: start;
+    justify-items: start;
+    min-height: 56px;
+  }
+
+  .soybean-ui-promo-drawer__stats strong {
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .soybean-ui-promo-drawer__stats span {
+    margin-top: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--vp-c-text-2);
+  }
+
+  .soybean-ui-promo-drawer__close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 999px;
+    font-size: 22px;
+    line-height: 1;
+    color: var(--vp-c-text-1);
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  .soybean-ui-promo-drawer .soybean-ui-promo__actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .soybean-ui-promo-drawer .soybean-ui-promo__footer {
+    gap: 14px;
+    padding: 14px;
+    border: 1px solid rgba(100, 108, 255, 0.12);
+    border-radius: 20px;
+    background: rgba(248, 250, 255, 0.82);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+
+  .soybean-ui-promo-drawer .soybean-ui-promo__meta {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .soybean-ui-promo-drawer .soybean-ui-promo__meta span {
+    justify-content: center;
+    min-height: 38px;
+    padding: 8px 10px;
+    border-radius: 14px;
+    font-size: 11px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: inset 0 0 0 1px rgba(100, 108, 255, 0.08);
+  }
+
+  .soybean-ui-promo-drawer .soybean-ui-promo__action {
+    position: relative;
+    flex: 1 1 calc(50% - 5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 16px;
+    border: 1px solid rgba(100, 108, 255, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+    color: #646cff;
+  }
+
+  .soybean-ui-promo-drawer .soybean-ui-promo__action::after {
+    font-size: 12px;
+    font-weight: 800;
+    opacity: 0.72;
+  }
+
+  .soybean-ui-promo-drawer .soybean-ui-promo__action-text strong {
+    font-size: 13px;
+  }
+
+  .soybean-ui-promo-drawer .soybean-ui-promo__action-text small {
+    font-size: 10px;
+  }
+
+  .soybean-ui-promo-drawer .soybean-ui-promo__action--brand {
+    color: var(--vp-c-white);
+    background: linear-gradient(135deg, var(--vp-c-brand), #25c2a0);
+    box-shadow: 0 14px 28px rgba(73, 117, 220, 0.24);
+  }
+
+  .soybean-ui-promo-drawer .soybean-ui-promo__action--alt {
+    background-color: #ffffff;
+  }
+
+  .dark .VPHome .soybean-ui-promo-mobile__link,
+  .dark .soybean-ui-promo-drawer__close {
+    color: var(--vp-c-text-1);
+    background: rgba(15, 23, 42, 0.84);
+  }
+
+  .dark .VPHome .soybean-ui-promo__logo,
+  .dark .VPHome .soybean-ui-promo-mobile__logo,
+  .dark .soybean-ui-promo-drawer__panel .soybean-ui-promo__logo {
+    background: rgba(15, 23, 42, 0.86);
+    box-shadow:
+      inset 0 0 0 1px rgba(148, 153, 255, 0.14),
+      0 10px 24px rgba(0, 0, 0, 0.22);
+  }
+
+  .dark .soybean-ui-promo-drawer__panel {
+    border-top-color: rgba(148, 153, 255, 0.14);
+    background: linear-gradient(180deg, rgba(100, 108, 255, 0.14), rgba(100, 108, 255, 0) 96px), rgba(17, 24, 39, 0.98);
+  }
+
+  .dark .soybean-ui-promo-drawer .soybean-ui-promo__footer {
+    border-color: rgba(148, 153, 255, 0.14);
+    background: rgba(15, 23, 42, 0.66);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+
+  .dark .soybean-ui-promo-drawer__visual {
+    border-color: rgba(148, 153, 255, 0.12);
+    background: rgba(15, 23, 42, 0.72);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  }
+
+  .dark .soybean-ui-promo-drawer__tag,
+  .dark .soybean-ui-promo-drawer__stats div {
+    background: rgba(30, 41, 59, 0.86);
+    box-shadow: inset 0 0 0 1px rgba(148, 153, 255, 0.12);
+  }
+
+  .dark .soybean-ui-promo-drawer .soybean-ui-promo__meta span {
+    background: rgba(30, 41, 59, 0.88);
+    box-shadow: inset 0 0 0 1px rgba(148, 153, 255, 0.12);
+  }
+
+  .dark .soybean-ui-promo-drawer .soybean-ui-promo__action {
+    border-color: rgba(148, 153, 255, 0.16);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+  }
+
+  .dark .soybean-ui-promo-drawer .soybean-ui-promo__action--alt {
+    background-color: rgba(30, 41, 59, 0.92);
+  }
+
+  .dark .soybean-ui-promo-drawer__chrome span:nth-child(3) {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .soybean-ui-promo-drawer-enter-active,
+  .soybean-ui-promo-drawer-leave-active {
+    transition: opacity 0.24s ease;
+  }
+
+  .soybean-ui-promo-drawer-enter-active .soybean-ui-promo-drawer__panel,
+  .soybean-ui-promo-drawer-leave-active .soybean-ui-promo-drawer__panel {
+    transition: transform 0.24s ease;
+  }
+
+  .soybean-ui-promo-drawer-enter-from,
+  .soybean-ui-promo-drawer-leave-to {
+    opacity: 0;
+  }
+
+  .soybean-ui-promo-drawer-enter-from .soybean-ui-promo-drawer__panel,
+  .soybean-ui-promo-drawer-leave-to .soybean-ui-promo-drawer__panel {
+    transform: translateY(100%);
+  }
+}
+
+@media (max-width: 480px) {
+  .VPHome .soybean-ui-promo-mobile {
+    bottom: 84px;
+  }
+
+  .VPHome .soybean-ui-promo-mobile__card {
+    width: 86px;
+    min-height: 86px;
+  }
+
+  .VPHome .soybean-ui-promo-mobile__toggle {
+    min-height: 86px;
+    padding: 11px;
+  }
+
+  .soybean-ui-promo-drawer__panel {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .soybean-ui-promo-drawer__showcase {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .soybean-ui-promo-drawer__showcase .soybean-ui-promo-drawer__tag:last-child {
+    grid-column: span 2;
+  }
+
+  .soybean-ui-promo-drawer .soybean-ui-promo__meta {
+    grid-template-columns: 1fr;
+  }
+
+  .soybean-ui-promo-drawer .soybean-ui-promo__action {
+    flex-basis: 100%;
+  }
+
+  .soybean-ui-promo-drawer .soybean-ui-promo__actions {
+    grid-template-columns: 1fr;
+  }
+}

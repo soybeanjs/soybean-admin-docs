@@ -51,6 +51,8 @@ features:
     details: 依存関係のワンクリックアップグレード、ChangeLogの自動生成、コミットメッセージの生成などのスクリプト機能を提供し、開発効率を大幅に向上。
 ---
 
+<SbUiPromo v-bind="promoCopy" />
+
 <script setup>
 import {
   VPTeamPage,
@@ -58,6 +60,24 @@ import {
   VPTeamMembers,
   VPTeamPageSection
 } from 'vitepress/theme';
+import SbUiPromo from '../../.vitepress/theme/SbUiPromo.vue';
+
+const promoCopy = {
+  eyebrow: '注目 UI',
+  mobileEyebrow: 'おすすめ UI',
+  description: 'Vue 3 向けの強力で洗練されたコンポーネントシステム。ヘッドレスな対話機能と、そのまま使えるスタイル実装をあわせて提供します。',
+  metaItems: ['@soybeanjs/ui', 'Vue 3', '91+ コンポーネント'],
+  tags: ['ボタン', 'Dialog', 'Table'],
+  stats: [
+    { value: '91+', label: 'Components' },
+    { value: 'A11y', label: 'Ready' }
+  ],
+  directLinkLabel: 'ui.soybeanjs.cn を開く',
+  drawerCloseLabel: 'SoybeanUI drawer を閉じる',
+  siteHint: 'Official site',
+  githubText: 'GitHub',
+  githubHint: 'Source code'
+};
 
 const partners = [
   {
