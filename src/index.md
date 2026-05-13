@@ -140,7 +140,7 @@ const partners = [
     name: 'Ohh',
     title: 'Front-end development · zhengzhou',
     links: [
-      { icon: 'github', link: 'https://github.com/mufeng889' }
+      { icon: 'github', link: 'https://github.com/Ohh-889' }
     ]
   },
   {

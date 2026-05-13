@@ -139,7 +139,7 @@ const partners = [
     name: 'Ohh',
     title: '前端开发 · 郑州',
     links: [
-      { icon: 'github', link: 'https://github.com/mufeng889' }
+      { icon: 'github', link: 'https://github.com/Ohh-889' }
     ]
   },
   {
