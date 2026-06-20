@@ -1,9 +1,16 @@
 import { defineConfig } from 'vitepress';
+import llmstxt from 'vitepress-plugin-llms';
 import { qqSvg } from './icon.js';
 import zh from './locales/zh.js';
 import jp from './locales/jp.js';
 
 export default defineConfig({
+  vite: {
+    plugins: [
+      // 仅为中文文档（src/zh）生成 llms.txt、llms-full.txt 以及每页的 .md，便于 AI 阅读理解内容
+      llmstxt({ workDir: 'zh' })
+    ]
+  },
   locales: {
     root: {
       label: 'English',
@@ -48,10 +55,13 @@ export default defineConfig({
         link: 'https://qm.qq.com/cgi-bin/qm/qr?k=-Seg4nmWwuNanbi78oOpnFDD0hFh-tWh&jump_from=webapi&authKey=NlFJbbh77/j+DcMcR/pAFTUsbhV2nYqWLYHW3BebdTKWpVrnJBjUXUm87udw694U'
       }
     ],
-    algolia: {
-      appId: '98WN1RY04S',
-      apiKey: '13e9f5767b774422a5880723d9c23265',
-      indexName: 'soybean'
+    search: {
+      provider: 'algolia',
+      options: {
+        appId: '98WN1RY04S',
+        apiKey: '13e9f5767b774422a5880723d9c23265',
+        indexName: 'soybean'
+      }
     },
     footer: {
       message: 'Publish under the MIT license',

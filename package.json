@@ -17,7 +17,7 @@
     "url": "https://github.com/soybeanjs/soybean-admin-docs/issues"
   },
   "engines": {
-    "node": ">=18.12.0",
+    "node": ">=20.19.0",
     "pnpm": ">=8.7.0"
   },
   "scripts": {
@@ -42,7 +42,8 @@
     "eslint": "10.3.0",
     "eslint-plugin-vue": "^10.9.1",
     "typescript": "6.0.3",
-    "vitepress": "1.6.4",
+    "vitepress": "2.0.0-alpha.17",
+    "vitepress-plugin-llms": "1.13.1",
     "vue-eslint-parser": "^10.4.0",
     "vue-tsc": "^3.2.8"
   }
