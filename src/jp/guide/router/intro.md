@@ -96,6 +96,12 @@ interface RouteMeta {
   fixedIndexInTab?: number;
   /** ルートのクエリパラメータ。設定すると、メニューからこのルートに入る際に自動で query パラメータを付与 */
   query?: { key: string; value: string }[] | null;
+  /**
+   * このルートが開発環境でのみ利用可能かどうか
+   *
+   * true に設定すると、ルートモードが "dynamic" であっても、`import.meta.env.DEV` が true の場合にのみルートが読み込まれる
+   */
+  isDev?: boolean;
 }
 ```
 

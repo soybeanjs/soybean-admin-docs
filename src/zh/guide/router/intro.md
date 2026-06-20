@@ -96,6 +96,12 @@ interface RouteMeta {
   fixedIndexInTab?: number;
   /** 路由查询参数，如果设置的话，点击菜单进入该路由时会自动携带的query参数 */
   query?: { key: string; value: string }[] | null;
+  /**
+   * 该路由是否仅在开发环境中可用
+   *
+   * 当设置为 true 时，即使路由模式为 "dynamic"，该路由也只会在 `import.meta.env.DEV` 为 true 时加载
+   */
+  isDev?: boolean;
 }
 ```
 

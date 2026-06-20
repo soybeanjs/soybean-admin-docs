@@ -96,6 +96,13 @@ interface RouteMeta {
   fixedIndexInTab?: number;
   /** if set query parameters, it will be automatically carried when entering the route */
   query?: { key: string; value: string }[] | null;
+  /**
+   * Whether the route is only available in the development environment
+   *
+   * When set to true, the route will only be loaded if `import.meta.env.DEV` is true, even if the route mode is
+   * "dynamic"
+   */
+  isDev?: boolean;
 }
 ```
 
