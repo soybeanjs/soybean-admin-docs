@@ -1,15 +1,47 @@
+import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { defineConfig } from 'vitepress';
-import llmstxt from 'vitepress-plugin-llms';
+import llmstxt, { copyOrDownloadAsMarkdownButtons } from 'vitepress-plugin-llms';
 import { qqSvg } from './icon.js';
 import zh from './locales/zh.js';
 import jp from './locales/jp.js';
 
+const BOM = '\uFEFF';
+
+/** 递归为输出目录中的 .md / .txt 文件添加 UTF-8 BOM，确保浏览器以 UTF-8 解析（避免中文乱码） */
+function prependBomToTextFiles(dir: string) {
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const fullPath = join(dir, entry.name);
+    if (entry.isDirectory()) {
+      prependBomToTextFiles(fullPath);
+    } else if (entry.name.endsWith('.md') || entry.name.endsWith('.txt')) {
+      const content = readFileSync(fullPath, 'utf-8');
+      if (!content.startsWith(BOM)) {
+        writeFileSync(fullPath, BOM + content);
+      }
+    }
+  }
+}
+
 export default defineConfig({
   vite: {
     plugins: [
-      // 仅为中文文档（src/zh）生成 llms.txt、llms-full.txt 以及每页的 .md，便于 AI 阅读理解内容
-      llmstxt({ workDir: 'zh' })
+      // 仅为中文文档（src/zh）生成 llms.txt、llms-full.txt 以及每页的 .md，便于 AI 阅读理解内容。
+      // 使用 ignoreFiles 排除非中文文档（而非 workDir），以保留 /zh/ 路径前缀，
+      // 这样生成的 .md 路径与页面路径一致，"Copy as Markdown" 按钮才能正确定位到对应文件。
+      // '!zh/**' 利用 minimatch 取反：忽略所有不在 zh/ 下的文件（新增的非中文目录会被自动忽略）。
+      llmstxt({ ignoreFiles: ['!zh/**'] })
     ]
+  },
+  markdown: {
+    config(md) {
+      // 在每个页面的一级标题后自动插入 <CopyOrDownloadAsMarkdownButtons />（按钮组件在主题中按语言注册）
+      md.use(copyOrDownloadAsMarkdownButtons);
+    }
+  },
+  // 构建结束后为生成的 llms.txt / llms-full.txt / 每页 .md 补充 UTF-8 BOM，修复浏览器直接打开时的中文乱码
+  buildEnd(siteConfig) {
+    prependBomToTextFiles(siteConfig.outDir);
   },
   locales: {
     root: {
