@@ -1,2 +1,5 @@
-onlyBuiltDependencies:
-  - unrs-resolver
+allowBuilds:
+  esbuild: false
+  unrs-resolver: false
+shamefullyHoist: true
+ignoreWorkspaceRootCheck: true
