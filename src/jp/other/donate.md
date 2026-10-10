@@ -2,7 +2,7 @@
 
 もし本プロジェクトが皆様のお役に立ったと感じた場合は、Soybean にコーヒーをご馳走いただけると嬉しいです。Soybean のオープンソース活動は、皆様の支援と励ましによって支えられています。
 
-![](https://soybeanjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/donation.png)
+![](https://img.soybeanjs.dev/donation.png)
 
 ## 寄付リスト
 
