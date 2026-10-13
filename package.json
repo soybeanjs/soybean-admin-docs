@@ -37,14 +37,14 @@
     "@soybeanjs/cli": "^1.8.4",
     "@soybeanjs/eslint-config-vue": "^0.1.1",
     "@soybeanjs/oxc-config": "^0.2.6",
-    "@types/node": "^26.6.4",
+    "@types/node": "^26.6.5",
     "eslint": "^10.12.0",
     "tsx": "^4.23.15",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
     "vitepress": "2.0.0-alpha.20",
-    "vitepress-plugin-llms": "^1.13.1",
-    "vue-tsc": "^3.3.12"
+    "vitepress-plugin-llms": "^1.14.0",
+    "vue-tsc": "^3.3.13"
   },
   "engines": {
     "node": ">=20.19.0",
