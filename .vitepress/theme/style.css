@@ -127,11 +127,11 @@
 }
 
 /**
- * Home: SoybeanUI Promo
+ * Home: VeanUI Promo
  * --------------------------------------------------------------------------
  */
 
-.VPHome .soybean-ui-promo {
+.VPHome .vean-ui-promo {
   position: relative;
   display: grid;
   gap: 14px;
@@ -151,15 +151,15 @@
   backdrop-filter: blur(20px);
 }
 
-.VPHome .soybean-ui-promo::before,
-.VPHome .soybean-ui-promo::after {
+.VPHome .vean-ui-promo::before,
+.VPHome .vean-ui-promo::after {
   position: absolute;
   border-radius: 999px;
   content: '';
   pointer-events: none;
 }
 
-.VPHome .soybean-ui-promo::before {
+.VPHome .vean-ui-promo::before {
   top: -64px;
   right: -48px;
   width: 220px;
@@ -167,7 +167,7 @@
   background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 72%);
 }
 
-.VPHome .soybean-ui-promo::after {
+.VPHome .vean-ui-promo::after {
   bottom: -120px;
   left: -48px;
   width: 240px;
@@ -175,26 +175,26 @@
   background: radial-gradient(circle, rgba(37, 194, 160, 0.2) 0%, rgba(37, 194, 160, 0) 72%);
 }
 
-.VPHome .soybean-ui-promo > * {
+.VPHome .vean-ui-promo > * {
   position: relative;
   z-index: 1;
 }
 
-.VPHome .soybean-ui-promo__brand {
+.VPHome .vean-ui-promo__brand {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.soybean-ui-promo-drawer .soybean-ui-promo__brand {
+.vean-ui-promo-drawer .vean-ui-promo__brand {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.VPHome .soybean-ui-promo__logo,
-.VPHome .soybean-ui-promo-mobile__logo,
-.soybean-ui-promo-drawer__panel .soybean-ui-promo__logo {
+.VPHome .vean-ui-promo__logo,
+.VPHome .vean-ui-promo-mobile__logo,
+.vean-ui-promo-drawer__panel .vean-ui-promo__logo {
   width: 36px;
   height: 36px;
   flex: none;
@@ -205,12 +205,12 @@
     0 10px 24px rgba(100, 108, 255, 0.12);
 }
 
-.VPHome .soybean-ui-promo-mobile,
-.soybean-ui-promo-drawer {
+.VPHome .vean-ui-promo-mobile,
+.vean-ui-promo-drawer {
   display: none;
 }
 
-.VPHome .soybean-ui-promo__eyebrow {
+.VPHome .vean-ui-promo__eyebrow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -227,32 +227,32 @@
   box-shadow: inset 0 0 0 1px rgba(100, 108, 255, 0.12);
 }
 
-.VPHome .soybean-ui-promo__desc {
+.VPHome .vean-ui-promo__desc {
   margin: 0;
   font-size: 14px;
   line-height: 1.65;
   color: var(--vp-c-text-2);
 }
 
-.VPHome .soybean-ui-promo__meta,
-.VPHome .soybean-ui-promo__actions {
+.VPHome .vean-ui-promo__meta,
+.VPHome .vean-ui-promo__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-.VPHome .soybean-ui-promo__footer {
+.VPHome .vean-ui-promo__footer {
   display: grid;
   gap: 12px;
   padding-top: 12px;
   border-top: 1px solid rgba(100, 108, 255, 0.12);
 }
 
-.VPHome .soybean-ui-promo__meta {
+.VPHome .vean-ui-promo__meta {
   margin-top: 0;
 }
 
-.VPHome .soybean-ui-promo__meta span {
+.VPHome .vean-ui-promo__meta span {
   padding: 7px 11px;
   border: 1px solid rgba(100, 108, 255, 0.12);
   border-radius: 999px;
@@ -263,11 +263,11 @@
   backdrop-filter: blur(6px);
 }
 
-.VPHome .soybean-ui-promo__actions {
+.VPHome .vean-ui-promo__actions {
   margin-top: 4px;
 }
 
-.VPHome .soybean-ui-promo__action {
+.VPHome .vean-ui-promo__action {
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
@@ -284,11 +284,11 @@
     background-color 0.2s ease;
 }
 
-.VPHome .soybean-ui-promo__action:hover {
+.VPHome .vean-ui-promo__action:hover {
   transform: translateY(-1px);
 }
 
-.VPHome .soybean-ui-promo__action::after {
+.VPHome .vean-ui-promo__action::after {
   content: '->';
   flex: none;
   margin-left: 12px;
@@ -297,48 +297,48 @@
   opacity: 0.7;
 }
 
-.VPHome .soybean-ui-promo__action-text {
+.VPHome .vean-ui-promo__action-text {
   display: grid;
   gap: 2px;
   min-width: 0;
 }
 
-.VPHome .soybean-ui-promo__action-text strong,
-.VPHome .soybean-ui-promo__action-text small {
+.VPHome .vean-ui-promo__action-text strong,
+.VPHome .vean-ui-promo__action-text small {
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.VPHome .soybean-ui-promo__action-text strong {
+.VPHome .vean-ui-promo__action-text strong {
   font-size: 13px;
   font-weight: 700;
   line-height: 1.15;
 }
 
-.VPHome .soybean-ui-promo__action-text small {
+.VPHome .vean-ui-promo__action-text small {
   font-size: 10px;
   font-weight: 600;
   line-height: 1.1;
   opacity: 0.72;
 }
 
-.VPHome .soybean-ui-promo__action--brand {
+.VPHome .vean-ui-promo__action--brand {
   color: var(--vp-c-white);
   background: linear-gradient(135deg, var(--vp-c-brand), #25c2a0);
   box-shadow: 0 14px 28px rgba(73, 117, 220, 0.24);
 }
 
-.VPHome .soybean-ui-promo__action--brand::after {
+.VPHome .vean-ui-promo__action--brand::after {
   color: #fff !important;
 }
 
-.VPHome .soybean-ui-promo__action--brand:hover {
+.VPHome .vean-ui-promo__action--brand:hover {
   box-shadow: 0 18px 34px rgba(73, 117, 220, 0.28);
 }
 
-.VPHome .soybean-ui-promo__action--alt {
+.VPHome .vean-ui-promo__action--alt {
   min-width: 0;
   flex-grow: 1;
   display: flex;
@@ -348,11 +348,11 @@
   box-shadow: inset 0 0 0 1px rgba(100, 108, 255, 0.14);
 }
 
-.VPHome .soybean-ui-promo__action--alt:hover {
+.VPHome .vean-ui-promo__action--alt:hover {
   background-color: rgba(255, 255, 255, 0.9);
 }
 
-.VPHome .soybean-ui-promo__package {
+.VPHome .vean-ui-promo__package {
   display: block;
   font-size: 26px;
   line-height: 1.1;
@@ -360,27 +360,27 @@
   color: var(--vp-c-text-1);
 }
 
-.dark .VPHome .soybean-ui-promo {
+.dark .VPHome .vean-ui-promo {
   border-color: rgba(148, 153, 255, 0.18);
   background: linear-gradient(160deg, rgba(62, 70, 156, 0.6), rgba(13, 78, 71, 0.8) 50%, rgba(20, 24, 36, 0.96));
   box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
   backdrop-filter: blur(20px);
 }
 
-.dark .VPHome .soybean-ui-promo::before {
+.dark .VPHome .vean-ui-promo::before {
   background: radial-gradient(circle, rgba(148, 153, 255, 0.24) 0%, rgba(148, 153, 255, 0) 72%);
 }
 
-.dark .VPHome .soybean-ui-promo__eyebrow,
-.dark .VPHome .soybean-ui-promo__meta span,
-.dark .VPHome .soybean-ui-promo__action--alt {
+.dark .VPHome .vean-ui-promo__eyebrow,
+.dark .VPHome .vean-ui-promo__meta span,
+.dark .VPHome .vean-ui-promo__action--alt {
   color: var(--vp-c-text-1);
   background-color: rgba(15, 23, 42, 0.56);
   box-shadow: inset 0 0 0 1px rgba(148, 153, 255, 0.18);
 }
 
 @media (min-width: 768px) {
-  .VPHome .soybean-ui-promo {
+  .VPHome .vean-ui-promo {
     position: fixed;
     top: 124px;
     right: 20px;
@@ -391,11 +391,11 @@
 }
 
 @media (max-width: 768px) {
-  .VPHome .soybean-ui-promo {
+  .VPHome .vean-ui-promo {
     display: none;
   }
 
-  .VPHome .soybean-ui-promo-mobile {
+  .VPHome .vean-ui-promo-mobile {
     position: fixed;
     right: 20px;
     top: 120px;
@@ -403,19 +403,19 @@
     display: block;
   }
 
-  .VPHome .soybean-ui-promo-mobile__card {
+  .VPHome .vean-ui-promo-mobile__card {
     position: relative;
     /* width: 92px; */
     min-height: 92px;
   }
 
-  .VPHome .soybean-ui-promo-mobile__toggle,
-  .VPHome .soybean-ui-promo-mobile__link {
+  .VPHome .vean-ui-promo-mobile__toggle,
+  .VPHome .vean-ui-promo-mobile__link {
     border: 0;
     text-decoration: none;
   }
 
-  .VPHome .soybean-ui-promo-mobile__toggle {
+  .VPHome .vean-ui-promo-mobile__toggle {
     display: grid;
     gap: 6px;
     width: 100%;
@@ -429,7 +429,7 @@
     backdrop-filter: blur(20px);
   }
 
-  .VPHome .soybean-ui-promo-mobile__logo {
+  .VPHome .vean-ui-promo-mobile__logo {
     width: 32px;
     height: 32px;
     padding: 5px;
@@ -437,20 +437,20 @@
     box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
   }
 
-  .VPHome .soybean-ui-promo-mobile__eyebrow {
+  .VPHome .vean-ui-promo-mobile__eyebrow {
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.08em;
     opacity: 0.84;
   }
 
-  .VPHome .soybean-ui-promo-mobile__title {
+  .VPHome .vean-ui-promo-mobile__title {
     font-size: 18px;
     line-height: 1.05;
     letter-spacing: -0.03em;
   }
 
-  .VPHome .soybean-ui-promo-mobile__link {
+  .VPHome .vean-ui-promo-mobile__link {
     display: inline-flex;
     position: absolute;
     right: 8px;
@@ -468,14 +468,14 @@
     backdrop-filter: blur(10px);
   }
 
-  .soybean-ui-promo-drawer {
+  .vean-ui-promo-drawer {
     position: fixed;
     inset: 0;
     z-index: 40;
     display: block;
   }
 
-  .soybean-ui-promo-drawer__backdrop {
+  .vean-ui-promo-drawer__backdrop {
     position: absolute;
     inset: 0;
     border: 0;
@@ -483,7 +483,7 @@
     backdrop-filter: blur(4px);
   }
 
-  .soybean-ui-promo-drawer__panel {
+  .vean-ui-promo-drawer__panel {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -497,7 +497,7 @@
     box-shadow: 0 -18px 50px rgba(15, 23, 42, 0.22);
   }
 
-  .soybean-ui-promo-drawer__visual {
+  .vean-ui-promo-drawer__visual {
     display: grid;
     gap: 12px;
     padding: 14px;
@@ -507,39 +507,39 @@
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
   }
 
-  .soybean-ui-promo-drawer__chrome {
+  .vean-ui-promo-drawer__chrome {
     display: flex;
     gap: 6px;
   }
 
-  .soybean-ui-promo-drawer__chrome span {
+  .vean-ui-promo-drawer__chrome span {
     width: 8px;
     height: 8px;
     border-radius: 999px;
     background: rgba(148, 153, 255, 0.4);
   }
 
-  .soybean-ui-promo-drawer__chrome span:first-child {
+  .vean-ui-promo-drawer__chrome span:first-child {
     background: #646cff;
   }
 
-  .soybean-ui-promo-drawer__chrome span:nth-child(2) {
+  .vean-ui-promo-drawer__chrome span:nth-child(2) {
     background: #25c2a0;
   }
 
-  .soybean-ui-promo-drawer__chrome span:nth-child(3) {
+  .vean-ui-promo-drawer__chrome span:nth-child(3) {
     background: rgba(15, 23, 42, 0.22);
   }
 
-  .soybean-ui-promo-drawer__showcase,
-  .soybean-ui-promo-drawer__stats {
+  .vean-ui-promo-drawer__showcase,
+  .vean-ui-promo-drawer__stats {
     display: grid;
     gap: 10px;
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .soybean-ui-promo-drawer__tag,
-  .soybean-ui-promo-drawer__stats div {
+  .vean-ui-promo-drawer__tag,
+  .vean-ui-promo-drawer__stats div {
     display: grid;
     place-items: center;
     min-height: 44px;
@@ -552,55 +552,55 @@
     box-shadow: inset 0 0 0 1px rgba(100, 108, 255, 0.08);
   }
 
-  .soybean-ui-promo-drawer__bars {
+  .vean-ui-promo-drawer__bars {
     display: grid;
     gap: 8px;
   }
 
-  .soybean-ui-promo-drawer__bars span {
+  .vean-ui-promo-drawer__bars span {
     display: block;
     height: 8px;
     border-radius: 999px;
     background: rgba(148, 153, 255, 0.16);
   }
 
-  .soybean-ui-promo-drawer__bars .is-primary {
+  .vean-ui-promo-drawer__bars .is-primary {
     width: 100%;
     background: linear-gradient(90deg, #646cff, #7d9dff);
   }
 
-  .soybean-ui-promo-drawer__bars .is-secondary {
+  .vean-ui-promo-drawer__bars .is-secondary {
     width: 72%;
     background: linear-gradient(90deg, #25c2a0, #6ee7d2);
   }
 
-  .soybean-ui-promo-drawer__bars .is-muted {
+  .vean-ui-promo-drawer__bars .is-muted {
     width: 48%;
   }
 
-  .soybean-ui-promo-drawer__stats {
+  .vean-ui-promo-drawer__stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .soybean-ui-promo-drawer__stats div {
+  .vean-ui-promo-drawer__stats div {
     align-items: start;
     justify-items: start;
     min-height: 56px;
   }
 
-  .soybean-ui-promo-drawer__stats strong {
+  .vean-ui-promo-drawer__stats strong {
     font-size: 18px;
     line-height: 1;
   }
 
-  .soybean-ui-promo-drawer__stats span {
+  .vean-ui-promo-drawer__stats span {
     margin-top: 4px;
     font-size: 11px;
     font-weight: 600;
     color: var(--vp-c-text-2);
   }
 
-  .soybean-ui-promo-drawer__close {
+  .vean-ui-promo-drawer__close {
     position: absolute;
     top: 14px;
     right: 14px;
@@ -617,14 +617,14 @@
     background: rgba(255, 255, 255, 0.8);
   }
 
-  .soybean-ui-promo-drawer .soybean-ui-promo__actions {
+  .vean-ui-promo-drawer .vean-ui-promo__actions {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
     margin-top: 12px;
   }
 
-  .soybean-ui-promo-drawer .soybean-ui-promo__footer {
+  .vean-ui-promo-drawer .vean-ui-promo__footer {
     gap: 14px;
     padding: 14px;
     border: 1px solid rgba(100, 108, 255, 0.12);
@@ -633,13 +633,13 @@
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
   }
 
-  .soybean-ui-promo-drawer .soybean-ui-promo__meta {
+  .vean-ui-promo-drawer .vean-ui-promo__meta {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 10px;
   }
 
-  .soybean-ui-promo-drawer .soybean-ui-promo__meta span {
+  .vean-ui-promo-drawer .vean-ui-promo__meta span {
     justify-content: center;
     min-height: 38px;
     padding: 8px 10px;
@@ -650,7 +650,7 @@
     box-shadow: inset 0 0 0 1px rgba(100, 108, 255, 0.08);
   }
 
-  .soybean-ui-promo-drawer .soybean-ui-promo__action {
+  .vean-ui-promo-drawer .vean-ui-promo__action {
     position: relative;
     flex: 1 1 calc(50% - 5px);
     display: flex;
@@ -664,144 +664,144 @@
     color: #646cff;
   }
 
-  .soybean-ui-promo-drawer .soybean-ui-promo__action::after {
+  .vean-ui-promo-drawer .vean-ui-promo__action::after {
     font-size: 12px;
     font-weight: 800;
     opacity: 0.72;
   }
 
-  .soybean-ui-promo-drawer .soybean-ui-promo__action-text strong {
+  .vean-ui-promo-drawer .vean-ui-promo__action-text strong {
     font-size: 13px;
   }
 
-  .soybean-ui-promo-drawer .soybean-ui-promo__action-text small {
+  .vean-ui-promo-drawer .vean-ui-promo__action-text small {
     font-size: 10px;
   }
 
-  .soybean-ui-promo-drawer .soybean-ui-promo__action--brand {
+  .vean-ui-promo-drawer .vean-ui-promo__action--brand {
     color: var(--vp-c-white);
     background: linear-gradient(135deg, var(--vp-c-brand), #25c2a0);
     box-shadow: 0 14px 28px rgba(73, 117, 220, 0.24);
   }
 
-  .soybean-ui-promo-drawer .soybean-ui-promo__action--alt {
+  .vean-ui-promo-drawer .vean-ui-promo__action--alt {
     background-color: #ffffff;
   }
 
-  .dark .VPHome .soybean-ui-promo-mobile__link,
-  .dark .soybean-ui-promo-drawer__close {
+  .dark .VPHome .vean-ui-promo-mobile__link,
+  .dark .vean-ui-promo-drawer__close {
     color: var(--vp-c-text-1);
     background: rgba(15, 23, 42, 0.84);
   }
 
-  .dark .VPHome .soybean-ui-promo__logo,
-  .dark .VPHome .soybean-ui-promo-mobile__logo,
-  .dark .soybean-ui-promo-drawer__panel .soybean-ui-promo__logo {
+  .dark .VPHome .vean-ui-promo__logo,
+  .dark .VPHome .vean-ui-promo-mobile__logo,
+  .dark .vean-ui-promo-drawer__panel .vean-ui-promo__logo {
     background: rgba(15, 23, 42, 0.86);
     box-shadow:
       inset 0 0 0 1px rgba(148, 153, 255, 0.14),
       0 10px 24px rgba(0, 0, 0, 0.22);
   }
 
-  .dark .soybean-ui-promo-drawer__panel {
+  .dark .vean-ui-promo-drawer__panel {
     border-top-color: rgba(148, 153, 255, 0.14);
     background: linear-gradient(180deg, rgba(100, 108, 255, 0.14), rgba(100, 108, 255, 0) 96px), rgba(17, 24, 39, 0.98);
   }
 
-  .dark .soybean-ui-promo-drawer .soybean-ui-promo__footer {
+  .dark .vean-ui-promo-drawer .vean-ui-promo__footer {
     border-color: rgba(148, 153, 255, 0.14);
     background: rgba(15, 23, 42, 0.66);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
   }
 
-  .dark .soybean-ui-promo-drawer__visual {
+  .dark .vean-ui-promo-drawer__visual {
     border-color: rgba(148, 153, 255, 0.12);
     background: rgba(15, 23, 42, 0.72);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
   }
 
-  .dark .soybean-ui-promo-drawer__tag,
-  .dark .soybean-ui-promo-drawer__stats div {
+  .dark .vean-ui-promo-drawer__tag,
+  .dark .vean-ui-promo-drawer__stats div {
     background: rgba(30, 41, 59, 0.86);
     box-shadow: inset 0 0 0 1px rgba(148, 153, 255, 0.12);
   }
 
-  .dark .soybean-ui-promo-drawer .soybean-ui-promo__meta span {
+  .dark .vean-ui-promo-drawer .vean-ui-promo__meta span {
     background: rgba(30, 41, 59, 0.88);
     box-shadow: inset 0 0 0 1px rgba(148, 153, 255, 0.12);
   }
 
-  .dark .soybean-ui-promo-drawer .soybean-ui-promo__action {
+  .dark .vean-ui-promo-drawer .vean-ui-promo__action {
     border-color: rgba(148, 153, 255, 0.16);
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
   }
 
-  .dark .soybean-ui-promo-drawer .soybean-ui-promo__action--alt {
+  .dark .vean-ui-promo-drawer .vean-ui-promo__action--alt {
     background-color: rgba(30, 41, 59, 0.92);
   }
 
-  .dark .soybean-ui-promo-drawer__chrome span:nth-child(3) {
+  .dark .vean-ui-promo-drawer__chrome span:nth-child(3) {
     background: rgba(255, 255, 255, 0.2);
   }
 
-  .soybean-ui-promo-drawer-enter-active,
-  .soybean-ui-promo-drawer-leave-active {
+  .vean-ui-promo-drawer-enter-active,
+  .vean-ui-promo-drawer-leave-active {
     transition: opacity 0.24s ease;
   }
 
-  .soybean-ui-promo-drawer-enter-active .soybean-ui-promo-drawer__panel,
-  .soybean-ui-promo-drawer-leave-active .soybean-ui-promo-drawer__panel {
+  .vean-ui-promo-drawer-enter-active .vean-ui-promo-drawer__panel,
+  .vean-ui-promo-drawer-leave-active .vean-ui-promo-drawer__panel {
     transition: transform 0.24s ease;
   }
 
-  .soybean-ui-promo-drawer-enter-from,
-  .soybean-ui-promo-drawer-leave-to {
+  .vean-ui-promo-drawer-enter-from,
+  .vean-ui-promo-drawer-leave-to {
     opacity: 0;
   }
 
-  .soybean-ui-promo-drawer-enter-from .soybean-ui-promo-drawer__panel,
-  .soybean-ui-promo-drawer-leave-to .soybean-ui-promo-drawer__panel {
+  .vean-ui-promo-drawer-enter-from .vean-ui-promo-drawer__panel,
+  .vean-ui-promo-drawer-leave-to .vean-ui-promo-drawer__panel {
     transform: translateY(100%);
   }
 }
 
 @media (max-width: 480px) {
-  .VPHome .soybean-ui-promo-mobile {
+  .VPHome .vean-ui-promo-mobile {
     bottom: 84px;
   }
 
-  .VPHome .soybean-ui-promo-mobile__card {
+  .VPHome .vean-ui-promo-mobile__card {
     width: 86px;
     min-height: 86px;
   }
 
-  .VPHome .soybean-ui-promo-mobile__toggle {
+  .VPHome .vean-ui-promo-mobile__toggle {
     min-height: 86px;
     padding: 11px;
   }
 
-  .soybean-ui-promo-drawer__panel {
+  .vean-ui-promo-drawer__panel {
     padding-right: 16px;
     padding-left: 16px;
   }
 
-  .soybean-ui-promo-drawer__showcase {
+  .vean-ui-promo-drawer__showcase {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .soybean-ui-promo-drawer__showcase .soybean-ui-promo-drawer__tag:last-child {
+  .vean-ui-promo-drawer__showcase .vean-ui-promo-drawer__tag:last-child {
     grid-column: span 2;
   }
 
-  .soybean-ui-promo-drawer .soybean-ui-promo__meta {
+  .vean-ui-promo-drawer .vean-ui-promo__meta {
     grid-template-columns: 1fr;
   }
 
-  .soybean-ui-promo-drawer .soybean-ui-promo__action {
+  .vean-ui-promo-drawer .vean-ui-promo__action {
     flex-basis: 100%;
   }
 
-  .soybean-ui-promo-drawer .soybean-ui-promo__actions {
+  .vean-ui-promo-drawer .vean-ui-promo__actions {
     grid-template-columns: 1fr;
   }
 }
