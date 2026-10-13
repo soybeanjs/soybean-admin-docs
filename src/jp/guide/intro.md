@@ -6,7 +6,7 @@
 
 - **最先端技術の採用**：Vue3, Vite6, TypeScript, Pinia, UnoCSS などの最新の技術スタックを採用。
 - **明確なプロジェクトアーキテクチャ**：pnpm monorepo アーキテクチャを採用し、構造がシンプルで理解しやすい。
-- **厳格なコード規範**： SoybeanJS 規範 を遵守し、eslint、prettier、simple-git-hooks を統合してコードの規範性を保証。
+- **厳格なコード規範**： SoybeanJS 規範 を遵守し、vite-plus（`vp fmt` / `vp lint`）と Git Hooks を統合してコードの規範性を保証。
 - **TypeScript**： 厳密な型チェックをサポートし、コードの保守性を向上。
 - **豊富なテーマ設定**： UnoCSS と完璧に統合された多彩なテーマ設定を内蔵。
 - **内蔵の国際化機能**： 多言語サポートが簡単に実現可能。

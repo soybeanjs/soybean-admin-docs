@@ -1,7 +1,7 @@
-import DefaultTheme from 'vitepress/theme';
 import type { Theme } from 'vitepress';
-import CustomLayout from './CustomLayout.vue';
+import DefaultTheme from 'vitepress/theme';
 import CopyAsMarkdown from './CopyAsMarkdown.vue';
+import CustomLayout from './CustomLayout.vue';
 import './style.css';
 
 export default {

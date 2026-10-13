@@ -1,58 +1,68 @@
 # 格式化检查
 
-## 使用 ESLint 和 Prettier 进行代码格式化
+## 使用 vite-plus 进行代码格式化
 
-SoybeanJS团队使用[`@soybeanjs/eslint-config`](https://github.com/soybeanjs/eslint-config)来进行代码格式化。这个配置包含了ESLint和Prettier的配置，以及一些自定义的规则。
+SoybeanJS 团队使用 [`vite-plus`](https://viteplus.dev/) 统一代码的格式化与检查，规则来自 [`@soybeanjs/oxc-config`](https://github.com/soybeanjs/oxc-config)。
+
+格式化与检查的配置写在 `vite.config.ts` 中：
+
+```ts
+import { defineConfig } from 'vite-plus';
+import { fmt, lint } from '@soybeanjs/oxc-config';
+
+export default defineConfig({
+  lint,
+  fmt: {
+    ...fmt,
+    ignorePatterns: ['CHANGELOG.md']
+  }
+});
+```
+
+对应两条命令：
+
+```bash
+# 格式化
+pnpm fmt
+
+# 检查并自动修复
+pnpm lint
+```
 
 ## 代码检查
 
-### lint-staged
+### vp staged
 
-安装 `lint-staged`:
+`vite-plus` 用 `vp staged` 取代了 `lint-staged`。要检查的暂存文件规则写在 `vite.config.ts` 的 `staged` 字段：
 
-```bash
-pnpm i lint-staged -D
-```
+```ts
+import { defineConfig } from 'vite-plus';
 
-在 `package.json` 中添加:
-
-```json
-{
-  "lint-staged": {
-    "*": "eslint --fix"
+export default defineConfig({
+  staged: {
+    '*': 'vp check --fix'
   }
-}
+});
 ```
 
-### simple-git-hooks
+### vp config（Git 钩子）
 
-安装 `simple-git-hooks`:
+`vite-plus` 用 `vp config` 取代了 `simple-git-hooks`。钩子脚本放在 `.vite-hooks/` 目录，`pre-commit` 内容只有一行：
 
-```bash
-pnpm i simple-git-hooks -D
+```shell
+vp staged
 ```
 
-在 `package.json` 中添加git钩子:
-
-```json
-{
-  "simple-git-hooks": {
-    "commit-msg": "pnpm sa git-commit-verify",
-    "pre-commit": "pnpm typecheck && pnpm lint-staged"
-  }
-}
-```
-
-在 `package.json` 中添加脚本:
+在 `package.json` 中添加脚本，让安装依赖时自动安装钩子：
 
 ```json
 {
   "scripts": {
-    "prepare": "simple-git-hooks"
+    "prepare": "vp config --no-agent"
   }
 }
 ```
 
 ::: tip 提示
-变更 `simple-git-hooks` 配置或取消 `simple-git-hooks` 时，先更改 `package.json` 中的`simple-git-hooks`对应的配置，然后运行 `pnpm run prepare`使其生效。
+变更 `vite.config.ts` 中的 `staged` 配置或改动 `.vite-hooks/` 下的脚本后，重新执行 `pnpm run prepare` 即可让钩子生效。当前仓库的 `core.hooksPath` 指向 `.vite-hooks/_`。
 :::

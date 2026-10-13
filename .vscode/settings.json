@@ -1,22 +1,10 @@
 {
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "never"
+    "source.fixAll.oxc": "explicit"
   },
-  "editor.formatOnSave": false,
-  "eslint.validate": [
-    "html",
-    "css",
-    "scss",
-    "json",
-    "jsonc",
-    "markdown",
-    "vue",
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-  "prettier.enable": false,
-  "unocss.root": ["./"]
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSave": true,
+  "eslint.validate": ["vue"],
+  "oxc.fmt.configPath": "./vite.config.ts"
 }

@@ -88,10 +88,10 @@ export interface UseTableOptions<ResponseData, ApiData, Column, Pagination exten
 ### Usage example
 
 ```typescript
+import type { DataTableColumns } from 'naive-ui';
 import { useTable } from '@sa/hooks';
 import type { UseTableOptions } from '@sa/hooks';
 import type { PaginationData } from '@sa/hooks';
-import type { DataTableColumns } from 'naive-ui';
 
 interface User {
   id: number;

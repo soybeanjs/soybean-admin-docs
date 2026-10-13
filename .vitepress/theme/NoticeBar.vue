@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useData } from 'vitepress';
 import { onMounted, ref, watch } from 'vue';
+import { useData } from 'vitepress';
 
 const { lang, site } = useData();
 
@@ -34,7 +34,12 @@ watch(lang, updateNotice);
   <div v-if="notice" class="notice-bar">
     <div class="notice-content">
       <span class="notice-text">{{ notice.text }}</span>
-      <a href="https://www.bilibili.com/video/BV1YKdRYXELC" target="_blank" class="notice-link">
+      <a
+        href="https://www.bilibili.com/video/BV1YKdRYXELC"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="notice-link"
+      >
         {{ notice.linkText }}
       </a>
     </div>

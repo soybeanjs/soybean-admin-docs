@@ -31,8 +31,8 @@ git push
 ::: details 方式二：永久关闭校验
 
 > [!CAUTION] 不推荐
-> 1、把 `package.json` 的 `simple-git-hooks` 里面的命令删掉
+> 1、把 `package.json` 的 `prepare` 脚本删掉
 >
-> 2、执行 `simple-git-hooks` 命令
+> 2、删除 `.vite-hooks/` 目录下的钩子脚本（例如 `pre-commit`）
 >
 > :::

@@ -87,8 +87,8 @@ pnpm i
   "gen-route": "sa gen-route",
   // eslint のチェックと自動修正
   "lint": "eslint . --fix",
-  // simple-git-hooks の初期化
-  "prepare": "simple-git-hooks",
+  // Git フックの初期化
+  "prepare": "vp config --no-agent",
   // ビルド後の `dist` をローカル環境でプレビュー
   "preview": "vite preview",
   // リリース

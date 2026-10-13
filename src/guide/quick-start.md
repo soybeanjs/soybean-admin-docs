@@ -35,7 +35,7 @@ The following are the recommended plugins:
 - [javascript console utils](https://marketplace.visualstudio.com/items?itemName=whtouche.vscode-js-console-utils) - Provides shortcut ctrl+l to directly input console.log()
 - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) - Icon theme, display various icons for files and folders
 - [One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme) - Theme
-- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - Code formatting plugin
+- [Oxc](https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode) - Code formatting and linting plugin
 - [UnoCSS](https://marketplace.visualstudio.com/items?itemName=antfu.unocss) - unocss writing hint plugin
 - [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - Vue service plugin
 - [Vue VSCode Snippets](https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-snippets) - Vue2, Vue3 writing hint plugin
@@ -94,8 +94,8 @@ pnpm i
   "gen-route": "sa gen-route",
   // eslint check and auto fix
   "lint": "eslint . --fix",
-  // Initialize simple-git-hooks
-  "prepare": "simple-git-hooks",
+  // Initialize git hooks
+  "prepare": "vp config --no-agent",
   // Preview the built dist in local environment
   "preview": "vite preview",
   // Release

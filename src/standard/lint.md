@@ -1,58 +1,68 @@
 # Formatting Check
 
-## Code Formatting with ESLint and Prettier
+## Code Formatting with vite-plus
 
-The SoybeanJS team uses [`@soybeanjs/eslint-config`](https://github.com/soybeanjs/eslint-config) for code formatting. This configuration includes ESLint and Prettier settings, as well as some custom rules.
+The SoybeanJS team uses [`vite-plus`](https://viteplus.dev/) to unify code formatting and linting, with rules provided by [`@soybeanjs/oxc-config`](https://github.com/soybeanjs/oxc-config).
+
+The formatting and linting configuration lives in `vite.config.ts`:
+
+```ts
+import { defineConfig } from 'vite-plus';
+import { fmt, lint } from '@soybeanjs/oxc-config';
+
+export default defineConfig({
+  lint,
+  fmt: {
+    ...fmt,
+    ignorePatterns: ['CHANGELOG.md']
+  }
+});
+```
+
+Two commands map to it:
+
+```bash
+# Format
+pnpm fmt
+
+# Lint and auto-fix
+pnpm lint
+```
 
 ## Code Check
 
-### lint-staged
+### vp staged
 
-Install `lint-staged`:
+`vite-plus` replaces `lint-staged` with `vp staged`. The rule for which staged files to check lives in the `staged` field of `vite.config.ts`:
 
-```bash
-pnpm i lint-staged -D
-```
+```ts
+import { defineConfig } from 'vite-plus';
 
-Add to `package.json`:
-
-```json
-{
-  "lint-staged": {
-    "*": "eslint --fix"
+export default defineConfig({
+  staged: {
+    '*': 'vp check --fix'
   }
-}
+});
 ```
 
-### simple-git-hooks
+### vp config (Git hooks)
 
-Install `simple-git-hooks`:
+`vite-plus` replaces `simple-git-hooks` with `vp config`. Hook scripts live in the `.vite-hooks/` directory; `pre-commit` contains a single line:
 
-```bash
-pnpm i simple-git-hooks -D
+```shell
+vp staged
 ```
 
-Add git hooks to `package.json`:
-
-```json
-{
-  "simple-git-hooks": {
-    "commit-msg": "pnpm sa git-commit-verify",
-    "pre-commit": "pnpm typecheck && pnpm lint-staged"
-  }
-}
-```
-
-Add scripts to `package.json`:
+Add a script to `package.json` so hooks are installed during dependency installation:
 
 ```json
 {
   "scripts": {
-    "prepare": "simple-git-hooks"
+    "prepare": "vp config --no-agent"
   }
 }
 ```
 
 ::: tip
-When changing the `simple-git-hooks` configuration or removing `simple-git-hooks`, first update the corresponding configuration in `package.json`, then run `pnpm run prepare` to apply the changes.
+After changing the `staged` configuration in `vite.config.ts` or editing scripts under `.vite-hooks/`, run `pnpm run prepare` again to apply the changes. In this repository `core.hooksPath` points to `.vite-hooks/_`.
 :::

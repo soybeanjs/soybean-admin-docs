@@ -39,10 +39,10 @@ Typical example
 ```ts
 import type { AxiosResponse } from 'axios';
 import { BACKEND_ERROR_CODE, createFlatRequest, createRequest } from '@sa/axios';
-import { useAuthStore } from '@/store/modules/auth';
-import { localStg } from '@/utils/storage';
 import { getServiceBaseURL } from '@/utils/service';
+import { localStg } from '@/utils/storage';
 import { $t } from '@/locales';
+import { useAuthStore } from '@/store/modules/auth';
 import { handleRefreshToken } from './shared';
 
 const isHttpProxy = import.meta.env.DEV && import.meta.env.VITE_HTTP_PROXY === 'Y';

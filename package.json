@@ -1,50 +1,54 @@
 {
   "name": "soybean-admin-docs",
-  "type": "module",
   "version": "1.0.0",
   "description": "The documentation of SoybeanAdmin",
+  "homepage": "https://github.com/soybeanjs/soybean-admin-docs",
+  "bugs": {
+    "url": "https://github.com/soybeanjs/soybean-admin-docs/issues"
+  },
+  "license": "MIT",
   "author": {
     "name": "Soybean",
     "email": "soybeanjs@outlook.com",
     "url": "https://github.com/soybeanjs"
   },
-  "license": "MIT",
-  "homepage": "https://github.com/soybeanjs/soybean-admin-docs",
   "repository": {
     "url": "https://github.com/soybeanjs/soybean-admin-docs.git"
   },
-  "bugs": {
-    "url": "https://github.com/soybeanjs/soybean-admin-docs/issues"
-  },
-  "engines": {
-    "node": ">=20.19.0",
-    "pnpm": ">=8.7.0"
-  },
+  "type": "module",
   "scripts": {
     "build": "vitepress build",
     "cleanup": "soy cleanup",
     "commit": "soy git-commit",
     "commit:zh": "soy git-commit -l=zh-cn",
     "dev": "vitepress dev --port 1026",
-    "lint": "eslint . --fix",
+    "fmt": "vp fmt",
+    "lint": "vp lint --fix && eslint --fix .",
+    "prepare": "vp config --no-agent",
     "preview": "vitepress serve",
     "release": "soy release",
     "typecheck": "vue-tsc --noEmit --skipLibCheck",
-    "update-pkg": "soy ncu"
+    "upkg": "soy ncu"
   },
   "dependencies": {
-    "vue": "^3.5.38"
+    "vue": "^3.5.43"
   },
   "devDependencies": {
-    "@soybeanjs/cli": "1.7.2",
-    "@soybeanjs/eslint-config": "1.7.5",
-    "@types/node": "26.0.0",
-    "eslint": "10.5.0",
-    "eslint-plugin-vue": "^10.9.2",
-    "typescript": "6.0.3",
-    "vitepress": "2.0.0-alpha.17",
-    "vitepress-plugin-llms": "1.13.1",
-    "vue-eslint-parser": "^10.4.1",
-    "vue-tsc": "^3.3.5"
-  }
+    "@soybeanjs/cli": "^1.8.4",
+    "@soybeanjs/eslint-config-vue": "^0.1.1",
+    "@soybeanjs/oxc-config": "^0.2.6",
+    "@types/node": "^26.6.4",
+    "eslint": "^10.12.0",
+    "tsx": "^4.23.15",
+    "typescript": "catalog:",
+    "vite-plus": "catalog:",
+    "vitepress": "2.0.0-alpha.20",
+    "vitepress-plugin-llms": "^1.13.1",
+    "vue-tsc": "^3.3.12"
+  },
+  "engines": {
+    "node": ">=20.19.0",
+    "pnpm": ">=8.7.0"
+  },
+  "packageManager": "pnpm@12.11.2"
 }
