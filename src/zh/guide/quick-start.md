@@ -244,7 +244,7 @@ soybean-admin
 ├── .gitignore                 //忽略git提交的配置文件
 ├── .npmrc                     //npm配置
 ├── CHANGELOG.md               //项目更新日志
-├── eslint.config.js           //eslint flat配置文件
+├── eslint.config.mjs          //eslint flat配置文件
 ├── index.html                 //html文件
 ├── package.json               //npm依赖描述文件
 ├── pnpm-lock.yaml             //npm包管理器pnpm依赖锁定文件
