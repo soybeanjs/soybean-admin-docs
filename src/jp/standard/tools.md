@@ -78,7 +78,7 @@ pnpm commit:zh
 ```json
 {
   "engines": {
-    "node": ">=20.19.0",
+    "node": ">=22.18.0",
     "pnpm": ">=8.7.0"
   }
 }
