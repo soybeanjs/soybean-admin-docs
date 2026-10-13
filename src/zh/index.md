@@ -59,20 +59,20 @@ import {
   VPTeamMembers,
   VPTeamPageSection
 } from 'vitepress/theme';
-import SbUiPromo from '../../.vitepress/theme/SbUiPromo.vue';
+import VeanUiPromo from '../../.vitepress/theme/VeanUiPromo.vue';
 
 const promoCopy = {
   eyebrow: '推荐 UI',
   mobileEyebrow: '推荐 UI',
-  description: '面向 Vue 3 的强大而优雅的组件系统，提供无头交互能力与开箱即用的样式封装。',
-  metaItems: ['@soybeanjs/ui', '@soybeanjs/headless', 'Vue 3', '91+ 组件'],
+  description: '面向 Vue 3 的双层组件系统：aria 层提供无样式但完整的交互与无障碍语义，ui 层提供开箱即用的样式封装。',
+  metaItems: ['@vean/aria', '@vean/ui', 'Vue 3', '96+ 组件'],
   tags: ['按钮', '弹窗', '表格'],
   stats: [
-    { value: '91+', label: '组件' },
+    { value: '96+', label: '组件' },
     { value: 'A11y', label: '可用' }
   ],
-  directLinkLabel: '直达 ui.soybeanjs.cn',
-  drawerCloseLabel: '关闭 SoybeanUI 抽屉',
+  directLinkLabel: '直达 veanui.com',
+  drawerCloseLabel: '关闭 VeanUI 抽屉',
   siteHint: '官网预览',
   githubText: 'GitHub',
   githubHint: '源码仓库'
@@ -153,7 +153,7 @@ const partners = [
 ]
 </script>
 
-<SbUiPromo v-bind="promoCopy" />
+<VeanUiPromo v-bind="promoCopy" />
 <VPTeamPage>
   <VPTeamPageTitle>
     <template #title>SoybeanJs 团队</template>

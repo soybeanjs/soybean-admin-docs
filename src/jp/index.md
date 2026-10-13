@@ -51,7 +51,7 @@ features:
     details: 依存関係のワンクリックアップグレード、ChangeLogの自動生成、コミットメッセージの生成などのスクリプト機能を提供し、開発効率を大幅に向上。
 ---
 
-<SbUiPromo v-bind="promoCopy" />
+<VeanUiPromo v-bind="promoCopy" />
 
 <script setup>
 import {
@@ -60,20 +60,20 @@ import {
   VPTeamMembers,
   VPTeamPageSection
 } from 'vitepress/theme';
-import SbUiPromo from '../../.vitepress/theme/SbUiPromo.vue';
+import VeanUiPromo from '../../.vitepress/theme/VeanUiPromo.vue';
 
 const promoCopy = {
   eyebrow: '注目 UI',
   mobileEyebrow: 'おすすめ UI',
-  description: 'Vue 3 向けの強力で洗練されたコンポーネントシステム。ヘッドレスな対話機能と、そのまま使えるスタイル実装をあわせて提供します。',
-  metaItems: ['@soybeanjs/ui', 'Vue 3', '91+ コンポーネント'],
+  description: 'Vue 3 向けの二層コンポーネントシステム。aria 層がスタイルなしの対話機能とアクセシビリティ意味論を、ui 層がそのまま使えるスタイル済みラッパーを提供します。',
+  metaItems: ['@vean/aria', '@vean/ui', 'Vue 3', '96+ コンポーネント'],
   tags: ['ボタン', 'Dialog', 'Table'],
   stats: [
-    { value: '91+', label: 'Components' },
+    { value: '96+', label: 'Components' },
     { value: 'A11y', label: 'Ready' }
   ],
-  directLinkLabel: 'ui.soybeanjs.cn を開く',
-  drawerCloseLabel: 'SoybeanUI drawer を閉じる',
+  directLinkLabel: 'veanui.com を開く',
+  drawerCloseLabel: 'VeanUI drawer を閉じる',
   siteHint: 'Official site',
   githubText: 'GitHub',
   githubHint: 'Source code'

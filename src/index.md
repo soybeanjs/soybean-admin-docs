@@ -52,7 +52,7 @@ features:
     details: Provides multiple scripting capabilities, including one-click dependency upgrades, automatic generation of ChangeLogs, commit messages, etc., greatly improving development efficiency.
 ---
 
-<SbUiPromo v-bind="promoCopy" />
+<VeanUiPromo v-bind="promoCopy" />
 
 <script setup>
 import {
@@ -61,20 +61,20 @@ import {
   VPTeamMembers,
   VPTeamPageSection
 } from 'vitepress/theme';
-import SbUiPromo from '../.vitepress/theme/SbUiPromo.vue';
+import VeanUiPromo from '../.vitepress/theme/VeanUiPromo.vue';
 
 const promoCopy = {
   eyebrow: 'Featured UI',
   mobileEyebrow: 'Featured UI',
-  description: 'A powerful and elegant component system for Vue 3, combining headless interaction primitives with ready-to-use styled components.',
-  metaItems: ['@soybeanjs/ui', 'Vue 3', '91+ Components'],
+  description: 'A two-layer component system for Vue 3: aria ships unstyled interaction and accessibility semantics, ui ships ready-to-use styled wrappers.',
+  metaItems: ['@vean/aria', '@vean/ui', 'Vue 3', '96+ Components'],
   tags: ['Button', 'Dialog', 'Table'],
   stats: [
-    { value: '91+', label: 'Components' },
+    { value: '96+', label: 'Components' },
     { value: 'A11y', label: 'Ready' }
   ],
-  directLinkLabel: 'Open ui.soybeanjs.cn',
-  drawerCloseLabel: 'Close SoybeanUI drawer',
+  directLinkLabel: 'Open veanui.com',
+  drawerCloseLabel: 'Close VeanUI drawer',
   siteHint: 'Official site',
   githubText: 'GitHub',
   githubHint: 'Source code'
