@@ -24,7 +24,7 @@ const promoDrawerOpen = ref(false);
 <template>
   <div class="vean-ui-promo">
     <div class="vean-ui-promo__brand">
-      <img class="vean-ui-promo__logo" src="/vean-ui-logo.svg" alt="VeanUI logo" />
+      <img class="vean-ui-promo__logo" src="https://img.soybeanjs.dev/logo-vean-ui.svg" alt="VeanUI logo" />
       <span class="vean-ui-promo__eyebrow">{{ eyebrow }}</span>
     </div>
     <strong class="vean-ui-promo__package">VeanUI</strong>
@@ -63,7 +63,7 @@ const promoDrawerOpen = ref(false);
   <div class="vean-ui-promo-mobile">
     <div class="vean-ui-promo-mobile__card">
       <button class="vean-ui-promo-mobile__toggle" type="button" @click="promoDrawerOpen = true">
-        <img class="vean-ui-promo-mobile__logo" src="/vean-ui-logo.svg" alt="VeanUI logo" />
+        <img class="vean-ui-promo-mobile__logo" src="https://img.soybeanjs.dev/logo-vean-ui.svg" alt="VeanUI logo" />
         <span class="vean-ui-promo-mobile__eyebrow">{{ mobileEyebrow }}</span>
         <strong class="vean-ui-promo-mobile__title">VeanUI</strong>
       </button>
@@ -97,7 +97,7 @@ const promoDrawerOpen = ref(false);
               ×
             </button>
             <div class="vean-ui-promo__brand">
-              <img class="vean-ui-promo__logo" src="/vean-ui-logo.svg" alt="VeanUI logo" />
+              <img class="vean-ui-promo__logo" src="https://img.soybeanjs.dev/logo-vean-ui.svg" alt="VeanUI logo" />
               <span class="vean-ui-promo__eyebrow">{{ eyebrow }}</span>
               <strong class="vean-ui-promo__package">VeanUI</strong>
             </div>

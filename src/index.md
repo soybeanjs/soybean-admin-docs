@@ -76,8 +76,7 @@ const promoCopy = {
   directLinkLabel: 'Open veanui.com',
   drawerCloseLabel: 'Close VeanUI drawer',
   siteHint: 'Official site',
-  githubText: 'GitHub',
-  githubHint: 'Source code'
+  githubText: 'GitHub'
 };
 
 const partners = [
