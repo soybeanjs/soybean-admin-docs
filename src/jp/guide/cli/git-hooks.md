@@ -34,3 +34,7 @@ git push
 > 1、`package.json` の `prepare` スクリプトを削除する
 >
 > 2、`.vite-hooks/` ディレクトリ内のフックスクリプト（例：`pre-commit`）を削除する
+>
+> 3、`pnpm vp hooks disable` を実行する（`core.hooksPath` を解除し、生成された `.vite-hooks/_` を削除します）
+>
+> :::

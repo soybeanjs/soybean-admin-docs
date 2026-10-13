@@ -39,4 +39,6 @@ git push
 >
 > 2、Delete the hook scripts under `.vite-hooks/` (for example `pre-commit`).
 >
+> 3、Run `pnpm vp hooks disable`, which unsets `core.hooksPath` and removes the generated `.vite-hooks/_` directory.
+>
 > :::

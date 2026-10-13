@@ -85,8 +85,8 @@ pnpm i
   "dev:prod": "vite --mode prod",
   // ルートの生成
   "gen-route": "sa gen-route",
-  // eslint のチェックと自動修正
-  "lint": "eslint . --fix",
+  // 静的チェックと自動修正
+  "lint": "vp lint --fix && eslint --fix .",
   // Git フックの初期化
   "prepare": "vp config --no-agent",
   // ビルド後の `dist` をローカル環境でプレビュー
@@ -237,7 +237,7 @@ soybean-admin
 ├── .gitignore                 // Git コミット時に無視するファイル設定
 ├── .npmrc                     // npm 設定ファイル
 ├── CHANGELOG.md               // プロジェクトの更新履歴
-├── eslint.config.js           // ESLint の設定ファイル（flat 構成）
+├── eslint.config.mjs          // ESLint の設定ファイル（flat 構成）
 ├── index.html                 // HTML ファイル
 ├── package.json               // npm 依存関係定義ファイル
 ├── pnpm-lock.yaml             // pnpm 依存関係のロックファイル

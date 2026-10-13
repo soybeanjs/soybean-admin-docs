@@ -92,8 +92,8 @@ pnpm i
   "dev:prod": "vite --mode prod",
   // Generate routes
   "gen-route": "sa gen-route",
-  // eslint check and auto fix
-  "lint": "eslint . --fix",
+  // Static check and auto fix
+  "lint": "vp lint --fix && eslint --fix .",
   // Initialize git hooks
   "prepare": "vp config --no-agent",
   // Preview the built dist in local environment
@@ -245,7 +245,7 @@ soybean-admin
 ├── .npmrc                     // npm configuration
 ├── CHANGELOG.md               // Changelog
 ├── env-config.ts              // Configuration file for request environment
-├── eslint.config.js           // eslint flat configuration file
+├── eslint.config.mjs          // eslint flat configuration file
 ├── index.html                 // html file
 ├── package.json               // npm dependency description file
 ├── pnpm-lock.yaml             // Dependency lock file for npm package manager pnpm

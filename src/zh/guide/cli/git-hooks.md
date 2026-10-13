@@ -35,4 +35,6 @@ git push
 >
 > 2、删除 `.vite-hooks/` 目录下的钩子脚本（例如 `pre-commit`）
 >
+> 3、执行 `pnpm vp hooks disable`（撤销 `core.hooksPath` 并删除生成的 `.vite-hooks/_`）
+>
 > :::
