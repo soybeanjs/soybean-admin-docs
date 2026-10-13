@@ -74,7 +74,6 @@ const promoCopy = {
   ],
   directLinkLabel: 'veanui.com を開く',
   drawerCloseLabel: 'VeanUI drawer を閉じる',
-  siteHint: 'Official site',
   githubText: 'GitHub'
 };
 
