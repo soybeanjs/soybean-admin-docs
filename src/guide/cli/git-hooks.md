@@ -35,8 +35,8 @@ git push
 ::: details Option 2: Permanently disable checksums
 
 > [!CAUTION] not recommended
-> 1、Remove the commands from `simple-git-hooks` in `package.json
+> 1、Remove the `prepare` script from `package.json`.
 >
-> 2、Execute the `simple-git-hooks` command.
+> 2、Delete the hook scripts under `.vite-hooks/` (for example `pre-commit`).
 >
 > :::

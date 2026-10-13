@@ -133,6 +133,5 @@ const len = user?.name?.length ?? 0;
 ```ts
 import { ref } from 'vue';
 import type { Ref } from 'vue';
-
 import type { User } from './types';
 ```

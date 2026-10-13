@@ -31,6 +31,6 @@ git push
 ::: details 方法2: 永久にチェックを無効化する
 
 > [!CAUTION] 推奨しません
-> 1、`package.json` の `simple-git-hooks` 内のコマンドを削除する
+> 1、`package.json` の `prepare` スクリプトを削除する
 >
-> 2、`simple-git-hooks` コマンドを実行する
+> 2、`.vite-hooks/` ディレクトリ内のフックスクリプト（例：`pre-commit`）を削除する

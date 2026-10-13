@@ -28,7 +28,6 @@ views
 ```ts
 // 推荐：使用别名
 import { useAppStore } from '@/store/modules/app';
-
 // 不推荐：深层相对路径
 import { useAppStore } from '../../../store/modules/app';
 ```
@@ -38,10 +37,8 @@ import { useAppStore } from '../../../store/modules/app';
 ```ts
 import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
-
 import { useAppStore } from '@/store/modules/app';
 import type { MenuItem } from '@/typings/menu';
-
 import { formatTitle } from './shared';
 ```
 

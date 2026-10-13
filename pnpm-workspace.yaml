@@ -1,5 +1,13 @@
+catalog:
+  vite: npm:@voidzero-dev/vite-plus-core@latest
+  vite-plus: latest
+  typescript: npm:typescript-native-bridge@latest
+overrides:
+  vite: 'catalog:'
+  typescript: 'catalog:'
 allowBuilds:
   esbuild: false
   unrs-resolver: false
 shamefullyHoist: true
 ignoreWorkspaceRootCheck: true
+linkWorkspacePackages: true

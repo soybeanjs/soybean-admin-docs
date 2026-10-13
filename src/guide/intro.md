@@ -6,7 +6,7 @@
 
 - **Application of cutting-edge technology**: Adopt the latest popular technology stack such as Vue3, Vite6, TypeScript, Pinia, and UnoCSS.
 - **Clear project architecture**: Adopt pnpm monorepo architecture, with a clear and elegant structure.
-- **Strict code specifications**: Follow the [SoybeanJS specification](/standard/), integrated with eslint, prettier, and simple-git-hooks to ensure code standardization.
+- **Strict code specifications**: Follow the [SoybeanJS specification](/standard/), integrated with vite-plus (`vp fmt` / `vp lint`) and Git Hooks to ensure code standardization.
 - **TypeScript**: Supports strict type checking to improve code maintainability.
 - **Rich theme configuration**: Built-in diverse theme configurations, perfectly combined with UnoCSS.
 - **Built-in internationalization scheme**: Easily achieve multi-language support.

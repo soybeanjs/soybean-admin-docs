@@ -35,7 +35,7 @@
 - [javascript console utils](https://marketplace.visualstudio.com/items?itemName=whtouche.vscode-js-console-utils) - 提供快捷键 ctrl+l 直接输入 console.log()
 - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) - 图标主题，显示文件和文件多种图标
 - [One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme) - 主题
-- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - 代码格式化插件
+- [Oxc](https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode) - 代码格式化与检查插件
 - [UnoCSS](https://marketplace.visualstudio.com/items?itemName=antfu.unocss) - unocss 写法提示插件
 - [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - Vue 服务插件
 - [Vue VSCode Snippets](https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-snippets) - Vue2、Vue3 写法提示插件
@@ -92,10 +92,10 @@ pnpm i
   "dev:prod": "vite --mode prod",
   // 生成路由
   "gen-route": "sa gen-route",
-  // eslint检查并自动修复
-  "lint": "eslint . --fix",
-  // 初始化 simple-git-hooks
-  "prepare": "simple-git-hooks",
+  // 检查并自动修复
+  "lint": "vp lint --fix && eslint --fix .",
+  // 初始化 Git Hooks
+  "prepare": "vp config --no-agent",
   // 本地环境预览构建后的dist
   "preview": "vite preview",
   // 发布

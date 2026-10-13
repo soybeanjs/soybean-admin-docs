@@ -1,10 +1,11 @@
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { type HeadConfig, defineConfig } from 'vitepress';
+import { defineConfig } from 'vitepress';
+import type { HeadConfig } from 'vitepress';
 import llmstxt, { copyOrDownloadAsMarkdownButtons } from 'vitepress-plugin-llms';
-import { qqSvg } from './icon.js';
-import zh from './locales/zh.js';
 import jp from './locales/jp.js';
+import zh from './locales/zh.js';
+import { qqSvg } from './icon.js';
 
 /** 文档站点的规范域名，用于 sitemap、robots、Open Graph、llms.txt 等绝对链接 */
 const HOSTNAME = 'https://docs.soybeanjs.cn';
@@ -25,7 +26,6 @@ function prependBomToTextFiles(dir: string) {
     }
   }
 }
-
 
 /** 从 Markdown 正文中提取首段纯文本，作为页面级 description（利于 SEO 与 AI 摘要抽取） */
 function extractDescription(raw: string): string {
