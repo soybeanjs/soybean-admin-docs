@@ -74,8 +74,7 @@ const promoCopy = {
   directLinkLabel: '直达 veanui.com',
   drawerCloseLabel: '关闭 VeanUI 抽屉',
   siteHint: '官网预览',
-  githubText: 'GitHub',
-  githubHint: '源码仓库'
+  githubText: 'GitHub'
 };
 
 const partners = [
