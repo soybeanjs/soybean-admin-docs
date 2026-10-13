@@ -79,7 +79,7 @@ pnpm commit:zh
 {
   "engines": {
     "node": ">=22.18.0",
-    "pnpm": ">=8.7.0"
+    "pnpm": ">=10.0.0"
   }
 }
 ```
