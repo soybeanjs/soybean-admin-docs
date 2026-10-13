@@ -7,6 +7,6 @@ These rules are mandatory: read the skill instead of guessing the convention, an
 
 ## Commits
 
-- **Conventional Commits.** Format: `<type>(<scope>): <subject>`, with the subject in the imperative mood. **Both type and scope are required** — never omit the scope; use the area the change touches (e.g. `ubean`, `proposals`, `agents`). Allowed types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`.
+- **Conventional Commits.** Format: `<type>(<scope>): <subject>`, with the subject in the imperative mood. **Both type and scope are required** — never omit the scope; use the area the change touches (e.g. `docs` for `src/`, `theme` for `.vitepress/theme/`, `build` for the toolchain config). Allowed types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`.
 - **Commit messages are written in English.** Subject, body, and any `BREAKING CHANGE:` footer. Never commit Chinese text.
 - Keep the subject under 72 characters; explain the _why_ in the body, wrapped at 72 columns.
